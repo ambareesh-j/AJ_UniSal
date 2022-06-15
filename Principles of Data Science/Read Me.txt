@@ -1,0 +1,9 @@
+1. G7 vs. BRICS PODS Report.docx is the report where the findings were documented and screenshots were placed. 
+
+2. G7 vs. BRICS - SAS.egp file is the project file that could be run through SAS Enterprise guide.
+
+3. G7 vs. BRICS - Power BI.pbix file is the dashboard file that is used for reporting and data visualisation. 
+
+4. Datasets folder is where all the raw data and reporting data is present for SAS and Power BI.
+
+5. Self-Assessment for Ambareesh Jonnavittula @00600894.xlsx file for the self assessment scores
