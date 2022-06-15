@@ -1,0 +1,403 @@
+---
+title: "Classification using decision trees - Risk of Cancer in USA"
+author: "Ambareesh Jonnavittula"
+date: "29/12/2021"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
+```
+
+
+## Contents
+
+- Step 1 - Problem Definition
+- Step 2 - Environmental Setup
+- Step 3 - Data Acquisition
+- Step 4 - Data Preparation 
+- Step 5 - Exploratory Data Analysis
+- Step 6 - Data Preprocessing 
+- Step 7 - Classification - Decision tree
+- Step 8 - Model Evaluation
+
+## Step 1 - Problem Definition
+
+Over the years, there have been various carcinogenic factors which have caused Cancer among the people across all the states of USA according to NATA.
+
+The objective of this task is to be able to prepare a classification model to utilize the predictor variables to identify and/or predict which factors potentially pose a range of risk of cancer among the people of USA.
+
+_Note - In addition, this piece of code is reproducible, hence we could scale it to any state of the USA within the dataset_
+
+## Step 2 - Environmental Setup
+
+- dplyr : Data manipulations
+- tidyverse : Data science tasks
+- readxl : to Import the .xlsx file
+- skimr : Statistical summary
+- corrplot : Correlation matrix
+- rpart : Classification - Decision Trees 
+- rattle - Decision tree visualization
+- vioplot : Violin plots
+- ggplot2 : Plotting graphs
+- RColorBrewer : Colour palette
+
+```{r include=FALSE}
+# 2.1 - Install the required packages/libraries from R
+# install.packages('dplyr') 
+# install.packages('tidyverse')
+# install.packages('ggplot2')
+# install.packages('rpart')
+# install.packages('rpart.plot')
+# install.packages('rattle')
+# install.packages('RColorBrewer')
+# install.packages('skimr')
+# install.packages("xlsx")
+# install.packages("vioplot")
+# install.packages("corrplot")
+# install.packages("Hmisc")
+# install.packages("ROCR")
+
+# Libraries to current R session
+library(dplyr) 
+library(tidyverse)
+library(ggplot2)
+library(rpart)
+library(rpart.plot)
+library(rattle)
+library(RColorBrewer)
+library(skimr)
+library("readxl")
+library(vioplot)
+library(Hmisc)
+library(corrplot)
+
+# 2.3 - Setup Working directory
+fpath = "D:/University/ASDM/Developments/Task 1 - Classification"
+setwd(fpath)   # Set the WD
+getwd()        # Validate the new WD
+```
+
+## Step 3 - Data Acquisition
+
+- Import data from the file path using read_excel() function
+- Rename columns for simplification
+```{r echo=TRUE}
+## Importing / Reading the data into "df_cea_raw" data frame 
+df_cea_raw <- read_excel("ARM Dataset.xlsx", sheet = 1) 
+
+# Inspect the raw data
+head(df_cea_raw)
+tail(df_cea_raw)
+names(df_cea_raw)
+summary(df_cea_raw)
+str(df_cea_raw)
+dim(df_cea_raw)
+
+# Renaming the columns as part of simplification
+names(df_cea_raw)[names(df_cea_raw) == 'State'] <-  'state'
+names(df_cea_raw)[names(df_cea_raw) == 'County'] <-  'county'
+names(df_cea_raw)[names(df_cea_raw) == 'Pollutant.Name'] <-  'pollutant'
+names(df_cea_raw)[names(df_cea_raw) == 'Point..includes.railyards..Cancer.Risk..per.million.'] <-  'railyards_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'Airport.Cancer.Risk..per.million.'] <-  'airport_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'OR.Lightduty..includes.refueling..Cancer.Risk..per.million.'] <-  'lightduty_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'OR.Heavyduty.Cancer.Risk..per.million.'] <-  'heavyduty_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'NR..no.airports..CMV..locomotives..Cancer.Risk..per.million.'] <-  'cmv_loco_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'NP.10m.ReleaseHeight.Cancer.Risk..per.million.'] <-  'np_10m_releaseheight_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'NP.Low.ReleaseHeight.Cancer.Risk..per.million.'] <-  'np_low_releaseheight_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'ResidentialWoodCombustion..RWC..Cancer.Risk..per.million.'] <-  'rwc_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'NR.CommercialMarineVessel..CMV..Cancer.Risk..per.million.'] <-  'cmv_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'Biogenics.Cancer.Risk..per.million.'] <-  'biogenics_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'Fires..ag..prescribed..and.wild..Cancer.Risk..per.million.'] <-  'fires_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'Secondary.Cancer.Risk..per.million.'] <-  'secondary_crpm'
+names(df_cea_raw)[names(df_cea_raw) == 'Total.Cancer.Risk..per.million.'] <-  'total_crpm'
+```
+
+## Step 4 - Data Preparation
+
+1. Subset to consider only required columns & drop the raw dataframe
+2. Inspect the subset
+3. Create a function to Flatten the correlation matrix
+4. Classify the level of threat into L0, L1, L2, & L3
+```{r echo=TRUE}
+# 4.1 Subset to consider only required columns
+df_cea <- select(filter(df_cea_raw)
+                 ,c(state, county, pollutant,
+                    railyards_crpm,
+                    airport_crpm,
+                    lightduty_crpm,
+                    heavyduty_crpm,
+                    cmv_loco_crpm,
+                    np_10m_releaseheight_crpm,
+                    np_low_releaseheight_crpm,
+                    rwc_crpm,
+                    cmv_crpm,
+                    biogenics_crpm,
+                    fires_crpm,
+                    secondary_crpm,
+                    total_crpm  ))
+
+# 4.3 To replace missing values with 0
+df_cea[is.null(df_cea)] = 0
+
+# 4.2 Drop the raw dataframe
+remove(df_cea_raw)
+
+```
+
+3. Inspect the subset 
+```{r echo=TRUE}
+# 4.3 Inspect the subset
+# Describing the data subset 
+head(df_cea)
+tail(df_cea)
+names(df_cea)
+str(df_cea)
+summary(df_cea)
+
+# Check the number of Rows & Columns in the data subset
+nrow(df_cea) 
+ncol(df_cea) 
+dim(df_cea)   
+
+skim(df_cea)
+
+```
+
+3. Function to Flatten the correlation matrix
+```{r echo=TRUE}
+# c is the corr. coeff. matrix
+# p is the corr. p-values matrix
+flat_cm <- function(c, p) {
+  ut <- upper.tri(c)
+  data.frame(
+    row = rownames(c)[row(c)[ut]],
+    column = rownames(c)[col(c)[ut]],
+    cor  =(c)[ut],
+    p = p[ut]
+  )
+}
+```
+
+4. Classify the level of threat
+```{r echo=TRUE}
+summary(df_cea$total_crpm)
+
+df_cea$level_of_threat <- as.factor(ifelse(df_cea$total_crpm <= 0.5, 'L0',
+                                ifelse(df_cea$total_crpm <= 5, 'L1',
+                                       ifelse(df_cea$total_crpm <= 10, 'L2', 'L3'))))
+
+# df_cea$level_of_threat <- cut(df_cea$total_crpm, 4, labels = c('L0', 'L1', 'L2', 'L3'))
+
+# Check frequency
+as.data.frame(table(df_cea$level_of_threat)) 
+```
+
+## Step 5 - Exploratory Data Analysis
+
+1. Correlation plots with Pearson correlation coefficients
+```{r echo=TRUE}
+# 5.1 - Histogram - Total CRPM
+hist(df_cea$total_crpm, xlab="Total Cancer Risk per Million", main = "Distribution of values - Total Cancer Risk per million")
+
+# 5.2 - Box plot - Total Cancer risk by State
+ggplot(df_cea, aes(x=state, y=total_crpm, fill=state)) +
+  geom_boxplot()+
+  labs(title="Box plot - Total Cancer risk per million by State",x="State", y = "Cancer Risk")+   
+  theme(legend.position = "none") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1))+
+  theme(plot.title = element_text(hjust = 0.5))
+
+# 5.3 - Violin Plot - Total CRPM by Pollutant
+ggplot(df_cea, aes(x=pollutant, y=total_crpm)) +
+  geom_violin(trim=FALSE, fill='#A4A4A4', color="darkred")+
+  geom_boxplot(width=0.1, outlier.shape = NA) +  theme_minimal()
+
+# 5.4 Correlation Matrix for continuous variables
+df_cea_cv <- df_cea[, c(4:16)]
+df_cea_cor <- cor(df_cea_cv)
+round(df_cea_cor,2)
+
+# 5.5 Apply Flatten function here
+rs<-rcorr(as.matrix(df_cea[, c(4:16)]))
+flat_cm(rs$r, rs$P)
+
+# 5.6 - Correlation Matrix Analysis using Heatmap
+col <- colorRampPalette(c("grey", "white", "red"))(20)
+heatmap(x = df_cea_cor, col = col, symm = TRUE)
+
+# 5.7 - Correlogram
+corrplot(df_cea_cor, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+
+# 5.8 - Level of Threat
+ggplot(df_cea, aes(x=total_crpm, fill=level_of_threat, color=level_of_threat)) +
+  geom_histogram( alpha=0.5, position="identity")+
+  scale_color_brewer(palette="Dark2")+
+  scale_fill_brewer(palette="Dark2")+
+  labs(title="Level of Threat",x="Total Cancer risk per million", y = "Frequency")+ 
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Step 6 - Data Preprocessing
+```{r echo=TRUE}
+# Subset to only predictor and response variables.
+df_cea_model <- df_cea[, 4:17]
+names(df_cea_model)
+
+# Write the .csv file for SAS task
+write.csv(df_cea_model,"D:/University/ASDM/Developments/Task 1 - Classification/Cancer_Risk_USA_SAS.csv", row.names = TRUE)
+
+# Random number generator
+set.seed(28) 
+
+# Use Sampling function to split the training vs. test datasets.
+cea_split <- sample(2, nrow(df_cea_model),replace=TRUE, prob=c(0.8,0.2))
+head(cea_split)
+
+# Create train & test datasets
+train_cea <- df_cea[cea_split==1,] 
+test_cea <- df_cea[cea_split==2,] 
+
+# Inspect the datasets & split
+dim(train_cea)
+dim(test_cea)
+as.data.frame(table(train_cea$level_of_threat))
+as.data.frame(table(test_cea$level_of_threat))
+
+# Function to be used to predict the class and calculate accuracy
+model_predict <- function(df, tree, v_title ) {
+  
+  # 1. Plot the tree
+  fancyRpartPlot(tree, main = v_title)
+  
+  # 2. Cancer Risk Prediction
+  risk_prediction <- predict(tree, df, type = 'class')
+  
+  # 3. Confusion matrix 
+  cmat <- table(df$level_of_threat, risk_prediction)
+  print('Confusion Matrix is created')
+
+  # 4. Accuracy % & Error %
+  acc <- sum(diag(cmat)) * 100 / sum(cmat)
+  print(paste('Accuracy :', round(acc,2), '%'))
+  print(paste('Error :', round(100 - acc,2), '%'))
+  
+  # 5. Precision, Recall & F1 Score
+  v_diag <- diag(cmat) # number of correctly classified instances per class
+  rowsums <- apply(cmat, 1, sum) # number of instances per class
+  colsums <- apply(cmat, 2, sum) # number of predictions per class
+  v_precision <- v_diag / colsums
+  v_recall <- v_diag / rowsums
+  v_f1 <- 2 * v_precision * v_recall / (v_precision + v_recall)
+  df_prf1 <- data.frame(round(v_precision*100,2), round(v_recall*100,2), round(v_f1*100,2))
+  colnames(df_prf1) <- c('Precision (%)', 'Recall (%)', 'F1 Score (%)')
+  df_prf1
+}
+
+```
+
+## Step 7 - Decision Trees Classifier - Train the model
+
+1. Train the model using rpart()
+2. Plot the tree using fancyRpartPlot()
+3. Predict the model
+4. Create a confusion matrix
+5. Measure Accuracy Rate % & Error Rate %
+
+```{r echo=TRUE}
+# By default, rpart() function uses the Gini impurity measure to split the note. The higher the Gini coefficient, the more different instances within the node.
+
+# 1. Understand the variables 
+tree1 <- rpart(level_of_threat ~ np_low_releaseheight_crpm, data=train_cea, method="class")
+fancyRpartPlot(tree1, main = "np_low_releaseheight_crpm")
+
+tree2 <- rpart(level_of_threat ~ cmv_loco_crpm, data=train_cea, method="class")
+fancyRpartPlot(tree2, main = "cmv_loco_crpm")
+
+tree3 <- rpart(level_of_threat ~ lightduty_crpm, data=train_cea, method="class")
+fancyRpartPlot(tree3, main = "lightduty_crpm")
+
+tree4 <- rpart(level_of_threat ~ heavyduty_crpm, data=train_cea, method="class")
+fancyRpartPlot(tree4, main = "heavyduty_crpm")
+
+# 2. Train the model
+rpart_tree <- rpart(level_of_threat ~ railyards_crpm+
+                                      airport_crpm +
+                                      rwc_crpm +
+                                      cmv_crpm +
+                                      biogenics_crpm +
+                                      fires_crpm +
+                                      secondary_crpm +
+                                      np_10m_releaseheight_crpm + 
+                                      np_low_releaseheight_crpm + 
+                                      cmv_loco_crpm + 
+                                      lightduty_crpm + 
+                                      heavyduty_crpm,
+                        data=train_cea, method="class")
+
+# 3. Evaluate the trained model
+model_predict(train_cea, rpart_tree, 'Training : Decision tree to identify the risk of Cancer')
+
+# 4. Accuracy Tuning - (not needed if > 78~80%) - to identify more nodes
+ctrl <- rpart.control(minsplit = 4,
+    minbucket = round(5 / 3),
+    maxdepth = 4,
+    cp = 0)
+tune_fit_train <- rpart(level_of_threat ~ railyards_crpm+
+                                      airport_crpm +
+                                      rwc_crpm +
+                                      cmv_crpm +
+                                      biogenics_crpm +
+                                      fires_crpm +
+                                      secondary_crpm +
+                                      np_10m_releaseheight_crpm + 
+                                      np_low_releaseheight_crpm + 
+                                      cmv_loco_crpm + 
+                                      lightduty_crpm + 
+                                      heavyduty_crpm,
+                        data=train_cea, method="class", control = ctrl)
+
+model_predict(train_cea, tune_fit_train, 'Trained & Tuned : Decision tree to identify the risk of Cancer')
+
+
+```
+
+
+## Step 8 - Decision Trees Classifier - Test the model
+
+1. Test the model using rpart()
+2. Compare the results with Training dataset.
+
+```{r echo=TRUE}
+# 1. Test the model
+tune_fit_test <- rpart(level_of_threat ~ railyards_crpm+
+                                      airport_crpm +
+                                      rwc_crpm +
+                                      cmv_crpm +
+                                      biogenics_crpm +
+                                      fires_crpm +
+                                      secondary_crpm +
+                                      np_10m_releaseheight_crpm + 
+                                      np_low_releaseheight_crpm + 
+                                      cmv_loco_crpm + 
+                                      lightduty_crpm + 
+                                      heavyduty_crpm,
+                        data=test_cea, method="class", control = ctrl)
+
+# 2. Evaluate the tested model
+model_predict(test_cea, tune_fit_test, 'Tested : Decision tree to identify the risk of Cancer')
+
+```
+
+
+
+
+
+
+
+
+
+
+
+

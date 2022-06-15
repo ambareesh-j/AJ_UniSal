@@ -1,0 +1,356 @@
+---
+title: "Association Rules Mining : Concomitant Pollutants in California, USA (NATA)"
+author: "Ambareesh Jonnavittula"
+date: "28/12/2021"
+output: slidy_presentation
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
+```
+
+## Contents
+
+- Step 1 - Problem Definition
+- Step 2 - Environmental Setup
+- Step 3 - Data Acquisition
+- Step 4 - Data Preparation
+- Step 5 - Exploratory Data Analysis
+- Step 6 - Data Preprocessing
+- Step 7 - Association rules mining
+- Step 8 - Model Evaluation
+
+## Step 1 - Problem Definition
+
+Over the years, there have been various toxic pollutants which have caused Cancer among the people across the counties of California, USA.  
+
+The objective of this task is to be able to identify if there is high risk of multiple carcinogens in association with each other in each of the tract in California, USA. 
+
+_Note - In addition, this piece of code is reproducible, hence we could scale it to any state of the USA within the dataset._
+
+## Step 2 - Environmental Setup
+
+- dplyr : Data manipulations
+- tidyverse : Data science tasks
+- readxl : to Import the .xlsx file
+- skimr : Statistical summary
+- corrplot : Correlation matrix
+- arulesViz : Assoc Rules - Visualization
+- arules : Association Rules
+- ggplot2 : Plotting graphs
+- RColorBrewer : Colour palette
+
+```{r include=FALSE}
+# 2.1 - Install the required packages/libraries from R
+# install.packages('dplyr')
+# install.packages('tidyverse')
+# install.packages('skimr')
+# install.packages('arulesViz') 
+# install.packages('arules') 
+# install.packages("ggplot2") 
+# install.packages("corrplot") 
+# install.packages('stringr')
+
+# 2.2 - Load the libraries
+library(dplyr) 
+library(tidyverse)
+library(stringr)
+library(ggplot2)
+library(RColorBrewer)
+library(skimr)
+library(corrplot)
+library(readxl)  # To read .xlsx files
+library(arulesViz) # activate “arules” package
+library(arules) # activate “arules” package
+
+# 2.3 - Setup Working directory
+fpath = "D:/University/ASDM/Developments/Task 2 - Association Rules Mining"
+setwd(fpath)   # Set the WD
+getwd()        # Validate the new WD
+```
+
+## Step 3 - Data Acquisition
+
+- Import data from the file path using read_excel() function
+- Rename columns for simplification
+```{r echo=TRUE}
+## Importing / Reading the data into "df_cea" data frame 
+df_cea_raw <- read_excel("ARM Dataset.xlsx", sheet = 1) 
+
+# Inspect the raw data
+head(df_cea_raw)
+tail(df_cea_raw)
+names(df_cea_raw)
+summary(df_cea_raw)
+str(df_cea_raw)
+dim(df_cea_raw)
+
+# Renaming the columns as part of simplification
+names(df_cea_raw)[names(df_cea_raw) == 'State'] <-  'state'
+names(df_cea_raw)[names(df_cea_raw) == 'County'] <-  'county'
+names(df_cea_raw)[names(df_cea_raw) == 'Tract'] <-  'tract'
+names(df_cea_raw)[names(df_cea_raw) == 'Pollutant.Name'] <-  'pollutant'
+names(df_cea_raw)[names(df_cea_raw) == 'Total.Conc'] <-  'total_conc'
+```
+
+## Step 4 - Data Preparation
+
+1. Subset to a single state
+2. Aggregate cancer risk data per category using averages per county
+```{r echo=TRUE}
+# 4.1 Subset to state CA
+df_cea <- select(filter(df_cea_raw, 
+                        state == "CA" &
+                        tract != 0 & pollutant != '' )
+                 ,c(tract, pollutant, total_conc))
+
+# 4.2 Aggregate data using averages
+df_cea_agg <- df_cea %>%
+              group_by(tract, pollutant) %>%
+              summarise_at(vars(c(1)), list(avg = mean))
+
+# 4.3 String manipulations within Pollutant
+df_cea_agg$pollutant <- str_to_title(df_cea_agg$pollutant)
+
+# 4.4 Pivot pollutants and total conc columns
+df_cea_piv <- df_cea_agg %>% 
+  pivot_wider(names_from = pollutant, 
+                     values_from = avg)
+
+# 4.5 Convert tract into a categorical variable
+df_cea_piv$tract <- as.factor(df_cea_piv$tract)
+ 
+# 4.5 Drop the raw dataframe
+remove(df_cea_raw)
+```
+
+3. Inspect the subset 
+4. Replace any NAs with 0
+```{r echo=TRUE}
+# Inspect the cleansing
+# Describing the data subset 
+head(df_cea_piv)
+tail(df_cea_piv)
+names(df_cea_piv)
+str(df_cea_piv)
+summary(df_cea_piv)
+
+# Check the number of Rows & Columns in the data subset
+nrow(df_cea_piv) 
+ncol(df_cea_piv) 
+dim(df_cea_piv) 
+
+# Replace NAs with 0
+df_cea_piv[is.na(df_cea_piv)] <- 0
+summary(df_cea_piv)
+```
+
+## Step 5 - Exploratory Data Analysis
+
+1. Correlation Analysis
+```{r echo=TRUE}
+# Pairs plot - Correlation plot
+df_cea_piv$tract <- as.factor(df_cea_piv$tract)
+pairs(df_cea_piv)
+
+rownames(df_cea_piv) <- df_cea_piv$tract
+
+corrmatrix <- cor(df_cea_piv[,2:7])
+corrplot(corrmatrix, method = 'number')
+```
+
+2. Box plot to check pollutants
+```{r echo=TRUE}
+# 5.3 - Boxplot - Total Concentration by Pollutant
+ggplot(df_cea, aes(x=pollutant, y=total_conc, fill=pollutant)) +
+  geom_boxplot()+
+  labs(title="Box plot - Total Concentration by Pollutant",x="Pollutant", y = "Concentration")+ scale_fill_brewer(palette="Dark2") + theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+3. Plotting based on observations 
+```{r echo=TRUE}
+# Toluene vs. 1,3-Butadiene 
+plot(Toluene ~ `1,3-Butadiene`, data = df_cea_piv, main = "Toluene vs. 1,3-Butadiene")
+
+# Benzene vs. 1,3-Butadiene 
+plot(Benzene ~ `1,3-Butadiene`, data = df_cea_piv, main = "Benzene vs. 1,3-Butadiene")
+
+# Toluene vs. Diesel PM 
+plot(Toluene ~ `Diesel Pm`, data = df_cea_piv, main = "Toluene vs. Diesel PM")
+```
+
+4. Apply Linear Regression
+```{r echo=TRUE}
+# Apply the lm() function.
+relation <- lm(df_cea_piv$`1,3-Butadiene` ~ df_cea_piv$Benzene)
+
+print(summary(relation))
+
+# Plot the chart.
+plot(df_cea_piv$`1,3-Butadiene`, df_cea_piv$Benzene ,col = "blue",  main = "1,3-Butadiene & Benzene - Regression",
+abline(lm(df_cea_piv$Benzene ~ df_cea_piv$`1,3-Butadiene`)),cex = 1.3, pch = 16,xlab = "Concentration of Benzene",ylab = "Concentration of 1,3-Butadiene")
+```
+
+
+## Step 6 - Data Preprocessing
+
+1. Create Benchmark variables and classify into High & Low conc. areas
+```{r echo=TRUE}
+# Create Benchmark Variables to classify the variables
+# Anything greater than avg, can be considered as High or else Low conc
+toluene_50 <- mean(df_cea_piv$Toluene)
+butadiene_50 <- mean(df_cea_piv$`1,3-Butadiene`)
+acetaldehyde_50 <- mean(df_cea_piv$Acetaldehyde)
+benzene_50 <- mean(df_cea_piv$Benzene)
+cyanide_50 <- mean(df_cea_piv$`Cyanide Compounds`)
+diesel_50 <- mean(df_cea_piv$`Diesel Pm`)
+
+# Convert continuous values into dichotomous variables (High/Low)
+df_cea_piv <- df_cea_piv %>% mutate(Toluene = ifelse(Toluene > toluene_50, "H", "L"))
+df_cea_piv <- df_cea_piv %>% mutate(`1,3-Butadiene` = ifelse(`1,3-Butadiene` > butadiene_50, "H", "L"))
+df_cea_piv <- df_cea_piv %>% mutate(Acetaldehyde = ifelse(Acetaldehyde > acetaldehyde_50, "H", "L"))
+df_cea_piv <- df_cea_piv %>% mutate(Benzene = ifelse(Benzene > benzene_50, "H", "L"))
+df_cea_piv <- df_cea_piv %>% mutate(`Cyanide Compounds` = ifelse(`Cyanide Compounds` > cyanide_50, "H", "L"))
+df_cea_piv <- df_cea_piv %>% mutate(`Diesel Pm` = ifelse(`Diesel Pm` > diesel_50, "H", "L"))
+
+# Convert to factor
+df_cea_piv$Toluene <- as.factor(df_cea_piv$Toluene)
+df_cea_piv$`1,3-Butadiene` <- as.factor(df_cea_piv$`1,3-Butadiene`)
+df_cea_piv$Acetaldehyde <- as.factor(df_cea_piv$Acetaldehyde)
+df_cea_piv$Benzene <- as.factor(df_cea_piv$Benzene)
+df_cea_piv$`Cyanide Compounds` <- as.factor(df_cea_piv$`Cyanide Compounds`)
+df_cea_piv$`Diesel Pm` <- as.factor(df_cea_piv$`Diesel Pm`)
+
+# Check frequency
+as.data.frame(table(df_cea_piv$Toluene)) 
+as.data.frame(table(df_cea_piv$`1,3-Butadiene`)) 
+as.data.frame(table(df_cea_piv$Acetaldehyde))
+as.data.frame(table(df_cea_piv$Benzene)) 
+as.data.frame(table(df_cea_piv$`Cyanide Compounds`)) 
+as.data.frame(table(df_cea_piv$`Diesel Pm`)) 
+
+# Move these dichotonomous variables into a DF
+df_cea_arm <- df_cea_piv[2:7]
+skim(df_cea_arm)
+```
+
+2. Analyzing the custom-defined concentration levels
+```{r echo=TRUE}
+# Concentration_Tracts
+#colSums() function computes the sums of columns.
+high <- colSums(df_cea_arm == "H")
+high
+
+low <- colSums(df_cea_arm == "L")
+low
+
+df_conc <- rbind(high,low)
+df_conc
+
+
+barplot(df_conc,legend=rownames(df_conc),las=2) #Plot 1
+
+barplot(df_conc, beside=T,legend=rownames(df_conc),las=2)# Plot 2
+
+```
+
+3. Unpivot & Saving the cleaned dataset as a .csv (for SAS)
+```{r echo=TRUE}
+# 3.1 - Unpivot the Pollutants and risks
+df_cea_unpiv <- df_cea_piv %>% 
+  pivot_longer(!tract, names_to = "Pollutant", values_to = "Risk Status")
+
+df_cea_unpiv$Potent_Risk <- ifelse(df_cea_unpiv$`Risk Status` == 'L',
+                                    "", df_cea_unpiv$Pollutant)
+
+head(df_cea_unpiv)
+tail(df_cea_unpiv)
+
+# 3.2 - Write to a .csv file
+write.csv(df_cea_unpiv, "CancerRisk_Pollutants.csv", row.names=TRUE)
+
+```
+
+
+## Step 7 - Association Rules Mining
+
+1. Applying Apriori algorithm
+```{r echo=TRUE}
+search()
+
+dim(df_cea_arm)
+head(df_cea_arm)
+
+all_rules <- apriori(df_cea_arm,
+                parameter =list(minlen=2,maxlen=3,conf = 0.70, supp = 0.30))
+
+summary(all_rules)
+inspect(all_rules)
+
+rules <- apriori(df_cea_arm,
+                parameter =list(minlen=2,maxlen=3,conf = 0.70),
+                appearance = list(rhs=c("Acetaldehyde=H"),default="lhs"))
+
+summary(rules)
+inspect(rules)
+
+rules <- apriori(df_cea_arm,
+                parameter =list(minlen=2,maxlen=3,conf = 0.70),
+                appearance = list(rhs=c("Diesel Pm=H"),default="lhs"))
+
+summary(rules)
+inspect(rules)
+
+rules <- apriori(df_cea_arm,
+                parameter =list(minlen=2,maxlen=3,conf = 0.70),
+                appearance = list(rhs=c("1,3-Butadiene=H"),default="lhs"))
+
+summary(rules)
+inspect(rules)
+
+rules <- apriori(df_cea_arm,
+                parameter =list(minlen=2,maxlen=3,conf = 0.50),
+                appearance = list(rhs=c("Cyanide Compounds=H"),default="lhs"))
+
+summary(rules)
+inspect(rules)
+
+rules <- apriori(df_cea_arm,
+                parameter =list(minlen=2,maxlen=3,conf = 0.70),
+                appearance = list(rhs=c("Benzene=H"),default="lhs"))
+
+summary(rules)
+inspect(rules)
+
+rules <- apriori(df_cea_arm,
+                appearance = list(rhs=c("Toluene=H"),default="lhs"))
+
+summary(rules)
+inspect(rules)
+
+rules3 <- apriori(df_cea_arm,
+parameter = list(minlen=2,maxlen=3, conf = 0.70),
+appearance = list(rhs=c("1,3-Butadiene=H","Diesel Pm=H" ), lhs = c("Acetaldehyde=H","Benzene=H","Toluene=H","Cyanide Compounds=H") , default="none"))
+
+inspect(rules3)
+
+```
+
+2. Using ruleExplorer()
+```{r}
+ruleExplorer(all_rules)
+```
+
+
+
+## Step 8 - Model Evaluation
+```{r echo=TRUE}
+# arulesViz - plots
+
+plot(rules)
+
+plot(rules@quality)
+```
+

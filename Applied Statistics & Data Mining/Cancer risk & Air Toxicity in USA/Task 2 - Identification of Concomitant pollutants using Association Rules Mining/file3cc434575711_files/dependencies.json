@@ -1,0 +1,371 @@
+{
+  "type": "list",
+  "attributes": {},
+  "value": [
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["name", "version", "src", "meta", "script", "stylesheet", "head", "attachment", "package", "all_files"]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["html_dependency"]
+        }
+      },
+      "value": [
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["header-attrs"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["2.5"]
+        },
+        {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["file"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["C:/Users/ambar/Documents/R/win-library/4.0/rmarkdown/rmd/h/pandoc"]
+            }
+          ]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["header-attrs.js"]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [true]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["name", "version", "src", "meta", "script", "stylesheet", "head", "attachment", "package", "all_files"]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["html_dependency"]
+        }
+      },
+      "value": [
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["bootstrap"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["3.3.5"]
+        },
+        {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["file"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["C:/Users/ambar/Documents/R/win-library/4.0/rmarkdown/rmd/h/bootstrap"]
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["viewport"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["width=device-width, initial-scale=1"]
+            }
+          ]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["js/bootstrap.min.js", "shim/html5shiv.min.js", "shim/respond.min.js"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["css/bootstrap.min.css"]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [true]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["name", "version", "src", "meta", "script", "stylesheet", "head", "attachment", "package", "all_files"]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["html_dependency"]
+        }
+      },
+      "value": [
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["slidy"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["2"]
+        },
+        {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["file"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["C:/Users/ambar/Documents/R/win-library/4.0/rmarkdown/rmd/slidy/Slidy2"]
+            }
+          ]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["scripts/slidy.js"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["styles/slidy.css"]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [true]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["name", "version", "src", "meta", "script", "stylesheet", "head", "attachment", "package", "all_files"]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["html_dependency"]
+        }
+      },
+      "value": [
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["slidy_shiny"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["1"]
+        },
+        {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["file"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["C:/Users/ambar/Documents/R/win-library/4.0/rmarkdown/rmd/slidy"]
+            }
+          ]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["slidy_shiny.js"]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [false]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["name", "version", "src", "meta", "script", "stylesheet", "head", "attachment", "package", "all_files"]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["html_dependency"]
+        }
+      },
+      "value": [
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["rmarkdown-performance"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["0.1"]
+        },
+        {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["file"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["C:\\Users\\ambar\\AppData\\Local\\Temp\\RtmpQDNHs3\\file3cc434575711_files"]
+            }
+          ]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["rmd_perf.js"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["rmd_perf.css"]
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "NULL"
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [true]
+        }
+      ]
+    }
+  ]
+}
