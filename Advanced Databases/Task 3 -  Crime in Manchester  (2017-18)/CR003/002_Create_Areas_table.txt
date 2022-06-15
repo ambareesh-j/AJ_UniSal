@@ -1,0 +1,22 @@
+USE CR003;
+GO
+
+CREATE TABLE Areas
+(
+		Area_ID		VARCHAR(10)		PRIMARY KEY,
+		Area_Name	VARCHAR(150)	  NOT NULL,	
+)
+;
+
+--TRUNCATE TABLE CR003.[dbo].[Areas];
+
+/*Pick any table to insert Area names into the Areas table*/
+
+INSERT INTO CR003.[dbo].[Areas]
+SELECT 
+		LTRIM(RTRIM([Contents])) as Area_ID, 
+		LTRIM(RTRIM([F3]))		 as Area_Name
+FROM 
+	[CR003].[dbo].[Mid-2017 Females]
+WHERE LTRIM(RTRIM([F3])) <> '' OR [F3] IS NOT NULL
+  AND LOWER([Contents]) <> 'area codes';

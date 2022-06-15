@@ -1,0 +1,95 @@
+USE CR003;
+GO
+
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Trigger (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- See additional Create Trigger templates for more
+-- examples of different Trigger statements.
+--
+-- This block of comments will not be included in
+-- the definition of the function.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Trigger 1 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCrime.trg_Intercept_Deletion
+   ON  [dbCrime].[Areas]
+   INSTEAD OF INSERT, UPDATE, DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+
+-- =============================================
+-- Trigger 2 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCrime.trg_Intercept_Deletion2
+   ON  [dbCrime].[Population]
+   INSTEAD OF INSERT, UPDATE, DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion2` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+-- =============================================
+-- Trigger 3 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCrime.trg_Intercept_Deletion3
+   ON  [dbCrime].[Streets]
+   INSTEAD OF INSERT, UPDATE, DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion3` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+

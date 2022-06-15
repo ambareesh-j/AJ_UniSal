@@ -1,0 +1,36 @@
+USE CR003;
+GO
+
+/************************************************/
+/*View 03 Creation - v03_Streets_Population_Merged*/
+/************************************************/
+
+CREATE VIEW v03_Streets_Population_Merged
+AS
+(
+SELECT dbCrime.Streets.Street_ID, dbCrime.Streets.[Crime ID], dbCrime.Streets.Period, dbCrime.Streets.Year, dbCrime.Streets.Month, dbCrime.Streets.Reported_by, dbCrime.Streets.Falls_within, dbCrime.Streets.Longitude, 
+                  dbCrime.Streets.Latitude, dbCrime.Streets.Location, dbCrime.Streets.LSOA_code, dbCrime.Streets.LSOA_name, dbCrime.Streets.Crime_type, dbCrime.Streets.Last_outcome_category, dbCrime.Streets.Context, 
+                  dbo.v01_AreaWise_Population_All.County, dbo.v01_AreaWise_Population_All.Area, dbo.v01_AreaWise_Population_All.Gender, dbo.v01_AreaWise_Population_All.All_Ages, dbo.v01_AreaWise_Population_All.Age_0, 
+                  dbo.v01_AreaWise_Population_All.Age_1, dbo.v01_AreaWise_Population_All.Age_2, dbo.v01_AreaWise_Population_All.Age_3, dbo.v01_AreaWise_Population_All.Age_4, dbo.v01_AreaWise_Population_All.Age_5, 
+                  dbo.v01_AreaWise_Population_All.Age_6, dbo.v01_AreaWise_Population_All.Age_7, dbo.v01_AreaWise_Population_All.Age_8, dbo.v01_AreaWise_Population_All.Age_9, dbo.v01_AreaWise_Population_All.Age_10, 
+                  dbo.v01_AreaWise_Population_All.Age_11, dbo.v01_AreaWise_Population_All.Age_12, dbo.v01_AreaWise_Population_All.Age_13, dbo.v01_AreaWise_Population_All.Age_14, dbo.v01_AreaWise_Population_All.Age_15, 
+                  dbo.v01_AreaWise_Population_All.Age_16, dbo.v01_AreaWise_Population_All.Age_17, dbo.v01_AreaWise_Population_All.Age_18, dbo.v01_AreaWise_Population_All.Age_19, dbo.v01_AreaWise_Population_All.Age_20, 
+                  dbo.v01_AreaWise_Population_All.Age_21, dbo.v01_AreaWise_Population_All.Age_22, dbo.v01_AreaWise_Population_All.Age_23, dbo.v01_AreaWise_Population_All.Age_24, dbo.v01_AreaWise_Population_All.Age_25, 
+                  dbo.v01_AreaWise_Population_All.Age_26, dbo.v01_AreaWise_Population_All.Age_27, dbo.v01_AreaWise_Population_All.Age_28, dbo.v01_AreaWise_Population_All.Age_29, dbo.v01_AreaWise_Population_All.Age_30, 
+                  dbo.v01_AreaWise_Population_All.Age_31, dbo.v01_AreaWise_Population_All.Age_32, dbo.v01_AreaWise_Population_All.Age_33, dbo.v01_AreaWise_Population_All.Age_34, dbo.v01_AreaWise_Population_All.Age_35, 
+                  dbo.v01_AreaWise_Population_All.Age_36, dbo.v01_AreaWise_Population_All.Age_37, dbo.v01_AreaWise_Population_All.Age_38, dbo.v01_AreaWise_Population_All.Age_39, dbo.v01_AreaWise_Population_All.Age_40, 
+                  dbo.v01_AreaWise_Population_All.Age_41, dbo.v01_AreaWise_Population_All.Age_42, dbo.v01_AreaWise_Population_All.Age_43, dbo.v01_AreaWise_Population_All.Age_44, dbo.v01_AreaWise_Population_All.Age_45, 
+                  dbo.v01_AreaWise_Population_All.Age_46, dbo.v01_AreaWise_Population_All.Age_47, dbo.v01_AreaWise_Population_All.Age_48, dbo.v01_AreaWise_Population_All.Age_49, dbo.v01_AreaWise_Population_All.Age_50, 
+                  dbo.v01_AreaWise_Population_All.Age_51, dbo.v01_AreaWise_Population_All.Age_52, dbo.v01_AreaWise_Population_All.Age_53, dbo.v01_AreaWise_Population_All.Age_54, dbo.v01_AreaWise_Population_All.Age_55, 
+                  dbo.v01_AreaWise_Population_All.Age_56, dbo.v01_AreaWise_Population_All.Age_57, dbo.v01_AreaWise_Population_All.Age_58, dbo.v01_AreaWise_Population_All.Age_59, dbo.v01_AreaWise_Population_All.Age_60, 
+                  dbo.v01_AreaWise_Population_All.Age_61, dbo.v01_AreaWise_Population_All.Age_62, dbo.v01_AreaWise_Population_All.Age_63, dbo.v01_AreaWise_Population_All.Age_64, dbo.v01_AreaWise_Population_All.Age_65, 
+                  dbo.v01_AreaWise_Population_All.Age_66, dbo.v01_AreaWise_Population_All.Age_67, dbo.v01_AreaWise_Population_All.Age_68, dbo.v01_AreaWise_Population_All.Age_69, dbo.v01_AreaWise_Population_All.Age_70, 
+                  dbo.v01_AreaWise_Population_All.Age_71, dbo.v01_AreaWise_Population_All.Age_72, dbo.v01_AreaWise_Population_All.Age_73, dbo.v01_AreaWise_Population_All.Age_74, dbo.v01_AreaWise_Population_All.Age_75, 
+                  dbo.v01_AreaWise_Population_All.Age_76, dbo.v01_AreaWise_Population_All.Age_77, dbo.v01_AreaWise_Population_All.Age_78, dbo.v01_AreaWise_Population_All.Age_79, dbo.v01_AreaWise_Population_All.Age_80, 
+                  dbo.v01_AreaWise_Population_All.Age_81, dbo.v01_AreaWise_Population_All.Age_82, dbo.v01_AreaWise_Population_All.Age_83, dbo.v01_AreaWise_Population_All.Age_84, dbo.v01_AreaWise_Population_All.Age_85, 
+                  dbo.v01_AreaWise_Population_All.Age_86, dbo.v01_AreaWise_Population_All.Age_87, dbo.v01_AreaWise_Population_All.Age_88, dbo.v01_AreaWise_Population_All.Age_89, dbo.v01_AreaWise_Population_All.Age_90_and_above
+FROM     dbo.v01_AreaWise_Population_All INNER JOIN
+                  dbCrime.Streets ON dbo.v01_AreaWise_Population_All.Area_ID = dbCrime.Streets.LSOA_code AND dbo.v01_AreaWise_Population_All.Year = dbCrime.Streets.Year
+
+)
+;

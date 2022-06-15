@@ -1,0 +1,39 @@
+USE CR003;
+GO
+
+/************************************************/
+/*Report 04 Creation - xRep04_Crime_Outcomes*/
+/************************************************/
+
+CREATE VIEW xRep04_Crime_Outcomes
+AS
+(
+SELECT 
+	   [County],
+	   [Area],
+	   [Longitude],
+       [Latitude],
+	   [Year],
+	   [Month] as Month_num,
+		DATENAME(month, DATEADD(month, [Month]-1, CAST('2008-01-01' AS datetime))) as [Month],
+       [Period],
+	   [Crime_type]
+	  ,[Last_outcome_category]
+      ,[LSOA_code]
+	  ,COUNT(DISTINCT Street_ID) as Total_Crimes
+
+  FROM [CR003].[dbo].[v03_Streets_Population_Merged]
+  GROUP BY [County],
+	   [Area],
+	   [Longitude],
+       [Latitude],
+	   [Year],
+	   [Month],
+       [Period],
+	   [Crime_type],
+	   [All_Ages],
+	   [Last_outcome_category]
+      ,[LSOA_code]
+)
+;
+

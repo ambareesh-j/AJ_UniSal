@@ -1,0 +1,21 @@
+USE CR003;
+GO
+
+CREATE TABLE Streets_RawBulkExtract
+(
+	 -- Primary Key cannot be given into raw extract while bulk insert
+	 --Street_ID			INT		IDENTITY(1,1)	PRIMARY KEY,			
+	 [Crime ID]			NVARCHAR(100)			
+	,[Month]			NVARCHAR(100)	
+	,[Reported_by]		NVARCHAR(100)	
+	,[Falls_within]		NVARCHAR(100)	
+	,[Longitude]		NVARCHAR(100)	
+	,[Latitude]			NVARCHAR(100)	
+	,[Location]			NVARCHAR(100)	
+	,[LSOA_code]		NVARCHAR(100)	
+	,[LSOA_name]		NVARCHAR(100)	
+	,[Crime_type]		NVARCHAR(100)	
+	,[Last_outcome_category]	NVARCHAR(100)
+	,[Context]			NVARCHAR(100)
+
+);

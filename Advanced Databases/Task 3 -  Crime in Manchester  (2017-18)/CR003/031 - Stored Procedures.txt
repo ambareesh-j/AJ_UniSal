@@ -1,0 +1,62 @@
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Procedure (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- This block of comments will not be included in
+-- the definition of the procedure.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <10-May-2021>
+-- Description:	<Total crimes per County>
+-- =============================================
+CREATE PROCEDURE spCrimes_per_County 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT County, sum(Total_Crimes)
+		FROM [dbo].[xRep03_Crime_Rate]
+		GROUP BY County
+END
+GO
+
+ALTER PROCEDURE spCrimes_per_County 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT County, sum(Total_Crimes) as Total_Crimes
+		FROM [dbo].[xRep03_Crime_Rate]
+		GROUP BY County
+		ORDER BY sum(Total_Crimes) DESC
+END
+GO
+
+CREATE PROCEDURE spAvgCrimeRate_per_County 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT County, avg([Crime_Rate(per 100K)]) as Avg_Crime_Rate
+		FROM [dbo].[xRep03_Crime_Rate]
+		GROUP BY County
+END
+GO
+
+
+

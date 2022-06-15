@@ -1,0 +1,13 @@
+USE CR003;
+GO
+
+/*To grant select privilege to cr_user1  - Population*/
+
+GRANT SELECT ON [dbCrime].[Population] TO cr_user1;
+GO
+
+/*To deny select privilege to cr_user1  - who reported the issue, and falls_within */
+
+DENY SELECT ON [dbCrime].[Streets] ([Reported by], [Falls_within]) TO cr_user1;
+GO
+

@@ -1,0 +1,28 @@
+USE CR003;
+GO
+
+INSERT INTO dbo.Streets
+
+	SELECT [Crime ID]
+		  ,[Month] as [Period]
+		  ,CAST(LEFT([MONTH],4) as INT) as [Year]
+		  ,CAST(RIGHT([MONTH],2) as INT) as [Month]
+		  ,[Reported_by]
+		  ,[Falls_within]
+		  ,[Longitude]
+		  ,[Latitude]
+		  ,[Location]
+		  ,[LSOA_code]
+		  ,[LSOA_name]
+		  ,[Crime_type]
+		  ,[Last_outcome_category]
+		  ,[Context]
+	  FROM [CR003].[dbo].[Streets_RawBulkExtract]
+
+;
+
+/*Validation check - 805055 rows - Validation complete*/
+
+SELECT COUNT([Period]) FROM dbo.Streets;
+
+--TRUNCATE TABLE dbCrime.Streets;

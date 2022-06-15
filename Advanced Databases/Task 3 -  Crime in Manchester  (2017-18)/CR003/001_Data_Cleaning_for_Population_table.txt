@@ -1,0 +1,36 @@
+USE CR003;
+GO
+
+/*Tables uploaded for Population have inconsistent names like 'Mid-2017 Females$' for example*/
+/*We are going to rename them using system stored procedure - sp_rename*/
+
+EXEC sp_rename 'Mid-2017 Females$', 'Mid-2017 Females';  
+EXEC sp_rename 'Mid-2017 Males$', 'Mid-2017 Males';  
+EXEC sp_rename 'Mid-2017 Persons$', 'Mid-2017 Persons';  
+EXEC sp_rename 'Mid-2018 Females$', 'Mid-2018 Females';  
+EXEC sp_rename 'Mid-2018 Males$', 'Mid-2018 Males';  
+EXEC sp_rename 'Mid-2018 Persons$', 'Mid-2018 Persons';  
+
+
+/*Delete Top 4 rows in all the 6 tables extracted, we don't need the garbage values*/
+
+DELETE TOP (4) 
+   FROM [dbo].[Mid-2017 Females];
+
+DELETE TOP (4) 
+   FROM [dbo].[Mid-2017 Males];
+
+DELETE TOP (4) 
+   FROM [dbo].[Mid-2017 Persons];
+
+DELETE TOP (4) 
+   FROM [dbo].[Mid-2018 Females];
+
+DELETE TOP (4) 
+   FROM [dbo].[Mid-2018 Males];
+
+DELETE TOP (4) 
+   FROM [dbo].[Mid-2018 Persons];
+
+
+/* End of Data cleaning activity for Task 3*/

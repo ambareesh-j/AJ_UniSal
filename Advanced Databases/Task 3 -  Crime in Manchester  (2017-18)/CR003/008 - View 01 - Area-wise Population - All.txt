@@ -1,0 +1,35 @@
+USE CR003;
+GO
+
+/******************************************/
+/*View 01 Creation - v01_AreaWise_Population_All*/
+/******************************************/
+
+CREATE VIEW v01_AreaWise_Population_All
+AS
+(
+SELECT dbCrime.Areas.Area_ID, 
+	   RTRIM(LTRIM(REPLACE(dbCrime.Areas.Area_Name,RIGHT(dbCrime.Areas.Area_Name , CHARINDEX(' ', REVERSE(dbCrime.Areas.Area_Name)) -1), ''))) as [County],
+	   RIGHT([Area_Name] , CHARINDEX(' ', REVERSE([Area_Name])) -1) as [Area]
+	   
+	   ,RIGHT(dbCrime.Population.Area_ID_Gender , CHARINDEX('_', REVERSE(dbCrime.Population.Area_ID_Gender)) -1) as [Gender]
+	   
+	   ,dbCrime.Population.Year, dbCrime.Population.All_Ages, dbCrime.Population.Age_0, dbCrime.Population.Age_1, dbCrime.Population.Age_2, 
+                  dbCrime.Population.Age_3, dbCrime.Population.Age_4, dbCrime.Population.Age_5, dbCrime.Population.Age_6, dbCrime.Population.Age_7, dbCrime.Population.Age_8, dbCrime.Population.Age_9, dbCrime.Population.Age_10, 
+                  dbCrime.Population.Age_11, dbCrime.Population.Age_12, dbCrime.Population.Age_13, dbCrime.Population.Age_14, dbCrime.Population.Age_15, dbCrime.Population.Age_16, dbCrime.Population.Age_17, dbCrime.Population.Age_18, 
+                  dbCrime.Population.Age_19, dbCrime.Population.Age_20, dbCrime.Population.Age_21, dbCrime.Population.Age_22, dbCrime.Population.Age_23, dbCrime.Population.Age_24, dbCrime.Population.Age_25, dbCrime.Population.Age_26, 
+                  dbCrime.Population.Age_27, dbCrime.Population.Age_28, dbCrime.Population.Age_29, dbCrime.Population.Age_30, dbCrime.Population.Age_31, dbCrime.Population.Age_32, dbCrime.Population.Age_33, dbCrime.Population.Age_34, 
+                  dbCrime.Population.Age_35, dbCrime.Population.Age_36, dbCrime.Population.Age_37, dbCrime.Population.Age_38, dbCrime.Population.Age_39, dbCrime.Population.Age_40, dbCrime.Population.Age_41, dbCrime.Population.Age_42, 
+                  dbCrime.Population.Age_43, dbCrime.Population.Age_44, dbCrime.Population.Age_45, dbCrime.Population.Age_46, dbCrime.Population.Age_47, dbCrime.Population.Age_48, dbCrime.Population.Age_49, dbCrime.Population.Age_50, 
+                  dbCrime.Population.Age_51, dbCrime.Population.Age_52, dbCrime.Population.Age_53, dbCrime.Population.Age_54, dbCrime.Population.Age_55, dbCrime.Population.Age_56, dbCrime.Population.Age_57, dbCrime.Population.Age_58, 
+                  dbCrime.Population.Age_59, dbCrime.Population.Age_60, dbCrime.Population.Age_61, dbCrime.Population.Age_62, dbCrime.Population.Age_63, dbCrime.Population.Age_64, dbCrime.Population.Age_65, dbCrime.Population.Age_66, 
+                  dbCrime.Population.Age_67, dbCrime.Population.Age_68, dbCrime.Population.Age_69, dbCrime.Population.Age_70, dbCrime.Population.Age_71, dbCrime.Population.Age_72, dbCrime.Population.Age_73, dbCrime.Population.Age_74, 
+                  dbCrime.Population.Age_75, dbCrime.Population.Age_76, dbCrime.Population.Age_77, dbCrime.Population.Age_78, dbCrime.Population.Age_79, dbCrime.Population.Age_80, dbCrime.Population.Age_81, dbCrime.Population.Age_82, 
+                  dbCrime.Population.Age_83, dbCrime.Population.Age_84, dbCrime.Population.Age_85, dbCrime.Population.Age_86, dbCrime.Population.Age_87, dbCrime.Population.Age_88, dbCrime.Population.Age_89, 
+                  dbCrime.Population.Age_90_and_above
+FROM     dbCrime.Areas INNER JOIN
+                  dbCrime.Population ON dbCrime.Areas.Area_ID = dbCrime.Population.Area_ID
+WHERE	RIGHT(dbCrime.Population.Area_ID_Gender , CHARINDEX('_', REVERSE(dbCrime.Population.Area_ID_Gender)) -1) = 'A'
+
+)
+;

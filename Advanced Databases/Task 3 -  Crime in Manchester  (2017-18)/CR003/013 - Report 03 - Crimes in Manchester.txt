@@ -1,0 +1,45 @@
+USE CR003;
+GO
+
+/************************************************/
+/*Report 03 Creation - xRep03_Crime_Rate*/
+/************************************************/
+
+-- Crime Rate = (Number of reported crimes / Total Population) * 100,000
+
+CREATE VIEW xRep03_Crime_Rate
+AS
+(
+SELECT 
+	   [County],
+	   [Area],
+	   [Longitude],
+       [Latitude],
+	   [Year],
+	   [Month] as Month_num,
+		DATENAME(month, DATEADD(month, [Month]-1, CAST('2008-01-01' AS datetime))) as [Month],
+       [Period],
+	   [Crime_type]
+	  ,[Location]
+	  ,[Last_outcome_category]
+      ,[LSOA_code]
+	  ,COUNT(DISTINCT Street_ID) as Total_Crimes
+
+	  ,ROUND(CAST((COUNT(DISTINCT Street_ID) / CAST([All_Ages] AS FLOAT)) as FLOAT)*100000, 2) as [Crime_Rate(per 100K)]
+
+  FROM [CR003].[dbo].[v03_Streets_Population_Merged]
+  GROUP BY [County],
+	   [Area],
+	   [Longitude],
+       [Latitude],
+	   [Year],
+	   [Month],
+       [Period],
+	   [Crime_type],
+	   [All_Ages],
+	   [Location]
+	  ,[Last_outcome_category]
+      ,[LSOA_code]
+)
+;
+

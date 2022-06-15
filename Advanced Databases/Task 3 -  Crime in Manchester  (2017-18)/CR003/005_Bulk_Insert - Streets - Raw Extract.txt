@@ -1,0 +1,122 @@
+USE CR003;
+GO
+
+--TRUNCATE TABLE dbo.Streets_RawBulkExtract;
+
+/* Commenting out the below part, because it only extracts a single file*/
+
+--BULK INSERT dbo.Streets_RawBulkExtract
+--FROM 'C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-01-greater-manchester-street.csv'
+--WITH 
+--(	
+--	FIRSTROW = 2,
+--	ROWTERMINATOR = '\n',
+--	FIELDTERMINATOR = ','
+--)
+
+/* I would like to extract all 24 files at the same time into SSMS - so I'm using the below piece of script*/
+
+TRUNCATE TABLE dbCrime.zz_fileslist;
+
+CREATE TABLE zz_fileslist (
+	ID				INT IDENTITY(1,1) PRIMARY KEY,
+	FULLFILEPATH	VARCHAR(250),
+	FILENAME		VARCHAR(100)
+)
+
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-01-greater-manchester-street.csv',	'2017-01-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-02-greater-manchester-street.csv',	'2017-02-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-03-greater-manchester-street.csv',	'2017-03-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-04-greater-manchester-street.csv',	'2017-04-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-05-greater-manchester-street.csv',	'2017-05-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-06-greater-manchester-street.csv',	'2017-06-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-07-greater-manchester-street.csv',	'2017-07-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-08-greater-manchester-street.csv',	'2017-08-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-09-greater-manchester-street.csv',	'2017-09-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-10-greater-manchester-street.csv',	'2017-10-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-11-greater-manchester-street.csv',	'2017-11-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2017-12-greater-manchester-street.csv',	'2017-12-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-01-greater-manchester-street.csv',	'2018-01-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-02-greater-manchester-street.csv',	'2018-02-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-03-greater-manchester-street.csv',	'2018-03-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-04-greater-manchester-street.csv',	'2018-04-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-05-greater-manchester-street.csv',	'2018-05-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-06-greater-manchester-street.csv',	'2018-06-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-07-greater-manchester-street.csv',	'2018-07-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-08-greater-manchester-street.csv',	'2018-08-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-09-greater-manchester-street.csv',	'2018-09-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-10-greater-manchester-street.csv',	'2018-10-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-11-greater-manchester-street.csv',	'2018-11-greater-manchester-street.csv' ) 
+INSERT INTO dbCrime.zz_fileslist
+	VALUES ('C:\Users\ambar\Desktop\Crime in Greater Manchester\2018-12-greater-manchester-street.csv',	'2018-12-greater-manchester-street.csv' ) 
+
+
+BEGIN TRY
+
+DECLARE @SQLTEXT NVARCHAR(250)
+DECLARE @MYPATH NVARCHAR(250) 
+
+DECLARE MYCURSOR CURSOR FORWARD_ONLY
+	
+FOR SELECT FULLFILEPATH FROM dbCrime.zz_fileslist
+
+	OPEN MYCURSOR 
+	FETCH NEXT FROM MYCURSOR INTO @MYPATH 
+
+	WHILE @@FETCH_STATUS = 0
+
+		BEGIN
+		
+			SET @SQLTEXT = 
+
+					'BULK INSERT dbCrime.Streets_RawBulkExtract FROM ''' + @MYPATH +
+						''' WITH 
+						(
+							FIRSTROW = 2,
+							FIELDTERMINATOR = '','',
+							ROWTERMINATOR = ''\n''
+						)'
+
+					 --PRINT @MYPATH
+					 --PRINT @SQLTEXT
+
+					EXECUTE SP_EXECUTESQL @SQLTEXT
+
+			FETCH NEXT FROM MYCURSOR INTO @MYPATH
+
+		END
+
+	CLOSE MYCURSOR
+	DEALLOCATE MYCURSOR 
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH

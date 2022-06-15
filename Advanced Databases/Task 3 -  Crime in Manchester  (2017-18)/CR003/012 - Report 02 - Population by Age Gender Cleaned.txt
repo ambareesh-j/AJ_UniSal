@@ -1,0 +1,43 @@
+USE CR003;
+GO
+
+/************************************************/
+/*Report 02 Creation - xRep02_PopbyAgeGenderCleaned*/
+/************************************************/
+
+CREATE VIEW xRep02_PopbyAgeGenderCleaned
+AS
+(
+	SELECT [Area_ID],[County],[Area],[Year], 
+			IIF(CHARINDEX('Female',Age_Gender_class) > 0, 'Female', 'Male') as Gender,
+			Age_Gender_class, Total 
+	FROM   
+	   (SELECT [Area_ID],[County],[Area],[Year], 
+			   [Children_Male(<=12years)]
+			  ,[Teenages_Male(13-19years)]
+			  ,[Adults_Male(20-50years)]
+			  ,[Pre-Elderly_Male(51-64years)]
+			  ,[Elderly_Male(65+years)]
+			  ,[Children_Female(<=12years)]
+			  ,[Teenages_Female(13-19years)]
+			  ,[Adults_Female(20-50years)]
+			  ,[Pre-Elderly_Female(51-64years)]
+			  ,[Elderly_Female(65+years)]
+	   FROM xRep01_Population_Classification) p  
+	UNPIVOT  
+	   (Total FOR Age_Gender_class IN   
+			([Children_Male(<=12years)]
+			  ,[Teenages_Male(13-19years)]
+			  ,[Adults_Male(20-50years)]
+			  ,[Pre-Elderly_Male(51-64years)]
+			  ,[Elderly_Male(65+years)]
+			  ,[Children_Female(<=12years)]
+			  ,[Teenages_Female(13-19years)]
+			  ,[Adults_Female(20-50years)]
+			  ,[Pre-Elderly_Female(51-64years)]
+			  ,[Elderly_Female(65+years)]) 
+	)AS unpvt
+)
+;
+
+

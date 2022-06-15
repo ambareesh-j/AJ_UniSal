@@ -1,0 +1,744 @@
+USE CR003;
+GO
+
+CREATE TABLE [Population]
+(
+		Pop_ID		INT IDENTITY(1,1) PRIMARY KEY,
+		Area_ID		VARCHAR(10)       NOT NULL,
+
+		Area_ID_Gender		VARCHAR(20),	
+		[Year]		INT
+
+		,All_Ages	INT
+		,Age_0      INT
+		,Age_1		INT
+		,Age_2		INT
+		,Age_3		INT
+		,Age_4		INT
+		,Age_5		INT
+		,Age_6		INT
+		,Age_7		INT
+		,Age_8		INT
+		,Age_9		INT
+		,Age_10		INT
+		,Age_11		INT
+		,Age_12		INT
+		,Age_13		INT
+		,Age_14		INT
+		,Age_15		INT
+		,Age_16		INT
+		,Age_17		INT
+		,Age_18		INT
+		,Age_19		INT
+		,Age_20		INT
+		,Age_21		INT
+		,Age_22		INT
+		,Age_23		INT
+		,Age_24		INT
+		,Age_25		INT
+		,Age_26		INT
+		,Age_27		INT
+		,Age_28		INT
+		,Age_29		INT
+		,Age_30		INT
+		,Age_31		INT
+		,Age_32		INT
+		,Age_33		INT
+		,Age_34		INT
+		,Age_35		INT
+		,Age_36		INT
+		,Age_37		INT
+		,Age_38		INT
+		,Age_39		INT
+		,Age_40		INT
+		,Age_41		INT
+		,Age_42		INT
+		,Age_43		INT
+		,Age_44		INT
+		,Age_45		INT
+		,Age_46		INT
+		,Age_47		INT
+		,Age_48		INT
+		,Age_49		INT
+		,Age_50		INT
+		,Age_51		INT
+		,Age_52		INT
+		,Age_53		INT
+		,Age_54		INT
+		,Age_55		INT
+		,Age_56		INT
+		,Age_57		INT
+		,Age_58		INT
+		,Age_59		INT
+		,Age_60		INT
+		,Age_61		INT
+		,Age_62		INT
+		,Age_63		INT
+		,Age_64		INT
+		,Age_65		INT
+		,Age_66		INT
+		,Age_67		INT
+		,Age_68		INT
+		,Age_69		INT
+		,Age_70		INT
+		,Age_71		INT
+		,Age_72		INT
+		,Age_73		INT
+		,Age_74		INT
+		,Age_75		INT
+		,Age_76		INT
+		,Age_77		INT
+		,Age_78		INT
+		,Age_79		INT
+		,Age_80		INT
+		,Age_81		INT
+		,Age_82		INT
+		,Age_83		INT
+		,Age_84		INT
+		,Age_85		INT
+		,Age_86		INT
+		,Age_87		INT
+		,Age_88		INT
+		,Age_89		INT
+		,Age_90_and_above	INT
+
+		 ,CONSTRAINT FK_Area_ID FOREIGN KEY (Area_ID)
+			REFERENCES [dbo].[Areas](Area_ID)
+)
+;
+
+TRUNCATE TABLE CR003.[dbo].[Population];
+
+/*Insert 2017 Population tables gender-wise & year-wise */
+
+INSERT INTO CR003.[dbo].[Population]
+SELECT 
+		LTRIM(RTRIM([Contents])) as Area_ID,
+		LTRIM(RTRIM([Contents]))+'_'+'F' as Area_ID_Gender,
+		'2017' as 'Year'
+						
+		  ,[F4]		as	All_Ages	
+		  ,[F5]		as	Age_0     
+		  ,[F6]		as	Age_1		
+		  ,[F7]		as	Age_2		
+		  ,[F8]		as 	Age_3		
+		  ,[F9]		as	Age_4		
+		  ,[F10]	as	Age_5		
+		  ,[F11]	as	Age_6		
+		  ,[F12]	as 	Age_7		
+		  ,[F13]	as	Age_8		
+		  ,[F14]	as	Age_9		
+		  ,[F15]	as	Age_10		
+		  ,[F16]	as 	Age_11		
+		  ,[F17]	as	Age_12		
+		  ,[F18]	as	Age_13		
+		  ,[F19]	as	Age_14		
+		  ,[F20]	as 	Age_15		
+		  ,[F21]	as	Age_16		
+		  ,[F22]	as	Age_17		
+		  ,[F23]	as	Age_18		
+		  ,[F24]	as 	Age_19		
+		  ,[F25]	as	Age_20		
+		  ,[F26]	as	Age_21		
+		  ,[F27]	as	Age_22		
+		  ,[F28]	as 	Age_23		
+		  ,[F29]	as	Age_24		
+		  ,[F30]	as	Age_25		
+		  ,[F31]	as	Age_26		
+		  ,[F32]	as 	Age_27		
+		  ,[F33]	as	Age_28		
+		  ,[F34]	as	Age_29		
+		  ,[F35]	as	Age_30		
+		  ,[F36]	as 	Age_31		
+		  ,[F37]	as	Age_32		
+		  ,[F38]	as	Age_33		
+		  ,[F39]	as	Age_34		
+		  ,[F40]	as 	Age_35		
+		  ,[F41]	as	Age_36		
+		  ,[F42]	as	Age_37		
+		  ,[F43]	as	Age_38		
+		  ,[F44]	as 	Age_39		
+		  ,[F45]	as	Age_40		
+		  ,[F46]	as	Age_41		
+		  ,[F47]	as	Age_42		
+		  ,[F48]	as 	Age_43		
+		  ,[F49]	as	Age_44		
+		  ,[F50]	as	Age_45		
+		  ,[F51]	as	Age_46		
+		  ,[F52]	as 	Age_47		
+		  ,[F53]	as	Age_48		
+		  ,[F54]	as	Age_49		
+		  ,[F55]	as	Age_50		
+		  ,[F56]	as 	Age_51	
+		  ,[F57]	as	Age_52	
+		  ,[F58]	as	Age_53	
+		  ,[F59]	as	Age_54	
+		  ,[F60]	as 	Age_55	
+		  ,[F61]	as	Age_56	
+		  ,[F62]	as	Age_57	
+		  ,[F63]	as	Age_58	
+		  ,[F64]	as 	Age_59	
+		  ,[F65]	as	Age_60	
+		  ,[F66]	as	Age_61	
+		  ,[F67]	as	Age_62	
+		  ,[F68]	as 	Age_63	
+		  ,[F69]	as	Age_64	
+		  ,[F70]	as	Age_65	
+		  ,[F71]	as	Age_66	
+		  ,[F72]	as 	Age_67		
+		  ,[F73]	as	Age_68		
+		  ,[F74]	as	Age_69		
+		  ,[F75]	as	Age_70		
+		  ,[F76]	as 	Age_71		
+		  ,[F77]	as	Age_72		
+		  ,[F78]	as	Age_73		
+		  ,[F79]	as	Age_74		
+		  ,[F80]	as 	Age_75		
+		  ,[F81]	as	Age_76		
+		  ,[F82]	as	Age_77		
+		  ,[F83]	as	Age_78		
+		  ,[F84]	as 	Age_79		
+		  ,[F85]	as	Age_80		
+		  ,[F86]	as	Age_81		
+		  ,[F87]	as	Age_82		
+		  ,[F88]	as	Age_83		
+		  ,[F89]	as	Age_84		
+		  ,[F90]	as 	Age_85		
+		  ,[F91]	as	Age_86		
+		  ,[F92]	as	Age_87		
+		  ,[F93]	as	Age_88		
+		  ,[F94]	as	Age_89		
+		  ,[F95]	as	Age_90_and_above
+							
+FROM 
+	[CR003].[dbo].[Mid-2017 Females]
+WHERE [F3] IS NOT NULL
+  AND LOWER([Contents]) <> 'area codes'
+
+
+INSERT INTO CR003.[dbo].[Population]
+SELECT 
+		LTRIM(RTRIM([Contents])) as Area_ID,
+		LTRIM(RTRIM([Contents]))+'_'+'M' as Area_ID_Gender,
+		'2017' as 'Year'
+
+		 ,[F4]		as	All_Ages	
+		  ,[F5]		as	Age_0     
+		  ,[F6]		as	Age_1		
+		  ,[F7]		as	Age_2		
+		  ,[F8]		as 	Age_3		
+		  ,[F9]		as	Age_4		
+		  ,[F10]	as	Age_5		
+		  ,[F11]	as	Age_6		
+		  ,[F12]	as 	Age_7		
+		  ,[F13]	as	Age_8		
+		  ,[F14]	as	Age_9		
+		  ,[F15]	as	Age_10		
+		  ,[F16]	as 	Age_11		
+		  ,[F17]	as	Age_12		
+		  ,[F18]	as	Age_13		
+		  ,[F19]	as	Age_14		
+		  ,[F20]	as 	Age_15		
+		  ,[F21]	as	Age_16		
+		  ,[F22]	as	Age_17		
+		  ,[F23]	as	Age_18		
+		  ,[F24]	as 	Age_19		
+		  ,[F25]	as	Age_20		
+		  ,[F26]	as	Age_21		
+		  ,[F27]	as	Age_22		
+		  ,[F28]	as 	Age_23		
+		  ,[F29]	as	Age_24		
+		  ,[F30]	as	Age_25		
+		  ,[F31]	as	Age_26		
+		  ,[F32]	as 	Age_27		
+		  ,[F33]	as	Age_28		
+		  ,[F34]	as	Age_29		
+		  ,[F35]	as	Age_30		
+		  ,[F36]	as 	Age_31		
+		  ,[F37]	as	Age_32		
+		  ,[F38]	as	Age_33		
+		  ,[F39]	as	Age_34		
+		  ,[F40]	as 	Age_35		
+		  ,[F41]	as	Age_36		
+		  ,[F42]	as	Age_37		
+		  ,[F43]	as	Age_38		
+		  ,[F44]	as 	Age_39		
+		  ,[F45]	as	Age_40		
+		  ,[F46]	as	Age_41		
+		  ,[F47]	as	Age_42		
+		  ,[F48]	as 	Age_43		
+		  ,[F49]	as	Age_44		
+		  ,[F50]	as	Age_45		
+		  ,[F51]	as	Age_46		
+		  ,[F52]	as 	Age_47		
+		  ,[F53]	as	Age_48		
+		  ,[F54]	as	Age_49		
+		  ,[F55]	as	Age_50		
+		  ,[F56]	as 	Age_51	
+		  ,[F57]	as	Age_52	
+		  ,[F58]	as	Age_53	
+		  ,[F59]	as	Age_54	
+		  ,[F60]	as 	Age_55	
+		  ,[F61]	as	Age_56	
+		  ,[F62]	as	Age_57	
+		  ,[F63]	as	Age_58	
+		  ,[F64]	as 	Age_59	
+		  ,[F65]	as	Age_60	
+		  ,[F66]	as	Age_61	
+		  ,[F67]	as	Age_62	
+		  ,[F68]	as 	Age_63	
+		  ,[F69]	as	Age_64	
+		  ,[F70]	as	Age_65	
+		  ,[F71]	as	Age_66	
+		  ,[F72]	as 	Age_67		
+		  ,[F73]	as	Age_68		
+		  ,[F74]	as	Age_69		
+		  ,[F75]	as	Age_70		
+		  ,[F76]	as 	Age_71		
+		  ,[F77]	as	Age_72		
+		  ,[F78]	as	Age_73		
+		  ,[F79]	as	Age_74		
+		  ,[F80]	as 	Age_75		
+		  ,[F81]	as	Age_76		
+		  ,[F82]	as	Age_77		
+		  ,[F83]	as	Age_78		
+		  ,[F84]	as 	Age_79		
+		  ,[F85]	as	Age_80		
+		  ,[F86]	as	Age_81		
+		  ,[F87]	as	Age_82		
+		  ,[F88]	as	Age_83		
+		  ,[F89]	as	Age_84		
+		  ,[F90]	as 	Age_85		
+		  ,[F91]	as	Age_86		
+		  ,[F92]	as	Age_87		
+		  ,[F93]	as	Age_88		
+		  ,[F94]	as	Age_89		
+		  ,[F95]	as	Age_90_and_above
+
+FROM 
+	[CR003].[dbo].[Mid-2017 Males]
+WHERE [F3] IS NOT NULL
+  AND LOWER([Contents]) <> 'area codes';
+
+INSERT INTO CR003.[dbo].[Population]
+SELECT 
+		LTRIM(RTRIM([Contents])) as Area_ID,
+		LTRIM(RTRIM([Contents]))+'_'+'A' as Area_ID_Gender,
+		'2017' as 'Year'
+
+		 ,[F4]		as	All_Ages	
+		  ,[F5]		as	Age_0     
+		  ,[F6]		as	Age_1		
+		  ,[F7]		as	Age_2		
+		  ,[F8]		as 	Age_3		
+		  ,[F9]		as	Age_4		
+		  ,[F10]	as	Age_5		
+		  ,[F11]	as	Age_6		
+		  ,[F12]	as 	Age_7		
+		  ,[F13]	as	Age_8		
+		  ,[F14]	as	Age_9		
+		  ,[F15]	as	Age_10		
+		  ,[F16]	as 	Age_11		
+		  ,[F17]	as	Age_12		
+		  ,[F18]	as	Age_13		
+		  ,[F19]	as	Age_14		
+		  ,[F20]	as 	Age_15		
+		  ,[F21]	as	Age_16		
+		  ,[F22]	as	Age_17		
+		  ,[F23]	as	Age_18		
+		  ,[F24]	as 	Age_19		
+		  ,[F25]	as	Age_20		
+		  ,[F26]	as	Age_21		
+		  ,[F27]	as	Age_22		
+		  ,[F28]	as 	Age_23		
+		  ,[F29]	as	Age_24		
+		  ,[F30]	as	Age_25		
+		  ,[F31]	as	Age_26		
+		  ,[F32]	as 	Age_27		
+		  ,[F33]	as	Age_28		
+		  ,[F34]	as	Age_29		
+		  ,[F35]	as	Age_30		
+		  ,[F36]	as 	Age_31		
+		  ,[F37]	as	Age_32		
+		  ,[F38]	as	Age_33		
+		  ,[F39]	as	Age_34		
+		  ,[F40]	as 	Age_35		
+		  ,[F41]	as	Age_36		
+		  ,[F42]	as	Age_37		
+		  ,[F43]	as	Age_38		
+		  ,[F44]	as 	Age_39		
+		  ,[F45]	as	Age_40		
+		  ,[F46]	as	Age_41		
+		  ,[F47]	as	Age_42		
+		  ,[F48]	as 	Age_43		
+		  ,[F49]	as	Age_44		
+		  ,[F50]	as	Age_45		
+		  ,[F51]	as	Age_46		
+		  ,[F52]	as 	Age_47		
+		  ,[F53]	as	Age_48		
+		  ,[F54]	as	Age_49		
+		  ,[F55]	as	Age_50		
+		  ,[F56]	as 	Age_51	
+		  ,[F57]	as	Age_52	
+		  ,[F58]	as	Age_53	
+		  ,[F59]	as	Age_54	
+		  ,[F60]	as 	Age_55	
+		  ,[F61]	as	Age_56	
+		  ,[F62]	as	Age_57	
+		  ,[F63]	as	Age_58	
+		  ,[F64]	as 	Age_59	
+		  ,[F65]	as	Age_60	
+		  ,[F66]	as	Age_61	
+		  ,[F67]	as	Age_62	
+		  ,[F68]	as 	Age_63	
+		  ,[F69]	as	Age_64	
+		  ,[F70]	as	Age_65	
+		  ,[F71]	as	Age_66	
+		  ,[F72]	as 	Age_67		
+		  ,[F73]	as	Age_68		
+		  ,[F74]	as	Age_69		
+		  ,[F75]	as	Age_70		
+		  ,[F76]	as 	Age_71		
+		  ,[F77]	as	Age_72		
+		  ,[F78]	as	Age_73		
+		  ,[F79]	as	Age_74		
+		  ,[F80]	as 	Age_75		
+		  ,[F81]	as	Age_76		
+		  ,[F82]	as	Age_77		
+		  ,[F83]	as	Age_78		
+		  ,[F84]	as 	Age_79		
+		  ,[F85]	as	Age_80		
+		  ,[F86]	as	Age_81		
+		  ,[F87]	as	Age_82		
+		  ,[F88]	as	Age_83		
+		  ,[F89]	as	Age_84		
+		  ,[F90]	as 	Age_85		
+		  ,[F91]	as	Age_86		
+		  ,[F92]	as	Age_87		
+		  ,[F93]	as	Age_88		
+		  ,[F94]	as	Age_89		
+		  ,[F95]	as	Age_90_and_above
+
+FROM 
+	[CR003].[dbo].[Mid-2017 Persons]
+WHERE [F3] IS NOT NULL
+  AND LOWER([Contents]) <> 'area codes';
+
+
+
+/*Insert 2018 Population tables gender-wise & year-wise */
+
+INSERT INTO CR003.[dbo].[Population]
+SELECT 
+		LTRIM(RTRIM([Contents])) as Area_ID,
+		LTRIM(RTRIM([Contents]))+'_'+'F' as Area_ID_Gender,
+		'2018' as 'Year'
+
+		 ,[F4]		as	All_Ages	
+		  ,[F5]		as	Age_0     
+		  ,[F6]		as	Age_1		
+		  ,[F7]		as	Age_2		
+		  ,[F8]		as 	Age_3		
+		  ,[F9]		as	Age_4		
+		  ,[F10]	as	Age_5		
+		  ,[F11]	as	Age_6		
+		  ,[F12]	as 	Age_7		
+		  ,[F13]	as	Age_8		
+		  ,[F14]	as	Age_9		
+		  ,[F15]	as	Age_10		
+		  ,[F16]	as 	Age_11		
+		  ,[F17]	as	Age_12		
+		  ,[F18]	as	Age_13		
+		  ,[F19]	as	Age_14		
+		  ,[F20]	as 	Age_15		
+		  ,[F21]	as	Age_16		
+		  ,[F22]	as	Age_17		
+		  ,[F23]	as	Age_18		
+		  ,[F24]	as 	Age_19		
+		  ,[F25]	as	Age_20		
+		  ,[F26]	as	Age_21		
+		  ,[F27]	as	Age_22		
+		  ,[F28]	as 	Age_23		
+		  ,[F29]	as	Age_24		
+		  ,[F30]	as	Age_25		
+		  ,[F31]	as	Age_26		
+		  ,[F32]	as 	Age_27		
+		  ,[F33]	as	Age_28		
+		  ,[F34]	as	Age_29		
+		  ,[F35]	as	Age_30		
+		  ,[F36]	as 	Age_31		
+		  ,[F37]	as	Age_32		
+		  ,[F38]	as	Age_33		
+		  ,[F39]	as	Age_34		
+		  ,[F40]	as 	Age_35		
+		  ,[F41]	as	Age_36		
+		  ,[F42]	as	Age_37		
+		  ,[F43]	as	Age_38		
+		  ,[F44]	as 	Age_39		
+		  ,[F45]	as	Age_40		
+		  ,[F46]	as	Age_41		
+		  ,[F47]	as	Age_42		
+		  ,[F48]	as 	Age_43		
+		  ,[F49]	as	Age_44		
+		  ,[F50]	as	Age_45		
+		  ,[F51]	as	Age_46		
+		  ,[F52]	as 	Age_47		
+		  ,[F53]	as	Age_48		
+		  ,[F54]	as	Age_49		
+		  ,[F55]	as	Age_50		
+		  ,[F56]	as 	Age_51	
+		  ,[F57]	as	Age_52	
+		  ,[F58]	as	Age_53	
+		  ,[F59]	as	Age_54	
+		  ,[F60]	as 	Age_55	
+		  ,[F61]	as	Age_56	
+		  ,[F62]	as	Age_57	
+		  ,[F63]	as	Age_58	
+		  ,[F64]	as 	Age_59	
+		  ,[F65]	as	Age_60	
+		  ,[F66]	as	Age_61	
+		  ,[F67]	as	Age_62	
+		  ,[F68]	as 	Age_63	
+		  ,[F69]	as	Age_64	
+		  ,[F70]	as	Age_65	
+		  ,[F71]	as	Age_66	
+		  ,[F72]	as 	Age_67		
+		  ,[F73]	as	Age_68		
+		  ,[F74]	as	Age_69		
+		  ,[F75]	as	Age_70		
+		  ,[F76]	as 	Age_71		
+		  ,[F77]	as	Age_72		
+		  ,[F78]	as	Age_73		
+		  ,[F79]	as	Age_74		
+		  ,[F80]	as 	Age_75		
+		  ,[F81]	as	Age_76		
+		  ,[F82]	as	Age_77		
+		  ,[F83]	as	Age_78		
+		  ,[F84]	as 	Age_79		
+		  ,[F85]	as	Age_80		
+		  ,[F86]	as	Age_81		
+		  ,[F87]	as	Age_82		
+		  ,[F88]	as	Age_83		
+		  ,[F89]	as	Age_84		
+		  ,[F90]	as 	Age_85		
+		  ,[F91]	as	Age_86		
+		  ,[F92]	as	Age_87		
+		  ,[F93]	as	Age_88		
+		  ,[F94]	as	Age_89		
+		  ,[F95]	as	Age_90_and_above
+
+FROM 
+	[CR003].[dbo].[Mid-2018 Females]
+WHERE [F3] IS NOT NULL
+  AND LOWER([Contents]) <> 'area codes'
+
+
+INSERT INTO CR003.[dbo].[Population]
+SELECT 
+		LTRIM(RTRIM([Contents])) as Area_ID,
+		LTRIM(RTRIM([Contents]))+'_'+'M' as Area_ID_Gender,
+		'2018' as 'Year'
+
+		 ,[F4]		as	All_Ages	
+		  ,[F5]		as	Age_0     
+		  ,[F6]		as	Age_1		
+		  ,[F7]		as	Age_2		
+		  ,[F8]		as 	Age_3		
+		  ,[F9]		as	Age_4		
+		  ,[F10]	as	Age_5		
+		  ,[F11]	as	Age_6		
+		  ,[F12]	as 	Age_7		
+		  ,[F13]	as	Age_8		
+		  ,[F14]	as	Age_9		
+		  ,[F15]	as	Age_10		
+		  ,[F16]	as 	Age_11		
+		  ,[F17]	as	Age_12		
+		  ,[F18]	as	Age_13		
+		  ,[F19]	as	Age_14		
+		  ,[F20]	as 	Age_15		
+		  ,[F21]	as	Age_16		
+		  ,[F22]	as	Age_17		
+		  ,[F23]	as	Age_18		
+		  ,[F24]	as 	Age_19		
+		  ,[F25]	as	Age_20		
+		  ,[F26]	as	Age_21		
+		  ,[F27]	as	Age_22		
+		  ,[F28]	as 	Age_23		
+		  ,[F29]	as	Age_24		
+		  ,[F30]	as	Age_25		
+		  ,[F31]	as	Age_26		
+		  ,[F32]	as 	Age_27		
+		  ,[F33]	as	Age_28		
+		  ,[F34]	as	Age_29		
+		  ,[F35]	as	Age_30		
+		  ,[F36]	as 	Age_31		
+		  ,[F37]	as	Age_32		
+		  ,[F38]	as	Age_33		
+		  ,[F39]	as	Age_34		
+		  ,[F40]	as 	Age_35		
+		  ,[F41]	as	Age_36		
+		  ,[F42]	as	Age_37		
+		  ,[F43]	as	Age_38		
+		  ,[F44]	as 	Age_39		
+		  ,[F45]	as	Age_40		
+		  ,[F46]	as	Age_41		
+		  ,[F47]	as	Age_42		
+		  ,[F48]	as 	Age_43		
+		  ,[F49]	as	Age_44		
+		  ,[F50]	as	Age_45		
+		  ,[F51]	as	Age_46		
+		  ,[F52]	as 	Age_47		
+		  ,[F53]	as	Age_48		
+		  ,[F54]	as	Age_49		
+		  ,[F55]	as	Age_50		
+		  ,[F56]	as 	Age_51	
+		  ,[F57]	as	Age_52	
+		  ,[F58]	as	Age_53	
+		  ,[F59]	as	Age_54	
+		  ,[F60]	as 	Age_55	
+		  ,[F61]	as	Age_56	
+		  ,[F62]	as	Age_57	
+		  ,[F63]	as	Age_58	
+		  ,[F64]	as 	Age_59	
+		  ,[F65]	as	Age_60	
+		  ,[F66]	as	Age_61	
+		  ,[F67]	as	Age_62	
+		  ,[F68]	as 	Age_63	
+		  ,[F69]	as	Age_64	
+		  ,[F70]	as	Age_65	
+		  ,[F71]	as	Age_66	
+		  ,[F72]	as 	Age_67		
+		  ,[F73]	as	Age_68		
+		  ,[F74]	as	Age_69		
+		  ,[F75]	as	Age_70		
+		  ,[F76]	as 	Age_71		
+		  ,[F77]	as	Age_72		
+		  ,[F78]	as	Age_73		
+		  ,[F79]	as	Age_74		
+		  ,[F80]	as 	Age_75		
+		  ,[F81]	as	Age_76		
+		  ,[F82]	as	Age_77		
+		  ,[F83]	as	Age_78		
+		  ,[F84]	as 	Age_79		
+		  ,[F85]	as	Age_80		
+		  ,[F86]	as	Age_81		
+		  ,[F87]	as	Age_82		
+		  ,[F88]	as	Age_83		
+		  ,[F89]	as	Age_84		
+		  ,[F90]	as 	Age_85		
+		  ,[F91]	as	Age_86		
+		  ,[F92]	as	Age_87		
+		  ,[F93]	as	Age_88		
+		  ,[F94]	as	Age_89		
+		  ,[F95]	as	Age_90_and_above
+
+FROM 
+	[CR003].[dbo].[Mid-2018 Males]
+WHERE [F3] IS NOT NULL
+  AND LOWER([Contents]) <> 'area codes';
+
+INSERT INTO CR003.[dbo].[Population]
+SELECT 
+		LTRIM(RTRIM([Contents])) as Area_ID,
+		LTRIM(RTRIM([Contents]))+'_'+'A' as Area_ID_Gender,
+		'2018' as 'Year'
+
+		 ,[F4]		as	All_Ages	
+		  ,[F5]		as	Age_0     
+		  ,[F6]		as	Age_1		
+		  ,[F7]		as	Age_2		
+		  ,[F8]		as 	Age_3		
+		  ,[F9]		as	Age_4		
+		  ,[F10]	as	Age_5		
+		  ,[F11]	as	Age_6		
+		  ,[F12]	as 	Age_7		
+		  ,[F13]	as	Age_8		
+		  ,[F14]	as	Age_9		
+		  ,[F15]	as	Age_10		
+		  ,[F16]	as 	Age_11		
+		  ,[F17]	as	Age_12		
+		  ,[F18]	as	Age_13		
+		  ,[F19]	as	Age_14		
+		  ,[F20]	as 	Age_15		
+		  ,[F21]	as	Age_16		
+		  ,[F22]	as	Age_17		
+		  ,[F23]	as	Age_18		
+		  ,[F24]	as 	Age_19		
+		  ,[F25]	as	Age_20		
+		  ,[F26]	as	Age_21		
+		  ,[F27]	as	Age_22		
+		  ,[F28]	as 	Age_23		
+		  ,[F29]	as	Age_24		
+		  ,[F30]	as	Age_25		
+		  ,[F31]	as	Age_26		
+		  ,[F32]	as 	Age_27		
+		  ,[F33]	as	Age_28		
+		  ,[F34]	as	Age_29		
+		  ,[F35]	as	Age_30		
+		  ,[F36]	as 	Age_31		
+		  ,[F37]	as	Age_32		
+		  ,[F38]	as	Age_33		
+		  ,[F39]	as	Age_34		
+		  ,[F40]	as 	Age_35		
+		  ,[F41]	as	Age_36		
+		  ,[F42]	as	Age_37		
+		  ,[F43]	as	Age_38		
+		  ,[F44]	as 	Age_39		
+		  ,[F45]	as	Age_40		
+		  ,[F46]	as	Age_41		
+		  ,[F47]	as	Age_42		
+		  ,[F48]	as 	Age_43		
+		  ,[F49]	as	Age_44		
+		  ,[F50]	as	Age_45		
+		  ,[F51]	as	Age_46		
+		  ,[F52]	as 	Age_47		
+		  ,[F53]	as	Age_48		
+		  ,[F54]	as	Age_49		
+		  ,[F55]	as	Age_50		
+		  ,[F56]	as 	Age_51	
+		  ,[F57]	as	Age_52	
+		  ,[F58]	as	Age_53	
+		  ,[F59]	as	Age_54	
+		  ,[F60]	as 	Age_55	
+		  ,[F61]	as	Age_56	
+		  ,[F62]	as	Age_57	
+		  ,[F63]	as	Age_58	
+		  ,[F64]	as 	Age_59	
+		  ,[F65]	as	Age_60	
+		  ,[F66]	as	Age_61	
+		  ,[F67]	as	Age_62	
+		  ,[F68]	as 	Age_63	
+		  ,[F69]	as	Age_64	
+		  ,[F70]	as	Age_65	
+		  ,[F71]	as	Age_66	
+		  ,[F72]	as 	Age_67		
+		  ,[F73]	as	Age_68		
+		  ,[F74]	as	Age_69		
+		  ,[F75]	as	Age_70		
+		  ,[F76]	as 	Age_71		
+		  ,[F77]	as	Age_72		
+		  ,[F78]	as	Age_73		
+		  ,[F79]	as	Age_74		
+		  ,[F80]	as 	Age_75		
+		  ,[F81]	as	Age_76		
+		  ,[F82]	as	Age_77		
+		  ,[F83]	as	Age_78		
+		  ,[F84]	as 	Age_79		
+		  ,[F85]	as	Age_80		
+		  ,[F86]	as	Age_81		
+		  ,[F87]	as	Age_82		
+		  ,[F88]	as	Age_83		
+		  ,[F89]	as	Age_84		
+		  ,[F90]	as 	Age_85		
+		  ,[F91]	as	Age_86		
+		  ,[F92]	as	Age_87		
+		  ,[F93]	as	Age_88		
+		  ,[F94]	as	Age_89		
+		  ,[F95]	as	Age_90_and_above
+
+FROM 
+	[CR003].[dbo].[Mid-2018 Persons]
+WHERE [F3] IS NOT NULL
+  AND LOWER([Contents]) <> 'area codes';
+
+-- DROP TABLE CR003.[dbo].[Population];

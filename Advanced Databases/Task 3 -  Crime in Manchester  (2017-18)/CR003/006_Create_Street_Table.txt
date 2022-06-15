@@ -1,0 +1,26 @@
+USE CR003;
+GO
+
+
+CREATE TABLE Streets
+(
+	 Street_ID			INT		IDENTITY(1,1)	PRIMARY KEY,			-- After Bulk insert is completed, we can insert into new table using %PK
+	 [Crime ID]			NVARCHAR(100)			
+	,[Period]			NVARCHAR(10)	NOT NULL
+	,[Year]				SMALLINT		NOT NULL
+	,[Month]			TINYINT			NOT NULL
+	,[Reported_by]		NVARCHAR(50)	NOT NULL
+	,[Falls_within]		NVARCHAR(50)	NOT NULL
+	,[Longitude]		FLOAT			NOT NULL
+	,[Latitude]			FLOAT			NOT NULL
+	,[Location]			NVARCHAR(50)	NOT NULL
+	,[LSOA_code]		VARCHAR(10)		NOT NULL
+	,[LSOA_name]		NVARCHAR(50)	NOT NULL
+	,[Crime_type]		NVARCHAR(50)	NOT NULL
+	,[Last_outcome_category]	NVARCHAR(100)
+	,[Context]			NVARCHAR(1)
+
+	,CONSTRAINT FK_LSOA_ID FOREIGN KEY ([LSOA_code])
+			REFERENCES [dbCrime].[Areas](Area_ID)
+
+);

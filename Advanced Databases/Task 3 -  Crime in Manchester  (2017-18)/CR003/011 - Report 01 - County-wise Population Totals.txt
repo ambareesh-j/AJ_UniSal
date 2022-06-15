@@ -1,0 +1,169 @@
+USE CR003;
+GO
+
+/************************************************/
+/*Report 01 Creation - xRep01_Population_Classification*/
+/************************************************/
+
+CREATE VIEW xRep01_Population_Classification
+AS
+(
+SELECT tb1.[Area_ID],
+	   tb1.[County],
+	   tb1.[Area],
+	   tb1.[Year],
+	   tb1.[Total_Population],
+	   tb1.[Male Population],
+	   tb2.[Female Population],
+
+	   tb1.[Children_Total(<=12years)],
+	   tb1.[Teenages_Total(13-19years)],
+	   tb1.[Adults_Total(20-50years)],
+	   tb1.[Pre-Elderly_Total(51-64years)],
+	   tb1.[Elderly_Total(65+years)],
+
+	   tb1.[Children_Male(<=12years)],
+	   tb1.[Teenages_Male(13-19years)],
+	   tb1.[Adults_Male(20-50years)],
+	   tb1.[Pre-Elderly_Male(51-64years)],
+	   tb1.[Elderly_Male(65+years)],
+
+	   tb2.[Children_Female(<=12years)],
+	   tb2.[Teenages_Female(13-19years)],
+	   tb2.[Adults_Female(20-50years)],
+	   tb2.[Pre-Elderly_Female(51-64years)],
+	   tb2.[Elderly_Female(65+years)]
+
+FROM
+	(SELECT a.[Area_ID]
+		  ,a.[County]
+		  ,a.[Area]
+		  ,a.[Gender] as [All]
+		  ,b.[Gender] as [M&F_FilterM]
+		  ,a.[Year]
+		  ,a.[All_Ages] as [Total_Population]
+		  ,b.[All_Ages] as [Male Population]
+
+		  ,a.[Age_0] + a.[Age_1] + a.[Age_2] + a.[Age_3] + a.[Age_4] 
+			+ a.[Age_5] + a.[Age_6] + a.[Age_7] + a.[Age_8] + a.[Age_9]
+			+ a.[Age_10] + a.[Age_11] + a.[Age_12]  as [Children_Total(<=12years)]
+		  
+		  ,a.[Age_13] + a.[Age_14] + a.[Age_15] + a.[Age_16] + a.[Age_17] 
+			+ a.[Age_18] + a.[Age_19] as [Teenages_Total(13-19years)]
+
+		  ,a.[Age_20] + a.[Age_21] + a.[Age_22] + a.[Age_23] + a.[Age_24] 
+			+ a.[Age_25] + a.[Age_26] + a.[Age_27] + a.[Age_28]
+			+ a.[Age_29] + a.[Age_30] + a.[Age_31] + a.[Age_32] 
+			+ a.[Age_33] + a.[Age_34] + a.[Age_35] + a.[Age_36]
+			+ a.[Age_37] + a.[Age_38] + a.[Age_39] + a.[Age_40]
+			+ a.[Age_41] + a.[Age_42] + a.[Age_43] + a.[Age_44]
+			+ a.[Age_45] + a.[Age_46] + a.[Age_47] + a.[Age_48]
+			+ a.[Age_49] + a.[Age_50] as [Adults_Total(20-50years)]
+
+		  ,a.[Age_51] + a.[Age_52] + a.[Age_53] + a.[Age_54] 
+			+ a.[Age_55] + a.[Age_56] + a.[Age_57] + a.[Age_58]
+			+ a.[Age_59] + a.[Age_60] + a.[Age_61] + a.[Age_62] 
+			+ a.[Age_63] + a.[Age_64] as [Pre-Elderly_Total(51-64years)]
+
+		  ,a.[Age_65] + a.[Age_66] + a.[Age_67] + a.[Age_68]
+			+ a.[Age_69] + a.[Age_70] + a.[Age_71] + a.[Age_72] 
+			+ a.[Age_73] + a.[Age_74] + a.[Age_75] + a.[Age_76]
+			+ a.[Age_77] + a.[Age_78] + a.[Age_79] + a.[Age_80]
+			+ a.[Age_81] + a.[Age_82] + a.[Age_83] + a.[Age_84]
+			+ a.[Age_85] + a.[Age_86] + a.[Age_87] + a.[Age_88]
+			+ a.[Age_89] + a.[Age_90_and_above] as [Elderly_Total(65+years)]
+
+		  ,b.[Age_0] + b.[Age_1] + b.[Age_2] + b.[Age_3] + b.[Age_4] 
+			+ b.[Age_5] + b.[Age_6] + b.[Age_7] + b.[Age_8] + b.[Age_9]
+			+ b.[Age_10] + b.[Age_11] + b.[Age_12]  as [Children_Male(<=12years)]
+		  
+		  ,b.[Age_13] + b.[Age_14] + b.[Age_15] + b.[Age_16] + b.[Age_17] 
+			+ b.[Age_18] + b.[Age_19] as [Teenages_Male(13-19years)]
+
+		  ,b.[Age_20] + b.[Age_21] + b.[Age_22] + b.[Age_23] + b.[Age_24] 
+			+ b.[Age_25] + b.[Age_26] + b.[Age_27] + b.[Age_28]
+			+ b.[Age_29] + b.[Age_30] + b.[Age_31] + b.[Age_32] 
+			+ b.[Age_33] + b.[Age_34] + b.[Age_35] + b.[Age_36]
+			+ b.[Age_37] + b.[Age_38] + b.[Age_39] + b.[Age_40]
+			+ b.[Age_41] + b.[Age_42] + b.[Age_43] + b.[Age_44]
+			+ b.[Age_45] + b.[Age_46] + b.[Age_47] + b.[Age_48]
+			+ b.[Age_49] + b.[Age_50] as [Adults_Male(20-50years)]
+
+		  ,b.[Age_51] + b.[Age_52] + b.[Age_53] + b.[Age_54] 
+			+ b.[Age_55] + b.[Age_56] + b.[Age_57] + b.[Age_58]
+			+ b.[Age_59] + b.[Age_60] + b.[Age_61] + b.[Age_62] 
+			+ b.[Age_63] + b.[Age_64] as [Pre-Elderly_Male(51-64years)]
+
+		  ,b.[Age_65] + b.[Age_66] + b.[Age_67] + b.[Age_68]
+			+ b.[Age_69] + b.[Age_70] + b.[Age_71] + b.[Age_72] 
+			+ b.[Age_73] + b.[Age_74] + b.[Age_75] + b.[Age_76]
+			+ b.[Age_77] + b.[Age_78] + b.[Age_79] + b.[Age_80]
+			+ b.[Age_81] + b.[Age_82] + b.[Age_83] + b.[Age_84]
+			+ b.[Age_85] + b.[Age_86] + b.[Age_87] + b.[Age_88]
+			+ b.[Age_89] + b.[Age_90_and_above] as [Elderly_Male(65+years)]
+
+	  FROM [CR003].[dbo].[v01_AreaWise_Population_All] as a
+	   INNER JOIN [dbo].[v02_AreaWise_Population_Genders] as b
+	   ON (a.[Area_ID] = b.[Area_ID] AND a.[Year] = b.[Year])
+	WHERE b.[Gender] = 'M') as tb1
+INNER JOIN
+	 (SELECT  a.[Area_ID]
+			  ,a.[County]
+			  ,a.[Area]
+			  ,a.[Gender] as [All]
+			  ,b.[Gender] as [M&F_FilterF]
+			  ,a.[Year]
+			  ,a.[All_Ages] as [Total_Population]
+			  ,b.[All_Ages] as [Female Population]
+
+		  ,b.[Age_0] + b.[Age_1] + b.[Age_2] + b.[Age_3] + b.[Age_4] 
+			+ b.[Age_5] + b.[Age_6] + b.[Age_7] + b.[Age_8] + b.[Age_9]
+			+ b.[Age_10] + b.[Age_11] + b.[Age_12]  as [Children_Female(<=12years)]
+		  
+		  ,b.[Age_13] + b.[Age_14] + b.[Age_15] + b.[Age_16] + b.[Age_17] 
+			+ b.[Age_18] + b.[Age_19] as [Teenages_Female(13-19years)]
+
+		  ,b.[Age_20] + b.[Age_21] + b.[Age_22] + b.[Age_23] + b.[Age_24] 
+			+ b.[Age_25] + b.[Age_26] + b.[Age_27] + b.[Age_28]
+			+ b.[Age_29] + b.[Age_30] + b.[Age_31] + b.[Age_32] 
+			+ b.[Age_33] + b.[Age_34] + b.[Age_35] + b.[Age_36]
+			+ b.[Age_37] + b.[Age_38] + b.[Age_39] + b.[Age_40]
+			+ b.[Age_41] + b.[Age_42] + b.[Age_43] + b.[Age_44]
+			+ b.[Age_45] + b.[Age_46] + b.[Age_47] + b.[Age_48]
+			+ b.[Age_49] + b.[Age_50] as [Adults_Female(20-50years)]
+
+		  ,b.[Age_51] + b.[Age_52] + b.[Age_53] + b.[Age_54] 
+			+ b.[Age_55] + b.[Age_56] + b.[Age_57] + b.[Age_58]
+			+ b.[Age_59] + b.[Age_60] + b.[Age_61] + b.[Age_62] 
+			+ b.[Age_63] + b.[Age_64] as [Pre-Elderly_Female(51-64years)]
+
+		  ,b.[Age_65] + b.[Age_66] + b.[Age_67] + b.[Age_68]
+			+ b.[Age_69] + b.[Age_70] + b.[Age_71] + b.[Age_72] 
+			+ b.[Age_73] + b.[Age_74] + b.[Age_75] + b.[Age_76]
+			+ b.[Age_77] + b.[Age_78] + b.[Age_79] + b.[Age_80]
+			+ b.[Age_81] + b.[Age_82] + b.[Age_83] + b.[Age_84]
+			+ b.[Age_85] + b.[Age_86] + b.[Age_87] + b.[Age_88]
+			+ b.[Age_89] + b.[Age_90_and_above] as [Elderly_Female(65+years)]
+
+		  FROM [CR003].[dbo].[v01_AreaWise_Population_All] as a
+		   INNER JOIN [dbo].[v02_AreaWise_Population_Genders] as b
+		   ON (a.[Area_ID] = b.[Area_ID] AND a.[Year] = b.[Year])
+		WHERE b.[Gender] = 'F') as tb2
+ON (tb1.[Area_ID] = tb2.[Area_ID] AND tb1.[Year] = tb2.[Year])
+)
+;
+
+--SELECT  a.[Area_ID]
+--		  ,a.[County]
+--		  ,a.[Area]
+--		  ,a.[Gender] as [All]
+--		  ,b.[Gender] as [M&F_FilterM]
+--		  ,a.[Year]
+--		  ,a.[All_Ages] as [Total_Population]
+--		  ,b.[All_Ages] as [Male Population]
+--	  FROM [CR003].[dbo].[v01_AreaWise_Population_All] as a
+--	   INNER JOIN [dbo].[v02_AreaWise_Population_Genders] as b
+--	   ON (a.[Area_ID] = b.[Area_ID] AND a.[Year] = b.[Year])
+--	WHERE b.[Gender] = 'M'
+------AND a.[Area_ID] IN (SELECT DISTINCT [LSOA_code] FROM [dbCrime].[Streets])  -- Eliminated due to performance impact as per the Execution plan
+--;
