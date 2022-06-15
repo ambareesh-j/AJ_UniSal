@@ -1,0 +1,15 @@
+INSERT OVERWRITE DIRECTORY '${OUTPUT}'
+SELECT
+  journal AS Journal,
+  count(journal) AS Frequency
+FROM
+  coviddb28.c19_2020_07_01
+WHERE 
+  length(journal) > 0
+GROUP BY
+  journal
+ORDER BY
+  Frequency DESC
+LIMIT
+  5 
+;

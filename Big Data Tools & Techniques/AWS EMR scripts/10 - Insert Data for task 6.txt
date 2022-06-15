@@ -1,0 +1,15 @@
+-- Task 6. Plot the number of papers per month since 2020-01. You need to include your visualization as well
+-- as a table of the values you have plotted for each month.
+
+INSERT OVERWRITE DIRECTORY '${OUTPUT}'
+SELECT
+  SUBSTR(publish_time, 1, 7) as Year_Month,
+  COUNT(*) as Published_Count
+FROM
+  coviddb28.c19_2020_07_01
+WHERE
+  publish_time >= '2020-01-01' AND publish_time LIKE '%-%-%'
+GROUP BY
+  SUBSTR(publish_time, 1, 7)
+ORDER BY
+  Year_Month ASC

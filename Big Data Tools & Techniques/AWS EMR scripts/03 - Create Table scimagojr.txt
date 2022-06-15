@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS coviddb28.scimagojr19;
+
+CREATE EXTERNAL TABLE coviddb28.scimagojr19 (
+`Rank` INT,
+`Sourceid` STRING,
+`Title` STRING,
+`Type` STRING,
+`Issn` STRING,
+`SJR` STRING,
+`SJR_Best_Quartile` STRING,
+`H_index` INT,
+`Total_Docs(2019)` STRING,
+`Total_Docs(3years)` STRING,
+`Total_Refs` STRING,
+`Total_Cites(3years)` STRING,
+`Cites/Doc(2years)` STRING,
+`Ref/Doc` STRING,
+`Country` STRING,
+`Region` STRING,
+`Publisher` STRING,
+`Coverage` STRING,
+`Categories` STRING  
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES ("skip.header.line.count" = "1", "separatorChar" = '\073')
+LOCATION '${INPUT}'
