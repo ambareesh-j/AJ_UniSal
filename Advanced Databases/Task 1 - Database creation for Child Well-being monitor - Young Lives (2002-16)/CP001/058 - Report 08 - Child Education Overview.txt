@@ -1,0 +1,103 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 08 Creation - zREP08_EducationOverview*/
+/******************************************/
+-- Country & Region wise - Educational Overview
+
+CREATE VIEW zREP08_EducationOverview
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+
+	   region as Region,
+	   typesite as [Site Type],
+	   entype as [School Type],
+	   engrade as [Current Grade],
+	   round as Round,
+	   yc as [Younger/Older Cohort],
+	   chsex as Sex,
+	   
+	   COUNT(childid) as [Total Children],
+	   MAX(agegr1) - AVG(agegr1) as [Years lagging behind the Avg Grade 1 student],
+	   SUM(IIF([preprim]='Yes', 1, 0)) as [Attended Pre-primary school],
+	   AVG(timesch) as [Avg Travel time to school(in mins)],
+	   AVG(commsch) as [Avg Commute time to school(in mins)],
+	   AVG(commwork) as [Avg Commute time to work(in mins)],
+
+	   ROUND(AVG(hcare),2) as [Avg Hours/day spent in caring for household members]
+	  ,ROUND(AVG(hchore),2) as [Avg Hours/day spent in household chores]
+	  ,ROUND(AVG(hplay),2) as [Avg Hours/day spent in leisure activities]
+	  ,ROUND(AVG(hschool),2) as [Avg Hours/day spent at school]
+	  ,ROUND(AVG(hsleep),2) as [Avg Hours/day spent sleeping]
+	  ,ROUND(AVG(hstudy),2) as [Avg Hours/day spent studying outside school]
+	  ,ROUND(AVG(htask),2) as [Avg Hours/day spent in domestic tasks - farming, family business]
+	  ,ROUND(AVG(hwork),2) as [Avg Hours/day spent in paid activity]
+
+	   --SUM(IIF([enrol]='Yes', 1, 0)) as [Enrollment Done]						-- enrol not giving any useful information	
+
+FROM (Select 
+			DISTINCT childid, 
+					 countryid,
+					 typesite,
+					 chsex, 
+					 round,
+					 yc,
+					 agemon,   
+							   [agegr1]
+							  ,[engrade]
+							  ,[enrol]
+							  ,[entype]
+							  ,[preprim]
+							  ,[timesch]
+							  ,[commsch]
+							  ,[commwork]
+							  ,[hcare]
+							  ,[hchore]
+							  ,[hplay]
+							  ,[hschool]
+							  ,[hsleep]
+							  ,[hstudy]
+							  ,[htask]
+							  ,[hwork]
+							  , dbCare.Region.region
+
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.ch_Education
+					  ON dbCare.ch_Identity.child_round_id = dbCare.ch_Education.child_round_id
+			INNER JOIN dbCare.Current_Grade
+					  ON dbCare.ch_Education.engradeid = dbCare.Current_Grade.engradeid
+			--INNER JOIN dbCare.Highest_Grade
+			--		  ON dbCare.ch_Education.hghgradeid = dbCare.Highest_Grade.hghgradeid	        -- INNER JOIN with dbCare.Highest_Grade table gives no Peru records. This problem is later solved in zREP09 - Literacy Status
+			INNER JOIN dbCare.School_Type
+					  ON dbCare.ch_Education.entypeid = dbCare.School_Type.entypeid) as A
+
+GROUP BY countryid, region, typesite, entype, engrade, round, yc, chsex
+--ORDER BY countryid, region, typesite, entype, engrade, chsex asc
+
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

@@ -1,0 +1,187 @@
+USE CP001;
+GO
+
+-- Create Transactional Data table- ch_MedicalHistory
+
+CREATE TABLE ch_MedicalHistory
+(
+		 chMed_id			INT IDENTITY(1,1) PRIMARY KEY
+		,child_round_id		VARCHAR(10) NOT NULL
+		,bcg				VARCHAR(10)
+		,bwdoc				VARCHAR(10)
+		,bwght				INT
+		,delivery			VARCHAR(10)
+		,dpt				VARCHAR(10)
+		,hib				VARCHAR(10)
+		,measles			VARCHAR(10)
+		,numante			INT
+		,polio				VARCHAR(10)
+		,tetanus			VARCHAR(10)
+		,chdisability		VARCHAR(10)
+		,chdisscaleid		INT
+		,chhprob			VARCHAR(10)
+		,chillness			VARCHAR(10)
+		,chinjury			VARCHAR(10)
+		,chmightdie			VARCHAR(10)
+		,chalcohol			VARCHAR(10)
+		,chsmoke			VARCHAR(30)
+		,chrephealth1		INT
+		,chrephealth2		VARCHAR(10)
+		,chrephealth3		VARCHAR(10)
+		,chrephealth4		VARCHAR(50)
+		,chhealth			VARCHAR(10)
+		,chhrel				VARCHAR(10)
+		,cladder			INT
+
+
+		,CONSTRAINT FK_chRdid FOREIGN KEY (child_round_id)
+			REFERENCES [dbCare].[ch_Identity](child_round_id)
+		,CONSTRAINT FK_chdisscaleid FOREIGN KEY (chdisscaleid)
+			REFERENCES [dbCare].[Disability_Scale](chdisscaleid)
+)
+
+
+-- Insert into TD table - ch_MedicalHistory
+
+BEGIN TRY
+
+INSERT INTO [CP001].[dbCare].[ch_MedicalHistory]
+SELECT 
+		 RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id
+
+		,CASE [bcg]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [bcg]
+	   END as [bcg]
+
+		,CASE [bwdoc]			WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [bwdoc]
+	   END as [bwdoc]
+
+		,CASE [bwght]		WHEN '-9999'	THEN NULL				-- 'Not known' string can't be passed into numeric datatype
+											ELSE [bwght]
+	   END as [bwght]
+
+		,CASE [delivery]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [delivery]
+	   END as [delivery]
+
+		,CASE [dpt]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [dpt]
+	   END as [dpt]
+
+		,CASE [hib]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [hib]
+	   END as [hib]
+
+		,CASE [measles]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [measles]
+	   END as [measles]
+
+		,CASE [numante]		WHEN '88'	THEN NULL				-- 'N/A' can't be passed in numeric type 
+							WHEN '99'   THEN NULL
+										ELSE [numante]
+	   END as [numante]
+
+		,CASE [polio]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [polio]
+	   END as [polio]
+
+		,CASE [tetanus]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [tetanus]
+	   END as [tetanus]
+
+		,CASE [chdisability]	WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chdisability]
+	   END as [chdisability]
+
+		,[chdisscale] as [chdisscaleid]
+
+		,CASE [chhprob]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [chhprob]
+	   END as [chhprob]
+
+		,CASE [chillness]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chillness]
+	   END as [chillness]
+
+		,CASE [chinjury]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chinjury]
+	   END as [chinjury]
+
+		,CASE [chmightdie]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chmightdie]
+	   END as [chmightdie]
+
+		,CASE [chalcohol]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chalcohol]
+	   END as [chalcohol]
+
+		,CASE [chsmoke]			WHEN '1'	THEN 'Every day'
+								WHEN '2'	THEN 'At least once a week'
+								WHEN '3'	THEN 'At least once a month'
+								WHEN '4'	THEN 'Hardly ever'
+								WHEN '5'	THEN 'I never smoke cigarettes'
+											ELSE [chsmoke]
+		 END as [chsmokeid]
+
+		,[chrephealth1]
+
+      ,CASE [chrephealth2]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chrephealth2]
+	   END as [chrephealth2]
+      ,CASE [chrephealth3]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chrephealth3]
+	   END as [chrephealth3]
+      ,CASE [chrephealth4]		WHEN '1'	THEN 'Shop or street vendor'
+								WHEN '2'	THEN 'Family planning services or health facility'
+								WHEN '3'	THEN 'Other'
+								WHEN '4'	THEN 'Doesn''t know what is a condom or where to buy'
+											ELSE [chrephealth4]
+	   END as [chrephealth4]
+
+		,CASE [chhealth]		WHEN '1'	THEN 'very poor'
+								WHEN '2'	THEN 'poor'
+								WHEN '3'	THEN 'average'
+								WHEN '4'	THEN 'good'
+								WHEN '5'	THEN 'very good'
+											ELSE [chhealth]
+	   END as [chhealth]
+
+		,CASE [chhrel]		WHEN '1'	THEN 'Same'
+							WHEN '2'	THEN 'Better'
+							WHEN '3'	THEN 'Worse'
+										ELSE [chhrel]
+	   END as [chhrel]
+
+		,[cladder]
+
+FROM CP001.dbCare.INPEVIETH
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH
+;
+
+
+

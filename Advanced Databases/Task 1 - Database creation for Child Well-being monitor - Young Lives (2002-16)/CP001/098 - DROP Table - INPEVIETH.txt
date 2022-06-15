@@ -1,0 +1,4 @@
+USE CP001;
+GO
+
+DROP TABLE  [CP001].[dbCare].[INPEVIETH];

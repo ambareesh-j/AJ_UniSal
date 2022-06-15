@@ -1,0 +1,26 @@
+USE CP001;
+GO
+
+/******************************************/
+/*View 04 Creation - v04_HouseholdOverview*/
+/******************************************/
+CREATE VIEW v04_HouseholdOverview
+AS
+(
+SELECT dbCare.ch_Identity.child_round_id, dbCare.ch_Identity.childid, dbCare.ch_Identity.clustid, dbCare.ch_Identity.commid, dbCare.ch_Identity.typesite, dbCare.ch_Identity.round, dbCare.ch_Identity.dint, dbCare.ch_Identity.yc, 
+                  dbCare.ch_Identity.childloc, dbCare.hh_Main.headage, dbCare.hh_Main.headeduid, dbCare.hh_Main.headsex, dbCare.hh_Main.female05, dbCare.hh_Main.female1317, dbCare.hh_Main.female1860, dbCare.hh_Main.female61, 
+                  dbCare.hh_Main.female612, dbCare.hh_Main.hhsize, dbCare.hh_Main.male05, dbCare.hh_Main.male1317, dbCare.hh_Main.male1860, dbCare.hh_Main.male61, dbCare.hh_Main.male612, dbCare.hh_Main.ownhouse, 
+                  dbCare.hh_Main.ownlandhse, dbCare.hh_Main.credit, dbCare.hh_Main.foodsec, dbCare.hh_Main.cd, dbCare.hh_Main.cookingq, dbCare.hh_Main.drwaterq, dbCare.hh_Main.elecq, dbCare.hh_Main.hq, dbCare.hh_Main.sv, 
+                  dbCare.hh_Main.toiletq, dbCare.hh_Main.wi, dbCare.hh_LivestockOwnership.aniany, dbCare.hh_LivestockOwnership.anibeeh, dbCare.hh_LivestockOwnership.anibufm, dbCare.hh_LivestockOwnership.anibuft, 
+                  dbCare.hh_LivestockOwnership.anibull, dbCare.hh_LivestockOwnership.anicalv, dbCare.hh_LivestockOwnership.anicaml, dbCare.hh_LivestockOwnership.anicowm, dbCare.hh_LivestockOwnership.anicowt, 
+                  dbCare.hh_LivestockOwnership.anidonk, dbCare.hh_LivestockOwnership.anidrau, dbCare.hh_LivestockOwnership.anifish, dbCare.hh_LivestockOwnership.anifshr, dbCare.hh_LivestockOwnership.anigoat, 
+                  dbCare.hh_LivestockOwnership.aniguin, dbCare.hh_LivestockOwnership.anihebu, dbCare.hh_LivestockOwnership.aniheif, dbCare.hh_LivestockOwnership.anillam, dbCare.hh_LivestockOwnership.animilk, 
+                  dbCare.hh_LivestockOwnership.aniothr, dbCare.hh_LivestockOwnership.anioxen, dbCare.hh_LivestockOwnership.anipigs, dbCare.hh_LivestockOwnership.anipoul, dbCare.hh_LivestockOwnership.anirabb, 
+                  dbCare.hh_LivestockOwnership.anirumi, dbCare.hh_LivestockOwnership.anishee, dbCare.hh_LivestockOwnership.anishri, dbCare.hh_LivestockOwnership.anisnai, dbCare.hh_LivestockOwnership.anispec, 
+                  dbCare.hh_LivestockOwnership.aniybul, dbo.[Head Education].headedu
+FROM     dbCare.hh_Main INNER JOIN
+                  dbCare.ch_Identity ON dbCare.hh_Main.child_round_id = dbCare.ch_Identity.child_round_id INNER JOIN
+                  dbCare.hh_LivestockOwnership ON dbCare.ch_Identity.child_round_id = dbCare.hh_LivestockOwnership.child_round_id INNER JOIN
+                  dbo.[Head Education] ON dbCare.ch_Identity.child_round_id = dbo.[Head Education].child_round_id
+)
+;

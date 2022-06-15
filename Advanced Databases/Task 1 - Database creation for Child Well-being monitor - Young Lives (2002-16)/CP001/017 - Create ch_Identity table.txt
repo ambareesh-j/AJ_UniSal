@@ -1,0 +1,194 @@
+USE CP001;
+GO
+
+-- Create Transactional Data table - ch_Identity
+
+CREATE TABLE ch_Identity 
+(
+		 child_round_id		VARCHAR(10)  PRIMARY KEY 
+		,childid			VARCHAR(8)	 NOT NULL
+		,clustid			VARCHAR(2)   NOT NULL
+		,commid				VARCHAR(10)  
+		,typesite			VARCHAR(10)
+		,regionid           INT
+		,countryid			VARCHAR(2)	NOT NULL
+		,dint				DATE
+		,[round]            INT
+		,yc					VARCHAR(2) 
+		,childloc			VARCHAR(10)
+		,inround			VARCHAR(10)
+		,panel				VARCHAR(10)
+		,deceased			VARCHAR(10)
+
+		,chsex				VARCHAR(10)
+		,chlangid			VARCHAR(6)
+		,chethnicid			VARCHAR(6)
+		,chldrelid			INT	
+		,agemon				INT
+		,marrcohab			VARCHAR(10)
+		,marrcohab_age      INT
+		,birth				VARCHAR(10)
+		,birth_age			INT
+
+		,chweight			FLOAT
+		,chheight			FLOAT
+		,bmi				FLOAT
+		,zwfa				FLOAT
+		,zhfa				FLOAT
+		,zbfa				FLOAT
+		,zwfl				FLOAT
+		,fwfa				INT
+		,fhfa				INT
+		,fbfa				INT
+		,fwfl				INT
+		,underweight		VARCHAR(30)
+		,stunting			VARCHAR(30)
+		,thinness			VARCHAR(30)
+
+		,CONSTRAINT FK_chEthnicid FOREIGN KEY (chethnicid)
+			REFERENCES [dbCare].[Ethnicity](chethnicid)
+		,CONSTRAINT FK_chLangid FOREIGN KEY (chlangid)
+			REFERENCES [dbCare].[Language](chlangid)
+		,CONSTRAINT FK_regionid FOREIGN KEY (regionid)
+			REFERENCES [dbCare].[Region](regionid)
+		,CONSTRAINT FK_chldRelid FOREIGN KEY (chldrelid)
+			REFERENCES [dbCare].[Religion](chldrelid)
+)
+
+
+-- Insert into TD table - ch_Identity
+
+BEGIN TRY
+
+INSERT INTO [CP001].[dbCare].[ch_Identity]
+SELECT 
+		 RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id	
+		
+		,RTRIM(LTRIM([childid])) as [childid]	
+		
+		,SUBSTRING(RTRIM(LTRIM([childid])),3,2) as [clustid]		
+		
+		,RTRIM(LTRIM([commid])) as [commid]	
+		
+		,CASE [typesite]	WHEN '1'	THEN  'Urban'
+							WHEN '2'	THEN  'Rural'
+							WHEN '77'	THEN  'Not known'
+										ELSE  [typesite]
+		END as [typesite]		
+		
+		,[region] as [regionid]   
+		
+		,SUBSTRING(RTRIM(LTRIM([childid])),1,2) as [countryid]	
+		
+		,dint	
+		
+		,RTRIM(LTRIM([round])) as [round]   
+		
+		,CASE [yc]		WHEN '0'	THEN  'OC'
+						WHEN '1'	THEN  'YC'
+									ELSE  [yc]
+		END as [yc]
+		
+		,CASE [childloc]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [childloc]
+	   END as [childloc]	
+	   
+		,CASE [inround]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [inround]
+	   END as [inround]
+	   
+		,CASE [panel]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [panel]
+	   END as [panel]	
+	   
+		,CASE [deceased]	WHEN '1'	THEN 'Yes'
+										ELSE [deceased]
+	   END as [deceased]
+
+
+	   ,CASE [chsex]		WHEN '1'	THEN 'Male'
+							WHEN '2'	THEN 'Female'
+										ELSE [chsex]
+	   END as [chsex]
+
+	   ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [chlang]  as [chlangid]            -- Here we still get ET_ IN_ issues - to be Updated later
+	   
+		,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [chethnic] as [chethnicid]		 -- Here we still get ET_ IN_ issues - to be Updated later
+		
+		,[chldrel] as [chldrelid]
+
+		,CASE [agemon]	WHEN '-9999'	THEN 'Missing'
+										ELSE [agemon]
+	   END as [agemon]
+
+		,CASE [marrcohab]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [marrcohab]
+	   END as [marrcohab]
+
+       ,[marrcohab_age]
+
+		,CASE [birth]			WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [birth]
+	   END as [birth]
+
+      ,[birth_age]
+
+		,CASE CAST([chweight] as FLOAT(1)) 	WHEN '-9999'	THEN NULL			-- 'Not known' is variable and cannot be passed into Float type column
+															ELSE CAST([chweight] as FLOAT(1)) 
+	   END as [chweight]
+
+	   ,CASE CAST([chheight] as FLOAT(1)) 	WHEN '-9999'	THEN NULL			-- 'Not known' is variable and cannot be passed into Float type column
+															ELSE CAST([chheight] as FLOAT(1)) 
+	   END as [chheight] 
+
+		,CAST(bmi as FLOAT(1)) as bmi
+		,CAST(zwfa as FLOAT(1)) as zwfa
+		,CAST(zhfa as FLOAT(1)) as zhfa
+		,CAST(zbfa as FLOAT(1)) as zbfa
+		,CAST(zwfl as FLOAT(1)) as zwfl
+		,fwfa
+		,fhfa
+		,fbfa
+		,fwfl
+
+		,CASE [underweight]		WHEN '0'	THEN  'Not underweight'
+								WHEN '1'	THEN  'Moderately underweight'
+								WHEN '2'	THEN  'Severely underweight'
+											ELSE  [underweight]
+		END as [underweight]
+
+		,CASE [stunting]	WHEN '0'	THEN  'Not stunted'
+							WHEN '1'	THEN  'Moderately stunted'
+							WHEN '2'	THEN  'Severely stunted'
+										ELSE  [stunting]
+		END as [stunting]
+
+		,CASE [thinness]	WHEN '0'	THEN  'Not thin'
+							WHEN '1'	THEN  'Moderately thin'
+							WHEN '2'	THEN  'Severely thin'
+										ELSE  [thinness]
+		END as [thinness]
+
+FROM CP001.dbCare.INPEVIETH
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH
+;
+
+
+

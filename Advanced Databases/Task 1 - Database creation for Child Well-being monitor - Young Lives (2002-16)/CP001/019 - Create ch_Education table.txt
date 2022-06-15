@@ -1,0 +1,117 @@
+USE CP001;
+GO
+
+-- Create Transactional Data table- ch_Education
+
+CREATE TABLE ch_Education
+(
+		 chEdu_id			INT IDENTITY(1,1) PRIMARY KEY
+		,child_round_id		VARCHAR(10) NOT NULL
+		,agegr1				INT
+		,engradeid			VARCHAR(6) 
+		,enrol				VARCHAR(30)
+		,entypeid			VARCHAR(6)
+		,hghgradeid			VARCHAR(6)
+		,preprim			VARCHAR(30)
+		,timesch			INT
+		,commsch			INT
+		,commwork			INT
+		,hcare				FLOAT
+		,hchore				FLOAT
+		,hplay				FLOAT
+		,hschool			FLOAT
+		,hsleep				FLOAT
+		,hstudy				FLOAT
+		,htask				FLOAT
+		,hwork				FLOAT
+		,levlread			VARCHAR(50)
+		,levlwrit			VARCHAR(50)
+		,literate			VARCHAR(30)
+
+		,CONSTRAINT FK_chRdEduid FOREIGN KEY (child_round_id)
+			REFERENCES [dbCare].[ch_Identity](child_round_id)
+		,CONSTRAINT FK_chengradeid FOREIGN KEY (engradeid)
+			REFERENCES [dbCare].[Current_Grade](engradeid)
+		,CONSTRAINT FK_chentypeid FOREIGN KEY (entypeid)
+			REFERENCES [dbCare].[School_Type](entypeid)
+		,CONSTRAINT FK_chhghgradeid FOREIGN KEY (hghgradeid)
+			REFERENCES [dbCare].[Highest_Grade](hghgradeid)
+)
+
+-- Insert into TD table - ch_Education
+
+BEGIN TRY
+
+INSERT INTO [CP001].[dbCare].[ch_Education] 
+SELECT 
+	RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id
+
+	,[agegr1]
+
+	,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [engrade]  as [engradeid]
+	,CASE [enrol]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+						WHEN '99'	THEN 'Missing'
+						WHEN '77'	THEN 'Not known'
+						WHEN '88'	THEN 'N/A'
+									ELSE [enrol]
+	   END as [enrol]
+
+	,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [entype]  as [entypeid]
+
+	,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [hghgrade]  as [hghgradeid]
+
+	,CASE [preprim]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [preprim]
+	   END as [preprim]
+
+	,[timesch]
+	,[commsch]
+    ,[commwork]
+	,[hcare]
+    ,[hchore]
+	,[hplay]
+    ,[hschool]
+    ,[hsleep]
+    ,[hstudy]
+    ,[htask]
+    ,[hwork]
+
+	,CASE [levlread]	WHEN '1'	THEN 'Can''t read anything'
+						WHEN '2'	THEN 'Reads letters'
+						WHEN '3'	THEN 'Reads word'
+						WHEN '4'	THEN 'Reads sentence'
+									ELSE [levlread]
+	   END as [levlread]
+    ,CASE [levlwrit]	WHEN '1'	THEN 'No'
+						WHEN '2'	THEN 'Yes with difficulty or errors'
+						WHEN '3'	THEN 'Yes without difficulty or errors'
+									ELSE [levlwrit]
+	END as [levlwrit]
+    ,CASE [literate]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [literate]
+	END as [literate]
+
+FROM CP001.dbCare.INPEVIETH
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH
+
+;
+
+
+

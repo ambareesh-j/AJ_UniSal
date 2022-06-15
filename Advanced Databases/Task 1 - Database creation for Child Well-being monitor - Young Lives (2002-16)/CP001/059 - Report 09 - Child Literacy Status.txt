@@ -1,0 +1,87 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 09 Creation - zREP09_LiteracyStatus*/
+/******************************************/
+-- Country & Region wise - Child Literacy Status
+
+CREATE VIEW zREP09_LiteracyStatus
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+
+	   region as Region,
+	   typesite as [Site Type],
+	   chsex as Sex,
+
+	   MAX(chlang) as [Majorly used language],
+
+	   hghgrade as [Highest Grade],
+	   round as Round,
+	   yc as [Younger/Older Cohort],
+	   COUNT(childid) as [Total Children],
+
+	   SUM(IIF([levlread] LIKE '%word%' OR [levlread] LIKE '%letters%', 1,0)) as [Can read words or letters],
+	   SUM(IIF([levlread] LIKE '%sent%', 1,0)) as [Can read sentences],
+	   SUM(IIF([levlread] LIKE '%Can''t read%', 1,0)) as [Cannot read],
+
+	   SUM(IIF([levlwrit] LIKE '%with difficulty%', 1,0)) as [Can write but needs help],
+	   SUM(IIF([levlwrit] LIKE '%without%', 1,0)) as [Can write],
+	   SUM(IIF([levlwrit] LIKE '%No%', 1,0)) as [Cannot write],
+
+	   SUM(IIF([literate] LIKE '%Yes%', 1,0)) as [Literate],
+	   SUM(IIF([literate] LIKE '%No%', 1,0)) as [Illiterate]
+		
+FROM (Select 
+			DISTINCT childid, 
+					 countryid,
+					 typesite,
+					 chsex, 
+					 round,
+					 yc,
+					 agemon,   
+							  [hghgrade]
+							  ,[levlread]
+							  ,[levlwrit]
+							  ,[literate]
+
+							  , dbCare.Region.region
+							  , dbCare.Language.chlang
+
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.Language
+					  ON dbCare.ch_Identity.chlangid = dbCare.Language.chlangid 
+			INNER JOIN dbCare.ch_Education
+					  ON dbCare.ch_Identity.child_round_id = dbCare.ch_Education.child_round_id
+			LEFT OUTER JOIN dbCare.Highest_Grade
+					  ON dbCare.ch_Education.hghgradeid = dbCare.Highest_Grade.hghgradeid) as A			-- Problem with INNER JOIN 
+
+GROUP BY countryid, region, chsex, typesite, round, yc, chlang, hghgrade
+--ORDER BY countryid, region, chsex, typesite, round, yc, chlang, hghgrade asc
+
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

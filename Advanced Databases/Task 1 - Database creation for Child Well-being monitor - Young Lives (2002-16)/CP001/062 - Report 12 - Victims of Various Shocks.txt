@@ -1,0 +1,207 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 12 Creation - zREP12_VictimsofVariousShocks*/
+/******************************************/
+-- Country & Region wise - Victims of Various types of Shocks
+
+CREATE VIEW zREP12_VictimsofVariousShocks
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+
+	   region as Region,
+	   typesite as [Site Type],
+	   chsex as Sex,
+
+	   round as Round,
+	   yc as [Younger/Older Cohort],
+
+	   COUNT(childid) as [Total Children],
+	   AVG([hhsize]) as [Avg Household size]
+	   
+		,SUM(IIF([shcrime1]='Yes'
+			  OR [shcrime2]='Yes'
+			  OR [shcrime3]='Yes'
+			  OR [shcrime4]='Yes'
+			  OR [shcrime5]='Yes'
+			  OR [shcrime6]='Yes' 
+			  OR [shcrime7]='Yes'
+			  OR [shcrime8]='Yes',1,0)) as [Type A: Victims of Crimes]
+
+		,SUM(IIF([shregul1]='Yes' OR [shregul2]='Yes'
+			  OR [shregul3]='Yes'
+			  OR [shregul4]='Yes'
+			  OR [shregul5]='Yes'
+			  OR [shregul6]='Yes',1,0)) as [Type B: Victims of Regulations/Actions]
+
+		,SUM(IIF([shecon1]='Yes'
+			  OR [shecon2]='Yes'
+			  OR [shecon3]='Yes'
+			  OR [shecon4]='Yes'
+			  OR [shecon5]='Yes'
+			  OR [shecon6]='Yes' 
+			  OR [shecon7]='Yes'
+			  OR [shecon8]='Yes'
+			  OR [shecon9]='Yes'
+			  OR [shecon10]='Yes'
+			  OR [shecon11]='Yes'
+			  OR [shecon12]='Yes' 
+			  OR [shecon13]='Yes'
+			  OR [shecon14]='Yes',1,0)) as [Type C: Victims of Economic Turmoil]
+
+		,SUM(IIF([shenv1]='Yes'
+			  OR [shenv2]='Yes'
+			  OR [shenv3]='Yes'
+			  OR [shenv4]='Yes'
+			  OR [shenv5]='Yes'
+			  OR [shenv6]='Yes' 
+			  OR [shenv7]='Yes'
+			  OR [shenv8]='Yes'
+			  OR [shenv9]='Yes'
+			  OR [shenv10]='Yes'
+			  OR [shenv11]='Yes' 
+			  OR [shenv12]='Yes'
+			  OR [shenv13]='Yes',1,0)) as [Type D: Victims of Natural Disasters]
+
+		,SUM(IIF([shhouse1]='Yes'
+			  OR [shhouse2]='Yes'
+			  OR [shhouse3]='Yes',1,0)) as [Type E: Victims of Accidents in Building]
+
+		,SUM(IIF([shfam1]='Yes'
+			  OR [shfam2]='Yes'
+			  OR [shfam3]='Yes'
+			  OR [shfam4]='Yes'
+			  OR [shfam5]='Yes'
+			  OR [shfam6]='Yes' 
+			  OR [shfam7]='Yes'
+			  OR [shfam8]='Yes'
+			  OR [shfam9]='Yes'
+			  OR [shfam10]='Yes'
+			  OR [shfam11]='Yes'
+			  OR [shfam12]='Yes'
+			  OR [shfam13]='Yes' 
+			  OR [shfam14]='Yes'
+			  OR [shfam15]='Yes'
+			  OR [shfam16]='Yes'
+			  OR [shfam17]='Yes' 
+			  OR [shfam18]='Yes',1,0)) as [Type F: Victims of Family Issues]
+
+		,SUM(IIF([shother]='Yes',1,0)) as [Type G: Victims of other issues]
+
+FROM (Select 
+			DISTINCT childid, 
+					 countryid,
+					 typesite,
+					 chsex, 
+					 round,
+					 yc,
+					 agemon,   
+							  [hhsize]
+							  
+							  ,[shcrime1]
+							  ,[shcrime2]
+							  ,[shcrime3]
+							  ,[shcrime4]
+							  ,[shcrime5]
+							  ,[shcrime6]
+							  ,[shcrime7]
+							  ,[shcrime8]
+
+							  ,[shregul1]
+							  ,[shregul2]
+							  ,[shregul3]
+							  ,[shregul4]
+							  ,[shregul5]
+							  ,[shregul6]
+
+							  ,[shecon1]
+							  ,[shecon2]
+							  ,[shecon3]
+							  ,[shecon4]
+							  ,[shecon5]
+							  ,[shecon6]
+							  ,[shecon7]
+							  ,[shecon8]
+							  ,[shecon9]
+							  ,[shecon10]
+							  ,[shecon11]
+							  ,[shecon12]
+							  ,[shecon13]
+							  ,[shecon14]
+
+							  ,[shenv1]
+							  ,[shenv2]
+							  ,[shenv3]
+							  ,[shenv4]
+							  ,[shenv5]
+							  ,[shenv6]
+							  ,[shenv7]
+							  ,[shenv8]
+							  ,[shenv9]
+							  ,[shenv10]
+							  ,[shenv11]
+							  ,[shenv12]
+							  ,[shenv13]
+
+							  ,[shhouse1]
+							  ,[shhouse2]
+							  ,[shhouse3]
+
+							  ,[shfam1]
+							  ,[shfam2]
+							  ,[shfam3]
+							  ,[shfam4]
+							  ,[shfam5]
+							  ,[shfam6]
+							  ,[shfam7]
+							  ,[shfam8]
+							  ,[shfam9]
+							  ,[shfam10]
+							  ,[shfam11]
+							  ,[shfam12]
+							  ,[shfam13]
+							  ,[shfam14]
+							  ,[shfam15]
+							  ,[shfam16]
+							  ,[shfam17]
+							  ,[shfam18]
+
+							  ,[shother]
+
+							  , dbCare.Region.region
+
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.hh_Main
+					  ON dbCare.ch_Identity.child_round_id = dbCare.hh_Main.child_round_id
+			INNER JOIN dbCare.hh_Shocks
+					  ON dbCare.ch_Identity.child_round_id = dbCare.hh_Shocks.child_round_id	) as A
+
+GROUP BY countryid, region, chsex, typesite, round, yc
+
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

@@ -1,0 +1,89 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+/******************************************/
+/*Report 06 Creation - zREP06_OverallHealthandHabits*/
+/******************************************/
+-- Country & Region wise - Overall Health and Habits
+
+CREATE VIEW zREP06_OverallHealthandHabits
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   region as Region,
+	   typesite as [Site Type],
+	   --childid,
+	   chsex as Sex,
+	   yc as [Younger/Older Cohort],
+	   round as Round,
+	   AVG(cladder) as [Avg Subjective Wellbeing],
+	   COUNT(childid) as [Total Children],
+
+	   SUM(IIF([chalcohol]='Yes', 1, 0)) as [Alcohol Addicts],
+	   SUM(IIF([chsmoke]='At least once a month' OR [chsmoke]='Every day' OR [chsmoke]='At least once a week', 1, 0)) as [Smoking Addicts],
+
+	   SUM(IIF([chdisability]='Yes', 1, 0)) as [Permanently Disabled],
+	   SUM(IIF([chhprob]='Yes', 1, 0)) as [Long-term Health issues],
+	   SUM(IIF([chillness]='Yes', 1, 0)) as [Serious illnesses],
+	   SUM(IIF([chinjury]='Yes', 1, 0)) as [Serious injuries],
+	   SUM(IIF([chmightdie]='Yes', 1, 0)) as [Child Might Die],
+
+	   AVG(chrephealth1) as [Avg Child's knowledge on Reproductive Health],
+	   SUM(IIF([chrephealth2]='Yes', 1, 0)) as [Knows condom can prevent STD],
+	   SUM(IIF([chrephealth3]='Yes', 1, 0)) as [Knows STDs can pass from healthy people],
+	   SUM(IIF([chrephealth4] LIKE 'Doesn''t know%condom%', 1, 0)) as [Doesn't know what is a condom]
+
+FROM (Select 
+			DISTINCT childid, 
+					 countryid,
+					 typesite,
+					 chsex, 
+					 round,
+					 yc,
+					 agemon,   
+							   [cladder]
+							  ,[chdisability]
+							  ,[chdisscale]
+							  ,[chhprob]
+							  ,[chillness]
+							  ,[chinjury]
+							  ,[chmightdie]
+							  ,[chalcohol]
+							  ,[chsmoke]
+							  ,[chrephealth1]
+							  ,[chrephealth2]
+							  ,[chrephealth3]
+							  ,[chrephealth4]
+							  , dbCare.Region.region
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region 
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.ch_MedicalHistory
+					  ON dbCare.ch_Identity.child_round_id = dbCare.ch_MedicalHistory.child_round_id
+			INNER JOIN dbCare.Disability_Scale
+					  ON dbCare.ch_MedicalHistory.chdisscaleid = dbCare.Disability_Scale.chdisscaleid) as A
+
+GROUP BY countryid, region, typesite, chsex, yc, round
+
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

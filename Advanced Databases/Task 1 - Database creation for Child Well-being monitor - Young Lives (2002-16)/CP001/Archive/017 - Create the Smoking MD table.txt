@@ -1,0 +1,18 @@
+USE CP001;
+GO
+
+CREATE TABLE Smoking 
+(
+	chsmokeid INT PRIMARY KEY,
+	chsmoke varchar(100)
+)
+
+INSERT INTO [CP001].[dbCare].[Smoking](chsmokeid, chsmoke)
+VALUES  (1 , 'Every day'),
+		(2 , 'At least once a week'),
+		(3 , 'At least once a month'),
+		(4 , 'Hardly ever'),
+		(5 , 'I never smoke cigarettes')
+
+
+;

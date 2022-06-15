@@ -1,0 +1,215 @@
+USE CP001;
+GO
+
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Trigger (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- See additional Create Trigger templates for more
+-- examples of different Trigger statements.
+--
+-- This block of comments will not be included in
+-- the definition of the function.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Trigger 1 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion
+   ON  [dbCare].[ch_Education]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+
+-- =============================================
+-- Trigger 2 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion2
+   ON  [dbCare].[ch_Identity]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion2` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+-- =============================================
+-- Trigger 3 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion3
+   ON  [dbCare].[ch_MedicalHistory]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion3` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+-- =============================================
+-- Trigger 4 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion4
+   ON  [dbCare].[ch_Guardian]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion4` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+
+-- =============================================
+-- Trigger 5 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion5
+   ON  [dbCare].[hh_Main]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion5` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+-- =============================================
+-- Trigger 6 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion6
+   ON  [dbCare].[hh_PublicProgrammes]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion6` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+-- =============================================
+-- Trigger 7 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion7
+   ON  [dbCare].[hh_LivestockOwnership]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion7` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO
+
+-- =============================================
+-- Trigger 8 - Intercept Deletion
+-- =============================================
+-- Author:		Ambareesh Jonnavittula
+-- Create date: 10-May-2021
+-- Description:	Intercept Deletion Trigger
+-- =============================================
+CREATE TRIGGER dbCare.trg_Intercept_Deletion8
+   ON  [dbCare].[hh_Shocks]
+   INSTEAD OF DELETE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	RAISERROR('Trigger `trg_Intercept_Deletion8` needs to be deactivated first', 16, 1)
+
+	Rollback transaction 
+	Return
+END
+GO

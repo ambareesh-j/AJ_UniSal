@@ -1,0 +1,35 @@
+USE CP001;
+GO
+
+/*Grant or Deny access to tables / fields - cpuser1*/
+
+GRANT SELECT ON dbCare.ch_LivestockOwnership TO cpuser1;
+GO
+
+DENY SELECT ON dbCare.ch_MedicalHistory (chrephealth1, chrephealth2, chrephealth3) TO cpuser1;
+GO
+
+
+/* Row level security - Predicate function*/
+
+CREATE FUNCTION dbCare.predFunc (@user1 AS SYSNAME)
+
+RETURNS TABLE
+
+WITH SCHEMABINDING AS
+
+RETURN SELECT 1 AS Access_Right
+
+    WHERE @user1 = USER_NAME() OR USER_NAME() = 'sysadmin'
+
+GO
+;
+
+/*Create security policy and attach */
+
+CREATE SECURITY POLICY Privacy_Policy
+
+ADD FILTER PREDICATE TO dbCare.predFunc(adbuser1) ON dbCare.ch_Identity 
+
+	WITH (STATE = ON);
+

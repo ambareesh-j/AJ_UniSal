@@ -1,0 +1,251 @@
+USE CP001;
+GO
+
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Procedure (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- This block of comments will not be included in
+-- the definition of the procedure.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- SP1 - Number of Children per TypeSite
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<ChildrenPerTypeSite>
+-- =============================================
+CREATE PROCEDURE spChildrenPerTypeSite 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT typesite, count(distinct childid) as Num_of_Children
+		FROM dbo.v01_WellBeing
+		GROUP BY typesite
+END
+GO
+
+-- =============================================
+-- SP2 - Search facility - Children per Typesite (Parameterized)
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<ChildrenPerTypeSite>
+-- Values that can be passed: Rural / Urban
+-- =============================================
+CREATE PROCEDURE spFind_ChildrenPerTypeSite 
+		@TypeSite varchar(10)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT distinct countryid, typesite, childid 
+		FROM dbo.v01_WellBeing
+		WHERE typesite = @TypeSite
+		ORDER BY countryid
+END
+GO
+
+-- =============================================
+-- SP3 - Search facility - Children under the weight, height & bmi (Parameterized)
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<Count of children less than given input>
+-- Values that can be passed: Any Integers
+-- =============================================
+CREATE PROCEDURE spFind_ChildrenlessthanWHB
+		@inputweight int,
+		@inputheight int,
+		@inputbmi int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT countryid, typesite, chsex, count(distinct childid) as [Number of children]
+	FROM dbo.v01_WellBeing
+	WHERE chweight < @inputweight
+	  AND chheight < @inputheight
+	  AND bmi < @inputbmi
+	GROUP BY countryid, typesite, chsex
+END
+GO
+;
+
+-- =============================================
+-- SP4 - Search facility - Number of Cohorts who received funding by Age Range (Parameterized)
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<Number of Cohorts who received funding by Age Range>
+-- =============================================
+CREATE PROCEDURE spFind_Cohorts_AgeRange_Funding
+		@yc varchar(2),
+		@agemonmin tinyint,
+		@agemonmax tinyint
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT countryid, yc, entype, count(distinct childid) as [Number of children]
+	FROM [dbo].[v02_Literacy]
+	WHERE yc = @yc
+	  AND agemon BETWEEN @agemonmin AND @agemonmax 
+	GROUP BY countryid, yc, entype
+END
+GO
+;
+
+-- =============================================
+-- SP5 - Search facility - Number of Cohorts who speak a language by Age Range (Parameterized)
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<Number of Cohorts who speak a language by Age Range>
+-- =============================================
+CREATE PROCEDURE spFind_Cohorts_AgeRange_Language
+		@yc varchar(2),
+		@language varchar(20),
+		@agemonmin tinyint,
+		@agemonmax tinyint
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT countryid, yc, chlang, count(distinct childid) as [Number of children]
+	FROM [dbo].[v02_Literacy]
+	WHERE yc = @yc
+	  AND chlang = @language
+	  AND agemon BETWEEN @agemonmin AND @agemonmax 
+	GROUP BY countryid, yc, chlang
+END
+GO
+;
+
+-- =============================================
+-- SP6 - Search facility - Top 15 children - Travel time to school by Grade (Parameterized)
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<Top 15 children - Travel time to school by Grade>
+-- =============================================
+CREATE PROCEDURE spFind_TravelTimettoSchool_Grade
+		@engrade varchar(20)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	select top 15 countryid, childid, engrade, max(timesch) / 60 as [travel time to school (in hours)] 
+	from [dbo].[v02_literacy]
+	Where engrade = @engrade
+	group by countryid, childid, engrade
+	order by max(timesch) desc
+END
+GO
+;
+
+
+-- =============================================
+-- SP7 - Search facility - Number of Cohorts with Guardian's age range (Parameterized)
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<Number of Cohorts with Guardian's age range>
+-- =============================================
+CREATE PROCEDURE spFind_Cohorts_Guardian_AgeRange
+		@yc varchar(2),
+		@careagemin int, 
+		@careagemax int,
+		@carecantread varchar(3),
+		@dadagemin int, 
+		@dadagemax int,
+		@dadcantread varchar(3),
+		@momagemin int, 
+		@momagemax int, 
+		@momcantread varchar(3)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT countryid, yc, childid, 
+			careage, carecantread,
+			momage, momcantread,
+			dadage, dadcantread
+	FROM [dbo].[v03_LevelOfCare]
+	WHERE yc = @yc
+	  AND carecantread = @carecantread
+	  AND momcantread = @momcantread
+	  AND dadcantread = @dadcantread
+	  AND careage BETWEEN @careagemin AND @careagemax 
+	  AND dadage BETWEEN @dadagemin AND @dadagemax 
+	  AND momage BETWEEN @momagemin AND @momagemax 
+END
+GO
+;
+
+-- =============================================
+-- SP8 - Search facility - Ethiopia's Public Programmes (Parameterized)
+-- =============================================
+-- Author:		<Ambareesh Jonnavittula>
+-- Create date: <01-May-2021>
+-- Description:	<Ethiopia's Public Programmes>
+-- =============================================
+CREATE PROCEDURE spFind_ET_Household_Economic_KPI
+		@resettled varchar(3),
+		@eap varchar(3),
+		@hep varchar(3),
+		@othprog varchar(3),
+		@psnp_ds varchar(3),
+		@psnp_pw varchar(3)
+		
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	select 
+       countryid,
+	   childid,
+	   eap,
+	   hep,
+	   othprog,
+	   psnp_ds,
+	   psnp_pw,
+	   resettled
+	FROM dbo.v05_PublicProgrammes
+	WHERE resettled = @resettled 
+	  AND eap		= @eap
+	  AND hep		= @hep
+	  AND othprog	= @othprog
+	  AND psnp_ds	= @psnp_ds
+	  AND psnp_pw	= @psnp_pw
+	  AND countryid = 'ET'
+
+END
+GO
+;

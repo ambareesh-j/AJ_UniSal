@@ -1,0 +1,44 @@
+USE CP001;
+GO
+
+
+-- Create Master Data - Region
+
+CREATE TABLE Region 
+(
+	regionid INT PRIMARY KEY,
+	region varchar(50)
+)
+
+-- Insert into MD - Region
+
+INSERT INTO [CP001].[dbCare].[Region](regionid, region)
+VALUES  (1 , 'Tigray'),
+		(2 , 'Afar'),
+		(3 , 'Amhara'),
+		(4 , 'Oromiya'),
+		(5 , 'Somali'),
+		(6 , 'Benshangul Gumz'),
+		(7 , 'SNNP'),
+		(12 , 'Gambela'),
+		(13 , 'Harari'),
+		(14 , 'Addis Ababa City Administration'),
+		(15 , 'Dire Dawa City Administration'),
+		(21 , 'Coastal Andhra'),
+		(22 , 'Rayalaseema'),
+		(23 , 'Telangana'),
+		(24 , 'Others'),
+		(31 , 'Costa'),
+		(32 , 'Sierra'),
+		(33 , 'Selva'),
+		(51 , 'Northern Uplands'),
+		(52 , 'Red River Delta'),
+		(53 , 'Phu Yen'),
+		(54 , 'Da Nang'),
+		(55 , 'Highlands'),
+		(56 , 'South Eastern'),
+		(57 , 'Mekong River Delta'),
+		(58 , 'Other'),
+		(77 , 'Not known'),         /* India */
+		(88 , 'Not known')			/* Peru  */
+;

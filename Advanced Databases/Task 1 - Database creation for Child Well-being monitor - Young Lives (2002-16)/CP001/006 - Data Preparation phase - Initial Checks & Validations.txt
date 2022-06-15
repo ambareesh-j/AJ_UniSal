@@ -1,0 +1,922 @@
+
+--------------------
+/*Delete unwanted records from the INDIA - dataset*/
+------------------
+DELETE FROM dbCare.INPEVIETH
+	WHERE childid = 'childid'; 
+
+--(2 rows affected)
+--Completion time: 2021-03-16T22:30:49.0138037+00:00
+
+-------------------
+
+/* Cleaning & Mapping - Data Preparation phase */
+SELECT  
+	   RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id
+
+	  ,RTRIM(LTRIM([childid])) as [childid]
+
+	  ,RTRIM(LTRIM([round])) as [round]
+
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) as [countryid]
+
+	  --,[clustid]
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),3,2) as [clustid]
+
+      ,RTRIM(LTRIM([commid])) as [commid]
+
+	  ,[region] as [regionid]
+
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [chethnic] as [chethnicid]
+
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [chlang]  as [chlangid]
+
+      ,[chldrel] as [chldrelid]
+	  ,[chdisscale] as [chdisscaleid]
+
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [engrade]  as [engradeid]
+
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [entype]  as [entypeid]
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [hghgrade]  as [hghgradeid]
+	  ,[carerel] as [carerelid]
+      ,[headrel] as [headrelid]
+	  , CASE [foodsec]		WHEN '1'	THEN 'We always eat enough of what we want'
+							WHEN '2'	THEN 'We eat enough but not always what we would like'
+							WHEN '3'	THEN 'We sometimes do not eat enough'
+							WHEN '4'	THEN 'We frequently do not eat enough'
+										ELSE [foodsec]
+	   END as [foodsec]
+	  ,[chsmoke] as [chsmokeid]
+
+	  ,CASE [yc]		WHEN '0'	THEN  'OC'
+						WHEN '1'	THEN  'YC'
+									ELSE  [yc]
+		END as [yc]
+
+      ,[dadid]
+      ,[headid]
+      ,[momid]
+      ,[careid]
+
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [momedu] as [momeduid]
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [dadedu] as [dadeduid]
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [headedu] as [headeduid]
+	  ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [caredu] as [careduid]
+
+      ,[agegr1]
+
+      ,CASE [agemon]	WHEN '-9999'	THEN 'Missing'
+										ELSE [agemon]
+	   END as [agemon]
+
+      ,CASE [aniany]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [aniany]
+	   END as [aniany]
+      ,[anibeeh]
+      ,[anibufm]
+      ,[anibuft]
+      ,[anibull]
+      ,[anicalv]
+      ,[anicaml]
+      ,[anicowm]
+      ,[anicowt]
+      ,[anidonk]
+      ,[anidrau]
+      ,[anifish]
+      ,[anifshr]
+      ,[anigoat]
+      ,[aniguin]
+      ,[anihebu]
+      ,[aniheif]
+      ,[anillam]
+      ,[animilk]
+      ,[aniothr]
+      ,[anioxen]
+      ,[anipigs]
+      ,[anipoul]
+      ,[anirabb]
+      ,[anirumi]
+      ,[anishee]
+      ,[anishri]
+      ,[anisnai]
+      ,[anispec]
+      ,[aniybul]
+
+      ,CASE [bcg]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [bcg]
+	   END as [bcg]
+      ,CASE [beca_yl]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [beca_yl]
+	   END as [beca_yl]
+
+      ,CASE [birth]			WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [birth]
+	   END as [birth]
+      ,[birth_age]
+      ,[bmi]
+      ,CASE [bonograt]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [bonograt]
+	   END as [bonograt]
+      ,CASE [bwdoc]			WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [bwdoc]
+	   END as [bwdoc]
+      ,CASE [bwght]		WHEN '-9999'	THEN 'Not known'
+										ELSE [bwght]
+	   END as [bwght]
+      ,CASE [careage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [careage]
+	   END as [careage]
+      ,CASE [carecantread]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [carecantread]
+	   END as [carecantread]
+      ,CASE [carehead]	WHEN '1'	THEN 'Caregiver is household head'
+						WHEN '2'	THEN 'Caregiver is partner of household head'
+						WHEN '3'	THEN 'Other'
+									ELSE [carehead]
+	   END as [carehead]
+      ,[careladder]
+      ,[careldr4yrs]
+      ,CASE [caresex]	WHEN '1'	THEN 'Male'
+						WHEN '2'	THEN 'Female'
+									ELSE [caresex]
+	   END as [caresex]
+      ,[cd]
+      ,CASE [chalcohol]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [chalcohol]
+	   END as [chalcohol]
+      ,CASE [chdisability]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [chdisability]
+	   END as [chdisability]
+      ,CASE [chhealth]		WHEN '1'	THEN 'very poor'
+							WHEN '2'	THEN 'poor'
+							WHEN '3'	THEN 'average'
+							WHEN '4'	THEN 'good'
+							WHEN '5'	THEN 'very good'
+										ELSE [chhealth]
+	   END as [chhealth]
+      ,CASE [chheight]	WHEN '-9999'	THEN 'Not known'
+										ELSE [chheight]
+	   END as [chheight]
+      ,CASE [chhprob]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [chhprob]
+	   END as [chhprob]
+      ,CASE [chhrel]		WHEN '1'	THEN 'Same'
+							WHEN '2'	THEN 'Better'
+							WHEN '3'	THEN 'Worse'
+										ELSE [chhrel]
+	   END as [chhrel]
+      ,CASE [childloc]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [childloc]
+	   END as [childloc]
+      ,CASE [chillness]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [chillness]
+	   END as [chillness]
+      ,CASE [chinjury]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [chinjury]
+	   END as [chinjury]
+	  ,[chlang]
+      ,CASE [chmightdie]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chmightdie]
+	   END as [chmightdie]
+      ,[chrephealth1]
+      ,CASE [chrephealth2]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chrephealth2]
+	   END as [chrephealth2]
+      ,CASE [chrephealth3]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [chrephealth3]
+	   END as [chrephealth3]
+      ,CASE [chrephealth4]		WHEN '1'	THEN 'Shop or street vendor'
+								WHEN '2'	THEN 'Family planning services or health facility'
+								WHEN '3'	THEN 'Other'
+								WHEN '4'	THEN 'Doesn''t know what is a condom or where to buy'
+											ELSE [chrephealth4]
+	   END as [chrephealth4]
+      ,CASE [chsex]		WHEN '1'	THEN 'Male'
+						WHEN '2'	THEN 'Female'
+									ELSE [chsex]
+	   END as [chsex]
+
+      ,CASE [chweight]	WHEN '-9999'	THEN 'Not known'
+										ELSE [chweight]
+	   END as [chweight]
+
+      ,[cladder]
+      ,[commsch]
+      ,[commwork]
+      ,CASE [cookingq]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [cookingq]
+	   END as [cookingq]
+      ,CASE [credit]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [credit]
+	   END as [credit]	
+      ,CASE [dadage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [dadage]
+	   END as [dadage]
+      ,CASE [dadcantread]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [dadcantread]
+	   END as [dadcantread]
+      ,CASE [dadlive]		WHEN '1'	THEN 'Lives in the household'
+							WHEN '2'	THEN 'Does not live in household'
+							WHEN '3'	THEN 'Has died'
+										ELSE [dadlive]
+	   END [dadlive]
+      ,[dadyrdied]
+      ,CASE [deceased]	WHEN '1'	THEN 'Yes'
+									ELSE [deceased]
+	   END as [deceased]
+      ,CASE [delivery]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [delivery]
+	   END as [delivery]
+      ,[dint]
+      ,CASE [dpt]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [dpt]
+	   END as [dpt]
+      ,CASE [drwaterq]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [drwaterq]
+	   END as [drwaterq]
+      ,CASE [eap]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE 'N/A'
+	   END as [eap]
+      ,CASE [elecq]			WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [elecq]
+	   END as [elecq]
+      ,CASE [enrol]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+						WHEN '99'	THEN 'Missing'
+						WHEN '77'	THEN 'Not known'
+						WHEN '88'	THEN 'N/A'
+									ELSE [enrol]
+	   END as [enrol]
+      ,[fbfa]
+      ,[female05]
+      ,[female1317]
+      ,[female1860]
+      ,[female61]
+      ,[female612]
+      ,[fhfa]
+      ,[fwfa]
+      ,[fwfl]
+      ,[hcare]
+      ,[hchore]
+      ,CASE [headage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [headage]
+	   END as [headage]
+      ,CASE [headsex]	WHEN '1'	THEN 'Male'
+						WHEN '2'	THEN 'Female'
+									ELSE 'N/A'
+	   END as [headsex]
+      ,CASE [hep]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE 'N/A'
+	   END as [hep]
+      ,[hhsize]
+      ,CASE [hib]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [hib]
+	   END as [hib]
+      ,[hplay]
+      ,[hq]
+      ,[hschool]
+      ,[hsleep]
+      ,[hstudy]
+      ,[htask]
+      ,[hwork]
+      ,[ikp]
+      ,[ikp_child]
+      ,CASE [inround]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [inround]
+	   END as [inround]
+      ,CASE [insur_yl]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [insur_yl]
+	   END as [insur_yl]
+      ,CASE [juntos]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [juntos]
+	   END as [juntos]
+      ,CASE [levlread]	WHEN '1'	THEN 'Can''t read anything'
+						WHEN '2'	THEN 'Reads letters'
+						WHEN '3'	THEN 'Reads word'
+						WHEN '4'	THEN 'Reads sentence'
+									ELSE [levlread]
+	   END as [levlread]
+      ,CASE [levlwrit]	WHEN '1'	THEN 'No'
+						WHEN '2'	THEN 'Yes with difficulty or errors'
+						WHEN '3'	THEN 'Yes without difficulty or errors'
+									ELSE [levlwrit]
+	   END as [levlwrit]
+      ,CASE [literate]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [literate]
+	   END as [literate]
+      ,[male05]
+      ,[male1317]
+      ,[male1860]
+      ,[male61]
+      ,[male612]
+
+      ,CASE [marrcohab]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [marrcohab]
+	   END as [marrcohab]
+
+      ,[marrcohab_age]
+
+      ,CASE [measles]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [measles]
+	   END as [measles]
+      ,CASE [minsa_yl]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [measles]
+	   END as [minsa_yl]
+
+
+      ,CASE [molisa06]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa06]
+		END as [molisa06]
+		,CASE [molisa09]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa09]
+		END as [molisa09]
+		,CASE [molisa10]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa10]
+		END as [molisa10]
+		,CASE [molisa11]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa11]
+		END as [molisa11]
+		,CASE [molisa12]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa12]
+		END as [molisa12] 
+		, CASE [molisa13]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa13]
+		END as [molisa13]
+		, CASE [molisa14]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa14]
+		END as [molisa14]
+		, CASE [molisa15]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa15]
+		END as [molisa15]
+		,CASE [molisa16]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa16]
+		END as [molisa16]
+
+
+      ,CASE [momage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [momage]
+	   END as [momage]
+      ,CASE [momcantread]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [momcantread]
+	   END as [momcantread]
+      ,CASE [momlive]		WHEN '1'	THEN 'Lives in the household'
+							WHEN '2'	THEN 'Does not live in household'
+							WHEN '3'	THEN 'Has died'
+										ELSE [momlive]
+	   END [momlive]
+      ,[momyrdied]
+      ,[nregs]
+      ,[nregs_allow]
+      ,[nregs_work]
+      ,CASE [numante]		WHEN '88'	THEN 'N/A'
+							WHEN '99'   THEN 'Not known'
+										ELSE [numante]
+	   END as [numante]
+      ,CASE [othprog]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE 'N/A'
+	   END as [othprog]
+      ,CASE [ownhouse]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [ownhouse]
+	   END as [ownhouse]
+      ,CASE [ownlandhse]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [ownlandhse]
+	   END as [ownlandhse]
+      ,CASE [panel]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [panel]
+	   END as [panel]
+      ,[pds]
+      ,CASE [polio]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [polio]
+	   END as [polio]
+      ,CASE [preprim]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [preprim]
+	   END as [preprim]
+      ,CASE [projoven_yl]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [projoven_yl]
+	   END as [projoven_yl]
+      ,CASE [psnp_ds]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE 'N/A'
+	   END as [psnp_ds]
+      ,CASE [psnp_pw]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE 'N/A'
+	   END as [psnp_pw]
+      ,[rajiv]
+      ,CASE [resettled]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE 'N/A'
+	   END as [resettled]
+      ,[sabla]
+      ,[sabla_yl]
+
+/*Shocks*/
+/*Shocks - Type A: Crime Victims*/
+/* A. Has the household been the victim of any crime since previous round? */
+
+-- [shcrime1] -> shock-destruction/theft of tools for production
+      ,CASE [shcrime1]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime1]
+		END as [shcrime1]
+
+-- [shcrime2] -> shock-theft of cash
+      ,CASE [shcrime2]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime2]
+		END as [shcrime2]
+
+-- [shcrime3] -> shock-theft of crops
+      ,CASE [shcrime3]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime3]
+		END as [shcrime3]
+
+-- [shcrime4] -> shock-theft of livestock
+      ,CASE [shcrime4]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime4]
+		END as [shcrime4]
+
+-- [shcrime5] -> shock-theft/destruction of housing/consumer goods
+      ,CASE [shcrime5]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime5]
+		END as [shcrime5]
+
+-- [shcrime6] -> shock-crime that resulted in death/disablement
+      ,CASE [shcrime6]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime6]
+		END as [shcrime6]
+
+-- [shcrime7] -> shock-theft/destruction (cash, crops, livestock, housing)
+      ,CASE [shcrime7]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime7]
+		END as [shcrime7]
+
+-- [shcrime8] -> shock-victim of crime
+      ,CASE [shcrime8]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shcrime8]
+		END as [shcrime8]
+
+/*Shocks - Type C: Economic Turmoil*/
+/* C. Have any changes to economic conditions affected the household since previous round? */
+
+-- [shecon1] -> shock-increase in input prices
+      ,CASE [shecon1]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon1]
+		END as [shecon1]
+
+-- [shecon2] -> shock-decrease in output prices
+      ,CASE [shecon2]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon2]
+		END as [shecon2]
+
+-- [shecon3] -> shock-death of livestock
+      ,CASE [shecon3]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon3]
+		END as [shecon3]
+
+-- [shecon4] -> shock-closure place of employment
+      ,CASE [shecon4]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon4]
+		END as [shecon4]
+
+-- [shecon5] -> shock-loss of job/source of income/family enterprise
+      ,CASE [shecon5]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon5]
+		END as [shecon5]
+
+-- [shecon6] -> shock-industrial action
+      ,CASE [shecon6]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon6]
+		END as [shecon6]
+
+-- [shecon7] -> shock-contract disputes (purchase of inputs)
+      ,CASE [shecon7]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon7]
+		END as [shecon7]
+
+-- [shecon8] -> shock-contract disputes (sale of output)
+      ,CASE [shecon8]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon8]
+		END as [shecon8]
+
+-- [shecon9] -> shock-disbanding credit
+      ,CASE [shecon9]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon9]
+		END as [shecon9]
+
+-- [shecon10] -> shock-confiscation of assets
+      ,CASE [shecon10]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon10]
+		END as [shecon10]
+
+-- [shecon11] -> shock-disputes with family about assets
+      ,CASE [shecon11]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon11]
+		END as [shecon11]
+
+-- [shecon12] -> shock-disputes with neighbours about assets
+      ,CASE [shecon12]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon12]
+		END as [shecon12]
+
+-- [shecon13] -> shock-increase in food prices
+      ,CASE [shecon13]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon13]
+		END as [shecon13]
+
+-- [shecon14] -> shock-decrease in food availability
+      ,CASE [shecon14]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shecon14]
+		END as [shecon14]
+
+/*Shocks - Type D: Natural Disasters*/
+/* D. Have you experienced any natural disasters since previous round? */
+
+-- [shenv1] -> shock-drought
+      ,CASE [shenv1]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv1]
+		END as [shenv1]
+
+-- [shenv2] -> shock-flooding
+      ,CASE [shenv2]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv2]
+		END as [shenv2]
+
+-- [shenv3] -> shock-erosion
+      ,CASE [shenv3]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv3]
+		END as [shenv3]
+
+-- [shenv4] -> shock-frost
+      ,CASE [shenv4]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv4]
+		END as [shenv4]
+
+-- [shenv5] -> shock-pests on crops
+      ,CASE [shenv5]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv5]
+		END as [shenv5]
+
+-- [shenv6] -> shock-crop failure
+      ,CASE [shenv6]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv6]
+		END as [shenv6]
+
+-- [shenv7] -> shock-pests on storage
+      ,CASE [shenv7]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv7]
+		END as [shenv7]
+
+-- [shenv8] -> shock-pests on livestock
+      ,CASE [shenv8]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv8]
+		END as [shenv8]
+
+-- [shenv9] -> shock-natural disaster
+      ,CASE [shenv9]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv9]
+		END as [shenv9]
+
+-- [shenv10] -> shock-earthquake
+      ,CASE [shenv10]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv10]
+		END as [shenv10]
+
+-- [shenv11] -> shock-forest fire
+      ,CASE [shenv11]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv11]
+		END as [shenv11]
+
+-- [shenv12] -> shock-pollution caused by mining
+      ,CASE [shenv12]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv12]
+		END as [shenv12]
+
+-- [shenv13] -> shock-storm
+      ,CASE [shenv13]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shenv13]
+		END as [shenv13]
+
+/*Shocks - Type F: Family Issues*/
+/*F. Have there been any changes within the family since previous round?*/
+
+-- [shfam1] -> shock-death of father
+      ,CASE [shfam1]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam1]
+		END as [shfam1]
+
+-- [shfam2] -> shock-death of mother
+      ,CASE [shfam2]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam2]
+		END as [shfam2]
+
+-- [shfam3] -> shock-death of other household member
+      ,CASE [shfam3]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam3]
+		END as [shfam3]
+
+-- [shfam4] -> shock-illness of father
+      ,CASE [shfam4]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam4]
+		END as [shfam4]
+
+-- [shfam5] -> shock-illness of mother
+      ,CASE [shfam5]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam5]
+		END as [shfam5]
+
+-- [shfam6] -> shock-illness of other household member
+      ,CASE [shfam6]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam6]
+		END as [shfam6]
+		 
+-- [shfam7] -> shock-divorce or separation
+      ,CASE [shfam7]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam7]
+		END as [shfam7]
+
+-- [shfam8] -> shock-birth of new household member
+      ,CASE [shfam8]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam8]
+		END as [shfam8]
+
+-- [shfam9] -> shock-enrolment of child in school
+      ,CASE [shfam9]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam9]
+		END as [shfam9]
+
+-- [shfam10] -> shock-imprisonment
+      ,CASE [shfam10]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam10]
+		END as [shfam10]
+
+-- [shfam11] -> shock-conscription, abduction or draft
+      ,CASE [shfam11]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam11]
+		END as [shfam11]
+
+-- [shfam12] -> shock-death/reduction in the number of household members (for reasons other than death)
+      ,CASE [shfam12]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam12]
+		END as [shfam12]
+
+-- [shfam13] -> shock-severe illness or injury
+      ,CASE [shfam13]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam13]
+		END as [shfam13]
+
+-- [shfam14] -> shock-move/migration
+      ,CASE [shfam14]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam14]
+		END as [shfam14]
+
+-- [shfam15] -> shock-political imprisonment
+      ,CASE [shfam15]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam15]
+		END as [shfam15]
+
+-- [shfam16] -> shock-political discrimination
+      ,CASE [shfam16]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam16]
+		END as [shfam16]
+
+-- [shfam17] -> shock-ethnic/social discrimination
+      ,CASE [shfam17]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam17]
+		END as [shfam17]
+
+-- [shfam18] -> shock-illness of non-household member
+      ,CASE [shfam18]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shfam18]
+		END as [shfam18]
+
+/*Shocks - Type E: Accidents in Building */
+/* E. Has anything happened since previous round that has affected the building you live in? */
+
+-- [shhouse1] -> shock-fire affecting house
+      ,CASE [shhouse1]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shhouse1]
+		END as [shhouse1]
+
+-- [shhouse2] -> shock-house collapse
+      ,CASE [shhouse2]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shhouse2]
+		END as [shhouse2]
+
+-- [shhouse3] -> shock-fire or collapse of building
+      ,CASE [shhouse3]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shhouse3]
+		END as [shhouse3]
+
+/*Shocks - Type G: Others*/
+/*G. Has anything else happened since previous round that has affected the economic situation of the
+household?*/
+
+-- [shother] -> shock-others
+      ,CASE [shother]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shother]
+		END as [shother]
+
+/*Shocks - Type B: Regulatory Impact*/
+/* B. Have any regulations or actions had negative impact on the household since previous round? */
+
+-- [shregul1] -> shock-land redistribution
+      ,CASE [shregul1]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shregul1]
+		END as [shregul1]
+
+-- [shregul2] -> shock-resettlement or forced migration
+      ,CASE [shregul2]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shregul2]
+		END as [shregul2]
+
+-- [shregul3] -> shock-restrictions on migration
+      ,CASE [shregul3]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shregul3]
+		END as [shregul3]
+
+-- [shregul4] -> shock-forced contributions
+      ,CASE [shregul4]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shregul4]
+		END as [shregul4]
+
+-- [shregul5] -> shock-eviction
+      ,CASE [shregul5]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shregul5]
+		END as [shregul5]
+
+-- [shregul6] -> shock-invasion of property
+      ,CASE [shregul6]		WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+										ELSE  [shregul6]
+		END as [shregul6]
+
+      ,CASE [sisgrat_yl]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [sisgrat_yl]
+		END as [sisgrat_yl]
+
+      ,CASE [stunting]	WHEN '0'	THEN  'Not stunted'
+						WHEN '1'	THEN  'Moderately stunted'
+						WHEN '2'	THEN  'Severely stunted'
+									ELSE  [stunting]
+		END as [stunting]
+      ,[sv]
+      ,CASE [tetanus]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [tetanus]
+	   END as [tetanus]
+      ,CASE [thinness]	WHEN '0'	THEN  'Not thin'
+						WHEN '1'	THEN  'Moderately thin'
+						WHEN '2'	THEN  'Severely thin'
+									ELSE  [thinness]
+		END as [thinness]
+      ,[timesch]
+      ,CASE [toiletq]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [toiletq]
+	   END as [toiletq]
+	  , CASE [typesite] WHEN '1'	THEN  'Urban'
+						WHEN '2'	THEN  'Rural'
+						WHEN '77'	THEN  'Not known'
+									ELSE  [typesite]
+		END as [typesite]
+      , CASE [underweight] WHEN '0'	THEN  'Not underweight'
+						WHEN '1'	THEN  'Moderately underweight'
+						WHEN '2'	THEN  'Severely underweight'
+									ELSE  [underweight]
+		END as [underweight]
+      ,[wi]
+      ,[zbfa]
+      ,[zhfa]
+      ,[zwfa]
+      ,[zwfl]
+  FROM [CP001].[dbCare].[INPEVIETH]

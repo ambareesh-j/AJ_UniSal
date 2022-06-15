@@ -1,0 +1,9 @@
+
+/***************************************************/
+/*Validate the locks using sys tables*/
+/***************************************************/
+
+SELECT a.name, j.name, p.*
+FROM sys.dm_tran_locks p
+INNER JOIN sys.databases a ON p.resource_database_id = database_id
+INNER JOIN sys.objects j ON	p.resource_associated_entity_id = object_id

@@ -1,0 +1,91 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 05 Creation - zREP05_BirthandImmunizations*/
+/******************************************/
+-- Country & Region wise - Birth and Immunizations report
+
+CREATE VIEW zREP05_BirthandImmunizations
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   region as Region,
+	   --childid,
+	   chsex as Sex,
+	   --round as Round,
+	   --ROUND(AVG(agemon)/12, 0) as [Avg Age (in Yrs)],
+
+	   SUM(IIF([bcg]='Yes', 1, 0)) as [BCG Yes],
+	   SUM(IIF([bcg]='No', 1, 0)) as [BCG No],
+	   SUM(IIF([bcg]='', 1, 0)) as [BCG Pending],
+
+	   SUM(IIF([dpt]='Yes', 1, 0)) as [DPT Yes],
+	   SUM(IIF([dpt]='No', 1, 0)) as [DPT No],
+	   SUM(IIF([dpt]='', 1, 0)) as [DPT Pending],
+
+	   SUM(IIF([hib]='Yes', 1, 0)) as [HIB Yes],
+	   SUM(IIF([hib]='No', 1, 0)) as [HIB No],
+	   SUM(IIF([hib]='', 1, 0)) as [HIB Pending],
+
+	   SUM(IIF([measles]='Yes', 1, 0)) as [Measles Yes],
+	   SUM(IIF([measles]='No', 1, 0)) as [Measles No],
+	   SUM(IIF([measles]='', 1, 0)) as [Measles Pending],
+
+	   SUM(IIF([polio]='Yes', 1, 0)) as [Polio Yes],
+	   SUM(IIF([polio]='No', 1, 0)) as [Polio No],
+	   SUM(IIF([polio]='', 1, 0)) as [Polio Pending],
+
+	   SUM(IIF([tetanus]='Yes', 1, 0)) as [Tetanus Yes],
+	   SUM(IIF([tetanus]='No', 1, 0)) as [Tetanus No],
+	   SUM(IIF([tetanus]='', 1, 0)) as [Tetanus Pending],
+
+	   SUM(IIF([bwdoc]='No', 1, 0)) as [Birthweight wrongly documented],
+	   SUM(IIF([delivery]='No', 1, 0)) as [No skilled personnel during delivery],
+	   SUM(numante) as [Num of Antenatal visits]
+
+FROM (Select 
+			DISTINCT childid, 
+					 countryid, 
+					 chsex, 
+					 round, 
+					 agemon, [bcg]
+							,[bwdoc]
+							,[delivery]
+							,[dpt]
+							,[hib]
+							,[measles]
+							,[numante]
+							,[polio]
+							,[tetanus], dbCare.Region.region
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region 
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.ch_MedicalHistory
+					  ON dbCare.ch_Identity.child_round_id = dbCare.ch_MedicalHistory.child_round_id) as A
+
+GROUP BY countryid, region, chsex
+--ORDER BY countryid, region
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

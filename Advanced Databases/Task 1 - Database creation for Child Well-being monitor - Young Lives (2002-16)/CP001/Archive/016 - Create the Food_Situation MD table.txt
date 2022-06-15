@@ -1,0 +1,16 @@
+USE CP001;
+GO
+
+CREATE TABLE Food_Situation 
+(
+	foodsecid INT PRIMARY KEY,
+	foodsec varchar(100)
+)
+
+INSERT INTO [CP001].[dbCare].[Food_Situation](foodsecid, foodsec)
+VALUES  (1 , 'We always eat enough of what we want'),
+		(2 , 'We eat enough but not always what we would like'),
+		(3 , 'We sometimes do not eat enough'),
+		(4 , 'We frequently do not eat enough')
+
+;

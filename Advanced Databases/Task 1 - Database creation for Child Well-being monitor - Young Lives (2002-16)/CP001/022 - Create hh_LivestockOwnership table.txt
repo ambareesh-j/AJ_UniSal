@@ -1,0 +1,100 @@
+USE CP001;
+GO
+
+-- Create Transactional Data table- hh_LivestockOwnership
+
+CREATE TABLE hh_LivestockOwnership
+(
+		 hh_LivStkOwn_id	INT IDENTITY(1,1) PRIMARY KEY
+		,child_round_id		VARCHAR(10) NOT NULL
+		, aniany			VARCHAR(10)
+		, anibeeh			INT
+		, anibufm			INT
+		, anibuft			INT
+		, anibull			INT
+		, anicalv			INT
+		, anicaml			INT
+		, anicowm			INT
+		, anicowt			INT
+		, anidonk			INT
+		, anidrau			INT
+		, anifish			INT
+		, anifshr			INT
+		, anigoat			INT
+		, aniguin			INT
+		, anihebu			INT
+		, aniheif			INT
+		, anillam			INT
+		, animilk			INT
+		, aniothr			INT
+		, anioxen			INT
+		, anipigs			INT
+		, anipoul			INT
+		, anirabb			INT
+		, anirumi			INT
+		, anishee			INT
+		, anishri			INT
+		, anisnai			INT
+		, anispec			INT
+		, aniybul			INT
+
+		CONSTRAINT FK_LivStkchildid FOREIGN KEY (child_round_id)
+			REFERENCES [CP001].[dbCare].[ch_Identity](child_round_id)
+)
+
+-- Insert into TD table - hh_LivestockOwnership
+
+BEGIN TRY
+
+INSERT INTO [CP001].[dbCare].[hh_LivestockOwnership] 
+SELECT 
+	RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id
+
+	,CASE [aniany]			WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [aniany]
+	   END as [aniany]
+      ,[anibeeh]
+      ,[anibufm]
+      ,[anibuft]
+      ,[anibull]
+      ,[anicalv]
+      ,[anicaml]
+      ,[anicowm]
+      ,[anicowt]
+      ,[anidonk]
+      ,[anidrau]
+      ,[anifish]
+      ,[anifshr]
+      ,[anigoat]
+      ,[aniguin]
+      ,[anihebu]
+      ,[aniheif]
+      ,[anillam]
+      ,[animilk]
+      ,[aniothr]
+      ,[anioxen]
+      ,[anipigs]
+      ,[anipoul]
+      ,[anirabb]
+      ,[anirumi]
+      ,[anishee]
+      ,[anishri]
+      ,[anisnai]
+      ,[anispec]
+      ,[aniybul]
+
+FROM CP001.dbCare.INPEVIETH
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH
+;
+
+
+

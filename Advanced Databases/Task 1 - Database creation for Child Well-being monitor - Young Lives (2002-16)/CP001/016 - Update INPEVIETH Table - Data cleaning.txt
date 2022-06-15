@@ -1,0 +1,57 @@
+USE CP001;
+GO
+
+/*Mom year died and Dad year died - Data cleaning*/
+
+UPDATE dbCare.INPEVIETH SET dadyrdied = '1988' WHERE dadyrdied = '88' AND childid = 'VN071028';
+UPDATE dbCare.INPEVIETH SET momyrdied = '2002' WHERE momyrdied = '2' AND childid = 'IN061045';
+
+
+/*Update Combination IDs from various different tables to be able to create relationships for TD with MD*/
+
+UPDATE dbCare.INPEVIETH SET chethnic = 'NaN' WHERE LEN(chethnic) = 0;
+UPDATE dbCare.INPEVIETH SET chethnic = '00' + chethnic WHERE LEN(chethnic) = 1;
+UPDATE dbCare.INPEVIETH SET chethnic = '0'  + chethnic WHERE LEN(chethnic) = 2;
+
+UPDATE dbCare.INPEVIETH SET chlang = 'NaN' WHERE LEN(chlang) = 0;
+UPDATE dbCare.INPEVIETH SET chlang = '00' + chlang WHERE LEN(chlang) = 1;
+UPDATE dbCare.INPEVIETH SET chlang = '0'  + chlang WHERE LEN(chlang) = 2;
+
+UPDATE dbCare.INPEVIETH SET engrade = 'NaN' WHERE LEN(engrade) = 0;
+UPDATE dbCare.INPEVIETH SET engrade = '00' + engrade WHERE LEN(engrade) = 1;
+UPDATE dbCare.INPEVIETH SET engrade = '0'  + engrade WHERE LEN(engrade) = 2;
+
+UPDATE dbCare.INPEVIETH SET entype = 'NaN' WHERE LEN(entype) = 0;
+UPDATE dbCare.INPEVIETH SET entype = '00' + entype WHERE LEN(entype) = 1;
+UPDATE dbCare.INPEVIETH SET entype = '0'  + entype WHERE LEN(entype) = 2;
+
+UPDATE dbCare.INPEVIETH SET chldrel = '99' WHERE LEN(LTRIM(RTRIM(chldrel))) = 0;
+
+UPDATE dbCare.INPEVIETH SET region = '88' WHERE LEN(LTRIM(RTRIM(region))) = 0;
+
+UPDATE dbCare.INPEVIETH SET chdisscale = '99' WHERE LEN(LTRIM(RTRIM(chdisscale))) = 0;
+
+/* Education Grades for all - based on Countries */
+
+UPDATE dbCare.INPEVIETH SET hghgrade = 'NaN' WHERE LEN(hghgrade) = 0;
+UPDATE dbCare.INPEVIETH SET hghgrade = '00' + hghgrade WHERE LEN(hghgrade) = 1;
+UPDATE dbCare.INPEVIETH SET hghgrade = '0'  + hghgrade WHERE LEN(hghgrade) = 2;
+
+UPDATE dbCare.INPEVIETH SET caredu = 'NaN' WHERE LEN(caredu) = 0;
+UPDATE dbCare.INPEVIETH SET caredu = '00' + caredu WHERE LEN(caredu) = 1;
+UPDATE dbCare.INPEVIETH SET caredu = '0'  + caredu WHERE LEN(caredu) = 2;
+
+UPDATE dbCare.INPEVIETH SET dadedu = 'NaN' WHERE LEN(dadedu) = 0;
+UPDATE dbCare.INPEVIETH SET dadedu = '00' + dadedu WHERE LEN(dadedu) = 1;
+UPDATE dbCare.INPEVIETH SET dadedu = '0'  + dadedu WHERE LEN(dadedu) = 2;
+
+UPDATE dbCare.INPEVIETH SET momedu = 'NaN' WHERE LEN(momedu) = 0;
+UPDATE dbCare.INPEVIETH SET momedu = '00' + momedu WHERE LEN(momedu) = 1;
+UPDATE dbCare.INPEVIETH SET momedu = '0'  + momedu WHERE LEN(momedu) = 2;
+
+UPDATE dbCare.INPEVIETH SET headedu = 'NaN' WHERE LEN(headedu) = 0;
+UPDATE dbCare.INPEVIETH SET headedu = '00' + headedu WHERE LEN(headedu) = 1;
+UPDATE dbCare.INPEVIETH SET headedu = '0'  + headedu WHERE LEN(headedu) = 2;
+
+
+

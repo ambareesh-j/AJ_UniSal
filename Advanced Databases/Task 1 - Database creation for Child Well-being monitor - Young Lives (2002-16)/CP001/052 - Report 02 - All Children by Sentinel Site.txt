@@ -1,0 +1,55 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 02 Creation - zREP02_AllChildrenBySentinelSite*/
+/******************************************/
+-- Number of poor children per country per Sentinel Site
+
+CREATE VIEW zREP02_AllChildrenBySentinelSite
+
+AS 
+(
+SELECT 
+	   clustid,
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   count(DISTINCT childid) as [Total Children],
+
+-- Total Males vs. Females
+	   sum(CASE WHEN chsex = 'Male' then 1 END) as [Total Males],
+	   sum(CASE WHEN chsex = 'Female' then 1 END) as [Total Females],
+-- Total Younger cohort vs Older cohort
+	   sum(CASE WHEN yc = 'YC' then 1 END) as [Younger Cohort],
+	   sum(CASE WHEN yc = 'OC' then 1 END) as [Older Cohort],
+-- Young Males vs Young Females
+	   sum(CASE WHEN chsex = 'Male'	AND yc = 'YC' then 1 END) as [YC Males],
+	   sum(CASE WHEN chsex = 'Female' AND yc = 'YC' then 1 END) as [YC Females],
+-- Old Males vs Old Females
+	   sum(CASE WHEN chsex = 'Male'	AND yc = 'OC' then 1 END) as [OC Males],
+	   sum(CASE WHEN chsex = 'Female' AND yc = 'OC' then 1 END) as [OC Females]
+
+FROM (Select DISTINCT childid, countryid, clustid, chsex, yc from dbCare.ch_Identity) as A
+GROUP BY countryid, clustid
+)
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+--DROP VIEW dbo.V02_AllChildrenBySentinelSite ;
+
+
+
+

@@ -1,0 +1,55 @@
+USE CP001;
+GO
+
+-- Create Master Data table - Ethnicity
+
+CREATE TABLE Ethnicity 
+(
+	chethnicid varchar(6) PRIMARY KEY,
+	chethnic varchar(50)
+)
+
+-- Insert into MD table - Ethnicity
+
+INSERT INTO [CP001].[dbCare].[Ethnicity](chethnicid, chethnic)
+VALUES  ('ET_010' , 'Other'),
+		('ET_011' , 'Agew'),
+		('ET_012' , 'Amhara'),
+		('ET_013' , 'Gurage'),
+		('ET_014' , 'Hadiva'),
+		('ET_015' , 'Kambata'),
+		('ET_016' , 'Oromo'),
+		('ET_017' , 'Sidama'),
+		('ET_018' , 'Tigrian'),
+		('ET_019' , 'Wolavta'),
+		('ET_099' , 'NK'),
+		('IN_100' , 'Other, Hindu'),
+		('IN_101' , 'Other, Muslim'),
+		('IN_102' , 'Other, Buddhist'),
+		('IN_104' , 'Other, Christian'),
+		('IN_014' , 'None'),
+		('IN_021' , 'SC'),
+		('IN_022' , 'ST'),
+		('IN_023' , 'BC'),
+		('IN_024' , 'Other'),
+		('IN_099' , 'NK'),
+		('PE_031' , 'White'),
+		('PE_032' , 'Mestizo'),
+		('PE_033' , 'Native of the Amazon'),
+		('PE_034' , 'Negro'),
+		('PE_035' , 'Asiatic'),
+		('VN_010' , 'Other'),
+		('VN_041' , 'Kinh'),
+		('VN_042' , 'H''Mong'),
+		('VN_043' , 'Cham'),
+		('VN_044' , 'Ede'),
+		('VN_045' , 'Bana'),
+		('VN_046' , 'Nung'),
+		('VN_047' , 'Tay'),
+		('VN_048' , 'Dao'),
+		('VN_099' , 'NK'),
+		('ET_NaN' , 'Missing'),
+		('IN_NaN' , 'Missing'),
+		('PE_NaN' , 'Missing'),
+		('VN_NaN' , 'Missing')
+;

@@ -1,0 +1,27 @@
+USE CP001;
+GO
+
+/******************************************/
+/*View 03 Creation - v03_LevelOfCare*/
+/******************************************/
+CREATE VIEW v03_LevelOfCare
+AS
+(
+SELECT dbCare.ch_Identity.child_round_id, dbCare.ch_Identity.childid, dbCare.ch_Identity.clustid, dbCare.ch_Identity.typesite, dbCare.ch_Identity.countryid, dbCare.ch_Identity.dint, dbCare.ch_Identity.round, dbCare.ch_Identity.yc, 
+                  dbCare.ch_Identity.childloc, dbCare.ch_Identity.chsex, dbo.[Dad Education].dadedu, dbo.[Care Education].caredu, dbo.[Mom Education].momedu, dbCare.Language.chlang, dbCare.Religion.chldrel, dbCare.ch_Guardian.careage, 
+                  dbCare.ch_Guardian.carecantread, dbCare.ch_Guardian.careduid, dbCare.ch_Guardian.carehead, dbCare.ch_Guardian.careladder, dbCare.ch_Guardian.careldr4yrs, dbCare.ch_Guardian.carerelid, dbCare.ch_Guardian.caresex, 
+                  dbCare.ch_Guardian.dadage, dbCare.ch_Guardian.dadcantread, dbCare.ch_Guardian.dadeduid, dbCare.ch_Guardian.dadlive, dbCare.ch_Guardian.dadyrdied, dbCare.ch_Guardian.momage, dbCare.ch_Guardian.momcantread, 
+                  dbCare.ch_Guardian.momeduid, dbCare.ch_Guardian.momlive, dbCare.ch_Guardian.momyrdied, dbCare.Relationship.relationship
+FROM     dbCare.ch_Guardian INNER JOIN
+                  dbCare.ch_Identity ON dbCare.ch_Guardian.child_round_id = dbCare.ch_Identity.child_round_id INNER JOIN
+                  dbo.[Dad Education] ON dbCare.ch_Identity.child_round_id = dbo.[Dad Education].child_round_id INNER JOIN
+                  dbo.[Care Education] ON dbCare.ch_Identity.child_round_id = dbo.[Care Education].child_round_id INNER JOIN
+                  dbo.[Mom Education] ON dbCare.ch_Identity.child_round_id = dbo.[Mom Education].child_round_id INNER JOIN
+                  dbCare.Relationship ON dbCare.ch_Guardian.carerelid = dbCare.Relationship.relid AND dbCare.ch_Guardian.carerelid = dbCare.Relationship.relid AND dbCare.ch_Guardian.carerelid = dbCare.Relationship.relid AND 
+                  dbCare.ch_Guardian.carerelid = dbCare.Relationship.relid INNER JOIN
+                  dbCare.Religion ON dbCare.ch_Identity.chldrelid = dbCare.Religion.chldrelid AND dbCare.ch_Identity.chldrelid = dbCare.Religion.chldrelid AND dbCare.ch_Identity.chldrelid = dbCare.Religion.chldrelid AND 
+                  dbCare.ch_Identity.chldrelid = dbCare.Religion.chldrelid INNER JOIN
+                  dbCare.Language ON dbCare.ch_Identity.chlangid = dbCare.Language.chlangid AND dbCare.ch_Identity.chlangid = dbCare.Language.chlangid AND dbCare.ch_Identity.chlangid = dbCare.Language.chlangid AND 
+                  dbCare.ch_Identity.chlangid = dbCare.Language.chlangid
+)
+;

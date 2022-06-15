@@ -1,0 +1,141 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 10 Creation - zREP10_HouseholdAttributes*/
+/******************************************/
+-- Country & Region wise - Household Attributes
+
+CREATE VIEW zREP10_HouseholdAttributes
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+
+	   region as Region,
+	   typesite as [Site Type],
+	   chsex as Sex,
+
+	   MAX(chlang) as [Majorly used language],
+	   round as Round,
+	   yc as [Younger/Older Cohort],
+	   headsex as [Household Head's sex],
+	   
+	   AVG(headage) as [Avg Age of Household's Head],
+	   COUNT(childid) as [Total Children],
+
+	   AVG([hhsize]) as [Avg Household size],
+
+	   AVG([female05]) as [Avg Number of females aged 0-5]
+	   ,AVG([female612]) as [Avg Number of females aged 6-12]
+		,AVG([female1317]) as [Avg Number of females aged 13-17]
+		,AVG([female1860]) as [Avg Number of females aged 18-60]
+		,AVG([female61]) as [Avg Number of females aged 61+]
+		
+		,AVG([male05]) as [Avg Number of males aged 0-5]
+		,AVG([male612]) as [Avg Number of males aged 6-12]
+		,AVG([male1317]) as [Avg Number of males aged 13-17]
+		,AVG([male1860]) as [Avg Number of males aged 18-60]
+		,AVG([male61]) as [Avg Number of males aged 61+]
+
+		,SUM(IIF([ownlandhse]='Yes', 1,0)) as [Household owns land where house is on] 
+		,SUM(IIF([ownhouse]='Yes', 1,0)) as [Household own the house]
+		,SUM([credit]) as [Household has obtained loan or credit]
+		,SUM(IIF([foodsec] LIKE '%do not eat%', 1,0)) as [People don't eat enough in the household]
+		
+		,ROUND(AVG([wi]),2) as [Avg Wealth Index]
+		,ROUND(AVG([hq]),2) as [Avg Housing Quality Index]
+		,ROUND(AVG([sv]),2) as [Avg Access to Services Index]
+		,ROUND(AVG([cd]),2) as [Avg Consumer Durables Index]
+		
+		,SUM(IIF([cookingq]='Yes', 1, 0)) as [Access to adequate fuels for cooking]
+		,SUM(IIF([cookingq]='No', 1, 0)) as [No Access to adequate fuels for cooking]
+
+		,SUM(IIF([drwaterq]='Yes', 1, 0)) as [Access to safe drinking water]
+		,SUM(IIF([drwaterq]='No', 1, 0)) as [No Access to safe drinking water]
+
+		,SUM(IIF([elecq]='Yes', 1, 0)) as [Access to Electricity]
+		,SUM(IIF([elecq]='No', 1, 0)) as [No Access to Electricity]
+
+		,SUM(IIF([toiletq]='Yes', 1, 0)) as [Access to sanitation] 
+		,SUM(IIF([toiletq]='No', 1, 0)) as [No Access to sanitation]
+
+		,SUM(IIF([aniany]='Yes',1,0)) as [Livestock ownership (in past 12 months)]
+		
+FROM (Select 
+			DISTINCT childid, 
+					 countryid,
+					 typesite,
+					 chsex, 
+					 round,
+					 yc,
+					 agemon,   
+							  [headage]
+							  --,[headeduid]
+							  --,[headid]
+							  --,[headrelid]
+							  ,[headsex]
+							  ,[female05]
+							  ,[female1317]
+							  ,[female1860]
+							  ,[female61]
+							  ,[female612]
+							  ,[hhsize]
+							  ,[male05]
+							  ,[male1317]
+							  ,[male1860]
+							  ,[male61]
+							  ,[male612]
+							  ,[ownhouse]
+							  ,[ownlandhse]
+							  ,[credit]
+							  ,[foodsec]
+							  ,[cd]
+							  ,[cookingq]
+							  ,[drwaterq]
+							  ,[elecq]
+							  ,[hq]
+							  ,[sv]
+							  ,[toiletq]
+							  ,[wi]
+
+							  , dbCare.Region.region
+							  , dbCare.Language.chlang
+
+							  ,[aniany]
+
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.Language
+					  ON dbCare.ch_Identity.chlangid = dbCare.Language.chlangid 
+			INNER JOIN dbCare.hh_Main
+					  ON dbCare.ch_Identity.child_round_id = dbCare.hh_Main.child_round_id
+			INNER JOIN dbCare.hh_LivestockOwnership
+					  ON dbCare.ch_Identity.child_round_id = dbCare.hh_LivestockOwnership.child_round_id) as A
+
+GROUP BY countryid, region, chsex, typesite, round, yc, chlang, headsex
+--ORDER BY countryid, region, chsex, typesite, round, yc, chlang, hghgrade asc
+
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

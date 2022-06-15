@@ -1,0 +1,56 @@
+USE CP001;
+GO
+
+-- Create Master Data table - School_Type
+
+CREATE TABLE School_Type 
+(
+	entypeid varchar(6) PRIMARY KEY,
+	entype varchar(150)
+)
+
+-- Insert into MD table - School_Type
+
+INSERT INTO [CP001].[dbCare].[School_Type](entypeid, entype)
+VALUES  ('ET_001' , 'Private'),
+		('ET_002' , 'Public (part student fees, part government funded)'),
+		('ET_003' , 'Community (NGO/Charity/Religious)'),
+		('ET_004' , 'Government funded'),
+		('ET_005' , 'Others, specify'),
+		('ET_077' , 'Not Known'),
+		('ET_079' , 'Refused to answer'),
+		('ET_088' , 'N/A'),
+		('IN_001' , 'Private'),
+		('IN_010' , 'vn=main school'),
+		('IN_011' , 'Other'),
+		('IN_002' , 'NGO/Charity/ Religious (not for profit)'),
+		('IN_003' , 'public (government)'),
+		('IN_004' , 'informal or non-formal community (e.g. mother''s cooperative)'),
+		('IN_005' , 'vocational school'),
+		('IN_006' , 'in=charitable trust'),
+		('IN_007' , 'india=bridge school'),
+		('IN_077' , 'Not Known'),
+		('IN_008' , 'mix of public and private'),
+		('IN_088' , 'N/A'),
+		('IN_009' , 'vn=branch school'),
+		('IN_099' , 'missing'),
+		('PE_001' , 'Private'),
+		('PE_002' , 'Public'),
+		('PE_003' , 'Half public/half private'),
+		('PE_004' , 'Other'),
+		('PE_088' , 'N/A'),
+		('VN_001' , 'Private'),
+		('VN_002' , 'NGO/Charity/ Religious (not for profit)'),
+		('VN_003' , 'Public'),
+		('VN_005' , 'Others, specify'),
+		('VN_006' , 'Informal'),
+		('VN_007' , 'Half public/half private'),
+		('VN_077' , 'Not Known'),
+		('VN_008' , 'Centre for continuing education'),
+		('VN_088' , 'N/A'),
+		('ET_NaN' , 'Missing'),
+		('IN_NaN' , 'Missing'),
+		('PE_NaN' , 'Missing'),
+		('VN_NaN' , 'Missing')
+
+;

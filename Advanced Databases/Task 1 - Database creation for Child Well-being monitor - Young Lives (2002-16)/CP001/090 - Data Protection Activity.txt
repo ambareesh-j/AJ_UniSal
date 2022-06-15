@@ -1,0 +1,16 @@
+USE CP001;
+GO 
+
+-- ==============================================
+-- Create & grant permissions of 'Stored-Procedure-only' Access to a user 
+-- ==============================================
+
+create role db_sp_Access_only ;
+
+grant execute to db_sp_Access_only; 
+
+-- After this is done, the role db_sp_Access_only is opened and 
+-- assigned the respective securables (datareader and sp only)
+
+
+

@@ -1,0 +1,23 @@
+USE CP001;
+GO
+
+/******************************************/
+/*View 06 Creation - v06_ShocksEndured*/
+/******************************************/
+CREATE VIEW v06_ShocksEndured
+AS
+(
+SELECT dbCare.ch_Identity.child_round_id, dbCare.ch_Identity.childid, dbCare.ch_Identity.clustid, dbCare.ch_Identity.typesite, dbCare.ch_Identity.countryid, dbCare.ch_Identity.dint, dbCare.ch_Identity.round, dbCare.ch_Identity.yc, 
+                  dbCare.ch_Identity.childloc, dbCare.ch_Identity.chsex, dbCare.ch_Identity.agemon, dbCare.Region.region, dbCare.hh_Shocks.shcrime1, dbCare.hh_Shocks.shcrime2, dbCare.hh_Shocks.shcrime3, dbCare.hh_Shocks.shcrime4, 
+                  dbCare.hh_Shocks.shcrime5, dbCare.hh_Shocks.shcrime6, dbCare.hh_Shocks.shcrime7, dbCare.hh_Shocks.shcrime8, dbCare.hh_Shocks.shregul1, dbCare.hh_Shocks.shregul2, dbCare.hh_Shocks.shregul3, dbCare.hh_Shocks.shregul4, 
+                  dbCare.hh_Shocks.shregul5, dbCare.hh_Shocks.shregul6, dbCare.hh_Shocks.shecon1, dbCare.hh_Shocks.shecon2, dbCare.hh_Shocks.shecon3, dbCare.hh_Shocks.shecon4, dbCare.hh_Shocks.shecon5, dbCare.hh_Shocks.shecon6, 
+                  dbCare.hh_Shocks.shecon7, dbCare.hh_Shocks.shecon8, dbCare.hh_Shocks.shecon9, dbCare.hh_Shocks.shecon10, dbCare.hh_Shocks.shecon11, dbCare.hh_Shocks.shecon12, dbCare.hh_Shocks.shecon13, dbCare.hh_Shocks.shecon14, 
+                  dbCare.hh_Shocks.shenv1, dbCare.hh_Shocks.shenv2, dbCare.hh_Shocks.shenv3, dbCare.hh_Shocks.shenv4, dbCare.hh_Shocks.shenv5, dbCare.hh_Shocks.shenv6, dbCare.hh_Shocks.shenv7, dbCare.hh_Shocks.shenv8, 
+                  dbCare.hh_Shocks.shenv9, dbCare.hh_Shocks.shenv10, dbCare.hh_Shocks.shenv11, dbCare.hh_Shocks.shenv12, dbCare.hh_Shocks.shenv13, dbCare.hh_Shocks.shhouse1, dbCare.hh_Shocks.shhouse2, dbCare.hh_Shocks.shhouse3, 
+                  dbCare.hh_Shocks.shfam1, dbCare.hh_Shocks.shfam2, dbCare.hh_Shocks.shfam3, dbCare.hh_Shocks.shfam4, dbCare.hh_Shocks.shfam5, dbCare.hh_Shocks.shfam6, dbCare.hh_Shocks.shfam7, dbCare.hh_Shocks.shfam8, 
+                  dbCare.hh_Shocks.shfam9, dbCare.hh_Shocks.shfam10, dbCare.hh_Shocks.shfam11, dbCare.hh_Shocks.shfam12, dbCare.hh_Shocks.shfam13, dbCare.hh_Shocks.shfam14, dbCare.hh_Shocks.shfam15, dbCare.hh_Shocks.shfam16, 
+                  dbCare.hh_Shocks.shfam17, dbCare.hh_Shocks.shfam18, dbCare.hh_Shocks.shother, dbCare.ch_Identity.deceased
+FROM     dbCare.ch_Identity INNER JOIN
+                  dbCare.Region ON dbCare.ch_Identity.regionid = dbCare.Region.regionid INNER JOIN
+                  dbCare.hh_Shocks ON dbCare.ch_Identity.child_round_id = dbCare.hh_Shocks.child_round_id)
+;

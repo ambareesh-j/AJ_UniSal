@@ -1,0 +1,130 @@
+USE CP001;
+GO
+
+-- Create Transactional Data table- ch_Guardian
+
+CREATE TABLE ch_Guardian
+(
+		  chGuard_id			INT IDENTITY(1,1) PRIMARY KEY
+		, child_round_id		VARCHAR(10) NOT NULL
+		, careage				INT
+		, carecantread			VARCHAR(10)
+		, careduid				VARCHAR(6)                
+		, carehead				VARCHAR(50)
+		, careid				INT
+		, careladder			INT	
+		, careldr4yrs			INT
+		, carerelid				INT
+		, caresex				VARCHAR(10)
+		, dadage				INT
+		, dadcantread			VARCHAR(10)
+		, dadeduid				VARCHAR(6)  	
+		, dadid					INT
+		, dadlive				VARCHAR(50)
+		, dadyrdied				INT 
+		, momage				INT
+		, momcantread			VARCHAR(10)
+		, momeduid				VARCHAR(6)
+		, momid					INT
+		, momlive				VARCHAR(50)
+		, momyrdied				INT
+
+		,CONSTRAINT FK_chGuardid FOREIGN KEY (child_round_id)
+			REFERENCES [dbCare].[ch_Identity](child_round_id)
+		,CONSTRAINT FK_chcareduid FOREIGN KEY (careduid)
+			REFERENCES [dbCare].[Highest_Grade](hghgradeid)
+		,CONSTRAINT FK_chdadeduid FOREIGN KEY (dadeduid)
+			REFERENCES [dbCare].[Highest_Grade](hghgradeid)
+		,CONSTRAINT FK_chmomeduid FOREIGN KEY (momeduid)
+			REFERENCES [dbCare].[Highest_Grade](hghgradeid)
+		,CONSTRAINT FK_chcarerelid FOREIGN KEY (carerelid)
+			REFERENCES [dbCare].[Relationship] (relid)
+)
+
+-- Insert into TD table - ch_Guardian
+
+BEGIN TRY
+
+INSERT INTO [CP001].[dbCare].[ch_Guardian] 
+SELECT 
+		RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id
+
+		,CASE [careage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [careage]
+			END as [careage]
+		,CASE [carecantread]		WHEN '0'	THEN 'No'
+									WHEN '1'	THEN 'Yes'
+												ELSE [carecantread]
+			END as [carecantread]
+		,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [caredu] as [careduid]
+        ,CASE [carehead]	WHEN '1'	THEN 'Caregiver is household head'
+							WHEN '2'	THEN 'Caregiver is partner of household head'
+							WHEN '3'	THEN 'Other'
+										ELSE [carehead]
+			END as [carehead]
+
+		,[careid]
+		,[careladder]
+		,[careldr4yrs]
+		,[carerel] as [carerelid]
+		,CASE [caresex]	WHEN '1'	THEN 'Male'
+						WHEN '2'	THEN 'Female'
+									ELSE [caresex]
+			END as [caresex]
+		
+		,CASE [dadage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [dadage]
+			END as [dadage]
+
+		,CASE [dadcantread]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [dadcantread]
+			END as [dadcantread]
+		
+		,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [dadedu] as [dadeduid]
+		,[dadid]
+		,CASE [dadlive]		WHEN '1'	THEN 'Lives in the household'
+							WHEN '2'	THEN 'Does not live in household'
+							WHEN '3'	THEN 'Has died'
+										ELSE [dadlive]
+			END [dadlive]
+		,[dadyrdied]
+
+		,CASE [momage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [momage]
+			END as [momage]
+		,CASE [momcantread]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [momcantread]
+			END as [momcantread]
+
+		,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [momedu] as [momeduid]
+		,[momid]
+
+		,CASE [momlive]		WHEN '1'	THEN 'Lives in the household'
+							WHEN '2'	THEN 'Does not live in household'
+							WHEN '3'	THEN 'Has died'
+										ELSE [momlive]
+			END [momlive]
+		,[momyrdied]
+
+FROM CP001.dbCare.INPEVIETH
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH
+;
+
+
+

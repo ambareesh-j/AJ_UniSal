@@ -1,0 +1,17 @@
+USE CP001;
+GO
+
+/*Drop Master Data Tables*/
+
+--DROP TABLE [CP001].[dbCare].[Religion];
+--DROP TABLE [CP001].[dbCare].[Language];
+--DROP TABLE [CP001].[dbCare].[Ethnicity];
+--DROP TABLE [CP001].[dbCare].[Current_Grade];
+--DROP TABLE [CP001].[dbCare].[School_Type];
+--DROP TABLE [CP001].[dbCare].[Highest_Grade];
+
+/*Drop Transactional Data Tables*/
+
+--DROP TABLE [CP001].[dbCare].[ch_Identity];
+--DROP TABLE [CP001].[dbCare].[ch_MedicalHistory];
+--DROP TABLE [CP001].[dbCare].[ch_Education];

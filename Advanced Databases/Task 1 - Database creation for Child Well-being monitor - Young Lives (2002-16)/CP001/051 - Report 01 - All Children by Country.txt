@@ -1,0 +1,47 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 01 Creation - zREP01_AllChildrenByCtry*/
+/******************************************/
+-- Total Poor children per country - M & F, YC & OC
+CREATE VIEW zREP01_AllChildrenByCtry
+AS
+(
+SELECT 
+
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   count(DISTINCT childid) as [Total Children],
+-- Total Males vs. Females
+	   sum(CASE WHEN chsex = 'Male' then 1 END) as [Total Males],
+	   sum(CASE WHEN chsex = 'Female' then 1 END) as [Total Females],
+-- Total Younger cohort vs Older cohort
+	   sum(CASE WHEN yc = 'YC' then 1 END) as [Younger Cohort],
+	   sum(CASE WHEN yc = 'OC' then 1 END) as [Older Cohort],
+-- Young Males vs Young Females
+	   sum(CASE WHEN chsex = 'Male'	AND yc = 'YC' then 1 END) as [Young Males],
+	   sum(CASE WHEN chsex = 'Female' AND yc = 'YC' then 1 END) as [Young Females],
+-- Old Males vs Old Females
+	   sum(CASE WHEN chsex = 'Male'	AND yc = 'OC' then 1 END) as [Old Males],
+	   sum(CASE WHEN chsex = 'Female' AND yc = 'OC' then 1 END) as [Old Females]
+
+FROM 
+	(Select DISTINCT childid, countryid, chsex, yc from dbCare.ch_Identity) as A
+GROUP BY countryid
+--ORDER BY count(DISTINCT childid) DESC										/*Observation - The ORDER BY clause is invalid in views creation*/
+);
+
+GO
+COMMIT TRANSACTION;
+
+;

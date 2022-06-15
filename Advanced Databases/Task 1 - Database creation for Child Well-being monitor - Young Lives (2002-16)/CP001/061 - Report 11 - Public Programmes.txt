@@ -1,0 +1,137 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 11 Creation - zREP11_PublicProgrammes*/
+/******************************************/
+-- Country & Region wise - Beneficiaries of Public Programmes
+
+CREATE VIEW zREP11_PublicProgrammes
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+
+	   region as Region,
+	   typesite as [Site Type],
+	   chsex as Sex,
+
+	   round as Round,
+	   yc as [Younger/Older Cohort],
+
+	   COUNT(childid) as [Total Children],
+	   AVG([hhsize]) as [Avg Household size],
+	   
+	     SUM(IIF([eap]='Yes',1,0)) as [Emergency Aid Programme]
+		,SUM(IIF([hep]='Yes',1,0)) as [Health Extension Programme]
+		,SUM(IIF([othprog]='Yes',1,0)) as [Other Security Programmes]
+		,SUM(IIF([psnp_ds]='Yes',1,0)) as [PSNP-Direct Support Programme]
+		,SUM(IIF([psnp_pw]='Yes',1,0)) as [PSNP-Public Works Programme]
+		,SUM(IIF([resettled]='Yes',1,0)) as [Resettled by the government]
+
+		,SUM(IIF([ikp]='Yes',1,0)) as [IKP-Credit provision]
+		,SUM(IIF([ikp_child]='Yes',1,0)) as [IKP-Credit provision for children]
+		,SUM(IIF([nregs]='Yes',1,0)) as [Household has a job card under the NREGS]
+		,SUM(IIF([nregs_allow]='Yes',1,0)) as [Unemployment allowance under NREGS]
+		,SUM(IIF([nregs_work]='Yes',1,0)) as [Worked for NREGS]
+		,SUM(IIF([pds]='Yes',1,0)) as [Access to Public Distribution System]
+		,SUM(IIF([rajiv]='Yes',1,0)) as [Rajiv/NTR Arogyasri card]
+		,SUM(IIF([sabla]='Yes',1,0)) as [SABLA programme]
+		,SUM(IIF([sabla_yl]='Yes',1,0)) as [REGSEAG/SABLA for children]
+
+		,SUM(IIF([beca_yl]='Yes',1,0)) as [Beca 18 programme]
+		,SUM(IIF([bonograt]='Yes',1,0)) as [Bono de Gratitud/Pension 65 programme]
+		,SUM(IIF([insur_yl]='Yes',1,0)) as [YL child has Health Insurance]
+		,SUM(IIF([juntos]='Yes',1,0)) as [Juntos programme]
+		,SUM(IIF([minsa_yl]='Yes',1,0)) as [Partial SIS / SIS independiente (MINSA)]
+		,SUM(IIF([projoven_yl]='Yes',1,0)) as [ProJoven/ Jovenes a la Obra programme]
+		,SUM(IIF([sisgrat_yl]='Yes',1,0)) as [SIS Gratuito programme]
+
+		,SUM(IIF([molisa06]='Yes',1,0)) as [MOLISA-2006]
+		,SUM(IIF([molisa09]='Yes',1,0)) as [MOLISA-2009]
+		,SUM(IIF([molisa10]='Yes',1,0)) as [MOLISA-2010]
+		,SUM(IIF([molisa11]='Yes',1,0)) as [MOLISA-2011]
+		,SUM(IIF([molisa12]='Yes',1,0)) as [MOLISA-2012]
+		,SUM(IIF([molisa13]='Yes',1,0)) as [MOLISA-2013]
+		,SUM(IIF([molisa14]='Yes',1,0)) as [MOLISA-2014]
+		,SUM(IIF([molisa15]='Yes',1,0)) as [MOLISA-2015]
+		,SUM(IIF([molisa16]='Yes',1,0)) as [MOLISA-2016]
+
+FROM (Select 
+			DISTINCT childid, 
+					 countryid,
+					 typesite,
+					 chsex, 
+					 round,
+					 yc,
+					 agemon,   
+							  [hhsize]
+							  ,[eap]
+							  ,[hep]
+							  ,[othprog]
+							  ,[psnp_ds]
+							  ,[psnp_pw]
+							  ,[resettled]
+
+							  ,[ikp]
+							  ,[ikp_child]
+							  ,[nregs]
+							  ,[nregs_allow]
+							  ,[nregs_work]
+							  ,[pds]
+							  ,[rajiv]
+							  ,[sabla]
+							  ,[sabla_yl]
+
+							  ,[beca_yl]
+							  ,[bonograt]
+							  ,[insur_yl]
+							  ,[juntos]
+							  ,[minsa_yl]
+							  ,[projoven_yl]
+							  ,[sisgrat_yl]
+
+							  ,[molisa06]
+							  ,[molisa09]
+							  ,[molisa10]
+							  ,[molisa11]
+							  ,[molisa12]
+							  ,[molisa13]
+							  ,[molisa14]
+							  ,[molisa15]
+							  ,[molisa16]
+
+							  , dbCare.Region.region
+
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.hh_Main
+					  ON dbCare.ch_Identity.child_round_id = dbCare.hh_Main.child_round_id
+			INNER JOIN dbCare.hh_PublicProgrammes
+					  ON dbCare.ch_Identity.child_round_id = dbCare.hh_PublicProgrammes.child_round_id	) as A
+
+GROUP BY countryid, region, chsex, typesite, round, yc
+
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

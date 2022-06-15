@@ -1,0 +1,24 @@
+USE CP001;
+GO
+
+/******************************************/
+/*View 02 Creation - v02_Literacy*/
+/******************************************/
+CREATE VIEW v02_Literacy
+AS
+(
+SELECT dbCare.ch_Identity.child_round_id, dbCare.Current_Grade.engrade, dbCare.School_Type.entype, dbCare.Highest_Grade.hghgrade, dbCare.Language.chlang, dbCare.Religion.chldrel, dbCare.ch_Identity.childid, 
+                  dbCare.ch_Identity.typesite, dbCare.ch_Identity.clustid, dbCare.ch_Identity.countryid, dbCare.ch_Identity.round, dbCare.ch_Identity.dint, dbCare.ch_Identity.yc, dbCare.ch_Identity.childloc, dbCare.ch_Identity.agemon, 
+                  dbCare.ch_Education.agegr1, dbCare.ch_Education.enrol, dbCare.ch_Education.preprim, dbCare.ch_Education.timesch, dbCare.ch_Education.commsch, dbCare.ch_Education.commwork, dbCare.ch_Education.hcare, 
+                  dbCare.ch_Education.hchore, dbCare.ch_Education.hplay, dbCare.ch_Education.hschool, dbCare.ch_Education.hsleep, dbCare.ch_Education.hstudy, dbCare.ch_Education.htask, dbCare.ch_Education.hwork, 
+                  dbCare.ch_Education.levlread, dbCare.ch_Education.levlwrit, dbCare.ch_Education.literate
+FROM     dbCare.ch_Identity INNER JOIN
+                  dbCare.ch_Education ON dbCare.ch_Identity.child_round_id = dbCare.ch_Education.child_round_id INNER JOIN
+                  dbCare.Current_Grade ON dbCare.ch_Education.engradeid = dbCare.Current_Grade.engradeid INNER JOIN
+                  dbCare.Highest_Grade ON dbCare.ch_Education.hghgradeid = dbCare.Highest_Grade.hghgradeid INNER JOIN
+                  dbCare.Language ON dbCare.ch_Identity.chlangid = dbCare.Language.chlangid INNER JOIN
+                  dbCare.Religion ON dbCare.ch_Identity.chldrelid = dbCare.Religion.chldrelid INNER JOIN
+                  dbCare.School_Type ON dbCare.ch_Education.entypeid = dbCare.School_Type.entypeid INNER JOIN
+                  dbCare.Region ON dbCare.ch_Identity.regionid = dbCare.Region.regionid
+)
+;

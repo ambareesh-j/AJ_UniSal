@@ -1,0 +1,206 @@
+USE CP001;
+GO
+
+-- Create Transactional Data table- hh_PublicProgrammes
+
+CREATE TABLE hh_PublicProgrammes
+(
+		 hh_PubProg_id			INT IDENTITY(1,1) PRIMARY KEY
+		,child_round_id			VARCHAR(10) NOT NULL
+
+		, eap					VARCHAR(5)			
+		, hep					VARCHAR(5)	
+		, othprog				VARCHAR(5)	
+		, psnp_ds				VARCHAR(5)	
+		, psnp_pw				VARCHAR(5)	
+		, resettled				VARCHAR(5)	
+
+		, ikp					VARCHAR(5)	
+		, ikp_child				VARCHAR(5)	
+		, nregs					VARCHAR(5)	
+		, nregs_allow			VARCHAR(5)	
+		, nregs_work			VARCHAR(5)	
+		, pds					VARCHAR(5)	
+		, rajiv					VARCHAR(5)	
+		, sabla					VARCHAR(5)	
+		, sabla_yl				VARCHAR(5)	
+
+		, beca_yl				VARCHAR(5)	
+		, bonograt				VARCHAR(5)	
+		, insur_yl				VARCHAR(5)	
+		, juntos				VARCHAR(5)	
+		, minsa_yl				VARCHAR(5)	
+		, projoven_yl			VARCHAR(5)	
+		, sisgrat_yl			VARCHAR(5)	
+
+		, molisa06				VARCHAR(5)	
+		, molisa09				VARCHAR(5)	
+		, molisa10				VARCHAR(5)	
+		, molisa11				VARCHAR(5)	
+		, molisa12				VARCHAR(5)	
+		, molisa13				VARCHAR(5)	
+		, molisa14				VARCHAR(5)	
+		, molisa15				VARCHAR(5)	
+		, molisa16				VARCHAR(5)	
+
+		,CONSTRAINT FK_hh_PubProgid FOREIGN KEY (child_round_id)
+			REFERENCES [dbCare].[ch_Identity](child_round_id)
+)
+
+-- Insert into TD table - hh_PublicProgrammes
+
+BEGIN TRY
+
+INSERT INTO [CP001].[dbCare].[hh_PublicProgrammes] 
+SELECT 
+	RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id
+
+/*Ethiopia*/
+		, CASE [eap]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [eap]
+	   END as [eap]
+		, CASE [hep]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [hep]
+	   END as [hep] 
+		, CASE [othprog]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [othprog]
+	   END as [othprog]
+		, CASE [psnp_ds]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [psnp_ds]
+	   END as [psnp_ds]
+		, CASE [psnp_pw]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [psnp_pw]
+	   END as [psnp_pw]
+		, CASE [resettled]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [resettled]
+	   END as [resettled]
+		
+	
+/*India*/
+		, CASE [ikp]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [ikp]
+	   END as [ikp]
+		, CASE [ikp_child]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [ikp_child]
+	   END as [ikp_child]
+		, CASE [nregs]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [nregs]
+	   END as [nregs]
+		, CASE [nregs_allow]	WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [nregs_allow]
+	   END as [nregs_allow]
+		, CASE [nregs_work]		WHEN '0'	THEN 'No'
+								WHEN '1'	THEN 'Yes'
+											ELSE [nregs_work]
+	   END as [nregs_work]
+		, CASE [pds]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [pds]
+	   END as [pds]
+		, CASE [rajiv]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [rajiv]
+	   END as [rajiv]
+		, CASE [sabla]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [sabla]
+	   END as [sabla]
+		, CASE [sabla_yl]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [sabla_yl]
+	   END as [sabla_yl]
+
+/*Peru*/
+
+		,CASE [beca_yl]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [beca_yl]
+	   END as [beca_yl]
+		,CASE [bonograt]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [bonograt]
+	   END as [bonograt]
+	   ,CASE [insur_yl]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [insur_yl]
+	   END as [insur_yl]
+		,CASE [juntos]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [juntos]
+	   END as [juntos]
+		,CASE [minsa_yl]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [minsa_yl]
+	   END as [minsa_yl]
+		,CASE [projoven_yl]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [projoven_yl]
+	   END as [projoven_yl]
+		,CASE [sisgrat_yl]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [sisgrat_yl]
+		END as [sisgrat_yl]
+
+/*Vietnam*/
+
+		,CASE [molisa06]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa06]
+		END as [molisa06]
+		,CASE [molisa09]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa09]
+		END as [molisa09]
+		,CASE [molisa10]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa10]
+		END as [molisa10]
+		,CASE [molisa11]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa11]
+		END as [molisa11]
+		,CASE [molisa12]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa12]
+		END as [molisa12] 
+		, CASE [molisa13]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa13]
+		END as [molisa13]
+		, CASE [molisa14]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa14]
+		END as [molisa14]
+		, CASE [molisa15]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa15]
+		END as [molisa15]
+		,CASE [molisa16]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [molisa16]
+		END as [molisa16]
+
+FROM CP001.dbCare.INPEVIETH
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH
+;
+
+
+

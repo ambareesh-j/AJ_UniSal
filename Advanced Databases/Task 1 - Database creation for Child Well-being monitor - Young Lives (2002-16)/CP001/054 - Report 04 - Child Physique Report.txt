@@ -1,0 +1,59 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 04 Creation - zREP04_ChildPhysiqueReport*/
+/******************************************/
+-- Country & Region wise - Child body change over the years from 2002 to 2007 segregated by Sex
+
+CREATE VIEW zREP04_ChildPhysiqueReport
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   region as Region,
+	   --childid,
+	   chsex as Sex,
+	   round as Round,
+
+	   --underweight as Underweight,					-- Wrongly classified column
+
+	   ROUND(AVG(agemon)/12, 0) as [Avg Age (in Yrs)],
+
+	   ROUND(AVG(chweight),2) as [Avg Weight(in kg)],
+	   ROUND(AVG(chheight)*0.032, 2) as [Avg Height(in ft)],
+	   ROUND(AVG(bmi),2) as [Avg BMI],
+
+	   ROUND(AVG(zwfa),3) as [Avg_Z-score - Weight for Age],
+	   ROUND(AVG(zhfa),3) as [Avg_Z-score - Height for Age],
+	   ROUND(AVG(zbfa),3) as [Avg_Z-score - BMI]
+
+FROM (Select 
+			DISTINCT childid, countryid, chsex, round, agemon, chweight, zwfa, chheight, zhfa, bmi, zbfa, dbCare.Region.region
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region 
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid ) as A
+
+GROUP BY countryid, region, chsex, round
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

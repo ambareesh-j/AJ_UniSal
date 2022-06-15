@@ -1,0 +1,133 @@
+USE CP001;
+GO
+
+-- Create Transactional Data table- hh_Main
+
+CREATE TABLE hh_Main
+(
+		  hh_Main_id			INT IDENTITY(1,1) PRIMARY KEY
+		, child_round_id		VARCHAR(10) NOT NULL
+		, headage				INT		
+		, headeduid				VARCHAR(6)
+		, headid				INT
+		, headrelid				INT			
+		, headsex				VARCHAR(10)
+		, female05				INT
+		, female1317			INT	
+		, female1860			INT
+		, female61				INT
+		, female612				INT
+		, hhsize				INT
+		, male05				INT
+		, male1317				INT
+		, male1860				INT
+		, male61				INT
+		, male612				INT
+		, ownhouse				VARCHAR(10)
+		, ownlandhse			VARCHAR(10)
+		, credit				INT
+		, foodsec				VARCHAR(50)
+		, cd					FLOAT
+		, cookingq				VARCHAR(10)
+		, drwaterq				VARCHAR(10)
+		, elecq					VARCHAR(10)
+		, hq					FLOAT
+		, sv					FLOAT
+		, toiletq				VARCHAR(10)
+		, wi					FLOAT
+
+		,CONSTRAINT FK_hh_Mainid FOREIGN KEY (child_round_id)
+			REFERENCES [dbCare].[ch_Identity](child_round_id)
+		,CONSTRAINT FK_hh_headeduid FOREIGN KEY (headeduid)
+			REFERENCES [dbCare].[Highest_Grade](hghgradeid)
+)
+
+-- Insert into TD table - hh_Main
+
+BEGIN TRY
+
+INSERT INTO [CP001].[dbCare].[hh_Main] 
+SELECT 
+	RTRIM(LTRIM([childid])) + '_' + RTRIM(LTRIM([round])) as child_round_id
+	 ,CASE [headage]	WHEN '-9999'	THEN 'Not known'
+										ELSE [headage]
+	   END as [headage]
+     
+	 ,SUBSTRING(RTRIM(LTRIM([childid])),1,2) 
+								+ '_' 
+								+ [headedu] as [headeduid]
+	, headid
+	,[headrel] as [headrelid]
+	,CASE [headsex]		WHEN '1'	THEN 'Male'
+						WHEN '2'	THEN 'Female'
+									ELSE [headsex]
+	   END as [headsex]
+
+	, female05
+	, female612
+	, female1317
+	, female1860
+	, female61
+
+	, hhsize
+
+	, male05
+	, male612
+	, male1317
+	, male1860
+	, male61
+	
+	  ,CASE [ownhouse]	WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [ownhouse]
+	   END as [ownhouse]
+      ,CASE [ownlandhse]	WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [ownlandhse]
+	   END as [ownlandhse]
+
+	, credit
+
+	,CASE [foodsec]		WHEN '1'	THEN 'We always eat enough of what we want'
+						WHEN '2'	THEN 'We eat enough but not always what we would like'
+						WHEN '3'	THEN 'We sometimes do not eat enough'
+						WHEN '4'	THEN 'We frequently do not eat enough'
+									ELSE [foodsec]
+	   END as [foodsec]
+
+	,[cd]
+	,CASE [cookingq]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [cookingq]
+	   END as [cookingq]
+
+	,CASE [drwaterq]		WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [drwaterq]
+	   END as [drwaterq]
+	,CASE [elecq]			WHEN '0'	THEN 'No'
+							WHEN '1'	THEN 'Yes'
+										ELSE [elecq]
+	   END as [elecq]
+	,[hq]
+	,[sv]
+	,CASE [toiletq]		WHEN '0'	THEN 'No'
+						WHEN '1'	THEN 'Yes'
+									ELSE [toiletq]
+	   END as [toiletq]
+	,[wi]
+
+FROM CP001.dbCare.INPEVIETH
+
+END TRY
+BEGIN CATCH
+   SELECT ERROR_MESSAGE() AS [Error Message]
+         ,ERROR_LINE() AS ErrorLine
+         ,ERROR_NUMBER() AS [Error Number]  
+         ,ERROR_SEVERITY() AS [Error Severity]  
+         ,ERROR_STATE() AS [Error State]  
+END CATCH
+;
+
+
+

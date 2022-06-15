@@ -1,0 +1,34 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT [childid]
+      ,[yc]
+      ,[round]
+      ,[dadyrdied]
+      ,[momyrdied]
+  FROM [CP001].[dbo].[india_constructed]
+
+  UNION 
+
+  SELECT [childid]
+      ,[yc]
+      ,[round]
+      ,[dadyrdied]
+      ,[momyrdied]
+  FROM [CP001].[dbo].[ethiopia_constructed]
+
+  UNION
+
+  SELECT [childid]
+      ,[yc]
+      ,[round]
+      ,[dadyrdied]
+      ,[momyrdied]
+  FROM [CP001].[dbo].[peru_constructed]
+
+  UNION
+
+  SELECT [childid]
+      ,[yc]
+      ,[round]
+      ,[dadyrdied]
+      ,[momyrdied]
+  FROM [CP001].[dbo].[vietnam_constructed]

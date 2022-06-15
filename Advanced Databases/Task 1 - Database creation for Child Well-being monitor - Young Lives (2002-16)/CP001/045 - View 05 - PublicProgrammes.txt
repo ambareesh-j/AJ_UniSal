@@ -1,0 +1,21 @@
+USE CP001;
+GO
+
+/******************************************/
+/*View 05 Creation - v05_PublicProgrammes*/
+/******************************************/
+CREATE VIEW v05_PublicProgrammes
+AS
+(
+SELECT dbCare.ch_Identity.child_round_id, dbCare.ch_Identity.childid, dbCare.Region.region, dbCare.ch_Identity.countryid, dbCare.ch_Identity.typesite, dbCare.ch_Identity.yc, dbCare.ch_Identity.round, dbCare.hh_PublicProgrammes.eap, 
+                  dbCare.hh_PublicProgrammes.hep, dbCare.hh_PublicProgrammes.othprog, dbCare.hh_PublicProgrammes.psnp_ds, dbCare.hh_PublicProgrammes.psnp_pw, dbCare.hh_PublicProgrammes.resettled, dbCare.hh_PublicProgrammes.ikp, 
+                  dbCare.hh_PublicProgrammes.ikp_child, dbCare.hh_PublicProgrammes.nregs, dbCare.hh_PublicProgrammes.nregs_allow, dbCare.hh_PublicProgrammes.nregs_work, dbCare.hh_PublicProgrammes.pds, 
+                  dbCare.hh_PublicProgrammes.rajiv, dbCare.hh_PublicProgrammes.sabla, dbCare.hh_PublicProgrammes.sabla_yl, dbCare.hh_PublicProgrammes.beca_yl, dbCare.hh_PublicProgrammes.bonograt, dbCare.hh_PublicProgrammes.insur_yl, 
+                  dbCare.hh_PublicProgrammes.juntos, dbCare.hh_PublicProgrammes.minsa_yl, dbCare.hh_PublicProgrammes.projoven_yl, dbCare.hh_PublicProgrammes.sisgrat_yl, dbCare.hh_PublicProgrammes.molisa06, 
+                  dbCare.hh_PublicProgrammes.molisa09, dbCare.hh_PublicProgrammes.molisa10, dbCare.hh_PublicProgrammes.molisa11, dbCare.hh_PublicProgrammes.molisa12, dbCare.hh_PublicProgrammes.molisa13, 
+                  dbCare.hh_PublicProgrammes.molisa14, dbCare.hh_PublicProgrammes.molisa15, dbCare.hh_PublicProgrammes.molisa16
+FROM     dbCare.ch_Identity INNER JOIN
+                  dbCare.hh_PublicProgrammes ON dbCare.ch_Identity.child_round_id = dbCare.hh_PublicProgrammes.child_round_id INNER JOIN
+                  dbCare.Region ON dbCare.ch_Identity.regionid = dbCare.Region.regionid
+)
+;

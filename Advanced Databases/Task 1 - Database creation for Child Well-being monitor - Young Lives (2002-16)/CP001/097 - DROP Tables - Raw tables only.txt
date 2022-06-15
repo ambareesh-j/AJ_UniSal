@@ -1,0 +1,7 @@
+USE CP001;
+GO
+
+DROP TABLE  [CP001].[dbCare].[ethiopia_constructed], 
+			[CP001].[dbCare].[india_constructed], 
+			[CP001].[dbCare].[peru_constructed], 
+			[CP001].[dbCare].[vietnam_constructed];

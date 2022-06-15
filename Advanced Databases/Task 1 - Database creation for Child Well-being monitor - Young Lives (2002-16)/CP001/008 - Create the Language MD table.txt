@@ -1,0 +1,82 @@
+USE CP001;
+GO
+
+-- Create Master Data table - Language
+
+CREATE TABLE Language 
+(
+	chlangid varchar(6) PRIMARY KEY,
+	chlang varchar(50)
+)
+
+-- Insert into MD table - Language
+
+INSERT INTO [CP001].[dbCare].[Language](chlangid, chlang)
+VALUES  ('ET_001' , 'Afarigna'),
+		('ET_010' , 'Kembategna'),
+		('ET_011' , 'Oromifa'),
+		('ET_012' , 'Sidamigna'),
+		('ET_013' , 'Siltigna'),
+		('ET_014' , 'Somaligna'),
+		('ET_015' , 'Tigrigna'),
+		('ET_016' , 'Welayitegna'),
+		('ET_017' , 'Zayigna'),
+		('ET_002' , 'Amarigna'),
+		('ET_020' , 'Other'),
+		('ET_003' , 'Agewigna'),
+		('ET_004' , 'Dawerogna'),
+		('ET_005' , 'Gedeogna'),
+		('ET_006' , 'Guraghigna'),
+		('ET_007' , 'Hadiyigna'),
+		('ET_077' , 'Not Known'),
+		('ET_079' , 'Refused To Answer'),
+		('ET_008' , 'Harari'),
+		('ET_088' , 'N/A'),
+		('ET_009' , 'Kefigna'),
+		('ET_099' , 'Missing'),
+		('IN_010' , 'Other'),
+		('IN_021' , 'Telugu'),
+		('IN_022' , 'Hindi'),
+		('IN_023' , 'Urdu'),
+		('IN_024' , 'Oria'),
+		('IN_025' , 'Kannada'),
+		('IN_026' , 'Marati'),
+		('IN_027' , 'Tamil'),
+		('IN_028' , 'Local Dialect'),
+		('IN_077' , 'Not Known'),
+		('IN_079' , 'Refused To Answer'),
+		('IN_088' , 'N/A'),
+		('IN_099' , 'Missing'),
+		('PE_010' , 'Other'),
+		('PE_031' , 'Spanish'),
+		('PE_032' , 'Quechua'),
+		('PE_033' , 'Aymara'),
+		('PE_034' , 'Native From Jungle'),
+		('PE_035' , 'Spanish & Quechua'),
+		('PE_036' , 'Spanish & Aymara'),
+		('PE_037' , 'Nomatsiguenga (Native Language In Jungle)'),
+		('PE_050' , 'Mute Or Difficulty Speaking'),
+		('PE_077' , 'Not Known'),
+		('PE_079' , 'Refused To Answer'),
+		('PE_088' , 'N/A'),
+		('PE_099' , 'Missing'),
+		('VN_010' , 'Other'),
+		('VN_041' , 'Vietnamese'),
+		('VN_042' , 'Chinese'),
+		('VN_043' , 'Tay'),
+		('VN_044' , 'H''Mong'),
+		('VN_045' , 'Nung'),
+		('VN_046' , 'Ede'),
+		('VN_047' , 'Thai'),
+		('VN_048' , 'Dao'),
+		('VN_049' , 'Giay'),
+		('VN_077' , 'Not Known'),
+		('VN_079' , 'Refused To Answer'),
+		('VN_088' , 'N/A'),
+		('VN_099' , 'Missing'),
+		('ET_NaN' , 'Missing'),
+		('IN_NaN' , 'Missing'),
+		('PE_NaN' , 'Missing'),
+		('VN_NaN' , 'Missing')
+
+;

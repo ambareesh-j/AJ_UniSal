@@ -1,0 +1,32 @@
+USE CP001;
+GO
+
+-- Create Master Data table - Religion
+
+CREATE TABLE Religion 
+(
+	chldrelid INT PRIMARY KEY,
+	chldrel varchar(50)
+)
+
+-- Insert into MD table - Religion
+
+INSERT INTO [CP001].[dbCare].[Religion](chldrelid, chldrel)
+VALUES  (1 , 'Christian'),
+		(2 , 'Muslim'),
+		(3 , 'Buddhist'),
+		(4 , 'Hindu'),
+		(5 , 'Catholic'),
+		(6 , 'Protestant'),
+		(7 , 'Orthodox'),
+		(8 , 'Sikh'),
+		(9 , 'Evangelist'),
+		(10 , 'Mormon'),
+		(11 , 'Ancestor Worship'),
+		(12 , 'Hao Hao'),
+		(13 , 'Cao Dai'),
+		(14 , 'None'),
+		(15 , 'Other'),
+		(99 , 'Not Known')
+
+;

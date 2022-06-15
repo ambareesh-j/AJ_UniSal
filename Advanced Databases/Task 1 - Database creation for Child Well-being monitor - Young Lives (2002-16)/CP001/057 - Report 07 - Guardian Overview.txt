@@ -1,0 +1,110 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 07 Creation - zREP07_GuardianOverview*/
+/******************************************/
+-- Country & Religion wise - Guardian Overview
+
+CREATE VIEW zREP07_GuardianOverview
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   chldrel as Religion,
+	   typesite as [Site Type],
+	   chsex as Sex,
+	   yc as [Younger/Older Cohort],
+	   round as Round,
+
+	   caredu as [Caregiver's Education],
+	   dadedu as [Father's Education],
+	   momedu as [Mother's Education],
+
+	   COUNT(childid) as [Total Children],
+
+	   AVG(careage) as [Avg Caregiver's age(in yrs)],
+	   SUM(IIF(carecantread='Yes', 1,0)) as [Caregivers who cannot read],
+	   AVG(careladder) as [Avg Caregiver's Subjective Wellbeing],
+	   AVG(careldr4yrs) as [Avg Caregiver's Subj Wellbeing (in 4 years)],
+	
+	   AVG(dadage) as [Avg Father's age(in yrs)],
+	   SUM(IIF(dadcantread='Yes', 1,0)) as [Fathers who cannot read],
+	   SUM(IIF(dadlive LIKE '%ive%', 1,0)) as [Father Alive],
+	   SUM(IIF(dadlive LIKE '%die%', 1,0)) as [Father Died],
+
+	   AVG(momage) as [Avg Mother's age(in yrs)],
+	   SUM(IIF(momcantread='Yes', 1,0)) as [Mothers who cannot read],
+	   SUM(IIF(momlive LIKE '%ive%', 1,0)) as [Mother Alive],
+	   SUM(IIF(momlive LIKE '%die%', 1,0)) as [Mother Died]
+
+FROM (Select 
+			DISTINCT childid, 
+					 countryid,
+					 typesite,
+					 chsex, 
+					 round,
+					 yc,
+					 agemon,   
+							   [careage]
+							  ,[carecantread]
+							  ,[caredu]
+							  ,[carehead]
+							  --,[careid]
+							  ,[careladder]
+							  ,[careldr4yrs]
+							  ,[caresex]
+							  ,[dadage]
+							  ,[dadcantread]
+							  ,[dadedu]
+							  --,[dadid]
+							  ,[dadlive]
+							  --,[dadyrdied]
+							  ,[momage]
+							  ,[momcantread]
+							  ,[momedu]
+							  --,[momid]
+							  ,[momlive]
+							  --,[momyrdied]
+
+							  , dbCare.Religion.chldrel
+							  , dbCare.Language.chlang
+
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Religion
+					  ON dbCare.ch_Identity.chldrelid = dbCare.Religion.chldrelid 
+			INNER JOIN dbCare.Language
+					  ON dbCare.ch_Identity.chlangid = dbCare.Language.chlangid 
+			INNER JOIN dbCare.ch_Guardian
+					  ON dbCare.ch_Identity.child_round_id = dbCare.ch_Guardian.child_round_id
+			INNER JOIN dbo.[Care Education]
+					  ON dbCare.ch_Identity.child_round_id = dbo.[Care Education].child_round_id
+			INNER JOIN dbo.[Dad Education]
+					  ON dbCare.ch_Identity.child_round_id = dbo.[Dad Education].child_round_id
+			INNER JOIN dbo.[Mom Education]
+					  ON dbCare.ch_Identity.child_round_id = dbo.[Mom Education].child_round_id) as A
+
+GROUP BY countryid, chldrel, typesite, chsex, yc, round, caredu, dadedu, momedu
+
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

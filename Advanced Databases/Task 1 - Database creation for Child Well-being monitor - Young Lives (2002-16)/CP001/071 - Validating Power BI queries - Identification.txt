@@ -1,0 +1,12 @@
+
+/* Validation Queries only - ch_Identity table*/
+
+
+-- Checking number of children not living in household --> childloc = no 
+-- Answers - India = 102 ; All countries = 588
+
+SELECT COUNT(DISTINCT child_round_id)
+FROM dbCare.ch_Identity
+WHERE dbCare.ch_Identity.childloc='no' 
+AND dbCare.ch_Identity.childid LIKE 'IN%'
+;

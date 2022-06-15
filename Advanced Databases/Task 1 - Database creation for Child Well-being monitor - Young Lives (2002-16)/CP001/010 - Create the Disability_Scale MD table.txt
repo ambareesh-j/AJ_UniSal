@@ -1,0 +1,25 @@
+USE CP001;
+GO
+
+-- Create Master Data table - [Disability_Scale]
+
+CREATE TABLE Disability_Scale 
+(
+	chdisscaleid INT PRIMARY KEY,
+	chdisscale varchar(100)
+)
+
+-- Insert into MD table - [Disability_Scale]
+
+INSERT INTO [CP001].[dbCare].[Disability_Scale](chdisscaleid, chdisscale)
+VALUES  (0 , 'Able to work same as others of this age'),
+		(1 , 'Capable of most types of full-time work but some difficulty with physical work'),
+		(2 , 'Able to work full-time but only work requiring no physical activity'),
+		(3 , 'Can only do light work on a part-time basis'),
+		(4 , 'Cannot work but able to care for themselves (e.g. dress themselves, etc.)'),
+		(5 , 'Cannot work and needs help with daily activities such as dressing, washing, etc.'),
+		(6 , 'Other'),
+		(99 , 'Missing')
+
+
+;

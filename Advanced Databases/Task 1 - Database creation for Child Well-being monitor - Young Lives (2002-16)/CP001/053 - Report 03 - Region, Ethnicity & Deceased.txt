@@ -1,0 +1,66 @@
+USE CP001;
+GO
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+/******************************************/
+/*Report 03 Creation - zREP03_DeathsByRegionAndEthnicity*/
+/******************************************/
+-- Number of deaths by SiteType, Region & Ethnicity
+
+CREATE VIEW zREP03_DeathsByRegionAndEthnicity
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   typesite as [Site Type],
+	   region as Region,
+	   chethnic as Ethnicity,
+
+	   count(DISTINCT childid) as [Total Children],
+
+	   SUM(IIF(round=1 and deceased='Yes', 1, 0)) as Deaths_R1,
+
+	   SUM(IIF(round=2 and deceased='Yes', 1, 0)) 
+		- SUM(IIF(round=1 and deceased='Yes', 1, 0)) as Deaths_R2,
+
+	   SUM(IIF(round=3 and deceased='Yes', 1, 0))
+		- SUM(IIF(round=2 and deceased='Yes', 1, 0)) as Deaths_R3,
+
+	   SUM(IIF(round=4 and deceased='Yes', 1, 0))
+		- SUM(IIF(round=3 and deceased='Yes', 1, 0)) as Deaths_R4,
+
+	   SUM(IIF(round=5 and deceased='Yes', 1, 0))
+	    - SUM(IIF(round=4 and deceased='Yes', 1, 0)) as Deaths_R5,
+
+	   SUM(IIF(round=5 and deceased='Yes', 1, 0)) as [Total Deaths]
+
+FROM (Select 
+			DISTINCT childid, countryid, typesite, round, deceased, dbCare.Region.region, dbCare.Ethnicity.chethnic
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region 
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid 
+			INNER JOIN dbCare.Ethnicity 
+					  ON dbCare.ch_Identity.chethnicid = dbCare.Ethnicity.chethnicid) as A
+
+GROUP BY countryid, typesite, region, chethnic
+;
+
+GO
+COMMIT TRANSACTION;
+
+;
+
+
+
+
+

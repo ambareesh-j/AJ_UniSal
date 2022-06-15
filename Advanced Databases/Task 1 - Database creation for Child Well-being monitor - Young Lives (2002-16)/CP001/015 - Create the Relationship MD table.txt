@@ -1,0 +1,26 @@
+USE CP001;
+GO
+
+-- Create Master Data table - Relationship
+
+CREATE TABLE Relationship 
+(
+	relid INT PRIMARY KEY,
+	relationship varchar(100)
+)
+
+-- Insert into MD table - Relationship
+
+INSERT INTO [CP001].[dbCare].[Relationship](relid, relationship)
+VALUES  (0 , 'YL child'),
+		(1 , 'Biological parent'),
+		(2 , 'Non-biological parent'),
+		(3 , 'Grandparent'),
+		(4 , 'Uncle/aunt'),
+		(5 , 'Sibling'),
+		(6 , 'Other-relative'),
+		(7 , 'Other-nonrelative'),
+		(8 , 'Partner/spouse of YL child'),
+		(9 , 'Father-in-law/mother-in-law')
+
+;

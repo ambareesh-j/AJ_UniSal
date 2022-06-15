@@ -1,0 +1,45 @@
+USE CP001;
+GO
+/******************************************/
+/*View 04 Creation - V04_ChildPhysiqueReport*/
+/******************************************/
+-- Country & Region wise - Child's physique change over the years from 2002 to 2017 (Rounds 1 to 5)
+
+CREATE VIEW V04_ChildPhysiqueReport
+
+AS 
+
+SELECT 
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   region as Region,
+	   --childid,
+	   chsex as Sex,
+	   round as Round,
+	   MAX(YEAR(dint)) as Year,
+	   --underweight as Underweight,					-- Wrongly classified column
+
+	   ROUND(AVG(chweight),2) as [Avg Weight(in kg)],
+	   ROUND(AVG(chheight)*0.032, 2) as [Avg Height(in ft)],
+	   ROUND(AVG(bmi),2) as [Avg BMI],
+
+	   ROUND(AVG(zwfa),3) as [Avg_Z-score - Weight for Age],
+	   ROUND(AVG(zhfa),3) as [Avg_Z-score - Height for Age],
+	   ROUND(AVG(zbfa),3) as [Avg_Z-score - BMI]
+
+FROM (Select 
+			DISTINCT childid, countryid, chsex, agemon, round, dint, chweight, zwfa, chheight, zhfa, bmi, zbfa, dbCare.Region.region
+			FROM         dbCare.ch_Identity 
+			INNER JOIN dbCare.Region 
+					  ON dbCare.ch_Identity.regionid = dbCare.Region.regionid ) as A
+
+GROUP BY countryid, region, chsex, round
+;
+
+
+
+
+

@@ -1,0 +1,26 @@
+USE CP001;
+GO
+
+/******************************************/
+/*View 01 Creation - v01_WellBeing*/
+/******************************************/
+CREATE VIEW v01_WellBeing
+AS
+(
+SELECT dbCare.ch_Identity.child_round_id, dbCare.ch_Identity.childid, dbCare.ch_Identity.clustid, dbCare.ch_Identity.commid, dbCare.ch_Identity.typesite, dbCare.ch_Identity.regionid, dbCare.ch_Identity.countryid, dbCare.ch_Identity.dint, 
+                  dbCare.ch_Identity.round, dbCare.ch_Identity.yc, dbCare.ch_Identity.childloc, dbCare.ch_Identity.inround, dbCare.ch_Identity.panel, dbCare.ch_Identity.deceased, dbCare.ch_Identity.chsex, dbCare.ch_Identity.chlangid, 
+                  dbCare.ch_Identity.chethnicid, dbCare.ch_Identity.chldrelid, dbCare.ch_Identity.agemon, dbCare.ch_Identity.marrcohab, dbCare.ch_Identity.marrcohab_age, dbCare.ch_Identity.birth, dbCare.ch_Identity.birth_age, 
+                  dbCare.ch_Identity.chweight, dbCare.ch_Identity.chheight, dbCare.ch_Identity.bmi, dbCare.ch_Identity.zwfa, dbCare.ch_Identity.zhfa, dbCare.ch_Identity.zbfa, dbCare.ch_Identity.zwfl, dbCare.ch_Identity.fwfa, dbCare.ch_Identity.fhfa, 
+                  dbCare.ch_Identity.fbfa, dbCare.ch_Identity.fwfl, dbCare.ch_Identity.underweight, dbCare.ch_Identity.stunting, dbCare.ch_Identity.thinness, dbCare.ch_MedicalHistory.bcg, dbCare.ch_MedicalHistory.bwdoc, 
+                  dbCare.ch_MedicalHistory.bwght, dbCare.ch_MedicalHistory.delivery, dbCare.ch_MedicalHistory.dpt, dbCare.ch_MedicalHistory.hib, dbCare.ch_MedicalHistory.measles, dbCare.ch_MedicalHistory.numante, 
+                  dbCare.ch_MedicalHistory.polio, dbCare.ch_MedicalHistory.tetanus, dbCare.ch_MedicalHistory.chdisability, dbCare.ch_MedicalHistory.chdisscaleid, dbCare.ch_MedicalHistory.chhprob, dbCare.ch_MedicalHistory.chillness, 
+                  dbCare.ch_MedicalHistory.chinjury, dbCare.ch_MedicalHistory.chmightdie, dbCare.ch_MedicalHistory.chalcohol, dbCare.ch_MedicalHistory.chsmoke, dbCare.ch_MedicalHistory.chrephealth1, dbCare.ch_MedicalHistory.chrephealth2, 
+                  dbCare.ch_MedicalHistory.chrephealth3, dbCare.ch_MedicalHistory.chrephealth4, dbCare.ch_MedicalHistory.chhealth, dbCare.ch_MedicalHistory.chhrel, dbCare.ch_MedicalHistory.cladder, dbCare.Region.region, 
+                  dbCare.Disability_Scale.chdisscale, dbCare.Ethnicity.chethnic
+FROM     dbCare.ch_Identity INNER JOIN
+                  dbCare.ch_MedicalHistory ON dbCare.ch_Identity.child_round_id = dbCare.ch_MedicalHistory.child_round_id INNER JOIN
+                  dbCare.Region ON dbCare.ch_Identity.regionid = dbCare.Region.regionid INNER JOIN
+                  dbCare.Disability_Scale ON dbCare.ch_MedicalHistory.chdisscaleid = dbCare.Disability_Scale.chdisscaleid INNER JOIN
+                  dbCare.Ethnicity ON dbCare.ch_Identity.chethnicid = dbCare.Ethnicity.chethnicid
+)
+;

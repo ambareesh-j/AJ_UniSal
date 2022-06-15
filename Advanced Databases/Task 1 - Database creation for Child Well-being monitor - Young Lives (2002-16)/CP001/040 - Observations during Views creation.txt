@@ -1,0 +1,31 @@
+USE CP001;
+GO
+
+/*------------------------------------*/
+/*Observations during Data Exploration*/
+/*------------------------------------*/
+
+-- Average number of children interviewed per country per sentinel site ID = 147 */
+SELECT AVG([Total Children]) as Avg_Children_per_Sentinel_Site
+FROM 
+(SELECT 
+	   clustid,
+	   CASE countryid	WHEN 'ET'	THEN 'Ethiopia'
+						WHEN 'IN'	THEN 'India'
+						WHEN 'PE'	THEN 'Peru'
+						WHEN 'VN'	THEN 'Vietnam'
+	   END as Country,
+	   count(DISTINCT childid) as [Total Children]
+FROM (Select DISTINCT childid, countryid, clustid, chsex, yc from dbCare.ch_Identity) as A
+GROUP BY countryid, clustid) as B
+;
+
+-- Average number of children interviewed per only Sentinel site ID = 589 */
+SELECT AVG([Total Children]) as Avg_Children_per_Sentinel_Site
+FROM 
+(SELECT 
+	   clustid,
+	   count(DISTINCT childid) as [Total Children]
+FROM (Select DISTINCT childid, clustid, chsex, yc from dbCare.ch_Identity) as A
+GROUP BY clustid) as B
+;
