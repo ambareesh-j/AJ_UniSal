@@ -1,0 +1,10 @@
+-- Task 4. The top 5 most prolific authors along with the number of papers they have contributed to.
+
+INSERT OVERWRITE DIRECTORY '${OUTPUT}'
+SELECT author as Author, 
+       COUNT(journal) as Num_of_Papers
+FROM coviddb28.authors_cleaned 
+WHERE author <> '' AND SUBSTR(author,2,3) <> '039'
+GROUP BY author
+ORDER BY Num_of_Papers DESC
+LIMIT 5;

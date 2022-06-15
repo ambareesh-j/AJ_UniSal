@@ -1,0 +1,15 @@
+-- Task 3. Titles of the 5 papers with the highest numbers of authors. Both the numbers of authors and the
+-- corresponding titles need to be output.
+
+INSERT OVERWRITE DIRECTORY '${OUTPUT}'
+SELECT
+  title as Title,
+  SUM(length(authors) - LENGTH(REPLACE(authors, ';', '')) +1 ) AS Num_of_Authors
+FROM
+      coviddb28.c19_2020_07_01
+GROUP BY
+  title
+ORDER BY
+  Num_of_Authors DESC
+LIMIT
+  5
