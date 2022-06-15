@@ -1,0 +1,28 @@
+USE CP002;
+GO
+
+/******************************************/
+/*View 03 Creation - v03_ST_ClassRoster*/
+/******************************************/
+
+CREATE VIEW v03_ST_ClassRoster
+AS
+(
+SELECT dbEdu.Identifier.UNIQUEID, dbEdu.Identifier.CLASSID, dbEdu.Student_ClassRoster_2016.GRLENRL, dbEdu.Student_ClassRoster_2016.BOYENRL, dbEdu.Student_ClassRoster_2016.TTLENRL, 
+                  dbEdu.Student_ClassRoster_2016.TGRLENRL, dbEdu.Student_ClassRoster_2016.TBOYENRL, dbEdu.Student_ClassRoster_2016.TTTLENRL, dbEdu.Student_ClassRoster_2016.ATDTMSY, dbEdu.Student_ClassRoster_2016.ATDDFSY, 
+                  dbEdu.Student_ClassRoster_2016.TGMTHENG, dbEdu.Student_ClassRoster_2016.SCALLCT, dbEdu.Student_ClassRoster_2016.GRPABLTY, dbEdu.Student_ClassRoster_2016.CLSORD1, dbEdu.Student_ClassRoster_2016.CLSORD2, 
+                  dbEdu.Student_ClassRoster_2016.SCAVLB1, dbEdu.Student_ClassRoster_2016.SCAVLB2, dbEdu.Student_ClassRoster_2016.SCAVLB3, dbEdu.Student_ClassRoster_2016.SCAVLB4, dbEdu.Student_ClassRoster_2016.SCAVLB5, 
+                  dbEdu.Student_ClassRoster_2016.SCAVLB6, dbEdu.Student_ClassRoster_2016.SCAVLB7, dbEdu.Student_ClassRoster_2016.SCAVLB8, dbEdu.Student_ClassRoster_2016.SCAVLB9, dbEdu.Student_ClassRoster_2016.SCAVLB10, 
+                  dbEdu.Student_ClassRoster_2016.SCPRDDAY, dbEdu.Student_ClassRoster_2016.SCLNONPR, dbEdu.Student_ClassRoster_2016.SCMNMTIN, dbEdu.Student_ClassRoster_2016.SCMNENIN, dbEdu.Student_ClassRoster_2016.SCTXTMTH, 
+                  dbEdu.Student_ClassRoster_2016.SCTXTENG, dbEdu.Student_ClassRoster_2017.SCTMTID1, dbEdu.Student_ClassRoster_2017.W1MSMTC1, dbEdu.Student_ClassRoster_2017.W1MNWTC1, dbEdu.Student_ClassRoster_2017.SCTENID1, 
+                  dbEdu.Student_ClassRoster_2017.W1ESMTC1, dbEdu.Student_ClassRoster_2017.W1ENWTC1, dbEdu.Student_ClassRoster_2017.REGTCH, dbEdu.Student_ClassRoster_2017.ATDGIRL, dbEdu.Student_ClassRoster_2017.ATDBOY, 
+                  dbEdu.Student_ClassRoster_2017.ATDTTL, dbEdu.Student_ClassRoster_2017.SECSIZE, dbEdu.Student_ClassRoster_2017.NEWCHLD, dbEdu.Student_ClassRoster_2017.STDSTLENR, dbEdu.Student_ClassRoster_2017.STDNOENR, 
+                  dbEdu.Student_ClassRoster_2017.STDNMABS, dbEdu.Student_ClassRoster_2017.B1LVLSUPP, dbEdu.Student_ClassRoster_2017.B1MTVSUC, dbEdu.Student_ClassRoster_2017.B2ACABMT, dbEdu.Student_ClassRoster_2017.B2PRCLMT, 
+                  dbEdu.Student_ClassRoster_2017.B3ACABEN, dbEdu.Student_ClassRoster_2017.B3PRCLEN, dbEdu.Identifier.SCHOOLID, dbEdu.Identifier.STUDENTID
+FROM     dbEdu.Identifier 
+	INNER JOIN dbEdu.Student_ClassRoster_2016 
+		ON dbEdu.Identifier.UNIQUEID = dbEdu.Student_ClassRoster_2016.UNIQUEID 
+	INNER JOIN dbEdu.Student_ClassRoster_2017 
+		ON dbEdu.Student_ClassRoster_2016.UNIQUEID = dbEdu.Student_ClassRoster_2017.UNIQUEID
+)	
+;

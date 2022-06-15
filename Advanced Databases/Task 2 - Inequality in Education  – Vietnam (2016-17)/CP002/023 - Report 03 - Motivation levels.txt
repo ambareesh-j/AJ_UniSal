@@ -1,0 +1,211 @@
+--USE CP002;
+--GO
+--/**************************************************/
+--/*Report 03 Creation - yREP03_ST_Motivation_Levels*/
+--/**************************************************/
+
+CREATE VIEW yREP03_ST_Motivation_Levels
+
+AS 
+
+SELECT Learning_Motivation,
+	   [Strongly disagree],
+	   [Disagree],
+	   [Agree],
+	   [Strongly agree]
+FROM 
+(	
+SELECT UNIQUEID, Learning_Motivation, Levels 
+	FROM   
+	   (SELECT UNIQUEID, 
+			   [STFEEL18A] as [I study to increase my job opportunities for a good type of work in the future],
+			   [STFEEL18B] as [I am working hard in school to ensure that my future will be financially secure],
+			   [STFEEL18C] as [Making an effort in my studies is worth it because it will help me in the work I want to do later on],
+			   [STFEEL18D] as [I want to learn as much as I can in school to help me get good work in the future]
+			  ,[STFEEL18E] as [I want to learn as much as I can in school to help me go on to college/university] 
+			  ,[STFEEL18F] as [I am working hard in school to help me gain admission to higher studies]
+			  ,[STFEEL18G] as [Making an effort in my studies now is worthwhile because it will help me in my studies later on]
+			  ,[STFEEL18H] as [Learning well in school will improve my work prospects and chances in the future]
+			  ,[STFEEL18I] as [I am working hard in school to be able to get work in the future and support my family in the future]
+			  ,[STFEEL18J] as [I want to do well at school to help my brothers and sisters in the future]
+			  ,[STFEEL18K] as [Success in examinations will determine how successful I am in later life]
+			  ,[STFEEL18L] as [Since success in the future is uncertain there is little use in learning very much.]
+			  ,[STFEEL19A] as [I day dream a lot in class]
+			  ,[STFEEL19B] as [Most of my classmates are smarter than I am]
+			  ,[STFEEL19C] as [My teachers feel that I am poor in my work]
+			  ,[STFEEL19D] as [I often forget what I have learnt]
+			  ,[STFEEL19E] as [I get frightened when I am asked a question by the teacher]
+			  ,[STFEEL19F] as [I often feel like quitting school]
+			  ,[STFEEL19G] as [I am always waiting for the lessons to end]
+			  ,[STFEEL19H] as [I always do poorly in tests]
+			  ,[STFEEL19I] as [I am not willing to put in more effort in my school work]
+			  ,[STFEEL20A] as [I pay attention to the teacher during lessons]
+			  ,[STFEEL20B] as [I am willing to do my best in class]
+			  ,[STFEEL20C] as [I study hard for my tests in school]
+			  ,[STFEEL20D] as [If I put in enough effort I can succeed in my studies]
+			  ,[STFEEL20E] as [When studying, I work as hard as possible]
+			  ,[STFEEL20F] as [When studying, I keep working even if the material is difficult]
+			  ,[STFEEL20G] as [When studying, I try to do my best to acquire the knowledge and skills taught]
+			  ,[STFEEL20H] as [Setbacks in learning do not discourage me]
+			  ,[STFEEL20I] as [I am a hard worker in school]
+			  ,[STFEEL20J] as [I am diligent in my studies]
+			  ,[STFEEL20K] as [I am conscientious in my studies]
+			  ,[STFEEL20L] as [When studying, I want to do as little work as possible]
+			  ,[STFEEL20M] as [I want to do well in my studies, but only if the work is easy]
+			  ,[STFEEL20N] as [If the exercises in lessons are difficult I just don’t do them]
+			  ,[STFEEL20O] as [I choose easy options in school so that I don’t have to work too hard]
+			  ,[STFEEL21A] as [Studying gives me a lot of personal satisfaction]
+			  ,[STFEEL21B] as [I like studying because most of my subjects are really interesting]
+			  ,[STFEEL21C] as [I spend a lot of time working on topics I am interested in]
+			  ,[STFEEL21D] as [Keeping up with my studies helps to develop my character]
+			  ,[STFEEL21E] as [Learning is an important personal experience]
+			  ,[STFEEL21F] as [Learning in school teaches me to become self-disciplined]
+			  ,[STFEEL21G] as [I want to do well in school to show myself that I can learn new things]
+			  ,[STFEEL21H] as [I want to do well in my studies to show myself that I can learn difficult school work]
+			  ,[STFEEL21I] as [I work hard at school because I am interested in what I am learning]
+			  ,[STFEEL21J] as [Learning in school develops me as a person]
+			  ,[STFEEL22A] as [I get good marks in maths]
+			  ,[STFEEL22B] as [I'm hopeless in maths]
+			  ,[STFEEL22C] as [Maths is one of my best subjects]
+			  ,[STFEEL22D] as [Maths is one of my worst subjects]
+			  ,[STFEEL22E] as [I have always done well in maths]
+			  ,[STFEEL22F] as [I have never done well in maths]
+			  ,[STFEEL22G] as [I learn things quickly in maths]
+			  ,[STFEEL22H] as [I get poor marks in English]
+			  ,[STFEEL23A] as [I get good marks in English]
+			  ,[STFEEL23B] as [I'm hopeless in English]
+			  ,[STFEEL23C] as [English is one of my best subjects]
+			  ,[STFEEL23D] as [English is one of my worst subjects]
+			  ,[STFEEL23E] as [I have always done well in English]
+			  ,[STFEEL23F] as [I have never done well in English]
+			  ,[STFEEL23G] as [I learn things quickly in English]
+			  --,[STFEEL23H] as [I get poor marks in English]
+			  ,[STFEEL24A] as [It is important that I enjoy doing maths even if I do not do well in the examinations]
+			  ,[STFEEL24B] as [I study maths just to pass the examination]
+			  ,[STFEEL24C] as [In maths I study only those topics prescribed in the examination syllabus]
+			  ,[STFEEL24D] as [I study in order to do well in the exam rather than to develop my interest in the subject]
+			  ,[STFEEL24E] as [I spend a lot of time working on maths topics I am interested in even if they are not important for my examinations]
+			  ,[STFEEL25A] as [It is important that I enjoy doing English even if I do not do well in the examinations]
+			  ,[STFEEL25B] as [I study English just to pass the examination]
+			  ,[STFEEL25C] as [In English I study only those topics prescribed in the examination syllabus]
+			  --,[STFEEL25D] as [I study in order to do well in the exam rather than to develop my interest in the subject]
+			  ,[STFEEL25E] as [I spend a lot of time working on English topics I am interested in even if they are not important for my examinations]
+			  ,[STFEEL26A] as [I like to handle situations that require a lot of thinking]
+			  ,[STFEEL26B] as [Thinking is not something I find fun]
+			  ,[STFEEL26C] as [I would rather do something that requires little thought than something that will challenge my thinking abilities]
+			  ,[STFEEL26D] as [I try to avoid situations where I might have to think in depth about something]
+			  ,[STFEEL26E] as [I like tasks that do not require much thought once I’ve learned them]
+			  ,[STFEEL26F] as [I really enjoy a task that involves coming up with new solutions to problems]
+			  ,[STFEEL26G] as [Learning new ways to think doesn’t excite me very much]
+			  ,[STFEEL26H] as [I prefer my life to be filled with puzzles that I must solve]
+			  ,[STFEEL26I] as [I feel relief rather than satisfaction after completing a task that required a lot of mental effort]
+			  
+			  
+	   FROM CP002.dbEdu.v01_ST_Questionnaire) p  
+	UNPIVOT  
+	   (Levels FOR Learning_Motivation IN   
+			(				
+				[I study to increase my job opportunities for a good type of work in the future],	
+			    [I am working hard in school to ensure that my future will be financially secure],
+			    [Making an effort in my studies is worth it because it will help me in the work I want to do later on],	
+			    [I want to learn as much as I can in school to help me get good work in the future],
+				[I want to learn as much as I can in school to help me go on to college/university], 
+				[I am working hard in school to help me gain admission to higher studies],
+				[Making an effort in my studies now is worthwhile because it will help me in my studies later on],
+				[Learning well in school will improve my work prospects and chances in the future],
+				[I am working hard in school to be able to get work in the future and support my family in the future],
+				[I want to do well at school to help my brothers and sisters in the future],
+				[Success in examinations will determine how successful I am in later life],
+				[Since success in the future is uncertain there is little use in learning very much.],
+				[I day dream a lot in class],
+				[Most of my classmates are smarter than I am],
+				[My teachers feel that I am poor in my work],
+				[I often forget what I have learnt],
+				[I get frightened when I am asked a question by the teacher],
+				[I often feel like quitting school],
+				[I am always waiting for the lessons to end],
+				[I always do poorly in tests],
+				[I am not willing to put in more effort in my school work],
+				[I pay attention to the teacher during lessons],
+				[I am willing to do my best in class],
+				[I study hard for my tests in school],
+				[If I put in enough effort I can succeed in my studies],
+				[When studying, I work as hard as possible],
+				[When studying, I keep working even if the material is difficult],
+				[When studying, I try to do my best to acquire the knowledge and skills taught],
+				[Setbacks in learning do not discourage me],
+				[I am a hard worker in school],
+				[I am diligent in my studies],
+				[I am conscientious in my studies],
+				[When studying, I want to do as little work as possible],
+				[I want to do well in my studies, but only if the work is easy],
+				[If the exercises in lessons are difficult I just don’t do them],
+				[I choose easy options in school so that I don’t have to work too hard],
+				[Studying gives me a lot of personal satisfaction],
+				[I like studying because most of my subjects are really interesting],
+				[I spend a lot of time working on topics I am interested in],
+				[Keeping up with my studies helps to develop my character],
+				[Learning is an important personal experience],
+				[Learning in school teaches me to become self-disciplined],
+				[I want to do well in school to show myself that I can learn new things],
+				[I want to do well in my studies to show myself that I can learn difficult school work],
+				[I work hard at school because I am interested in what I am learning],
+				[Learning in school develops me as a person],
+				[I get good marks in maths],
+				[I'm hopeless in maths],
+				[Maths is one of my best subjects],
+				[Maths is one of my worst subjects],
+				[I have always done well in maths],
+				[I have never done well in maths],
+				[I learn things quickly in maths],
+				[I get poor marks in English],
+				[I get good marks in English],
+				[I'm hopeless in English],
+				[English is one of my best subjects],
+				[English is one of my worst subjects],
+				[I have always done well in English],
+				[I have never done well in English],
+				[I learn things quickly in English],
+				--[I get poor marks in English],
+				[It is important that I enjoy doing maths even if I do not do well in the examinations],
+				[I study maths just to pass the examination],
+				[In maths I study only those topics prescribed in the examination syllabus],
+				[I study in order to do well in the exam rather than to develop my interest in the subject],
+				[I spend a lot of time working on maths topics I am interested in even if they are not important for my examinations],
+				[It is important that I enjoy doing English even if I do not do well in the examinations],
+				[I study English just to pass the examination],
+				[In English I study only those topics prescribed in the examination syllabus],
+				--[I study in order to do well in the exam rather than to develop my interest in the subject],
+				[I spend a lot of time working on English topics I am interested in even if they are not important for my examinations],
+				[I like to handle situations that require a lot of thinking],
+				[Thinking is not something I find fun],
+				[I would rather do something that requires little thought than something that will challenge my thinking abilities],
+				[I try to avoid situations where I might have to think in depth about something],
+				[I like tasks that do not require much thought once I’ve learned them],
+				[I really enjoy a task that involves coming up with new solutions to problems],
+				[Learning new ways to think doesn’t excite me very much],
+				[I prefer my life to be filled with puzzles that I must solve],
+				[I feel relief rather than satisfaction after completing a task that required a lot of mental effort]
+
+			) 
+		)AS unpvt
+	) as unpvt_level2
+	PIVOT 
+	(
+		COUNT(UNIQUEID)
+		FOR Levels IN 
+		( [Strongly disagree], [Disagree], [Agree], [Strongly agree])
+	) as pvt
+--ORDER BY pvt.Learning_Motivation
+GO   
+;
+
+
+
+
+
+
+
+
+
+

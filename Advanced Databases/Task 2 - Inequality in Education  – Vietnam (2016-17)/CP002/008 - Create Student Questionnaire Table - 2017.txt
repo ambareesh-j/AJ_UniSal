@@ -1,0 +1,1591 @@
+USE CP002;
+GO
+
+CREATE TABLE Student_Questionnaire_2017
+(		
+		 ST_ID_2				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[STDINT]			VARCHAR(20)	
+
+		  ,[STNTCMP]		VARCHAR(50)
+		  ,[STMTHWRK]		VARCHAR(50)	
+		  ,[STMWRKCH]		VARCHAR(50)
+		  ,[STMWRKCM]		VARCHAR(50)
+		  ,[STETHWRK]		VARCHAR(50)
+		  ,[STEWRKCH]		VARCHAR(50)
+		  ,[STEWRKCM]		VARCHAR(50)
+		  ,[STTMMWRK]		VARCHAR(50)
+		  ,[STTMEWRK]		VARCHAR(50)
+		  ,[STCMPHME]		VARCHAR(50)
+		  ,[STCMPSCH]		VARCHAR(50)
+		  ,[STCMPOTH]		VARCHAR(50)
+		  ,[STLTESCH]		VARCHAR(50)
+		  ,[STMSSDAY]		VARCHAR(50)
+		  ,[STMSSCLS]		VARCHAR(50)
+		  ,[STRSNMS1]		BIT
+		  ,[STRSNMS2]		BIT
+		  ,[STRSNMS3]		BIT
+		  ,[STRSNMS4]		BIT
+		  ,[STRSNMS5]		BIT
+		  ,[STRSNMS6]		BIT
+		  ,[STRSNMS7]		BIT
+		  ,[STRSNMS8]		BIT
+		  ,[STRSNMS9]		BIT
+		  ,[STRSNMS0]		BIT
+		  ,[STADDMT]		VARCHAR(50)
+		  ,[STADDEN]		VARCHAR(50)
+		  ,[STADDOT]		VARCHAR(50)
+		  ,[STEXSCMT]		TINYINT
+		  ,[STEXSCEN]		TINYINT
+		  ,[STEXSCOT]		TINYINT
+		  ,[STPRVMT]		VARCHAR(50)
+		  ,[STPRVEN]		VARCHAR(50)
+		  ,[STPRVOT]		VARCHAR(50)
+		  ,[STEXOTMT]		TINYINT
+		  ,[STEXOTEN]		TINYINT
+		  ,[STEXOTOT]		TINYINT
+		  ,[STFEEL18A]		VARCHAR(30)
+		  ,[STFEEL18B]		VARCHAR(30)
+		  ,[STFEEL18C]		VARCHAR(30)
+		  ,[STFEEL18D]		VARCHAR(30)
+		  ,[STFEEL18E]		VARCHAR(30)
+		  ,[STFEEL18F]		VARCHAR(30)
+		  ,[STFEEL18G]		VARCHAR(30)
+		  ,[STFEEL18H]		VARCHAR(30)
+		  ,[STFEEL18I]		VARCHAR(30)
+		  ,[STFEEL18J]		VARCHAR(30)
+		  ,[STFEEL18K]		VARCHAR(30)
+		  ,[STFEEL18L]		VARCHAR(30)
+		  ,[STFEEL19A]		VARCHAR(30)
+		  ,[STFEEL19B]		VARCHAR(30)
+		  ,[STFEEL19C]		VARCHAR(30)
+		  ,[STFEEL19D]		VARCHAR(30)
+		  ,[STFEEL19E]		VARCHAR(30)
+		  ,[STFEEL19F]		VARCHAR(30)
+		  ,[STFEEL19G]		VARCHAR(30)
+		  ,[STFEEL19H]		VARCHAR(30)
+		  ,[STFEEL19I]		VARCHAR(30)
+		  ,[STFEEL20A]		VARCHAR(30)
+		  ,[STFEEL20B]		VARCHAR(30)
+		  ,[STFEEL20C]		VARCHAR(30)
+		  ,[STFEEL20D]		VARCHAR(30)
+		  ,[STFEEL20E]		VARCHAR(30)
+		  ,[STFEEL20F]		VARCHAR(30)
+		  ,[STFEEL20G]		VARCHAR(30)
+		  ,[STFEEL20H]		VARCHAR(30)
+		  ,[STFEEL20I]		VARCHAR(30)
+		  ,[STFEEL20J]		VARCHAR(30)
+		  ,[STFEEL20K]		VARCHAR(30)
+		  ,[STFEEL20L]		VARCHAR(30)
+		  ,[STFEEL20M]		VARCHAR(30)
+		  ,[STFEEL20N]		VARCHAR(30)
+		  ,[STFEEL20O]		VARCHAR(30)
+		  ,[STFEEL21A]		VARCHAR(30)
+		  ,[STFEEL21B]		VARCHAR(30)
+		  ,[STFEEL21C]		VARCHAR(30)
+		  ,[STFEEL21D]		VARCHAR(30)
+		  ,[STFEEL21E]		VARCHAR(30)
+		  ,[STFEEL21F]		VARCHAR(30)
+		  ,[STFEEL21G]		VARCHAR(30)
+		  ,[STFEEL21H]		VARCHAR(30)
+		  ,[STFEEL21I]		VARCHAR(30)
+		  ,[STFEEL21J]		VARCHAR(30)
+		  ,[STFEEL22A]		VARCHAR(30)
+		  ,[STFEEL22B]		VARCHAR(30)
+		  ,[STFEEL22C]		VARCHAR(30)
+		  ,[STFEEL22D]		VARCHAR(30)
+		  ,[STFEEL22E]		VARCHAR(30)
+		  ,[STFEEL22F]		VARCHAR(30)
+		  ,[STFEEL22G]		VARCHAR(30)
+		  ,[STFEEL22H]		VARCHAR(30)
+		  ,[STFEEL23A]		VARCHAR(30)
+		  ,[STFEEL23B]		VARCHAR(30)
+		  ,[STFEEL23C]		VARCHAR(30)
+		  ,[STFEEL23D]		VARCHAR(30)
+		  ,[STFEEL23E]		VARCHAR(30)
+		  ,[STFEEL23F]		VARCHAR(30)
+		  ,[STFEEL23G]		VARCHAR(30)
+		  ,[STFEEL23H]		VARCHAR(30)
+		  ,[STFEEL24A]		VARCHAR(30)
+		  ,[STFEEL24B]		VARCHAR(30)
+		  ,[STFEEL24C]		VARCHAR(30)
+		  ,[STFEEL24D]		VARCHAR(30)
+		  ,[STFEEL24E]		VARCHAR(30)
+		  ,[STFEEL25A]		VARCHAR(30)
+		  ,[STFEEL25B]		VARCHAR(30)
+		  ,[STFEEL25C]		VARCHAR(30)
+		  ,[STFEEL25D]		VARCHAR(30)
+		  ,[STFEEL25E]		VARCHAR(30)
+		  ,[STFEEL26A]		VARCHAR(30)
+		  ,[STFEEL26B]		VARCHAR(30)
+		  ,[STFEEL26C]		VARCHAR(30)
+		  ,[STFEEL26D]		VARCHAR(30)
+		  ,[STFEEL26E]		VARCHAR(30)
+		  ,[STFEEL26F]		VARCHAR(30)
+		  ,[STFEEL26G]		VARCHAR(30)
+		  ,[STFEEL26H]		VARCHAR(30)
+		  ,[STFEEL26I]		VARCHAR(30)
+		  ,[STFEEL27]		VARCHAR(30)
+		  ,[STFEEL28]		VARCHAR(30)
+		  ,[STFEEL29]		VARCHAR(30)
+		  ,[STFEEL30]		VARCHAR(30)
+		  ,[STFEEL31]		VARCHAR(30)
+		  ,[STFEEL32]		VARCHAR(30)
+		  ,[STFEEL33]		VARCHAR(30)
+		  ,[STFEEL34]		VARCHAR(30)
+		  ,[STFEEL35]		VARCHAR(30)
+		  ,[STFEEL36]		VARCHAR(30)
+		  ,[STFEEL37]		VARCHAR(30)
+		  ,[STFEEL38]		VARCHAR(30)
+		  ,[STFEEL39]		VARCHAR(30)
+		  ,[STFEEL40]		VARCHAR(30)
+		  ,[STFEEL41]		VARCHAR(30)
+		  ,[STFEEL42]		VARCHAR(30)
+		  ,[STFEEL43]		VARCHAR(30)
+		  ,[STFEEL44]		VARCHAR(30)
+		  ,[STFEEL45]		VARCHAR(30)
+		  ,[STFEEL46]		VARCHAR(30)
+		  ,[STFEEL47]		VARCHAR(30)
+		  ,[STFEEL48]		VARCHAR(30)
+		  ,[STFEEL49]		VARCHAR(30)
+		  ,[STFEEL50]		VARCHAR(30)
+		  ,[STFEEL51]		VARCHAR(30)
+		  ,[STFEEL52]		VARCHAR(30)
+		  ,[STFEEL53]		VARCHAR(30)
+		  ,[STFEEL54]		VARCHAR(30)
+		  ,[STFEEL55]		VARCHAR(30)
+		  ,[STFEEL56]		VARCHAR(30)
+		  ,[STFEEL57]		VARCHAR(30)
+		  ,[STFEEL58]		VARCHAR(30)
+		  ,[STFEEL59]		VARCHAR(30)
+		  ,[STFEEL60]		VARCHAR(30)
+		  ,[STFEEL61]		VARCHAR(30)
+		  ,[STFEEL62]		VARCHAR(30)
+		  ,[STFEEL63]		VARCHAR(30)
+		  ,[STFEEL64]		VARCHAR(30)
+		  ,[STFEEL65]		VARCHAR(30)
+		  ,[STFEEL66]		VARCHAR(30)
+		  ,[STFEEL67]		VARCHAR(30)
+		  ,[STFEEL68]		VARCHAR(30)
+		  ,[STFEEL69]		VARCHAR(30)
+		  ,[STFEEL70]		VARCHAR(30)
+		  ,[STFEEL71]		VARCHAR(30)
+		  ,[STFEEL72]		VARCHAR(30)
+		  ,[STFEEL73]		VARCHAR(30)
+		  ,[STFEEL74]		VARCHAR(30)
+		  ,[STFEEL75]		VARCHAR(30)
+		  ,[STFEEL76]		VARCHAR(30)
+		  ,[STFEEL77]		VARCHAR(30)
+		  ,[STFEEL78]		VARCHAR(30)
+		  ,[STFEEL79]		VARCHAR(30)
+		  ,[STFEEL80]		VARCHAR(30)
+		  ,[STFEEL81]		VARCHAR(30)
+		  ,[STFEEL82]		VARCHAR(30)
+		  ,[STFEEL83]		VARCHAR(30)
+		  ,[STFEEL84]		VARCHAR(30)
+		  ,[STFEEL85]		VARCHAR(30)
+		  ,[STFEEL86]		VARCHAR(30)
+		  ,[STFEEL87]		VARCHAR(30)
+		  ,[STFEEL88]		VARCHAR(30)
+		  ,[STFEEL89]		VARCHAR(30)
+		  ,[STFEEL90]		VARCHAR(30)
+		  ,[STFEEL91]		VARCHAR(30)
+		  ,[STFEEL92]		VARCHAR(30)
+
+		  ,CONSTRAINT FK_ST_ID_2 FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+
+--TRUNCATE TABLE [CP002].[dbo].[Student_Questionnaire_2017];
+
+INSERT INTO [CP002].[dbo].[Student_Questionnaire_2017]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+
+		,REPLACE(LTRIM(RTRIM(STDINT)), '217', '2017') as STDINT		
+
+		  ,CASE [STNTCMP]	WHEN '1'	THEN  'Respondent absent'
+							WHEN '2'	THEN  'Respondent refused to participate'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STNTCMP]	
+		  END as [STNTCMP]	
+		
+		  ,CASE [STMTHWRK]	WHEN '0'	THEN  'Rarely/Never'
+							WHEN '1'	THEN  'Once a week'
+							WHEN '2'	THEN  '2 times per week'
+							WHEN '3'	THEN  '3 times per week'
+							WHEN '4'	THEN  'More than 3 times per week'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STMTHWRK]	
+		  END as [STMTHWRK]
+		  
+		  ,CASE [STMWRKCH]	WHEN '0'	THEN  'I never get homework in Maths'
+							WHEN '1'	THEN  'Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Always/Frequently'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STMWRKCH]	
+		  END as [STMWRKCH]
+		  
+		  ,CASE [STMWRKCM]	WHEN '0'	THEN  'I never get homework in Maths'
+							WHEN '1'	THEN  'Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Always/Frequently'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STMWRKCM]	
+		  END as [STMWRKCM]	
+
+		  ,CASE [STETHWRK]	WHEN '0'	THEN  'Rarely/Never'
+							WHEN '1'	THEN  'Once a week'
+							WHEN '2'	THEN  '2 times per week'
+							WHEN '3'	THEN  '3 times per week'
+							WHEN '4'	THEN  'More than 3 times per week'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STETHWRK]	
+		  END as [STETHWRK]	
+
+		  ,CASE [STEWRKCH]	WHEN '0'	THEN  'I never get homework in Maths'
+							WHEN '1'	THEN  'Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Always/Frequently'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STEWRKCH]	
+		  END as [STEWRKCH]	
+
+		  ,CASE [STEWRKCM]	WHEN '0'	THEN  'I never get homework in Maths'
+							WHEN '1'	THEN  'Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Always/Frequently'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STEWRKCM]	
+		  END as [STEWRKCM]	
+
+		  ,CASE [STTMMWRK]	WHEN '0'	THEN  'Do not spend time for that outside school'
+							WHEN '1'	THEN  'Less than one hour'
+							WHEN '2'	THEN  'From one to two hours'
+							WHEN '3'	THEN  'More than two hours'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STTMMWRK]	
+		  END as [STTMMWRK]	
+
+		  ,CASE [STTMEWRK]	WHEN '0'	THEN  'Do not spend time for that outside school'
+							WHEN '1'	THEN  'Less than one hour'
+							WHEN '2'	THEN  'From one to two hours'
+							WHEN '3'	THEN  'More than two hours'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STTMEWRK]	
+		  END as [STTMEWRK]	
+
+		  ,CASE [STCMPHME]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Every day or almost every day'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STCMPHME]	
+		  END as [STCMPHME]	
+
+		  ,CASE [STCMPSCH]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Every day or almost every day'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STCMPSCH]	
+		  END as [STCMPSCH]
+		  
+		  ,CASE [STCMPOTH]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Every day or almost every day'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STCMPOTH]	
+		  END as [STCMPOTH]
+		  
+		  ,CASE [STLTESCH]	WHEN '0'	THEN  'None'
+							WHEN '1'	THEN  'One or two days'
+							WHEN '2'	THEN  'Three or four days'
+							WHEN '3'	THEN  'Five or more days'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STLTESCH]	
+		  END as [STLTESCH]
+		  
+		  ,CASE [STMSSDAY]	WHEN '0'	THEN  'None'
+							WHEN '1'	THEN  'One or two days'
+							WHEN '2'	THEN  'Three or four days'
+							WHEN '3'	THEN  'Five or more days'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STMSSDAY]	
+		  END as [STMSSDAY]	
+
+		  ,CASE [STMSSCLS]	WHEN '0'	THEN  'None'
+							WHEN '1'	THEN  'One or two days'
+							WHEN '2'	THEN  'Three or four days'
+							WHEN '3'	THEN  'Five or more days'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STMSSCLS]	
+		  END as [STMSSCLS]	
+
+		  ,[STRSNMS1]	
+		  ,[STRSNMS2]	
+		  ,[STRSNMS3]	
+		  ,[STRSNMS4]	
+		  ,[STRSNMS5]	
+		  ,[STRSNMS6]	
+		  ,[STRSNMS7]	
+		  ,[STRSNMS8]	
+		  ,[STRSNMS9]	
+		  ,[STRSNMS0]	
+
+		  ,CASE [STADDMT]	WHEN '1'	THEN  'Yes, to excel in class'
+							WHEN '2'	THEN  'Yes, to keep up in class'
+							WHEN '3'	THEN  'No'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STADDMT]	
+		  END as [STADDMT]	
+
+		  ,CASE [STADDEN]	WHEN '1'	THEN  'Yes, to excel in class'
+							WHEN '2'	THEN  'Yes, to keep up in class'
+							WHEN '3'	THEN  'No'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STADDEN]	
+		  END as [STADDEN]	
+
+		  ,CASE [STADDOT]	WHEN '1'	THEN  'Yes, to excel in class'
+							WHEN '2'	THEN  'Yes, to keep up in class'
+							WHEN '3'	THEN  'No'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STADDOT]	
+		  END as [STADDOT]	
+
+		  ,[STEXSCMT]	
+		  ,[STEXSCEN]	
+		  ,[STEXSCOT]	
+
+		  ,CASE [STPRVMT]	WHEN '1'	THEN  'Yes, to excel in class'
+							WHEN '2'	THEN  'Yes, to keep up in class'
+							WHEN '3'	THEN  'No'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPRVMT]	
+		  END as [STPRVMT]	
+
+		  ,CASE [STPRVEN]	WHEN '1'	THEN  'Yes, to excel in class'
+							WHEN '2'	THEN  'Yes, to keep up in class'
+							WHEN '3'	THEN  'No'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPRVEN]	
+		  END as [STPRVEN]	
+
+		  ,CASE [STPRVOT]	WHEN '1'	THEN  'Yes, to excel in class'
+							WHEN '2'	THEN  'Yes, to keep up in class'
+							WHEN '3'	THEN  'No'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPRVOT]	
+		  END as [STPRVOT]	
+
+		  ,[STEXOTMT]	
+		  ,[STEXOTEN]	
+		  ,[STEXOTOT]	
+
+		  ,CASE [STFEEL18A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18A]	
+		  END as [STFEEL18A]	
+		  ,CASE [STFEEL18B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18B]	
+		  END as [STFEEL18B]	
+		  ,CASE [STFEEL18C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18C]	
+		  END as [STFEEL18C]	
+		  ,CASE [STFEEL18D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18D]	
+		  END as [STFEEL18D]		
+		  ,CASE [STFEEL18E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18E]	
+		  END as [STFEEL18E]		
+		  ,CASE [STFEEL18F]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18F]	
+		  END as [STFEEL18F]		
+		  ,CASE [STFEEL18G]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18G]	
+		  END as [STFEEL18G]		
+		  ,CASE [STFEEL18H]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18H]	
+		  END as [STFEEL18H]		
+		  ,CASE [STFEEL18I]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18I]	
+		  END as [STFEEL18I]		
+		  ,CASE [STFEEL18J]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18J]	
+		  END as [STFEEL18J]		
+		  ,CASE [STFEEL18K]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18K]	
+		  END as [STFEEL18K]		
+		  ,CASE [STFEEL18L]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL18L]	
+		  END as [STFEEL18L]		
+		  ,CASE [STFEEL19A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19A]	
+		  END as [STFEEL19A]		
+		  ,CASE [STFEEL19B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19B]	
+		  END as [STFEEL19B]		
+		  ,CASE [STFEEL19C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19C]	
+		  END as [STFEEL19C]		
+		  ,CASE [STFEEL19D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19D]	
+		  END as [STFEEL19D]		
+		  ,CASE [STFEEL19E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19E]	
+		  END as [STFEEL19E]		
+		  ,CASE [STFEEL19F]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19F]	
+		  END as [STFEEL19F]		
+		  ,CASE [STFEEL19G]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19G]	
+		  END as [STFEEL19G]		
+		  ,CASE [STFEEL19H]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19H]	
+		  END as [STFEEL19H]		
+		  ,CASE [STFEEL19I]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL19I]	
+		  END as [STFEEL19I]		
+		  ,CASE [STFEEL20A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20A]	
+		  END as [STFEEL20A]		
+		  ,CASE [STFEEL20B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20B]	
+		  END as [STFEEL20B]		
+		  ,CASE [STFEEL20C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20C]	
+		  END as [STFEEL20C]		
+		  ,CASE [STFEEL20D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20D]	
+		  END as [STFEEL20D]		
+		  ,CASE [STFEEL20E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20E]	
+		  END as [STFEEL20E]		
+		  ,CASE [STFEEL20F]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20F]	
+		  END as [STFEEL20F]		
+		  ,CASE [STFEEL20G]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20G]	
+		  END as [STFEEL20G]		
+		  ,CASE [STFEEL20H]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20H]	
+		  END as [STFEEL20H]		
+		  ,CASE [STFEEL20I]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20I]	
+		  END as [STFEEL20I]		
+		  ,CASE [STFEEL20J]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20J]	
+		  END as [STFEEL20J]		
+		  ,CASE [STFEEL20K]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20K]	
+		  END as [STFEEL20K]		
+		  ,CASE [STFEEL20L]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20L]	
+		  END as [STFEEL20L]	
+		  ,CASE [STFEEL20M]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20M]	
+		  END as [STFEEL20M]	
+		  ,CASE [STFEEL20N]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20N]	
+		  END as [STFEEL20N]	
+		  ,CASE [STFEEL20O]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL20O]	
+		  END as [STFEEL20O]	
+		  ,CASE [STFEEL21A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21A]	
+		  END as [STFEEL21A]	
+		  ,CASE [STFEEL21B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21B]	
+		  END as [STFEEL21B]	
+		  ,CASE [STFEEL21C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21C]	
+		  END as [STFEEL21C]	
+		  ,CASE [STFEEL21D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21D]	
+		  END as [STFEEL21D]	
+		  ,CASE [STFEEL21E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21E]	
+		  END as [STFEEL21E]	
+		  ,CASE [STFEEL21F]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21F]	
+		  END as [STFEEL21F]	
+		  ,CASE [STFEEL21G]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21G]	
+		  END as [STFEEL21G]	
+		  ,CASE [STFEEL21H]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21H]	
+		  END as [STFEEL21H]	
+		  ,CASE [STFEEL21I]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21I]	
+		  END as [STFEEL21I]	
+		  ,CASE [STFEEL21J]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL21J]	
+		  END as [STFEEL21J]	
+		  ,CASE [STFEEL22A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22A]	
+		  END as [STFEEL22A]	
+		  ,CASE [STFEEL22B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22B]	
+		  END as [STFEEL22B]	
+		  ,CASE [STFEEL22C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22C]	
+		  END as [STFEEL22C]	
+		  ,CASE [STFEEL22D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22D]	
+		  END as [STFEEL22D]	
+		  ,CASE [STFEEL22E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22E]	
+		  END as [STFEEL22E]	
+		  ,CASE [STFEEL22F]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22F]	
+		  END as [STFEEL22F]	
+		  ,CASE [STFEEL22G]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22G]	
+		  END as [STFEEL22G]	
+		  ,CASE [STFEEL22H]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL22H]	
+		  END as [STFEEL22H]	
+		  ,CASE [STFEEL23A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23A]	
+		  END as [STFEEL23A]	
+		  ,CASE [STFEEL23B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23B]	
+		  END as [STFEEL23B]	
+		  ,CASE [STFEEL23C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23C]	
+		  END as [STFEEL23C]	
+		  ,CASE [STFEEL23D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23D]	
+		  END as [STFEEL23D]	
+		  ,CASE [STFEEL23E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23E]	
+		  END as [STFEEL23E]	
+		  ,CASE [STFEEL23F]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23F]	
+		  END as [STFEEL23F]	
+		  ,CASE [STFEEL23G]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23G]	
+		  END as [STFEEL23G]	
+		  ,CASE [STFEEL23H]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL23H]	
+		  END as [STFEEL23H]	
+		  ,CASE [STFEEL24A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL24A]	
+		  END as [STFEEL24A]	
+		  ,CASE [STFEEL24B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL24B]	
+		  END as [STFEEL24B]	
+		  ,CASE [STFEEL24C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL24C]	
+		  END as [STFEEL24C]	
+		  ,CASE [STFEEL24D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL24D]	
+		  END as [STFEEL24D]	
+		  ,CASE [STFEEL24E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL24E]	
+		  END as [STFEEL24E]	
+		  ,CASE [STFEEL25A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL25A]	
+		  END as [STFEEL25A]	
+		  ,CASE [STFEEL25B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL25B]	
+		  END as [STFEEL25B]	
+		  ,CASE [STFEEL25C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL25C]	
+		  END as [STFEEL25C]	
+		  ,CASE [STFEEL25D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL25D]	
+		  END as [STFEEL25D]	
+		  ,CASE [STFEEL25E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL25E]	
+		  END as [STFEEL25E]	
+		  ,CASE [STFEEL26A]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26A]	
+		  END as [STFEEL26A]	
+		  ,CASE [STFEEL26B]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26B]	
+		  END as [STFEEL26B]	
+		  ,CASE [STFEEL26C]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26C]	
+		  END as [STFEEL26C]	
+		  ,CASE [STFEEL26D]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26D]	
+		  END as [STFEEL26D]	
+		  ,CASE [STFEEL26E]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26E]	
+		  END as [STFEEL26E]	
+		  ,CASE [STFEEL26F]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26F]	
+		  END as [STFEEL26F]	
+		  ,CASE [STFEEL26G]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26G]	
+		  END as [STFEEL26G]	
+		  ,CASE [STFEEL26H]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26H]	
+		  END as [STFEEL26H]	
+		  ,CASE [STFEEL26I]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL26I]	
+		  END as [STFEEL26I]	
+		  ,CASE [STFEEL27]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL27]	
+		  END as [STFEEL27]	
+		  ,CASE [STFEEL28]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL28]	
+		  END as [STFEEL28]	
+		  ,CASE [STFEEL29]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL29]	
+		  END as [STFEEL29]	
+		  ,CASE [STFEEL30]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL30]	
+		  END as [STFEEL30]	
+		  ,CASE [STFEEL31]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL31]	
+		  END as [STFEEL31]	
+		  ,CASE [STFEEL32]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL32]	
+		  END as [STFEEL32]	
+		  ,CASE [STFEEL33]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL33]	
+		  END as [STFEEL33]	
+		  ,CASE [STFEEL34]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL34]	
+		  END as [STFEEL34]	
+		  ,CASE [STFEEL35]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL35]	
+		  END as [STFEEL35]	
+		  ,CASE [STFEEL36]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL36]	
+		  END as [STFEEL36]	
+		  ,CASE [STFEEL37]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL37]	
+		  END as [STFEEL37]	
+		  ,CASE [STFEEL38]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL38]	
+		  END as [STFEEL38]		
+		  ,CASE [STFEEL39]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL39]	
+		  END as [STFEEL39]		
+		  ,CASE [STFEEL40]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL40]	
+		  END as [STFEEL40]		
+		  ,CASE [STFEEL41]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL41]	
+		  END as [STFEEL41]		
+		  ,CASE [STFEEL42]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL42]	
+		  END as [STFEEL42]		
+		  ,CASE [STFEEL43]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL43]	
+		  END as [STFEEL43]		
+		  ,CASE [STFEEL44]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL44]	
+		  END as [STFEEL44]		
+		  ,CASE [STFEEL45]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL45]	
+		  END as [STFEEL45]		
+		  ,CASE [STFEEL46]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL46]	
+		  END as [STFEEL46]		
+		  ,CASE [STFEEL47]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL47]	
+		  END as [STFEEL47]		
+		  ,CASE [STFEEL48]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL48]	
+		  END as [STFEEL48]		
+		  ,CASE [STFEEL49]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL49]	
+		  END as [STFEEL49]		
+		  ,CASE [STFEEL50]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL50]	
+		  END as [STFEEL50]		
+		  ,CASE [STFEEL51]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL51]	
+		  END as [STFEEL51]		
+		  ,CASE [STFEEL52]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL52]	
+		  END as [STFEEL52]		
+		  ,CASE [STFEEL53]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL53]	
+		  END as [STFEEL53]		
+		  ,CASE [STFEEL54]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL54]	
+		  END as [STFEEL54]		
+		  ,CASE [STFEEL55]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL55]	
+		  END as [STFEEL55]		
+		  ,CASE [STFEEL56]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL56]	
+		  END as [STFEEL56]		
+		  ,CASE [STFEEL57]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL57]	
+		  END as [STFEEL57]		
+		  ,CASE [STFEEL58]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL58]	
+		  END as [STFEEL58]		
+		  ,CASE [STFEEL59]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL59]	
+		  END as [STFEEL59]		
+		  ,CASE [STFEEL60]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL60]	
+		  END as [STFEEL60]		
+		  ,CASE [STFEEL61]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL61]	
+		  END as [STFEEL61]		
+		  ,CASE [STFEEL62]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL62]	
+		  END as [STFEEL62]		
+		  ,CASE [STFEEL63]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL63]	
+		  END as [STFEEL63]		
+		  ,CASE [STFEEL64]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL64]	
+		  END as [STFEEL64]		
+		  ,CASE [STFEEL65]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL65]	
+		  END as [STFEEL65]		
+		  ,CASE [STFEEL66]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL66]	
+		  END as [STFEEL66]		
+		  ,CASE [STFEEL67]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL67]	
+		  END as [STFEEL67]		
+		  ,CASE [STFEEL68]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL68]	
+		  END as [STFEEL68]		
+		  ,CASE [STFEEL69]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL69]	
+		  END as [STFEEL69]		
+		  ,CASE [STFEEL70]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL70]	
+		  END as [STFEEL70]		
+		  ,CASE [STFEEL71]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL71]	
+		  END as [STFEEL71]		
+		  ,CASE [STFEEL72]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL72]	
+		  END as [STFEEL72]		
+		  ,CASE [STFEEL73]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL73]	
+		  END as [STFEEL73]		
+		  ,CASE [STFEEL74]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL74]	
+		  END as [STFEEL74]		
+		  ,CASE [STFEEL75]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL75]	
+		  END as [STFEEL75]		
+		  ,CASE [STFEEL76]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL76]	
+		  END as [STFEEL76]		
+		  ,CASE [STFEEL77]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL77]	
+		  END as [STFEEL77]		
+		  ,CASE [STFEEL78]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL78]	
+		  END as [STFEEL78]		
+		  ,CASE [STFEEL79]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL79]	
+		  END as [STFEEL79]		
+		  ,CASE [STFEEL80]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL80]	
+		  END as [STFEEL80]		
+		  ,CASE [STFEEL81]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL81]	
+		  END as [STFEEL81]		
+		  ,CASE [STFEEL82]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL82]	
+		  END as [STFEEL82]		
+		  ,CASE [STFEEL83]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL83]	
+		  END as [STFEEL83]		
+		  ,CASE [STFEEL84]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL84]	
+		  END as [STFEEL84]		
+		  ,CASE [STFEEL85]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL85]	
+		  END as [STFEEL85]		
+		  ,CASE [STFEEL86]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL86]	
+		  END as [STFEEL86]		
+		  ,CASE [STFEEL87]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL87]	
+		  END as [STFEEL87]		
+		  ,CASE [STFEEL88]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL88]	
+		  END as [STFEEL88]		
+		  ,CASE [STFEEL89]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL89]	
+		  END as [STFEEL89]		
+		  ,CASE [STFEEL90]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL90]	
+		  END as [STFEEL90]		
+		  ,CASE [STFEEL91]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL91]	
+		  END as [STFEEL91]		
+		  ,CASE [STFEEL92]	WHEN '1'	THEN  'Strongly disagree'
+							WHEN '2'	THEN  'Disagree'
+							WHEN '3'	THEN  'Agree'
+							WHEN '4'	THEN  'Strongly agree'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STFEEL92]	
+		  END as [STFEEL92]		
+
+FROM CP002.dbo.vietnam_wave_2
+;
+
+
+ --DROP TABLE [CP002].[dbo].[Student_Questionnaire_2016];

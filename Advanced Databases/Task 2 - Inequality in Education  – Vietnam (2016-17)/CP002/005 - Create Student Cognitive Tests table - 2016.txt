@@ -1,0 +1,220 @@
+USE CP002;
+GO
+
+CREATE TABLE Student_CognitiveTests_2016
+(		
+		 STC_ID				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[STDINT]			VARCHAR(20)	
+
+		  ,[ENG_TEST]		VARCHAR(3)
+		  ,[ENG_ITEM1]		BIT
+		  ,[ENG_ITEM2]		BIT
+		  ,[ENG_ITEM3]		BIT
+		  ,[ENG_ITEM4]		BIT
+		  ,[ENG_ITEM5]		BIT
+		  ,[ENG_ITEM6]		BIT
+		  ,[ENG_ITEM7]		BIT
+		  ,[ENG_ITEM8]		BIT
+		  ,[ENG_ITEM9]		BIT
+		  ,[ENG_ITEM10]		BIT
+		  ,[ENG_ITEM11]		BIT
+		  ,[ENG_ITEM12]		BIT
+		  ,[ENG_ITEM13]		BIT
+		  ,[ENG_ITEM14]		BIT
+		  ,[ENG_ITEM15]		BIT
+		  ,[ENG_ITEM16]		BIT
+		  ,[ENG_ITEM17]		BIT
+		  ,[ENG_ITEM18]		BIT
+		  ,[ENG_ITEM19]		BIT
+		  ,[ENG_ITEM20]		BIT
+		  ,[ENG_ITEM21]		BIT
+		  ,[ENG_ITEM22]		BIT
+		  ,[ENG_ITEM23]		BIT
+		  ,[ENG_ITEM24]		BIT
+		  ,[ENG_ITEM25]		BIT
+		  ,[ENG_ITEM26]		BIT
+		  ,[ENG_ITEM27]		BIT
+		  ,[ENG_ITEM28]		BIT
+		  ,[ENG_ITEM29]		BIT
+		  ,[ENG_ITEM30]		BIT
+		  ,[ENG_ITEM31]		BIT
+		  ,[ENG_ITEM32]		BIT
+		  ,[ENG_ITEM33]		BIT
+		  ,[ENG_ITEM34]		BIT
+		  ,[ENG_ITEM35]		BIT
+		  ,[ENG_ITEM36]		BIT
+		  ,[ENG_ITEM37]		BIT
+		  ,[ENG_ITEM38]		BIT
+		  ,[ENG_ITEM39]		BIT
+		  ,[ENG_ITEM40]		BIT
+		  ,[ENG_RAWSCORE]	TINYINT
+
+		  ,[MATH_TEST]		VARCHAR(3)
+		  ,[MATH_ITEM1]		BIT
+		  ,[MATH_ITEM2]		BIT
+		  ,[MATH_ITEM3]		BIT
+		  ,[MATH_ITEM4]		BIT
+		  ,[MATH_ITEM5]		BIT
+		  ,[MATH_ITEM6]		BIT
+		  ,[MATH_ITEM7]		BIT
+		  ,[MATH_ITEM8]		BIT
+		  ,[MATH_ITEM9]		BIT
+		  ,[MATH_ITEM10]	BIT
+		  ,[MATH_ITEM11]	BIT
+		  ,[MATH_ITEM12]	BIT
+		  ,[MATH_ITEM13]	BIT
+		  ,[MATH_ITEM14]	BIT
+		  ,[MATH_ITEM15]	BIT
+		  ,[MATH_ITEM16]	BIT
+		  ,[MATH_ITEM17]	BIT
+		  ,[MATH_ITEM18]	BIT
+		  ,[MATH_ITEM19]	BIT
+		  ,[MATH_ITEM20]	BIT
+		  ,[MATH_ITEM21]	BIT
+		  ,[MATH_ITEM22]	BIT
+		  ,[MATH_ITEM23]	BIT
+		  ,[MATH_ITEM24]	BIT
+		  ,[MATH_ITEM25]	BIT
+		  ,[MATH_ITEM26]	BIT
+		  ,[MATH_ITEM27]	BIT
+		  ,[MATH_ITEM28]	BIT
+		  ,[MATH_ITEM29]	BIT
+		  ,[MATH_ITEM30]	BIT
+		  ,[MATH_ITEM31]	BIT
+		  ,[MATH_ITEM32]	BIT
+		  ,[MATH_ITEM33]	BIT
+		  ,[MATH_ITEM34]	BIT
+		  ,[MATH_ITEM35]	BIT
+		  ,[MATH_ITEM36]	BIT
+		  ,[MATH_ITEM37]	BIT
+		  ,[MATH_ITEM38]	BIT
+		  ,[MATH_ITEM39]	BIT
+		  ,[MATH_ITEM40]	BIT
+		  ,[MATH_RAWSCORE]	TINYINT
+
+		  ,CONSTRAINT FK_STC_ID FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+
+INSERT INTO [CP002].[dbEdu].[Student_CognitiveTests_2016]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+		
+		,REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(STDDINT, ';', '/')
+						, '//', '/')
+						, '+', '')
+						, '`', '')
+						, '2016/', '2016')
+						, '20163', '2016')
+						, '/010/', '10')
+						, '/016', '/2016')
+						, '20016', '2016')
+						, '096', '09')
+						, '069', '06')
+						, '179', '17/9')
+						, '110', '10')	as STDINT
+
+		  ,[ENG_TEST]
+		  ,[ENG_ITEM1]
+		  ,[ENG_ITEM2]
+		  ,[ENG_ITEM3]
+		  ,[ENG_ITEM4]
+		  ,[ENG_ITEM5]
+		  ,[ENG_ITEM6]
+		  ,[ENG_ITEM7]
+		  ,[ENG_ITEM8]
+		  ,[ENG_ITEM9]
+		  ,[ENG_ITEM10]
+		  ,[ENG_ITEM11]
+		  ,[ENG_ITEM12]
+		  ,[ENG_ITEM13]
+		  ,[ENG_ITEM14]
+		  ,[ENG_ITEM15]
+		  ,[ENG_ITEM16]
+		  ,[ENG_ITEM17]
+		  ,[ENG_ITEM18]
+		  ,[ENG_ITEM19]
+		  ,[ENG_ITEM20]
+		  ,[ENG_ITEM21]
+		  ,[ENG_ITEM22]
+		  ,[ENG_ITEM23]
+		  ,[ENG_ITEM24]
+		  ,[ENG_ITEM25]
+		  ,[ENG_ITEM26]
+		  ,[ENG_ITEM27]
+		  ,[ENG_ITEM28]
+		  ,[ENG_ITEM29]
+		  ,[ENG_ITEM30]
+		  ,[ENG_ITEM31]
+		  ,[ENG_ITEM32]
+		  ,[ENG_ITEM33]
+		  ,[ENG_ITEM34]
+		  ,[ENG_ITEM35]
+		  ,[ENG_ITEM36]
+		  ,[ENG_ITEM37]
+		  ,[ENG_ITEM38]
+		  ,[ENG_ITEM39]
+		  ,[ENG_ITEM40]
+		  ,[ENG_RAWSCORE]
+		
+		  ,[MATH_TEST]
+		  ,[MATH_ITEM1]
+		  ,[MATH_ITEM2]
+		  ,[MATH_ITEM3]
+		  ,[MATH_ITEM4]
+		  ,[MATH_ITEM5]
+		  ,[MATH_ITEM6]
+		  ,[MATH_ITEM7]
+		  ,[MATH_ITEM8]
+		  ,[MATH_ITEM9]
+		  ,[MATH_ITEM10]
+		  ,[MATH_ITEM11]
+		  ,[MATH_ITEM12]
+		  ,[MATH_ITEM13]
+		  ,[MATH_ITEM14]
+		  ,[MATH_ITEM15]
+		  ,[MATH_ITEM16]
+		  ,[MATH_ITEM17]
+		  ,[MATH_ITEM18]
+		  ,[MATH_ITEM19]
+		  ,[MATH_ITEM20]
+		  ,[MATH_ITEM21]
+		  ,[MATH_ITEM22]
+		  ,[MATH_ITEM23]
+		  ,[MATH_ITEM24]
+		  ,[MATH_ITEM25]
+		  ,[MATH_ITEM26]
+		  ,[MATH_ITEM27]
+		  ,[MATH_ITEM28]
+		  ,[MATH_ITEM29]
+		  ,[MATH_ITEM30]
+		  ,[MATH_ITEM31]
+		  ,[MATH_ITEM32]
+		  ,[MATH_ITEM33]
+		  ,[MATH_ITEM34]
+		  ,[MATH_ITEM35]
+		  ,[MATH_ITEM36]
+		  ,[MATH_ITEM37]
+		  ,[MATH_ITEM38]
+		  ,[MATH_ITEM39]
+		  ,[MATH_ITEM40]
+		  ,[MATH_RAWSCORE]
+
+FROM CP002.dbo.vietnam_wave_1
+--;
+
+

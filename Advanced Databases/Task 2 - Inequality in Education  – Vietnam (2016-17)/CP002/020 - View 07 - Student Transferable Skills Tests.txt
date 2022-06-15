@@ -1,0 +1,27 @@
+USE CP002;
+GO
+
+/******************************************/
+/*View 07 Creation - v07_ST_TransfSkills_Tests*/
+/******************************************/
+
+CREATE VIEW v07_ST_TransfSkills_Tests
+AS
+(
+SELECT dbEdu.Identifier.UNIQUEID, dbEdu.Identifier.SCHOOLID, dbEdu.Identifier.STUDENTID, dbEdu.Identifier.YLCHILDID, dbEdu.Identifier.PROVINCE, dbEdu.Identifier.DISTRICTCODE, dbEdu.Identifier.LOCALITY, 
+                  dbEdu.Identifier.ABSENT_DAYS, dbEdu.Identifier.MOM_READ, dbEdu.Identifier.MOM_EDUC, dbEdu.Identifier.DAD_READ, dbEdu.Identifier.DAD_EDUC, dbEdu.Identifier.STDYLCHD, dbEdu.Identifier.STDCMPLT, 
+                  dbEdu.Identifier.ETHNICITY, dbEdu.Identifier.AGE, dbEdu.Identifier.GENDER, dbEdu.Student_CognitiveTests_2017.TS_TEST, dbEdu.Student_CognitiveTests_2017.TS_ITEM1, dbEdu.Student_CognitiveTests_2017.TS_ITEM2, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM3A, dbEdu.Student_CognitiveTests_2017.TS_ITEM3B, dbEdu.Student_CognitiveTests_2017.TS_ITEM3C, dbEdu.Student_CognitiveTests_2017.TS_ITEM3D, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM3E, dbEdu.Student_CognitiveTests_2017.TS_ITEM3F, dbEdu.Student_CognitiveTests_2017.TS_ITEM3, dbEdu.Student_CognitiveTests_2017.TS_ITEM4, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM5, dbEdu.Student_CognitiveTests_2017.TS_ITEM6, dbEdu.Student_CognitiveTests_2017.TS_ITEM7, dbEdu.Student_CognitiveTests_2017.TS_ITEM8A, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM8B, dbEdu.Student_CognitiveTests_2017.TS_ITEM8C, dbEdu.Student_CognitiveTests_2017.TS_ITEM8, dbEdu.Student_CognitiveTests_2017.TS_ITEM9, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM10, dbEdu.Student_CognitiveTests_2017.TS_ITEM11, dbEdu.Student_CognitiveTests_2017.TS_ITEM12, dbEdu.Student_CognitiveTests_2017.TS_ITEM11_12, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM13, dbEdu.Student_CognitiveTests_2017.TS_ITEM15, dbEdu.Student_CognitiveTests_2017.TS_ITEM14, dbEdu.Student_CognitiveTests_2017.TS_ITEM16, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM17, dbEdu.Student_CognitiveTests_2017.TS_ITEM18, dbEdu.Student_CognitiveTests_2017.TS_ITEM19, dbEdu.Student_CognitiveTests_2017.TS_ITEM20, 
+                  dbEdu.Student_CognitiveTests_2017.TS_ITEM21, dbEdu.Student_CognitiveTests_2017.TS_ITEM22, dbEdu.Student_CognitiveTests_2017.TS_ITEM23
+FROM     dbEdu.Identifier 
+	INNER JOIN dbEdu.Student_CognitiveTests_2017 
+		ON dbEdu.Identifier.UNIQUEID = dbEdu.Student_CognitiveTests_2017.UNIQUEID
+
+)	
+;

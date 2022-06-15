@@ -1,0 +1,104 @@
+USE CP002;
+GO
+
+CREATE TABLE Student_ClassRoster_2017
+(		
+		 CL_ID_2				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[SCTMTID1]		TINYINT
+		  ,[W1MSMTC1]		VARCHAR(10)		
+		  ,[W1MNWTC1]		TINYINT
+		  ,[SCTENID1]		TINYINT
+		  ,[W1ESMTC1]		VARCHAR(10)	
+		  ,[W1ENWTC1]		TINYINT
+		  ,[REGTCH]			VARCHAR(30)			
+		  ,[ATDGIRL]		TINYINT
+		  ,[ATDBOY]			TINYINT
+		  ,[ATDTTL]			TINYINT
+		  ,[SECSIZE]		TINYINT
+		  ,[NEWCHLD]		TINYINT
+		  ,[STDSTLENR]		VARCHAR(10)
+		  ,[STDNOENR]		VARCHAR(90)
+		  ,[STDNMABS]		TINYINT
+		  ,[B1LVLSUPP]		TINYINT
+		  ,[B1MTVSUC]		TINYINT
+		  ,[B2ACABMT]		TINYINT
+		  ,[B2PRCLMT]		TINYINT
+		  ,[B3ACABEN]		TINYINT
+		  ,[B3PRCLEN]		TINYINT
+
+		  ,CONSTRAINT FK_CL_ID_2 FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+--TRUNCATE TABLE [CP002].[dbo].[Student_ClassRoster_2017];
+
+INSERT INTO [CP002].[dbo].[Student_ClassRoster_2017]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+		
+		  ,[SCTMTID1]	
+		  
+		  ,CASE [W1MSMTC1]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [W1MSMTC1]
+		END as [W1MSMTC1]	
+		
+		  ,[W1MNWTC1]		
+		  ,[SCTENID1]	
+		  
+		  ,CASE [W1ESMTC1]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [W1ESMTC1]
+		END as [W1ESMTC1]	
+		  
+		  ,[W1ENWTC1]	
+		  
+		  ,CASE [REGTCH]	WHEN '1'	THEN  'Morning'
+							WHEN '2'	THEN  'Afternoon'
+							WHEN '3'	THEN  'Morning & Afternoon'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [REGTCH]
+		END as [REGTCH]	
+		
+		  ,[ATDGIRL]		
+		  ,[ATDBOY]			
+		  ,[ATDTTL]			
+		  ,[SECSIZE]		
+		  ,[NEWCHLD]		
+
+		  ,CASE [STDSTLENR]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STDSTLENR]
+		END as [STDSTLENR]		
+
+		  ,CASE [STDNOENR]	WHEN '1'	THEN  'Dropped out of school'
+							WHEN '2'	THEN  'Moved to a new school'
+							WHEN '3'	THEN  'Student is still enrolled in this school, but in another class'
+							WHEN '4'	THEN  'Unknown'
+							WHEN '5'	THEN  'Other'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STDNOENR]
+		END as [STDNOENR]	
+		
+		  ,[STDNMABS]		
+		  ,[B1LVLSUPP]		
+		  ,[B1MTVSUC]		
+		  ,[B2ACABMT]		
+		  ,[B2PRCLMT]		
+		  ,[B3ACABEN]		
+		  ,[B3PRCLEN]		
+		 		
+
+FROM CP002.dbo.vietnam_wave_2
+;
+
+ --DROP TABLE [CP002].[dbo].[Student_ClassRoster_2017];

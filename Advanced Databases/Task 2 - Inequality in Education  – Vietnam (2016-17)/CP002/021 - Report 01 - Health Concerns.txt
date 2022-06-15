@@ -1,0 +1,40 @@
+USE CP002;
+GO
+/**************************************************/
+/*Report 01 Creation - yREP01_ST_Health_Concerns*/
+/**************************************************/
+
+CREATE VIEW yREP01_ST_Health_Concerns
+
+AS 
+
+SELECT PROVINCE as Province, 
+	   GENDER as Gender, 
+	   Health_Concern, 
+	   SUM(CAST(Yes as tinyint)) as [Total]
+FROM 
+(	SELECT PROVINCE, GENDER, UNIQUEID, Health_Concern, Yes 
+	FROM   
+	   (SELECT PROVINCE, GENDER, UNIQUEID, 
+			   STDHLTH1 as [Sight problems], 
+			   STDHLTH2 as [Hearing problems], 
+			   STDHLTH3 as [Headaches], 
+			   STDHLTH4 as [Fever], 
+			   STDHLTH5 as [Stomach problems], 
+			   STDHLTH6 as [Other problems]  
+	   FROM CP002.dbEdu.v01_ST_Questionnaire) p  
+	UNPIVOT  
+	   (Yes FOR Health_Concern IN   
+			([Sight problems], [Hearing problems], [Headaches], [Fever], [Stomach problems], [Other problems]) 
+	)AS unpvt
+) as level2
+WHERE LEN(LTRIM(RTRIM(GENDER))) > 0
+GROUP BY PROVINCE, GENDER, Health_Concern
+--ORDER BY PROVINCE, GENDER, Health_Concern ASC
+GO   
+;
+
+
+
+
+

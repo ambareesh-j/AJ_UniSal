@@ -1,0 +1,534 @@
+USE CP002;
+GO
+
+CREATE TABLE HeadTeacher_Questionnaire_2016
+(		
+		 HTP_ID				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[HTNTCMP]		VARCHAR(30)
+		  ,[HTDINT]			VARCHAR(20)
+
+		  ,[NUMG10CLS]		TINYINT
+		  ,[HTAGE]			TINYINT
+		  ,[HTSEX]			VARCHAR(6)
+		  ,[HTETHGRP]		VARCHAR(10)
+		  ,[HTRELGN]		VARCHAR(30)
+		  ,[HTMTHTNG]		VARCHAR(20)
+		  ,[HTFRMPRV]		BIT
+		  ,[HTCURRLE]		VARCHAR(20)
+		  ,[HTYRSHT]		TINYINT
+		  ,[HTLVLEDC]		VARCHAR(60)
+		  ,[HTLVLTCH]		VARCHAR(100)
+		  ,[HTEXCTCH]		VARCHAR(60)
+		  ,[HTTYPSCH]		VARCHAR(20)
+		  ,[HTLWSGRD]		VARCHAR(10)
+		  ,[HTHGHGRD]		VARCHAR(10)
+		  ,[HTNMSTEN]		SMALLINT
+		  ,[HTNMETST]		SMALLINT
+		  ,[HTYREST]		SMALLINT
+		  ,[HTP135CM]		VARCHAR(20)
+		  ,[HTPRDIST]		VARCHAR(20)
+		  ,[HTBOARD]		NVARCHAR(200)
+		  ,[HTSCHAVL]		VARCHAR(150)		
+		  ,[HTMRNSTR]		VARCHAR(30)
+		  ,[HTMRNEND]		VARCHAR(30)		
+		  ,[HTAFTSTR]		VARCHAR(30)
+		  ,[HTAFTEND]		VARCHAR(30)
+		  ,[HTREGTCH]		BIT
+		  ,[HTNONCMP]		BIT
+		  ,[HTEXTCUR]		BIT
+		  ,[HTNOACT]		BIT
+		  ,[HTNOCMCH]		BIT
+		  ,[HTNOCMCL]		VARCHAR(200)
+		  ,[HTRQNMST]		SMALLINT
+		  ,[HTCENMST]		SMALLINT
+		  ,[HTPTNMST]		SMALLINT
+		  ,[HTRQMATH]		SMALLINT
+		  ,[HTRQENG]		SMALLINT
+		  ,[HTTCHAPP]		BIT		
+		  ,[HTREWTC1]		BIT
+		  ,[HTREWTC2]		BIT
+		  ,[HTREWTC4]		BIT
+		  ,[HTREWTC5]		BIT
+		  ,[HTREWTC6]		BIT
+		  ,[HTREWTC7]		BIT
+		  ,[HTREWTC8]		BIT
+		  ,[HTDISTC1]		BIT
+		  ,[HTDISTC2]		BIT
+		  ,[HTDISTC3]		BIT
+		  ,[HTDISTC4]		BIT
+		  ,[HTDISTC6]		BIT
+		  ,[HTDISTC7]		BIT
+		  ,[HTDISTC8]		BIT
+		  ,[HTDISTC0]		BIT
+		  ,[HTGNADMN]		BIT
+		  ,[HTACRARE]		BIT
+		  ,[HTACRAETH]		BIT
+		  ,[HTACRAGND]		BIT
+		  ,[HTACRAPAY]		BIT
+		  ,[HTACRAEXM]		BIT
+		  ,[HTACRAOTH]		BIT
+		  ,[HTACRAALL]		BIT
+		  ,[HTAMPAID1]		BIGINT
+		  ,[HTEXM011]		BIT
+		  ,[HTEXM021]		BIT
+		  ,[HTEXM031]		BIT
+		  ,[HTEXM041]		BIT
+		  ,[HTEXM051]		BIT
+		  ,[HTEXM061]		BIT
+		  ,[HTEXM001]		BIT
+		  ,[HTAMPAID2]		BIGINT
+		  ,[HTEXM012]		BIT
+		  ,[HTEXM022]		BIT
+		  ,[HTEXM032]		BIT
+		  ,[HTEXM042]		BIT
+		  ,[HTEXM052]		BIT
+		  ,[HTEXM062]		BIT
+		  ,[HTEXM002]		BIT
+		  ,[HTAMPAID3]		BIGINT
+		  ,[HTEXM013]		BIT
+		  ,[HTEXM023]		BIT
+		  ,[HTEXM033]		BIT
+		  ,[HTEXM043]		BIT
+		  ,[HTEXM053]		BIT
+		  ,[HTEXM063]		BIT
+		  ,[HTEXM003]		BIT
+		  ,[HTAMPAID4]		BIGINT
+		  ,[HTEXM014]		BIT
+		  ,[HTEXM024]		BIT
+		  ,[HTEXM034]		BIT
+		  ,[HTEXM044]		BIT
+		  ,[HTEXM054]		BIT
+		  ,[HTEXM064]		BIT
+		  ,[HTEXM004]		BIT
+		  ,[HTAMPAID5]		BIGINT
+		  ,[HTEXM015]		BIT
+		  ,[HTEXM025]		BIT
+		  ,[HTEXM035]		BIT
+		  ,[HTEXM045]		BIT
+		  ,[HTEXM055]		BIT
+		  ,[HTEXM065]		BIT
+		  ,[HTEXM005]		BIT
+		  ,[HTAMPAID6]		BIGINT
+		  ,[HTEXM016]		BIT
+		  ,[HTEXM026]		BIT
+		  ,[HTEXM036]		BIT
+		  ,[HTEXM046]		BIT
+		  ,[HTEXM056]		BIT
+		  ,[HTEXM066]		BIT
+		  ,[HTEXM006]		BIT
+		  ,[HTAMPAID7]		BIGINT
+		  ,[HTEXM017]		BIT
+		  ,[HTEXM027]		BIT
+		  ,[HTEXM037]		BIT
+		  ,[HTEXM047]		BIT
+		  ,[HTEXM057]		BIT
+		  ,[HTEXM067]		BIT
+		  ,[HTEXM007]		BIT
+		  ,[HTAMPAID8]		BIGINT
+		  ,[HTEXM018]		BIT
+		  ,[HTEXM028]		BIT
+		  ,[HTEXM038]		BIT
+		  ,[HTEXM048]		BIT
+		  ,[HTEXM058]		BIT
+		  ,[HTEXM068]		BIT
+		  ,[HTEXM008]		BIT
+		  ,[HTAMPAID9]		BIGINT
+		  ,[HTEXM019]		BIT
+		  ,[HTEXM029]		BIT
+		  ,[HTEXM039]		BIT
+		  ,[HTEXM049]		BIT
+		  ,[HTEXM059]		BIT
+		  ,[HTEXM069]		BIT
+		  ,[HTEXM009]		BIT
+		  ,[HTAMPAID10]		BIGINT
+		  ,[HTEXM0110]		BIT
+		  ,[HTEXM0210]		BIT
+		  ,[HTEXM0310]		BIT
+		  ,[HTEXM0410]		BIT
+		  ,[HTEXM0510]		BIT
+		  ,[HTEXM0610]		BIT
+		  ,[HTEXM0010]		BIT
+		  ,[HTAMPAID11]		BIGINT
+		  ,[HTEXM0111]		BIT
+		  ,[HTEXM0211]		BIT
+		  ,[HTEXM0311]		BIT
+		  ,[HTEXM0411]		BIT
+		  ,[HTEXM0511]		BIT
+		  ,[HTEXM0611]		BIT
+		  ,[HTEXM0011]		BIT
+		  ,[HTAMPAID12]		BIGINT
+		  ,[HTEXM0112]		BIT
+		  ,[HTEXM0212]		BIT
+		  ,[HTEXM0312]		BIT
+		  ,[HTEXM0412]		BIT
+		  ,[HTEXM0512]		BIT
+		  ,[HTEXM0612]		BIT
+		  ,[HTEXM0012]		BIT
+		  ,[HTENGR10]		SMALLINT
+		  ,[HTENBY10]		SMALLINT
+		  ,[HTTLGR10]		SMALLINT
+		  ,[HTTLBY10]		SMALLINT
+		  ,[HTENGR11]		SMALLINT
+		  ,[HTENBY11]		SMALLINT
+		  ,[HTTLGR11]		SMALLINT
+		  ,[HTTLBY11]		SMALLINT
+		  ,[HTENGR12]		SMALLINT
+		  ,[HTENBY12]		SMALLINT
+		  ,[HTTLGR12]		SMALLINT
+		  ,[HTTLBY12]		SMALLINT
+		  ,[HTNMCL10]		SMALLINT
+		  ,[HTNMCL11]		SMALLINT
+		  ,[HTNMCL12]		SMALLINT
+		  ,[HTALLC10]		VARCHAR(150)
+		  ,[HTPRTEXP]		VARCHAR(200)
+		  ,[HTENTOT10]		SMALLINT
+      
+		  ,CONSTRAINT FK_HTP_ID FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+--TRUNCATE TABLE [CP002].[dbo].[HeadTeacher_Questionnaire_2016];
+
+INSERT INTO [CP002].[dbo].[HeadTeacher_Questionnaire_2016]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+
+		  ,CASE [HTNTCMP]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTNTCMP]
+		END as [HTNTCMP]		
+		  ,[HTDINT]			
+
+		  ,[NUMG10CLS]		
+		  ,[HTAGE]	
+		  
+		  ,CASE [HTSEX]		WHEN '1'	THEN  'Male'
+							WHEN '2'	THEN  'Female'
+										ELSE  [HTSEX]
+		END as [HTSEX]	
+		
+		  ,CASE [HTETHGRP]	WHEN '1'	THEN  'Kinh'
+							WHEN '2'	THEN  'H''Mong'
+							WHEN '3'	THEN  'Cham-Hroi'
+							WHEN '4'	THEN  'Ede'
+							WHEN '5'	THEN  'Nung'
+							WHEN '6'	THEN  'Tay'
+							WHEN '7'	THEN  'Dao'
+							WHEN '8'	THEN  'Giay'
+							WHEN '9'	THEN  'Hoa'
+							WHEN '10'	THEN  'Ba Na'
+							WHEN '11'	THEN  'Other'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTETHGRP]
+		END as [HTETHGRP]		
+		  ,CASE [HTRELGN]	WHEN '0'	THEN  'No religion'
+							WHEN '1'	THEN  'Buddhist'
+							WHEN '2'	THEN  'Christian (Catholic)'
+							WHEN '3'	THEN  'Christian (Protestant)'
+							WHEN '4'	THEN  'Cao Dai'
+							WHEN '5'	THEN  'Other'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTRELGN]
+		END as [HTRELGN]		
+		  ,CASE [HTMTHTNG]	WHEN '1'	THEN  'Vietnamese'
+							WHEN '2'	THEN  'H''Mong'
+							WHEN '3'	THEN  'Cham-Hroi'
+							WHEN '4'	THEN  'Ede'
+							WHEN '5'	THEN  'Nung'
+							WHEN '6'	THEN  'Tay'
+							WHEN '7'	THEN  'Dao'
+							WHEN '8'	THEN  'Giay'
+							WHEN '9'	THEN  'Chinese'
+							WHEN '10'	THEN  'Other'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTMTHTNG]
+		END as [HTMTHTNG]	
+		
+		  ,[HTFRMPRV]		
+
+		  ,CASE [HTCURRLE]	WHEN '1'	THEN  'Principal / Director'
+							WHEN '2'	THEN  'Vice-Principal'
+							WHEN '3'	THEN  'Another role'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTCURRLE]
+		END as [HTCURRLE]		
+
+		  ,[HTYRSHT]		
+
+		  ,CASE [HTLVLEDC]	WHEN '1'	THEN  'Upper secondary or equivalent'
+							WHEN '2'	THEN  'Vocational training school'
+							WHEN '3'	THEN  'College education'
+							WHEN '4'	THEN  'University education (undergraduate)'
+							WHEN '5'	THEN  'University education (postgraduate)'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTLVLEDC]
+		END as [HTLVLEDC]		
+
+		  ,CASE [HTLVLTCH]	WHEN '0'	THEN  'I am not trained'
+							WHEN '1'	THEN  'Short course or crash course in teaching profession'
+							WHEN '2'	THEN  'Teacher training level (2 years after upper secondary education)'
+							WHEN '3'	THEN  'Teacher training college level (3 years after upper secondary education)'
+							WHEN '4'	THEN  'Teacher training university level (4 years after upper secondary education) or higher'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTLVLTCH]
+		END as [HTLVLTCH]		
+		  ,CASE [HTEXCTCH]	WHEN '0'	THEN  'Never been an excellent teacher'
+							WHEN '1'	THEN  'Yes, school level'
+							WHEN '2'	THEN  'Yes, district level'
+							WHEN '3'	THEN  'Yes, province level or higher'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTEXCTCH]
+		END as [HTEXCTCH]		
+		  ,CASE [HTTYPSCH]	WHEN '1'	THEN  'Government'
+							WHEN '2'	THEN  'Private'
+							WHEN '3'	THEN  'Other'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTTYPSCH]
+		END as [HTTYPSCH]		
+		  ,CASE [HTLWSGRD]	WHEN '1'	THEN  'Grade 1'
+							WHEN '2'	THEN  'Grade 2'
+							WHEN '3'	THEN  'Grade 3'
+							WHEN '4'	THEN  'Grade 4'
+							WHEN '5'	THEN  'Grade 5'
+							WHEN '6'	THEN  'Grade 6'
+							WHEN '7'	THEN  'Grade 7'
+							WHEN '8'	THEN  'Grade 8'
+							WHEN '9'	THEN  'Grade 9'
+							WHEN '10'	THEN  'Grade 10'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTLWSGRD]
+		END as [HTLWSGRD]		
+		  ,CASE [HTHGHGRD]	WHEN '11'	THEN  'Grade 11'
+							WHEN '12'	THEN  'Grade 12'
+							WHEN '10'	THEN  'Grade 10'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTHGHGRD]
+		END as [HTHGHGRD]		
+		  ,[HTNMSTEN]		
+		  ,[HTNMETST]		
+		  ,[HTYREST]		
+		  ,CASE [HTP135CM]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '2'	THEN  'Do not know'
+										ELSE  [HTP135CM]
+		END as [HTP135CM]		
+		  ,CASE [HTPRDIST]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '2'	THEN  'Do not know'
+										ELSE  [HTPRDIST]
+		END as [HTPRDIST]		
+		  ,CASE [HTBOARD]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes, all students board during the week and return home at weekends'
+							WHEN '2'	THEN  'Yes, all students board for the whole semester and return home during the holidays'
+							WHEN '3'	THEN  'Yes, but it is a mix – some students board during the semester and others do not'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTBOARD]
+		END as [HTBOARD]		
+		  ,CASE [HTSCHAVL]	WHEN '0'	THEN  'There are no other upper secondary schools in this district that students could attend'
+							WHEN '1'	THEN  'There is one other upper secondary school in this district that students could attend'
+							WHEN '2'	THEN  'There are two or more other upper secondary schools in this district that students could attend'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTSCHAVL]
+		END as [HTSCHAVL]		
+
+		  ,[HTMRNSTR]		
+		  ,[HTMRNEND]		
+		  ,[HTAFTSTR]		
+		  ,[HTAFTEND]		
+		  ,[HTREGTCH]		
+		  ,[HTNONCMP]		
+		  ,[HTEXTCUR]		
+		  ,[HTNOACT]		
+		  ,[HTNOCMCH]		
+		  ,CASE [HTNOCMCL]	WHEN '0'	THEN  'This school does not offer additional classes outside the normal school day'
+							WHEN '1'	THEN  'Remedial classes for weaker students'
+							WHEN '2'	THEN  'Additional classes for excellent students'
+							WHEN '3'	THEN  'A mixture of remedial classes for weaker students and additional classes for excellent students'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTNOCMCL]
+		END as [HTNOCMCL]		
+		  ,[HTRQNMST]		
+		  ,[HTCENMST]		
+		  ,[HTPTNMST]		
+		  ,[HTRQMATH]		
+		  ,[HTRQENG]		
+		  ,[HTTCHAPP]		
+		  ,[HTREWTC1]		
+		  ,[HTREWTC2]		
+		  ,[HTREWTC4]		
+		  ,[HTREWTC5]		
+		  ,[HTREWTC6]		
+		  ,[HTREWTC7]		
+		  ,[HTREWTC8]		
+		  ,[HTDISTC1]		
+		  ,[HTDISTC2]		
+		  ,[HTDISTC3]		
+		  ,[HTDISTC4]		
+		  ,[HTDISTC6]		
+		  ,[HTDISTC7]		
+		  ,[HTDISTC8]		
+		  ,[HTDISTC0]		
+		  ,[HTGNADMN]		
+		  ,[HTACRARE]		
+		  ,[HTACRAETH]		
+		  ,[HTACRAGND]		
+		  ,[HTACRAPAY]		
+		  ,[HTACRAEXM]		
+		  ,[HTACRAOTH]		
+		  ,[HTACRAALL]		
+		  ,[HTAMPAID1]		
+		  ,[HTEXM011]		
+		  ,[HTEXM021]		
+		  ,[HTEXM031]		
+		  ,[HTEXM041]		
+		  ,[HTEXM051]		
+		  ,[HTEXM061]		
+		  ,[HTEXM001]		
+		  ,[HTAMPAID2]		
+		  ,[HTEXM012]		
+		  ,[HTEXM022]		
+		  ,[HTEXM032]		
+		  ,[HTEXM042]		
+		  ,[HTEXM052]		
+		  ,[HTEXM062]		
+		  ,[HTEXM002]		
+		  ,[HTAMPAID3]		
+		  ,[HTEXM013]		
+		  ,[HTEXM023]		
+		  ,[HTEXM033]		
+		  ,[HTEXM043]		
+		  ,[HTEXM053]		
+		  ,[HTEXM063]		
+		  ,[HTEXM003]		
+		  ,[HTAMPAID4]		
+		  ,[HTEXM014]		
+		  ,[HTEXM024]		
+		  ,[HTEXM034]		
+		  ,[HTEXM044]		
+		  ,[HTEXM054]		
+		  ,[HTEXM064]		
+		  ,[HTEXM004]		
+		  ,[HTAMPAID5]		
+		  ,[HTEXM015]		
+		  ,[HTEXM025]		
+		  ,[HTEXM035]		
+		  ,[HTEXM045]		
+		  ,[HTEXM055]		
+		  ,[HTEXM065]		
+		  ,[HTEXM005]		
+		  ,[HTAMPAID6]		
+		  ,[HTEXM016]		
+		  ,[HTEXM026]		
+		  ,[HTEXM036]		
+		  ,[HTEXM046]		
+		  ,[HTEXM056]		
+		  ,[HTEXM066]		
+		  ,[HTEXM006]		
+		  ,[HTAMPAID7]		
+		  ,[HTEXM017]		
+		  ,[HTEXM027]		
+		  ,[HTEXM037]		
+		  ,[HTEXM047]		
+		  ,[HTEXM057]		
+		  ,[HTEXM067]		
+		  ,[HTEXM007]		
+		  ,[HTAMPAID8]		
+		  ,[HTEXM018]		
+		  ,[HTEXM028]		
+		  ,[HTEXM038]		
+		  ,[HTEXM048]		
+		  ,[HTEXM058]		
+		  ,[HTEXM068]		
+		  ,[HTEXM008]		
+		  ,[HTAMPAID9]		
+		  ,[HTEXM019]		
+		  ,[HTEXM029]		
+		  ,[HTEXM039]		
+		  ,[HTEXM049]		
+		  ,[HTEXM059]		
+		  ,[HTEXM069]		
+		  ,[HTEXM009]		
+		  ,[HTAMPAID10]		
+		  ,[HTEXM0110]		
+		  ,[HTEXM0210]		
+		  ,[HTEXM0310]		
+		  ,[HTEXM0410]		
+		  ,[HTEXM0510]		
+		  ,[HTEXM0610]		
+		  ,[HTEXM0010]		
+		  ,[HTAMPAID11]		
+		  ,[HTEXM0111]		
+		  ,[HTEXM0211]		
+		  ,[HTEXM0311]		
+		  ,[HTEXM0411]		
+		  ,[HTEXM0511]		
+		  ,[HTEXM0611]		
+		  ,[HTEXM0011]		
+		  ,[HTAMPAID12]		
+		  ,[HTEXM0112]		
+		  ,[HTEXM0212]		
+		  ,[HTEXM0312]		
+		  ,[HTEXM0412]		
+		  ,[HTEXM0512]		
+		  ,[HTEXM0612]		
+		  ,[HTEXM0012]		
+		  ,[HTENGR10]		
+		  ,[HTENBY10]		
+		  ,[HTTLGR10]		
+		  ,[HTTLBY10]		
+		  ,[HTENGR11]		
+		  ,[HTENBY11]		
+		  ,[HTTLGR11]		
+		  ,[HTTLBY11]		
+		  ,[HTENGR12]		
+		  ,[HTENBY12]		
+		  ,[HTTLGR12]		
+		  ,[HTTLBY12]		
+		  ,[HTNMCL10]		
+		  ,[HTNMCL11]		
+		  ,[HTNMCL12]	
+		  
+		  ,CASE [HTALLC10]	WHEN '0'	THEN  'There is only one class in Grade 10'
+							WHEN '1'	THEN  'Randomly'
+							WHEN '2'	THEN  'Alphabetically'
+							WHEN '3'	THEN  'By Ability (e.g. high / middle / low'
+							WHEN '4'	THEN  'According to the level of fees they pay'
+							WHEN '5'	THEN  'By choice of subject'
+							WHEN '6'	THEN  'Other method'
+							WHEN '7'	THEN  'A combination of two or more of the above methods'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTALLC10]
+		END as [HTALLC10]	
+		
+		  ,CASE [HTPRTEXP]	WHEN '1'	THEN  'There is constant pressure from many parents who expect our school to set academic standards and to have our students ac'
+							WHEN '2'	THEN  'Pressure on the school to achieve higher academic standards among students comes from a minority of parents'
+							WHEN '3'	THEN  'Pressure from parents on the school to achieve higher academic standards is largely absent'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTPRTEXP]
+		END as [HTPRTEXP]		
+
+		  ,[HTENTOT10]		
+		 		
+
+FROM CP002.dbo.vietnam_wave_1
+;
+
+ --DROP TABLE [CP002].[dbo].[HeadTeacher_Questionnaire_2016];

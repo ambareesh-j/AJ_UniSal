@@ -1,0 +1,86 @@
+USE CP002;
+GO
+
+/******************************************/
+/*View 01 Creation - v01_ST_Questionnaire*/
+/******************************************/
+
+CREATE VIEW v01_ST_Questionnaire
+AS
+(
+SELECT dbEdu.Identifier.UNIQUEID, dbEdu.Identifier.SCHOOLID, dbEdu.Identifier.CLASSID, dbEdu.Identifier.STUDENTID, dbEdu.Identifier.YLCHILDID, dbEdu.Identifier.AGE, dbEdu.Identifier.ETHNICITY, dbEdu.Identifier.ABSENT_DAYS, 
+                  dbEdu.Identifier.MOM_READ, dbEdu.Identifier.MOM_EDUC, dbEdu.Identifier.DAD_READ, dbEdu.Identifier.DAD_EDUC, dbEdu.Identifier.STDYLCHD, dbEdu.Identifier.STDCMPLT, dbEdu.Student_Questionnaire_2016.STDLIV, 
+                  dbEdu.Student_Questionnaire_2016.STDLNGHM, dbEdu.Student_Questionnaire_2016.STDMEAL, dbEdu.Student_Questionnaire_2016.STDHLTH1, dbEdu.Student_Questionnaire_2016.STDHLTH2, 
+                  dbEdu.Student_Questionnaire_2016.STDHLTH3, dbEdu.Student_Questionnaire_2016.STDHLTH4, dbEdu.Student_Questionnaire_2016.STDHLTH5, dbEdu.Student_Questionnaire_2016.STDHLTH6, 
+                  dbEdu.Student_Questionnaire_2016.STDHLTH0, dbEdu.Student_Questionnaire_2016.STPPLHM, dbEdu.Student_Questionnaire_2016.STSIBOLD, dbEdu.Student_Questionnaire_2016.STSIBYNG, 
+                  dbEdu.Student_Questionnaire_2016.STNMBOOK, dbEdu.Student_Questionnaire_2016.STPLSTDY, dbEdu.Student_Questionnaire_2016.STHVMTEL, dbEdu.Student_Questionnaire_2016.STHVRADO, 
+                  dbEdu.Student_Questionnaire_2016.STHVTELE, dbEdu.Student_Questionnaire_2016.STHVBIKE, dbEdu.Student_Questionnaire_2016.STHVMTBK, dbEdu.Student_Questionnaire_2016.STHVDESK, 
+                  dbEdu.Student_Questionnaire_2016.STHVCHR, dbEdu.Student_Questionnaire_2016.STHVLAMP, dbEdu.Student_Questionnaire_2016.STHVEFAN, dbEdu.Student_Questionnaire_2016.STHVAIRC, 
+                  dbEdu.Student_Questionnaire_2016.STHVCAR, dbEdu.Student_Questionnaire_2016.STHVCOMP, dbEdu.Student_Questionnaire_2016.STHVINTR, dbEdu.Student_Questionnaire_2016.STHVFRDG, 
+                  dbEdu.Student_Questionnaire_2016.STHVMCRO, dbEdu.Student_Questionnaire_2016.STHVDVD, dbEdu.Student_Questionnaire_2016.STHVCBLE, dbEdu.Student_Questionnaire_2016.STTMSCH, 
+                  dbEdu.Student_Questionnaire_2016.STEATLNC, dbEdu.Student_Questionnaire_2016.STPAYLNC, dbEdu.Student_Questionnaire_2016.STRPTCL1, dbEdu.Student_Questionnaire_2016.STRPTCL6, 
+                  dbEdu.Student_Questionnaire_2016.STRPTCL10, dbEdu.Student_Questionnaire_2016.STTLTSCH, dbEdu.Student_Questionnaire_2016.STAGEENG, dbEdu.Student_Questionnaire_2016.STITMOW1, 
+                  dbEdu.Student_Questionnaire_2016.STITMOW2, dbEdu.Student_Questionnaire_2016.STITMOW3, dbEdu.Student_Questionnaire_2016.STITMOW4, dbEdu.Student_Questionnaire_2016.STITMOW5, 
+                  dbEdu.Student_Questionnaire_2016.STITMOW6, dbEdu.Student_Questionnaire_2016.STITMOW7, dbEdu.Student_Questionnaire_2016.STITMOW8, dbEdu.Student_Questionnaire_2016.STBRWBK, 
+                  dbEdu.Student_Questionnaire_2016.STREADFN, dbEdu.Student_Questionnaire_2016.STREADCH, dbEdu.Student_Questionnaire_2016.STREADLR, dbEdu.Student_Questionnaire_2016.STPLHLRD, 
+                  dbEdu.Student_Questionnaire_2016.STPLHL01, dbEdu.Student_Questionnaire_2016.STPLHL02, dbEdu.Student_Questionnaire_2016.STPLHL03, dbEdu.Student_Questionnaire_2016.STPLHL04, 
+                  dbEdu.Student_Questionnaire_2016.STPLHL05, dbEdu.Student_Questionnaire_2016.STPLHL06, dbEdu.Student_Questionnaire_2016.STPLHL07, dbEdu.Student_Questionnaire_2016.STSPEN01, 
+                  dbEdu.Student_Questionnaire_2016.STSPEN02, dbEdu.Student_Questionnaire_2016.STSPEN03, dbEdu.Student_Questionnaire_2016.STSPEN04, dbEdu.Student_Questionnaire_2016.STSPEN05, 
+                  dbEdu.Student_Questionnaire_2016.STATEN01, dbEdu.Student_Questionnaire_2016.STATEN02, dbEdu.Student_Questionnaire_2016.STATEN03, dbEdu.Student_Questionnaire_2016.STATEN04, 
+                  dbEdu.Student_Questionnaire_2016.STNONSCL, dbEdu.Student_Questionnaire_2016.STGR1001, dbEdu.Student_Questionnaire_2016.STGR1002, dbEdu.Student_Questionnaire_2016.STGR1003, 
+                  dbEdu.Student_Questionnaire_2016.STGR1004, dbEdu.Student_Questionnaire_2016.STGR1005, dbEdu.Student_Questionnaire_2016.STGR1006, dbEdu.Student_Questionnaire_2016.STGR1007, 
+                  dbEdu.Student_Questionnaire_2016.STGR1008, dbEdu.Student_Questionnaire_2016.STGR1009, dbEdu.Student_Questionnaire_2016.STGR1011, dbEdu.Student_Questionnaire_2016.STHGHGRD, 
+                  dbEdu.Student_Questionnaire_2017.STNTCMP, dbEdu.Student_Questionnaire_2017.STMTHWRK, dbEdu.Student_Questionnaire_2017.STMWRKCH, dbEdu.Student_Questionnaire_2017.STMWRKCM, 
+                  dbEdu.Student_Questionnaire_2017.STETHWRK, dbEdu.Student_Questionnaire_2017.STEWRKCH, dbEdu.Student_Questionnaire_2017.STEWRKCM, dbEdu.Student_Questionnaire_2017.STTMMWRK, 
+                  dbEdu.Student_Questionnaire_2017.STTMEWRK, dbEdu.Student_Questionnaire_2017.STCMPHME, dbEdu.Student_Questionnaire_2017.STCMPSCH, dbEdu.Student_Questionnaire_2017.STCMPOTH, 
+                  dbEdu.Student_Questionnaire_2017.STLTESCH, dbEdu.Student_Questionnaire_2017.STMSSDAY, dbEdu.Student_Questionnaire_2017.STMSSCLS, dbEdu.Student_Questionnaire_2017.STRSNMS1, 
+                  dbEdu.Student_Questionnaire_2017.STRSNMS2, dbEdu.Student_Questionnaire_2017.STRSNMS3, dbEdu.Student_Questionnaire_2017.STRSNMS4, dbEdu.Student_Questionnaire_2017.STRSNMS5, 
+                  dbEdu.Student_Questionnaire_2017.STRSNMS6, dbEdu.Student_Questionnaire_2017.STRSNMS7, dbEdu.Student_Questionnaire_2017.STRSNMS8, dbEdu.Student_Questionnaire_2017.STRSNMS9, 
+                  dbEdu.Student_Questionnaire_2017.STRSNMS0, dbEdu.Student_Questionnaire_2017.STADDMT, dbEdu.Student_Questionnaire_2017.STADDEN, dbEdu.Student_Questionnaire_2017.STADDOT, 
+                  dbEdu.Student_Questionnaire_2017.STEXSCMT, dbEdu.Student_Questionnaire_2017.STEXSCEN, dbEdu.Student_Questionnaire_2017.STEXSCOT, dbEdu.Student_Questionnaire_2017.STPRVMT, 
+                  dbEdu.Student_Questionnaire_2017.STPRVEN, dbEdu.Student_Questionnaire_2017.STPRVOT, dbEdu.Student_Questionnaire_2017.STEXOTMT, dbEdu.Student_Questionnaire_2017.STEXOTEN, 
+                  dbEdu.Student_Questionnaire_2017.STEXOTOT, dbEdu.Student_Questionnaire_2017.STFEEL18A, dbEdu.Student_Questionnaire_2017.STFEEL18B, dbEdu.Student_Questionnaire_2017.STFEEL18C, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL18D, dbEdu.Student_Questionnaire_2017.STFEEL18E, dbEdu.Student_Questionnaire_2017.STFEEL18F, dbEdu.Student_Questionnaire_2017.STFEEL18G, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL18H, dbEdu.Student_Questionnaire_2017.STFEEL18I, dbEdu.Student_Questionnaire_2017.STFEEL18J, dbEdu.Student_Questionnaire_2017.STFEEL18K, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL18L, dbEdu.Student_Questionnaire_2017.STFEEL19A, dbEdu.Student_Questionnaire_2017.STFEEL19B, dbEdu.Student_Questionnaire_2017.STFEEL19C, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL19D, dbEdu.Student_Questionnaire_2017.STFEEL19E, dbEdu.Student_Questionnaire_2017.STFEEL19F, dbEdu.Student_Questionnaire_2017.STFEEL19G, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL19H, dbEdu.Student_Questionnaire_2017.STFEEL19I, dbEdu.Student_Questionnaire_2017.STFEEL20A, dbEdu.Student_Questionnaire_2017.STFEEL20B, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL20C, dbEdu.Student_Questionnaire_2017.STFEEL20D, dbEdu.Student_Questionnaire_2017.STFEEL20E, dbEdu.Student_Questionnaire_2017.STFEEL20F, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL20G, dbEdu.Student_Questionnaire_2017.STFEEL20H, dbEdu.Student_Questionnaire_2017.STFEEL20I, dbEdu.Student_Questionnaire_2017.STFEEL20J, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL20K, dbEdu.Student_Questionnaire_2017.STFEEL20L, dbEdu.Student_Questionnaire_2017.STFEEL20M, dbEdu.Student_Questionnaire_2017.STFEEL20N, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL20O, dbEdu.Student_Questionnaire_2017.STFEEL21A, dbEdu.Student_Questionnaire_2017.STFEEL21B, dbEdu.Student_Questionnaire_2017.STFEEL21C, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL21D, dbEdu.Student_Questionnaire_2017.STFEEL21E, dbEdu.Student_Questionnaire_2017.STFEEL21F, dbEdu.Student_Questionnaire_2017.STFEEL21G, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL21H, dbEdu.Student_Questionnaire_2017.STFEEL21I, dbEdu.Student_Questionnaire_2017.STFEEL21J, dbEdu.Student_Questionnaire_2017.STFEEL22A, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL22B, dbEdu.Student_Questionnaire_2017.STFEEL22C, dbEdu.Student_Questionnaire_2017.STFEEL22D, dbEdu.Student_Questionnaire_2017.STFEEL22E, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL22F, dbEdu.Student_Questionnaire_2017.STFEEL22G, dbEdu.Student_Questionnaire_2017.STFEEL22H, dbEdu.Student_Questionnaire_2017.STFEEL23A, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL23B, dbEdu.Student_Questionnaire_2017.STFEEL23C, dbEdu.Student_Questionnaire_2017.STFEEL23D, dbEdu.Student_Questionnaire_2017.STFEEL23E, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL23F, dbEdu.Student_Questionnaire_2017.STFEEL23G, dbEdu.Student_Questionnaire_2017.STFEEL23H, dbEdu.Student_Questionnaire_2017.STFEEL24A, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL24B, dbEdu.Student_Questionnaire_2017.STFEEL24C, dbEdu.Student_Questionnaire_2017.STFEEL24D, dbEdu.Student_Questionnaire_2017.STFEEL24E, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL25A, dbEdu.Student_Questionnaire_2017.STFEEL25B, dbEdu.Student_Questionnaire_2017.STFEEL25C, dbEdu.Student_Questionnaire_2017.STFEEL25D, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL25E, dbEdu.Student_Questionnaire_2017.STFEEL26A, dbEdu.Student_Questionnaire_2017.STFEEL26B, dbEdu.Student_Questionnaire_2017.STFEEL26C, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL26D, dbEdu.Student_Questionnaire_2017.STFEEL26E, dbEdu.Student_Questionnaire_2017.STFEEL26F, dbEdu.Student_Questionnaire_2017.STFEEL26G, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL26H, dbEdu.Student_Questionnaire_2017.STFEEL26I, dbEdu.Student_Questionnaire_2017.STFEEL27, dbEdu.Student_Questionnaire_2017.STFEEL28, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL29, dbEdu.Student_Questionnaire_2017.STFEEL30, dbEdu.Student_Questionnaire_2017.STFEEL31, dbEdu.Student_Questionnaire_2017.STFEEL32, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL33, dbEdu.Student_Questionnaire_2017.STFEEL34, dbEdu.Student_Questionnaire_2017.STFEEL35, dbEdu.Student_Questionnaire_2017.STFEEL36, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL37, dbEdu.Student_Questionnaire_2017.STFEEL38, dbEdu.Student_Questionnaire_2017.STFEEL39, dbEdu.Student_Questionnaire_2017.STFEEL40, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL41, dbEdu.Student_Questionnaire_2017.STFEEL42, dbEdu.Student_Questionnaire_2017.STFEEL43, dbEdu.Student_Questionnaire_2017.STFEEL44, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL45, dbEdu.Student_Questionnaire_2017.STFEEL46, dbEdu.Student_Questionnaire_2017.STFEEL47, dbEdu.Student_Questionnaire_2017.STFEEL48, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL49, dbEdu.Student_Questionnaire_2017.STFEEL50, dbEdu.Student_Questionnaire_2017.STFEEL51, dbEdu.Student_Questionnaire_2017.STFEEL52, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL53, dbEdu.Student_Questionnaire_2017.STFEEL54, dbEdu.Student_Questionnaire_2017.STFEEL55, dbEdu.Student_Questionnaire_2017.STFEEL56, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL57, dbEdu.Student_Questionnaire_2017.STFEEL58, dbEdu.Student_Questionnaire_2017.STFEEL59, dbEdu.Student_Questionnaire_2017.STFEEL60, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL61, dbEdu.Student_Questionnaire_2017.STFEEL62, dbEdu.Student_Questionnaire_2017.STFEEL63, dbEdu.Student_Questionnaire_2017.STFEEL64, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL65, dbEdu.Student_Questionnaire_2017.STFEEL66, dbEdu.Student_Questionnaire_2017.STFEEL67, dbEdu.Student_Questionnaire_2017.STFEEL68, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL69, dbEdu.Student_Questionnaire_2017.STFEEL70, dbEdu.Student_Questionnaire_2017.STFEEL71, dbEdu.Student_Questionnaire_2017.STFEEL72, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL73, dbEdu.Student_Questionnaire_2017.STFEEL74, dbEdu.Student_Questionnaire_2017.STFEEL75, dbEdu.Student_Questionnaire_2017.STFEEL76, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL77, dbEdu.Student_Questionnaire_2017.STFEEL78, dbEdu.Student_Questionnaire_2017.STFEEL79, dbEdu.Student_Questionnaire_2017.STFEEL80, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL81, dbEdu.Student_Questionnaire_2017.STFEEL82, dbEdu.Student_Questionnaire_2017.STFEEL83, dbEdu.Student_Questionnaire_2017.STFEEL84, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL85, dbEdu.Student_Questionnaire_2017.STFEEL86, dbEdu.Student_Questionnaire_2017.STFEEL87, dbEdu.Student_Questionnaire_2017.STFEEL88, 
+                  dbEdu.Student_Questionnaire_2017.STFEEL89, dbEdu.Student_Questionnaire_2017.STFEEL90, dbEdu.Student_Questionnaire_2017.STFEEL91, dbEdu.Student_Questionnaire_2017.STFEEL92, dbEdu.Identifier.GENDER, 
+                  dbEdu.Identifier.LOCALITY, dbEdu.Identifier.DISTRICTCODE, dbEdu.Identifier.PROVINCE
+FROM     dbEdu.Student_Questionnaire_2016 
+	INNER JOIN dbEdu.Student_Questionnaire_2017 
+	ON dbEdu.Student_Questionnaire_2016.UNIQUEID = dbEdu.Student_Questionnaire_2017.UNIQUEID 
+	INNER JOIN dbEdu.Identifier 
+	ON dbEdu.Student_Questionnaire_2016.UNIQUEID = dbEdu.Identifier.UNIQUEID
+)	
+;

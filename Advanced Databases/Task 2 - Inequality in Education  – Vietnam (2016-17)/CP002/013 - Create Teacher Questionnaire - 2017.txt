@@ -1,0 +1,1917 @@
+USE CP002;
+GO
+
+CREATE TABLE Teacher_Questionnaire_2017
+(		
+		 TQ_ID				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[ENG_TCHID]		TINYINT
+		  ,[ENG_TCHSUBJ]	VARCHAR(50)
+		  ,[ENG_TCHDTJN]	VARCHAR(30)
+		  ,[ENG_TCHDYPRS]	SMALLINT
+		  ,[ENG_TCSTLEMP]	VARCHAR(10)
+		  ,[ENG_TCWHYLFT]	VARCHAR(50)
+		  ,[ENG_TCDAYPRS]	TINYINT
+		  ,[ENG_TCHABSC]	TINYINT	
+		  ,[ENG_TCHNTCMP]	VARCHAR(50)
+		  ,[ENG_TCHDINT]	VARCHAR(30)
+		  ,[ENG_TCAGE]		TINYINT	
+		  ,[ENG_TCGNDR]		VARCHAR(50)
+		  ,[ENG_TCETHNC]	VARCHAR(30)
+		  ,[ENG_TCRELGN]	VARCHAR(50)
+		  ,[ENG_TCLNGHME]	VARCHAR(30)
+		  ,[ENG_TCPRVTCH]	VARCHAR(10)	
+		  ,[ENG_TCMBLE]		BIT
+		  ,[ENG_TCRADIO]	BIT
+		  ,[ENG_TCTELE]		BIT
+		  ,[ENG_TCBIKE]		BIT
+		  ,[ENG_TCSCTR]		BIT
+		  ,[ENG_TCTBLE]		BIT
+		  ,[ENG_TCCHAIR]	BIT
+		  ,[ENG_TCLAMP]		BIT
+		  ,[ENG_TCELEC]		BIT
+		  ,[ENG_TCAIRCND]	BIT
+		  ,[ENG_TCCAR]		BIT
+		  ,[ENG_TCCOMP]		BIT
+		  ,[ENG_TCINTRT]	BIT
+		  ,[ENG_TCFRDG]		BIT
+		  ,[ENG_TCMICRO]	BIT
+		  ,[ENG_TCDVD]		BIT
+		  ,[ENG_TCTVBOX]	BIT
+		  ,[ENG_TCLVLEDC]	VARCHAR(100)
+		  ,[ENG_TCTCHQLF]	VARCHAR(200)
+		  ,[ENG_TCSPCMAT]	BIT
+		  ,[ENG_TCSPCENG]	BIT
+		  ,[ENG_TCSPCVNM]	BIT
+		  ,[ENG_TCSPCLNG]	BIT
+		  ,[ENG_TCSPCPSC]	BIT
+		  ,[ENG_TCSPCCHE]	BIT
+		  ,[ENG_TCSPCBIO]	BIT
+		  ,[ENG_TCSPCHIS]	BIT
+		  ,[ENG_TCSPCGEO]	BIT
+		  ,[ENG_TCSPCPHY]	BIT
+		  ,[ENG_TCSPCANT]	BIT
+		  ,[ENG_TCDYSTRN]	TINYINT
+		  ,[ENG_TCTTRNHLP]	VARCHAR(100)
+		  ,[ENG_TCAWDTTL]	VARCHAR(100)
+		  ,[ENG_TCYRTCH]	TINYINT
+		  ,[ENG_TCYRTCSCH]	TINYINT
+		  ,[ENG_TCSTDENG]	VARCHAR(100)
+		  ,[ENG_TCTCHENG]	VARCHAR(100)
+		  ,[ENG_TCEMPBAS]	VARCHAR(30)	
+		  ,[ENG_TCFGRDE10]	BIT
+		  ,[ENG_TCFGRDE11]	BIT
+		  ,[ENG_TCFGRDE12]	BIT
+		  ,[ENG_TCMATHS]	BIT
+		  ,[ENG_TCENGL]		BIT
+		  ,[ENG_TCVNM]		BIT
+		  ,[ENG_TCANTLNG]	BIT
+		  ,[ENG_TCPHYSC]	BIT
+		  ,[ENG_TCCHEM]		BIT
+		  ,[ENG_TCBIOLG]	BIT
+		  ,[ENG_TCHISTRY]	BIT
+		  ,[ENG_TCGEOG]		BIT
+		  ,[ENG_TCPHYS]		BIT
+		  ,[ENG_TCOTHR]		BIT
+		  ,[ENG_TCPRDWK]	TINYINT
+		  ,[ENG_TCEXTCLS]	TINYINT
+		  ,[ENG_TCTCHG10]	VARCHAR(20)
+		  ,[ENG_TCEXTWRK]	VARCHAR(20)
+		  ,[ENG_TCOBSHT]	VARCHAR(50)
+		  ,[ENG_TCOBSVP]	VARCHAR(50)
+		  ,[ENG_TCOBSHSD]	VARCHAR(50)
+		  ,[ENG_TCOBSOTH]	VARCHAR(50)
+		  ,[ENG_TCOBSDOET]	VARCHAR(50)
+		  ,[ENG_TCPRATD]	VARCHAR(30)
+		  ,[ENG_TCLATENS]	VARCHAR(30)
+		  ,[ENG_TCDISCPL]	VARCHAR(30)
+		  ,[ENG_TCNOMAT]	VARCHAR(30)
+		  ,[ENG_TCLACKRS]	VARCHAR(30)
+		  ,[ENG_TCINTRRP]	VARCHAR(30)
+		  ,[ENG_TCRSNABS]	VARCHAR(100)
+		  ,[ENG_TCASGNSC]	VARCHAR(100)
+		  ,[ENG_TCPRTCNT]	VARCHAR(100)
+		  ,[ENG_TCTRVMIN]	SMALLINT
+		  ,[ENG_TCPRDTCH]	TINYINT
+		  ,[ENG_TCPRDPLN]	TINYINT
+		  ,[ENG_TCPRDCRT]	TINYINT
+		  ,[ENG_TCPRDADM]	TINYINT
+		  ,[ENG_TCHREXTR]	TINYINT
+		  ,[ENG_TCHRHELP]	TINYINT
+		  ,[ENG_TCHRTUTR]	TINYINT
+		  ,[ENG_TCHRIDEA]	TINYINT
+		  ,[ENG_TCHRCOMM]	TINYINT
+		  ,[ENG_TCIMPCHR]	VARCHAR(100)
+		  ,[ENG_TCCMSCTC]	VARCHAR(200)
+		  ,[ENG_TCCMSCFC]	VARCHAR(200)
+		  ,[ENG_TCCMSCPR]	VARCHAR(200)	
+		  ,[ENG_TCRSNTCH]	VARCHAR(200)
+		  ,[ENG_TCFRTCHC]	VARCHAR(200)
+		  ,[ENG_TCMOVTCH]	SMALLINT
+		  ,[ENG_TCGLSEC]	VARCHAR(200)
+		  ,[ENG_TCCHSEC]	VARCHAR(200)
+		  ,[ENG_TCATD41A]	VARCHAR(50)
+		  ,[ENG_TCATD41B]	VARCHAR(50)
+		  ,[ENG_TCATD41C]	VARCHAR(50)
+		  ,[ENG_TCATD41D]	VARCHAR(50)
+		  ,[ENG_TCATD41E]	VARCHAR(50)
+		  ,[ENG_TCATD41F]	VARCHAR(50)
+		  ,[ENG_TCATD41G]	VARCHAR(50)
+		  ,[ENG_TCATD41H]	VARCHAR(50)
+		  ,[ENG_TCATD42A]	VARCHAR(50)
+		  ,[ENG_TCATD42B]	VARCHAR(50)
+		  ,[ENG_TCATD42C]	VARCHAR(50)
+		  ,[ENG_TCATD42D]	VARCHAR(50)
+		  ,[ENG_TCATD42E]	VARCHAR(50)
+		  ,[ENG_TCATD42F]	VARCHAR(50)
+		  ,[ENG_TCATD42G]	VARCHAR(50)
+		  ,[ENG_TCATD43A]	VARCHAR(50)
+		  ,[ENG_TCATD43B]	VARCHAR(50)
+		  ,[ENG_TCATD43C]	VARCHAR(50)
+		  ,[ENG_TCATD43D]	VARCHAR(50)
+		  ,[ENG_TCATD43E]	VARCHAR(50)
+		  ,[ENG_TCATD43F]	VARCHAR(50)
+		  ,[ENG_TCATD43G]	VARCHAR(50)
+		  ,[ENG_TCATD43H]	VARCHAR(50)
+		  ,[ENG_TCATD43I]	VARCHAR(50)
+		  ,[ENG_TCATD43J]	VARCHAR(50)
+		  ,[ENG_TCATD43K]	VARCHAR(50)
+		  ,[ENG_TCATD43L]	VARCHAR(50)
+		  ,[ENG_TCATD43M]	VARCHAR(50)
+		  ,[ENG_TCATD44A]	VARCHAR(50)
+		  ,[ENG_TCATD44B]	VARCHAR(50)
+		  ,[ENG_TCATD44C]	VARCHAR(50)
+		  ,[ENG_TCATD44D]	VARCHAR(50)
+		  ,[ENG_TCATD44E]	VARCHAR(50)
+		  ,[ENG_TCATD44F]	VARCHAR(50)
+		  ,[ENG_TCATD44G]	VARCHAR(50)
+		  ,[ENG_TCATD44H]	VARCHAR(50)
+		  ,[ENG_TCATD44I]	VARCHAR(50)
+		  ,[ENG_TCATD44J]	VARCHAR(50)
+		  ,[ENG_TCATD44K]	VARCHAR(50)
+		  ,[ENG_TCATD44L]	VARCHAR(50)
+		  ,[ENG_TCATD44M]	VARCHAR(50)
+		  ,[ENG_TCATD44N]	VARCHAR(50)
+		  ,[ENG_TCATD44O]	VARCHAR(50)
+		  ,[ENG_TCATD44P]	VARCHAR(50)
+		  ,[ENG_TCATD44Q]	VARCHAR(50)
+		  ,[ENG_TCATD44R]	VARCHAR(50)
+		  ,[ENG_TCATD44S]	VARCHAR(50)
+		  ,[ENG_TCATD44T]	VARCHAR(50)
+		  ,[MATH_TCHID]		TINYINT
+		  ,[MATH_TCHSUBJ]	VARCHAR(50)
+		  ,[MATH_TCHDTJN]	VARCHAR(20)
+		  ,[MATH_TCHDYPRS]	SMALLINT
+		  ,[MATH_TCSTLEMP]	VARCHAR(10)
+		  ,[MATH_TCWHYLFT]	VARCHAR(50)
+		  ,[MATH_TCDAYPRS]	TINYINT
+		  ,[MATH_TCHABSC]	TINYINT
+		  ,[MATH_TCHNTCMP]	VARCHAR(50)
+		  ,[MATH_TCHDINT]	VARCHAR(20)
+		  ,[MATH_TCAGE]		TINYINT
+		  ,[MATH_TCGNDR]	VARCHAR(50)
+		  ,[MATH_TCETHNC]	VARCHAR(30)
+		  ,[MATH_TCRELGN]	VARCHAR(50)
+		  ,[MATH_TCLNGHME]	VARCHAR(30)
+		  ,[MATH_TCPRVTCH]	VARCHAR(10)
+		  ,[MATH_TCMBLE]	BIT
+		  ,[MATH_TCRADIO]	BIT
+		  ,[MATH_TCTELE]	BIT
+		  ,[MATH_TCBIKE]	BIT
+		  ,[MATH_TCSCTR]	BIT
+		  ,[MATH_TCTBLE]	BIT
+		  ,[MATH_TCCHAIR]	BIT
+		  ,[MATH_TCLAMP]	BIT
+		  ,[MATH_TCELEC]	BIT
+		  ,[MATH_TCAIRCND]	BIT
+		  ,[MATH_TCCAR]		BIT
+		  ,[MATH_TCCOMP]	BIT
+		  ,[MATH_TCINTRT]	BIT
+		  ,[MATH_TCFRDG]	BIT
+		  ,[MATH_TCMICRO]	BIT
+		  ,[MATH_TCDVD]		BIT
+		  ,[MATH_TCTVBOX]	BIT	
+		  ,[MATH_TCLVLEDC]	VARCHAR(100)
+		  ,[MATH_TCTCHQLF]	VARCHAR(200)
+		  ,[MATH_TCSPCMAT]	BIT
+		  ,[MATH_TCSPCENG]	BIT
+		  ,[MATH_TCSPCVNM]	BIT
+		  ,[MATH_TCSPCLNG]	BIT
+		  ,[MATH_TCSPCPSC]	BIT
+		  ,[MATH_TCSPCCHE]	BIT
+		  ,[MATH_TCSPCBIO]	BIT
+		  ,[MATH_TCSPCHIS]	BIT
+		  ,[MATH_TCSPCGEO]	BIT
+		  ,[MATH_TCSPCPHY]	BIT
+		  ,[MATH_TCSPCANT]	BIT
+		  ,[MATH_TCDYSTRN]	TINYINT
+		  ,[MATH_TCTTRNHLP]	VARCHAR(100)
+		  ,[MATH_TCAWDTTL]	VARCHAR(100)
+		  ,[MATH_TCYRTCH]	TINYINT
+		  ,[MATH_TCYRTCSCH]	TINYINT
+		  ,[MATH_TCSTDENG]	VARCHAR(100)
+		  ,[MATH_TCTCHENG]	VARCHAR(20)
+		  ,[MATH_TCEMPBAS]	VARCHAR(30)
+		  ,[MATH_TCFGRDE10]	BIT
+		  ,[MATH_TCFGRDE11]	BIT
+		  ,[MATH_TCFGRDE12]	BIT
+		  ,[MATH_TCMATHS]	BIT
+		  ,[MATH_TCENGL]	BIT
+		  ,[MATH_TCVNM]		BIT
+		  ,[MATH_TCANTLNG]	BIT
+		  ,[MATH_TCPHYSC]	BIT
+		  ,[MATH_TCCHEM]	BIT
+		  ,[MATH_TCBIOLG]	BIT
+		  ,[MATH_TCHISTRY]	BIT
+		  ,[MATH_TCGEOG]	BIT
+		  ,[MATH_TCPHYS]	BIT
+		  ,[MATH_TCOTHR]	BIT
+		  ,[MATH_TCPRDWK]	TINYINT
+		  ,[MATH_TCEXTCLS]	TINYINT
+		  ,[MATH_TCTCHG10]	VARCHAR(20)
+		  ,[MATH_TCEXTWRK]	VARCHAR(20)
+		  ,[MATH_TCOBSHT]	VARCHAR(100)
+		  ,[MATH_TCOBSVP]	VARCHAR(100)
+		  ,[MATH_TCOBSHSD]	VARCHAR(100)
+		  ,[MATH_TCOBSOTH]	VARCHAR(100)
+		  ,[MATH_TCOBSDOET]	VARCHAR(100)
+		  ,[MATH_TCPRATD]	VARCHAR(100)
+		  ,[MATH_TCLATENS]	VARCHAR(100)
+		  ,[MATH_TCDISCPL]	VARCHAR(100)
+		  ,[MATH_TCNOMAT]	VARCHAR(100)
+		  ,[MATH_TCLACKRS]	VARCHAR(100)
+		  ,[MATH_TCINTRRP]	VARCHAR(100)
+		  ,[MATH_TCRSNABS]	VARCHAR(100)
+		  ,[MATH_TCASGNSC]	VARCHAR(100)
+		  ,[MATH_TCPRTCNT]	VARCHAR(100)
+		  ,[MATH_TCTRVMIN]	SMALLINT
+		  ,[MATH_TCPRDTCH]	TINYINT
+		  ,[MATH_TCPRDPLN]	TINYINT
+		  ,[MATH_TCPRDCRT]	TINYINT
+		  ,[MATH_TCPRDADM]	TINYINT
+		  ,[MATH_TCHREXTR]	TINYINT
+		  ,[MATH_TCHRHELP]	TINYINT
+		  ,[MATH_TCHRTUTR]	TINYINT
+		  ,[MATH_TCHRIDEA]	TINYINT
+		  ,[MATH_TCHRCOMM]	TINYINT
+		  ,[MATH_TCIMPCHR]	VARCHAR(100)
+		  ,[MATH_TCCMSCTC]	VARCHAR(200)
+		  ,[MATH_TCCMSCFC]	VARCHAR(200)
+		  ,[MATH_TCCMSCPR]	VARCHAR(200)
+		  ,[MATH_TCRSNTCH]	VARCHAR(200)
+		  ,[MATH_TCFRTCHC]	VARCHAR(200)
+		  ,[MATH_TCMOVTCH]	SMALLINT
+		  ,[MATH_TCGLSEC]	VARCHAR(100)
+		  ,[MATH_TCCHSEC]	VARCHAR(100)
+		  ,[MATH_TCATD41A]	VARCHAR(50)
+		  ,[MATH_TCATD41B]	VARCHAR(50)
+		  ,[MATH_TCATD41C]	VARCHAR(50)
+		  ,[MATH_TCATD41D]	VARCHAR(50)
+		  ,[MATH_TCATD41E]	VARCHAR(50)
+		  ,[MATH_TCATD41F]	VARCHAR(50)
+		  ,[MATH_TCATD41G]	VARCHAR(50)
+		  ,[MATH_TCATD41H]	VARCHAR(50)
+		  ,[MATH_TCATD42A]	VARCHAR(50)
+		  ,[MATH_TCATD42B]	VARCHAR(50)
+		  ,[MATH_TCATD42C]	VARCHAR(50)
+		  ,[MATH_TCATD42D]	VARCHAR(50)
+		  ,[MATH_TCATD42E]	VARCHAR(50)
+		  ,[MATH_TCATD42F]	VARCHAR(50)
+		  ,[MATH_TCATD42G]	VARCHAR(50)
+		  ,[MATH_TCATD43A]	VARCHAR(50)
+		  ,[MATH_TCATD43B]	VARCHAR(50)
+		  ,[MATH_TCATD43C]	VARCHAR(50)
+		  ,[MATH_TCATD43D]	VARCHAR(50)
+		  ,[MATH_TCATD43E]	VARCHAR(50)
+		  ,[MATH_TCATD43F]	VARCHAR(50)
+		  ,[MATH_TCATD43G]	VARCHAR(50)
+		  ,[MATH_TCATD43H]	VARCHAR(50)
+		  ,[MATH_TCATD43I]	VARCHAR(50)
+		  ,[MATH_TCATD43J]	VARCHAR(50)
+		  ,[MATH_TCATD43K]	VARCHAR(50)
+		  ,[MATH_TCATD43L]	VARCHAR(50)
+		  ,[MATH_TCATD43M]	VARCHAR(50)
+		  ,[MATH_TCATD44A]	VARCHAR(50)
+		  ,[MATH_TCATD44B]	VARCHAR(50)
+		  ,[MATH_TCATD44C]	VARCHAR(50)
+		  ,[MATH_TCATD44D]	VARCHAR(50)
+		  ,[MATH_TCATD44E]	VARCHAR(50)
+		  ,[MATH_TCATD44F]	VARCHAR(50)
+		  ,[MATH_TCATD44G]	VARCHAR(50)
+		  ,[MATH_TCATD44H]	VARCHAR(50)
+		  ,[MATH_TCATD44I]	VARCHAR(50)
+		  ,[MATH_TCATD44J]	VARCHAR(50)
+		  ,[MATH_TCATD44K]	VARCHAR(50)
+		  ,[MATH_TCATD44L]	VARCHAR(50)
+		  ,[MATH_TCATD44M]	VARCHAR(50)
+		  ,[MATH_TCATD44N]	VARCHAR(50)
+		  ,[MATH_TCATD44O]	VARCHAR(50)
+		  ,[MATH_TCATD44P]	VARCHAR(50)
+		  ,[MATH_TCATD44Q]	VARCHAR(50)
+		  ,[MATH_TCATD44R]	VARCHAR(50)
+		  ,[MATH_TCATD44S]	VARCHAR(50)
+		  ,[MATH_TCATD44T]	VARCHAR(50)
+
+		  ,CONSTRAINT FK_TQ_ID FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+
+)
+;
+
+--TRUNCATE TABLE [CP002].[dbo].[Teacher_Questionnaire_2017];
+
+INSERT INTO [CP002].[dbo].[Teacher_Questionnaire_2017]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+
+		  ,[ENG_TCHID]		
+
+		  ,CASE [ENG_TCHSUBJ]	WHEN '1'	THEN  'Maths'
+								WHEN '2'	THEN  'English'
+								WHEN '3'	THEN  'Maths and English'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCHSUBJ]
+		END as [ENG_TCHSUBJ]	
+		  
+		  ,[ENG_TCHDTJN]	
+		  ,[ENG_TCHDYPRS]	
+		  ,CASE [ENG_TCSTLEMP]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCSTLEMP]
+		END as [ENG_TCSTLEMP]	
+		  ,CASE [ENG_TCWHYLFT]	WHEN '1'	THEN  'Working at another school'
+								WHEN '2'	THEN  'Retired'
+								WHEN '3'	THEN  'Working in another profession'
+								WHEN '4'	THEN  'Another reason'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCWHYLFT]
+		END as [ENG_TCWHYLFT]	
+		  ,[ENG_TCDAYPRS]	
+		  ,[ENG_TCHABSC]	
+		  ,CASE [ENG_TCHNTCMP]	WHEN '1'	THEN  'Respondent absent'
+								WHEN '2'	THEN  'Respondent refused to participate'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCHNTCMP]
+		END as [ENG_TCHNTCMP]	
+		  ,[ENG_TCHDINT]	
+		  ,[ENG_TCAGE]		
+		  ,CASE [ENG_TCGNDR]	WHEN '1'	THEN  'Male'
+								WHEN '2'	THEN  'Female'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCGNDR]
+		END as [ENG_TCGNDR]		
+		  ,CASE [ENG_TCETHNC]	WHEN '1'	THEN  'Kinh'
+								WHEN '2'	THEN  'H''Mong'
+								WHEN '3'	THEN  'Cham-Hroi'
+								WHEN '4'	THEN  'Ede'
+								WHEN '5'	THEN  'Nung'
+								WHEN '6'	THEN  'Tay'
+								WHEN '7'	THEN  'Dao'
+								WHEN '8'	THEN  'Giay'
+								WHEN '9'	THEN  'Chinese'
+								WHEN '10'	THEN  'Ba Na'
+								WHEN '11'	THEN  'Other'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCETHNC]
+		END as [ENG_TCETHNC]	
+		  ,CASE [ENG_TCRELGN]	WHEN '0'	THEN  'No religion'
+								WHEN '1'	THEN  'Buddhist'
+								WHEN '2'	THEN  'Christian (Catholic)'
+								WHEN '3'	THEN  'Christian (Protestant)'
+								WHEN '4'	THEN  'Cao Dai'
+								WHEN '5'	THEN  'Other'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCRELGN]
+		END as [ENG_TCRELGN]	
+		  ,CASE [ENG_TCLNGHME]	WHEN '1'	THEN  'Vietnamese'
+								WHEN '2'	THEN  'H''Mong'
+								WHEN '3'	THEN  'Cham-Hroi'
+								WHEN '4'	THEN  'Ede'
+								WHEN '5'	THEN  'Nung'
+								WHEN '6'	THEN  'Tay'
+								WHEN '7'	THEN  'Dao'
+								WHEN '8'	THEN  'Giay'
+								WHEN '9'	THEN  'Chinese'
+								WHEN '10'	THEN  'Other'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCLNGHME]
+		END as [ENG_TCLNGHME]	
+		  ,CASE [ENG_TCPRVTCH]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCPRVTCH]
+		END as [ENG_TCPRVTCH]	
+		  ,[ENG_TCMBLE]		
+		  ,[ENG_TCRADIO]	
+		  ,[ENG_TCTELE]		
+		  ,[ENG_TCBIKE]		
+		  ,[ENG_TCSCTR]		
+		  ,[ENG_TCTBLE]		
+		  ,[ENG_TCCHAIR]	
+		  ,[ENG_TCLAMP]		
+		  ,[ENG_TCELEC]		
+		  ,[ENG_TCAIRCND]	
+		  ,[ENG_TCCAR]		
+		  ,[ENG_TCCOMP]		
+		  ,[ENG_TCINTRT]	
+		  ,[ENG_TCFRDG]		
+		  ,[ENG_TCMICRO]	
+		  ,[ENG_TCDVD]		
+		  ,[ENG_TCTVBOX]	
+		  ,CASE [ENG_TCLVLEDC]	WHEN '1'	THEN  'Upper secondary or equivalent'
+								WHEN '2'	THEN  'Vocational training school'
+								WHEN '3'	THEN  'College education'
+								WHEN '4'	THEN  'University education (undergraduate)'
+								WHEN '5'	THEN  'University education (postgraduate)'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCLVLEDC]
+		END as [ENG_TCLVLEDC]	
+		  ,CASE [ENG_TCTCHQLF]	WHEN '0'	THEN  'I am not trained'
+								WHEN '1'	THEN  'Short course or crash course in teaching profession'
+								WHEN '2'	THEN  'Teacher training level (2 years after upper secondary education)'
+								WHEN '3'	THEN  'Teacher training college level (3 years after upper secondary education)'
+								WHEN '4'	THEN  'Teacher training university level (4 years after upper secondary education) or higher'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCTCHQLF]
+		END as [ENG_TCTCHQLF]	
+		  ,[ENG_TCSPCMAT]	
+		  ,[ENG_TCSPCENG]	
+		  ,[ENG_TCSPCVNM]	
+		  ,[ENG_TCSPCLNG]	
+		  ,[ENG_TCSPCPSC]	
+		  ,[ENG_TCSPCCHE]	
+		  ,[ENG_TCSPCBIO]	
+		  ,[ENG_TCSPCHIS]	
+		  ,[ENG_TCSPCGEO]	
+		  ,[ENG_TCSPCPHY]	
+		  ,[ENG_TCSPCANT]	
+		  ,[ENG_TCDYSTRN]	
+		  ,CASE [ENG_TCTTRNHLP]	WHEN '0'	THEN  'Not applicable'
+								WHEN '1'	THEN  'Improved it a lot'
+								WHEN '2'	THEN  'Improved it a little'
+								WHEN '3'	THEN  'Did not improve it'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCTTRNHLP]
+		END as [ENG_TCTTRNHLP]	
+		  ,CASE [ENG_TCAWDTTL]	WHEN '0'	THEN  'Never been an excellent teacher'
+								WHEN '1'	THEN  'Yes, school level'
+								WHEN '2'	THEN  'Yes, district level'
+								WHEN '3'	THEN  'Yes, province level or higher'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCAWDTTL]
+		END as [ENG_TCAWDTTL]	
+		  ,[ENG_TCYRTCH]	
+		  ,[ENG_TCYRTCSCH]	
+		  ,CASE [ENG_TCSTDENG]	WHEN '0'	THEN  'I have never studied English as a subject'
+								WHEN '1'	THEN  'Up to 1 year'
+								WHEN '2'	THEN  '1 - 2 years'
+								WHEN '3'	THEN  '3 - 5 years'
+								WHEN '4'	THEN  '6 - 10 years'
+								WHEN '5'	THEN  'More than 10 years'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCSTDENG]
+		END as [ENG_TCSTDENG]	
+		  ,CASE [ENG_TCTCHENG]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCTCHENG]
+		END as [ENG_TCTCHENG]	
+		  ,CASE [ENG_TCEMPBAS]	WHEN '1'	THEN  'Permanent'
+								WHEN '2'	THEN  'Temporary'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCEMPBAS]
+		END as [ENG_TCEMPBAS]	
+		  ,[ENG_TCFGRDE10]	
+		  ,[ENG_TCFGRDE11]	
+		  ,[ENG_TCFGRDE12]	
+		  ,[ENG_TCMATHS]	
+		  ,[ENG_TCENGL]		
+		  ,[ENG_TCVNM]		
+		  ,[ENG_TCANTLNG]	
+		  ,[ENG_TCPHYSC]	
+		  ,[ENG_TCCHEM]		
+		  ,[ENG_TCBIOLG]	
+		  ,[ENG_TCHISTRY]	
+		  ,[ENG_TCGEOG]		
+		  ,[ENG_TCPHYS]		
+		  ,[ENG_TCOTHR]		
+		  ,[ENG_TCPRDWK]	
+		  ,[ENG_TCEXTCLS]	
+		  ,CASE [ENG_TCTCHG10]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCTCHG10]
+		END as [ENG_TCTCHG10]	
+		  ,CASE [ENG_TCEXTWRK]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCEXTWRK]
+		END as [ENG_TCEXTWRK]	
+		  ,CASE [ENG_TCOBSHT]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCOBSHT]
+		END as [ENG_TCOBSHT]	
+		  ,CASE [ENG_TCOBSVP]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCOBSVP]
+		END as [ENG_TCOBSVP]	
+		  ,CASE [ENG_TCOBSHSD]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCOBSHSD]
+		END as [ENG_TCOBSHSD]	
+		  ,CASE [ENG_TCOBSOTH]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCOBSOTH]
+		END as [ENG_TCOBSOTH]	
+		  ,CASE [ENG_TCOBSDOET]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCOBSDOET]
+		END as [ENG_TCOBSDOET]	
+		  ,CASE [ENG_TCPRATD]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCPRATD]
+		END as [ENG_TCPRATD]	
+		  ,CASE [ENG_TCLATENS]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCLATENS]
+		END as [ENG_TCLATENS]	
+		  ,CASE [ENG_TCDISCPL]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCDISCPL]
+		END as [ENG_TCDISCPL]	
+		  ,CASE [ENG_TCNOMAT]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCNOMAT]
+		END as [ENG_TCNOMAT]	
+		  ,CASE [ENG_TCLACKRS]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCLACKRS]
+		END as [ENG_TCLACKRS]	
+		  ,CASE [ENG_TCINTRRP]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCINTRRP]
+		END as [ENG_TCINTRRP]	
+		  ,CASE [ENG_TCRSNABS]	WHEN '1'	THEN  'Annual leave'
+								WHEN '2'	THEN  'Illness / Being on medical leave'
+								WHEN '3'	THEN  'Attending training'
+								WHEN '4'	THEN  'Official duties, e.g. elections'
+								WHEN '5'	THEN  'Faced difficulties travelling to school'
+								WHEN '5'	THEN  'Another reason'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCRSNABS]
+		END as [ENG_TCRSNABS]	
+		  ,CASE [ENG_TCASGNSC]	WHEN '1'	THEN  'I requested to be assigned to this school'
+								WHEN '2'	THEN  'I did not choose to come to this school - I was assigned here'
+								WHEN '3'	THEN  'I directly applied for a post at this school'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCASGNSC]
+		END as [ENG_TCASGNSC]	
+		  ,CASE [ENG_TCPRTCNT]	WHEN '0'	THEN  'Very few or no parents ask me about their child''s progress'
+								WHEN '1'	THEN  'A few parents ask me regularly about their child''s progress'
+								WHEN '2'	THEN  'Most parents ask me regularly about their child''s progress'
+								WHEN '3'	THEN  'All parents ask me regularly about their child''s progress'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCPRTCNT]
+		END as [ENG_TCPRTCNT]	
+		  ,[ENG_TCTRVMIN]	
+		  ,[ENG_TCPRDTCH]	
+		  ,[ENG_TCPRDPLN]	
+		  ,[ENG_TCPRDCRT]	
+		  ,[ENG_TCPRDADM]	
+		  ,[ENG_TCHREXTR]	
+		  ,[ENG_TCHRHELP]	
+		  ,[ENG_TCHRTUTR]	
+		  ,[ENG_TCHRIDEA]	
+		  ,[ENG_TCHRCOMM]	
+		  ,CASE [ENG_TCIMPCHR]	WHEN '1'	THEN  'Good school leadership and management'
+								WHEN '2'	THEN  'A clear school vision / school development plan'
+								WHEN '3'	THEN  'Regular monitoring and evaluation processes'
+								WHEN '4'	THEN  'Well-qualified teachers'
+								WHEN '5'	THEN  'Good teacher attitude'
+								WHEN '6'	THEN  'Interactive teaching-learning methods'
+								WHEN '7'	THEN  'Good student exam results'
+								WHEN '8'	THEN  'Good student skills for employment'
+								WHEN '9'	THEN  'Good student learning'
+								WHEN '10'	THEN  'Good community support'
+								WHEN '11'	THEN  'High level of parental engagement'
+								WHEN '12'	THEN  'Strong links to other local organisations'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCIMPCHR]
+		END as [ENG_TCIMPCHR]	
+		  ,CASE [ENG_TCCMSCTC]	WHEN '0'	THEN  'There are no other schools in this district'
+								WHEN '1'	THEN  'I think that teaching at this school is likely to be better than teaching at other schools in the district'
+								WHEN '2'	THEN  'I think that teaching at this school is likely to be similar to teaching at other schools in the district'
+								WHEN '3'	THEN  'I think that teaching at this school is likely to be worse than teaching at other schools in the district'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCCMSCTC]
+		END as [ENG_TCCMSCTC]	
+		  ,CASE [ENG_TCCMSCFC]	WHEN '0'	THEN  'There are no other schools in this district'
+								WHEN '1'	THEN  'I think that this school is likely to have better facilities than other schools in the district'
+								WHEN '2'	THEN  'I think that this school is likely to have similar facilities to other schools in the district'
+								WHEN '3'	THEN  'I think that this school is likely to have worse facilities than other schools in the district'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCCMSCFC]
+		END as [ENG_TCCMSCFC]	
+		  ,CASE [ENG_TCCMSCPR]	WHEN '0'	THEN  'There are no other schools in this district'
+								WHEN '1'	THEN  'I think that most parents are likely to think this school is better than other schools in the district'
+								WHEN '2'	THEN  'I think that most parents are likely to think this school is similar to other schools in the district'
+								WHEN '3'	THEN  'I think that most parents are likely to think this school is worse than other schools in the district'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCCMSCPR]
+		END as [ENG_TCCMSCPR]	
+		  ,CASE [ENG_TCRSNTCH]	WHEN '1'	THEN  'It was the best paid job I could find'
+								WHEN '2'	THEN  'I enjoyed school and my teachers and wanted to be like them'
+								WHEN '3'	THEN  'Good work conditions (e.g. working hours, working months etc.)'
+								WHEN '4'	THEN  'I didn''t know what else to do'
+								WHEN '5'	THEN  'I love working with children and helping them learn and grow'
+								WHEN '6'	THEN  'I was encouraged by a family member or mentor to teach'
+								WHEN '7'	THEN  'I love the subjects that I teach (English, Maths, Science, etc.)'
+								WHEN '8'	THEN  'I believe in the importance of education and wanted to help my country'
+								WHEN '9'	THEN  'I believe in the importance of education and wanted to help my community'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCRSNTCH]
+		END as [ENG_TCRSNTCH]	
+		  ,CASE [ENG_TCFRTCHC]	WHEN '1'	THEN  'Yes - teaching was my first choice of career'
+								WHEN '2'	THEN  'No - I would have preferred to train for a different career but was unable to'
+								WHEN '3'	THEN  'No - I originally pursued a different career and then later moved into teaching'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+										ELSE  [ENG_TCFRTCHC]
+		END as [ENG_TCFRTCHC]	
+		  ,[ENG_TCMOVTCH]	
+		  ,CASE [ENG_TCGLSEC]	WHEN '1'	THEN  'Students obtain good exam results'
+								WHEN '2'	THEN  'Students develop skills for employment'
+								WHEN '3'	THEN  'Students develop good discipline and moral values'
+								WHEN '4'	THEN  'Development of their community'
+								WHEN '5'	THEN  'Development of the nation'
+								WHEN '6'	THEN  'Development of students'' creative and critical thinking'
+								WHEN '7'	THEN  'Development of students'' reading, writing and arithmetic skills'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCGLSEC]
+		END as [ENG_TCGLSEC]	
+		  ,CASE [ENG_TCCHSEC]	WHEN '1'	THEN  'There are not enough schools'
+								WHEN '2'	THEN  'Children are not able to travel safely to secondary school'
+								WHEN '3'	THEN  'Poor quality of secondary education'
+								WHEN '4'	THEN  'Secondary education is not relevant for many children'
+								WHEN '5'	THEN  'Not enough qualified secondary teachers'
+								WHEN '6'	THEN  'Some parents do not want to send their children to secondary school'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCCHSEC]
+		END as [ENG_TCCHSEC]	
+
+		-- *******
+
+		  ,CASE [ENG_TCATD41A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41A]
+		END as [ENG_TCATD41A]	
+		  ,CASE [ENG_TCATD41B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41B]
+		END as [ENG_TCATD41B]	
+		  ,CASE [ENG_TCATD41C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41C]
+		END as [ENG_TCATD41C]	
+		  ,CASE [ENG_TCATD41D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41D]
+		END as [ENG_TCATD41D]	
+		  ,CASE [ENG_TCATD41E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41E]
+		END as [ENG_TCATD41E]	
+		  ,CASE [ENG_TCATD41F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41F]
+		END as [ENG_TCATD41F]	
+		  ,CASE [ENG_TCATD41G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41G]
+		END as [ENG_TCATD41G]	
+		  ,CASE [ENG_TCATD41H]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD41H]
+		END as [ENG_TCATD41H]	
+		  ,CASE [ENG_TCATD42A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD42A]
+		END as [ENG_TCATD42A]	
+		  ,CASE [ENG_TCATD42B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD42B]
+		END as [ENG_TCATD42B]	
+		  ,CASE [ENG_TCATD42C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD42C]
+		END as [ENG_TCATD42C]	
+		  ,CASE [ENG_TCATD42D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD42D]
+		END as [ENG_TCATD42D]	
+		  ,CASE [ENG_TCATD42E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD42E]
+		END as [ENG_TCATD42E]	
+		  ,CASE [ENG_TCATD42F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD42F]
+		END as [ENG_TCATD42F]	
+		  ,CASE [ENG_TCATD42G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD42G]
+		END as [ENG_TCATD42G]	
+		  ,CASE [ENG_TCATD43A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43A]
+		END as [ENG_TCATD43A]	
+		  ,CASE [ENG_TCATD43B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43B]
+		END as [ENG_TCATD43B]	
+		  ,CASE [ENG_TCATD43C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43C]
+		END as [ENG_TCATD43C]	
+		  ,CASE [ENG_TCATD43D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43D]
+		END as [ENG_TCATD43D]	
+		  ,CASE [ENG_TCATD43E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43E]
+		END as [ENG_TCATD43E]	
+		  ,CASE [ENG_TCATD43F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43F]
+		END as [ENG_TCATD43F]	
+		  ,CASE [ENG_TCATD43G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43G]
+		END as [ENG_TCATD43G]	
+		  ,CASE [ENG_TCATD43H]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43H]
+		END as [ENG_TCATD43H]	
+		  ,CASE [ENG_TCATD43I]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43I]
+		END as [ENG_TCATD43I]	
+		  ,CASE [ENG_TCATD43J]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43J]
+		END as [ENG_TCATD43J]	
+		  ,CASE [ENG_TCATD43K]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43K]
+		END as [ENG_TCATD43K]	
+		  ,CASE [ENG_TCATD43L]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43L]
+		END as [ENG_TCATD43L]	
+		  ,CASE [ENG_TCATD43M]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD43M]
+		END as [ENG_TCATD43M]	
+		  ,CASE [ENG_TCATD44A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44A]
+		END as [ENG_TCATD44A]	
+		  ,CASE [ENG_TCATD44B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44B]
+		END as [ENG_TCATD44B]	
+		  ,CASE [ENG_TCATD44C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44C]
+		END as [ENG_TCATD44C]	
+		  ,CASE [ENG_TCATD44D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44D]
+		END as [ENG_TCATD44D]	
+		  ,CASE [ENG_TCATD44E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44E]
+		END as [ENG_TCATD44E]	
+		  ,CASE [ENG_TCATD44F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44F]
+		END as [ENG_TCATD44F]	
+		  ,CASE [ENG_TCATD44G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44G]
+		END as [ENG_TCATD44G]	
+		  ,CASE [ENG_TCATD44H]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44H]
+		END as [ENG_TCATD44H]	
+		  ,CASE [ENG_TCATD44I]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44I]
+		END as [ENG_TCATD44I]	
+		  ,CASE [ENG_TCATD44J]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44J]
+		END as [ENG_TCATD44J]	
+		  ,CASE [ENG_TCATD44K]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44K]
+		END as [ENG_TCATD44K]	
+		  ,CASE [ENG_TCATD44L]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44L]
+		END as [ENG_TCATD44L]	
+		  ,CASE [ENG_TCATD44M]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44M]
+		END as [ENG_TCATD44M]	
+		  ,CASE [ENG_TCATD44N]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44N]
+		END as [ENG_TCATD44N]	
+		  ,CASE [ENG_TCATD44O]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44O]
+		END as [ENG_TCATD44O]	
+		  ,CASE [ENG_TCATD44P]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44P]
+		END as [ENG_TCATD44P]	
+		  ,CASE [ENG_TCATD44Q]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44Q]
+		END as [ENG_TCATD44Q]	
+		  ,CASE [ENG_TCATD44R]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44R]
+		END as [ENG_TCATD44R]	
+		  ,CASE [ENG_TCATD44S]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44S]
+		END as [ENG_TCATD44S]	
+		  ,CASE [ENG_TCATD44T]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ENG_TCATD44T]
+		END as [ENG_TCATD44T]	
+
+
+		  ,[MATH_TCHID]		
+
+		  ,CASE [MATH_TCHSUBJ]	WHEN '1'	THEN  'Maths'
+								WHEN '2'	THEN  'English'
+								WHEN '3'	THEN  'Maths and English'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCHSUBJ]	
+		END as [MATH_TCHSUBJ]		
+		  ,[MATH_TCHDTJN]	
+		  ,[MATH_TCHDYPRS]	
+		  ,CASE [MATH_TCSTLEMP]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCSTLEMP]	
+		END as [MATH_TCSTLEMP]	
+		  ,CASE [MATH_TCWHYLFT]	WHEN '1'	THEN  'Working at another school'
+								WHEN '2'	THEN  'Retired'
+								WHEN '3'	THEN  'Working in another profession'
+								WHEN '4'	THEN  'Another reason'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCWHYLFT]	
+		END as [MATH_TCWHYLFT]	
+		  ,[MATH_TCDAYPRS]	
+		  ,[MATH_TCHABSC]	
+		  ,CASE [MATH_TCHNTCMP]	WHEN '1'	THEN  'Respondent absent'
+								WHEN '2'	THEN  'Respondent refused to participate'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCHNTCMP]	
+		END as [MATH_TCHNTCMP]	
+		  ,[MATH_TCHDINT]	
+		  ,[MATH_TCAGE]		
+		  ,CASE [MATH_TCGNDR]	WHEN '1'	THEN  'Male'
+								WHEN '2'	THEN  'Female'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCGNDR]	
+		END as [MATH_TCGNDR]	
+		  ,CASE [MATH_TCETHNC]	WHEN '1'	THEN  'Kinh'
+								WHEN '2'	THEN  'H''Mong'
+								WHEN '3'	THEN  'Cham-Hroi'
+								WHEN '4'	THEN  'Ede'
+								WHEN '5'	THEN  'Nung'
+								WHEN '6'	THEN  'Tay'
+								WHEN '7'	THEN  'Dao'
+								WHEN '8'	THEN  'Giay'
+								WHEN '9'	THEN  'Chinese'
+								WHEN '10'	THEN  'Ba Na'
+								WHEN '11'	THEN  'Other'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCETHNC]	
+		END as [MATH_TCETHNC]	
+		  ,CASE [MATH_TCRELGN]	WHEN '0'	THEN  'No religion'
+								WHEN '1'	THEN  'Buddhist'
+								WHEN '2'	THEN  'Christian (Catholic)'
+								WHEN '3'	THEN  'Christian (Protestant)'
+								WHEN '4'	THEN  'Cao Dai'
+								WHEN '5'	THEN  'Other'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCRELGN]	
+		END as [MATH_TCRELGN]	
+		  ,CASE [MATH_TCLNGHME]	WHEN '1'	THEN  'Vietnamese'
+								WHEN '2'	THEN  'H''Mong'
+								WHEN '3'	THEN  'Cham-Hroi'
+								WHEN '4'	THEN  'Ede'
+								WHEN '5'	THEN  'Nung'
+								WHEN '6'	THEN  'Tay'
+								WHEN '7'	THEN  'Dao'
+								WHEN '8'	THEN  'Giay'
+								WHEN '9'	THEN  'Chinese'
+								WHEN '10'	THEN  'Other'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCLNGHME]	
+		END as [MATH_TCLNGHME]	
+		  ,CASE [MATH_TCPRVTCH]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCPRVTCH]	
+		END as [MATH_TCPRVTCH]	
+		  ,[MATH_TCMBLE]	
+		  ,[MATH_TCRADIO]	
+		  ,[MATH_TCTELE]	
+		  ,[MATH_TCBIKE]	
+		  ,[MATH_TCSCTR]	
+		  ,[MATH_TCTBLE]	
+		  ,[MATH_TCCHAIR]	
+		  ,[MATH_TCLAMP]	
+		  ,[MATH_TCELEC]	
+		  ,[MATH_TCAIRCND]	
+		  ,[MATH_TCCAR]		
+		  ,[MATH_TCCOMP]	
+		  ,[MATH_TCINTRT]	
+		  ,[MATH_TCFRDG]	
+		  ,[MATH_TCMICRO]	
+		  ,[MATH_TCDVD]		
+		  ,[MATH_TCTVBOX]	
+		  ,CASE [MATH_TCLVLEDC]	WHEN '1'	THEN  'Upper secondary or equivalent'
+								WHEN '2'	THEN  'Vocational training school'
+								WHEN '3'	THEN  'College education'
+								WHEN '4'	THEN  'University education (undergraduate)'
+								WHEN '5'	THEN  'University education (postgraduate)'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCLVLEDC]	
+		END as [MATH_TCLVLEDC]	
+		  ,CASE [MATH_TCTCHQLF]	WHEN '0'	THEN  'I am not trained'
+								WHEN '1'	THEN  'Short course or crash course in teaching profession'
+								WHEN '2'	THEN  'Teacher training level (2 years after upper secondary education)'
+								WHEN '3'	THEN  'Teacher training college level (3 years after upper secondary education)'
+								WHEN '4'	THEN  'Teacher training university level (4 years after upper secondary education) or higher'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCTCHQLF]	
+		END as [MATH_TCTCHQLF]	
+		  ,[MATH_TCSPCMAT]	
+		  ,[MATH_TCSPCENG]	
+		  ,[MATH_TCSPCVNM]	
+		  ,[MATH_TCSPCLNG]	
+		  ,[MATH_TCSPCPSC]	
+		  ,[MATH_TCSPCCHE]	
+		  ,[MATH_TCSPCBIO]	
+		  ,[MATH_TCSPCHIS]	
+		  ,[MATH_TCSPCGEO]	
+		  ,[MATH_TCSPCPHY]	
+		  ,[MATH_TCSPCANT]	
+		  ,[MATH_TCDYSTRN]	
+		  ,CASE [MATH_TCTTRNHLP]	WHEN '0'	THEN  'Not applicable'
+									WHEN '1'	THEN  'Improved it a lot'
+									WHEN '2'	THEN  'Improved it a little'
+									WHEN '3'	THEN  'Did not improve it'
+									WHEN '79'	THEN  'Missing'
+									WHEN '88'	THEN  'NA'
+												ELSE  [MATH_TCTTRNHLP]	
+		END as [MATH_TCTTRNHLP]	
+		,CASE [MATH_TCAWDTTL]		WHEN '0'	THEN  'Never been an excellent teacher'
+									WHEN '1'	THEN  'Yes, school level'
+									WHEN '2'	THEN  'Yes, district level'
+									WHEN '3'	THEN  'Yes, province level or higher'
+									WHEN '79'	THEN  'Missing'
+									WHEN '88'	THEN  'NA'
+												ELSE  [MATH_TCAWDTTL]	
+		END as [MATH_TCAWDTTL]	
+		  ,[MATH_TCYRTCH]	
+		  ,[MATH_TCYRTCSCH]	
+		  ,CASE [MATH_TCSTDENG]	WHEN '0'	THEN  'I have never studied English as a subject'
+								WHEN '1'	THEN  'Up to 1 year'
+								WHEN '2'	THEN  '1 - 2 years'
+								WHEN '3'	THEN  '3 - 5 years'
+								WHEN '4'	THEN  '6 - 10 years'
+								WHEN '5'	THEN  'More than 10 years'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCSTDENG]	
+		END as [MATH_TCSTDENG]	
+		  ,CASE [MATH_TCTCHENG]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCTCHENG]	
+		END as [MATH_TCTCHENG]	
+		  ,CASE [MATH_TCEMPBAS]	WHEN '1'	THEN  'Permanent'
+								WHEN '2'	THEN  'Temporary'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCEMPBAS]	
+		END as [MATH_TCEMPBAS]	
+		  ,[MATH_TCFGRDE10]
+		  ,[MATH_TCFGRDE11]
+		  ,[MATH_TCFGRDE12]
+		  ,[MATH_TCMATHS]	
+		  ,[MATH_TCENGL]	
+		  ,[MATH_TCVNM]		
+		  ,[MATH_TCANTLNG]	
+		  ,[MATH_TCPHYSC]	
+		  ,[MATH_TCCHEM]	
+		  ,[MATH_TCBIOLG]	
+		  ,[MATH_TCHISTRY]	
+		  ,[MATH_TCGEOG]	
+		  ,[MATH_TCPHYS]	
+		  ,[MATH_TCOTHR]	
+		  ,[MATH_TCPRDWK]	
+		  ,[MATH_TCEXTCLS]	
+		  ,CASE [MATH_TCTCHG10]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCTCHG10]	
+		END as [MATH_TCTCHG10]	
+		  ,CASE [MATH_TCEXTWRK]	WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCEXTWRK]	
+		END as [MATH_TCEXTWRK]	
+		  ,CASE [MATH_TCOBSHT]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCOBSHT]	
+		END as [MATH_TCOBSHT]	
+		  ,CASE [MATH_TCOBSVP]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCOBSVP]	
+		END as [MATH_TCOBSVP]	
+		  ,CASE [MATH_TCOBSHSD]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCOBSHSD]	
+		END as [MATH_TCOBSHSD]	
+		  ,CASE [MATH_TCOBSOTH]	WHEN '0'	THEN  'Never'
+								WHEN '1'	THEN  'Once a year'
+								WHEN '2'	THEN  'At least twice a year'
+								WHEN '3'	THEN  'Monthly'
+								WHEN '4'	THEN  'More than once a month'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCOBSOTH]	
+		END as [MATH_TCOBSOTH]	
+		  ,CASE [MATH_TCOBSDOET]	WHEN '0'	THEN  'Never'
+									WHEN '1'	THEN  'Once a year'
+									WHEN '2'	THEN  'At least twice a year'
+									WHEN '3'	THEN  'Monthly'
+									WHEN '4'	THEN  'More than once a month'
+									WHEN '79'	THEN  'Missing'
+									WHEN '88'	THEN  'NA'
+												ELSE  [MATH_TCOBSDOET]	
+		END as [MATH_TCOBSDOET]
+		  ,CASE [MATH_TCPRATD]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCPRATD]	
+		END as [MATH_TCPRATD]	
+		  ,CASE [MATH_TCLATENS]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCLATENS]	
+		END as [MATH_TCLATENS]	
+		  ,CASE [MATH_TCDISCPL]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCDISCPL]	
+		END as [MATH_TCDISCPL]	
+		  ,CASE [MATH_TCNOMAT]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCNOMAT]	
+		END as [MATH_TCNOMAT]	
+		  ,CASE [MATH_TCLACKRS]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCLACKRS]	
+		END as [MATH_TCLACKRS]	
+		  ,CASE [MATH_TCINTRRP]	WHEN '0'	THEN  'Not a problem'
+								WHEN '1'	THEN  'Minor problem'
+								WHEN '2'	THEN  'Major problem'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCINTRRP]	
+		END as [MATH_TCINTRRP]	
+		  ,CASE [MATH_TCRSNABS]	WHEN '1'	THEN  'Annual leave'
+								WHEN '2'	THEN  'Illness / Being on medical leave'
+								WHEN '3'	THEN  'Attending training'
+								WHEN '4'	THEN  'Official duties, e.g. elections'
+								WHEN '5'	THEN  'Faced difficulties travelling to school'
+								WHEN '5'	THEN  'Another reason'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCRSNABS]	
+		END as [MATH_TCRSNABS]	
+		  ,CASE [MATH_TCASGNSC]	WHEN '1'	THEN  'I requested to be assigned to this school'
+								WHEN '2'	THEN  'I did not choose to come to this school - I was assigned here'
+								WHEN '3'	THEN  'I directly applied for a post at this school'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCASGNSC]	
+		END as [MATH_TCASGNSC]	
+		  ,CASE [MATH_TCPRTCNT]	WHEN '0'	THEN  'Very few or no parents ask me about their child''s progress'
+								WHEN '1'	THEN  'A few parents ask me regularly about their child''s progress'
+								WHEN '2'	THEN  'Most parents ask me regularly about their child''s progress'
+								WHEN '3'	THEN  'All parents ask me regularly about their child''s progress'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCPRTCNT]	
+		END as [MATH_TCPRTCNT]	
+		  ,[MATH_TCTRVMIN]	
+		  ,[MATH_TCPRDTCH]	
+		  ,[MATH_TCPRDPLN]	
+		  ,[MATH_TCPRDCRT]	
+		  ,[MATH_TCPRDADM]	
+		  ,[MATH_TCHREXTR]	
+		  ,[MATH_TCHRHELP]	
+		  ,[MATH_TCHRTUTR]	
+		  ,[MATH_TCHRIDEA]	
+		  ,[MATH_TCHRCOMM]	
+		  ,CASE [MATH_TCIMPCHR]	WHEN '1'	THEN  'Good school leadership and management'
+								WHEN '2'	THEN  'A clear school vision / school development plan'
+								WHEN '3'	THEN  'Regular monitoring and evaluation processes'
+								WHEN '4'	THEN  'Well-qualified teachers'
+								WHEN '5'	THEN  'Good teacher attitude'
+								WHEN '6'	THEN  'Interactive teaching-learning methods'
+								WHEN '7'	THEN  'Good student exam results'
+								WHEN '8'	THEN  'Good student skills for employment'
+								WHEN '9'	THEN  'Good student learning'
+								WHEN '10'	THEN  'Good community support'
+								WHEN '11'	THEN  'High level of parental engagement'
+								WHEN '12'	THEN  'Strong links to other local organisations'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCIMPCHR]	
+		END as [MATH_TCIMPCHR]	
+		  ,CASE [MATH_TCCMSCTC]	WHEN '0'	THEN  'There are no other schools in this district'
+								WHEN '1'	THEN  'I think that teaching at this school is likely to be better than teaching at other schools in the district'
+								WHEN '2'	THEN  'I think that teaching at this school is likely to be similar to teaching at other schools in the district'
+								WHEN '3'	THEN  'I think that teaching at this school is likely to be worse than teaching at other schools in the district'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCCMSCTC]	
+		END as [MATH_TCCMSCTC]	
+		  ,CASE [MATH_TCCMSCFC]	WHEN '0'	THEN  'There are no other schools in this district'
+								WHEN '1'	THEN  'I think that this school is likely to have better facilities than other schools in the district'
+								WHEN '2'	THEN  'I think that this school is likely to have similar facilities to other schools in the district'
+								WHEN '3'	THEN  'I think that this school is likely to have worse facilities than other schools in the district'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCCMSCFC]	
+		END as [MATH_TCCMSCFC]	
+		  ,CASE [MATH_TCCMSCPR]	WHEN '0'	THEN  'There are no other schools in this district'
+								WHEN '1'	THEN  'I think that most parents are likely to think this school is better than other schools in the district'
+								WHEN '2'	THEN  'I think that most parents are likely to think this school is similar to other schools in the district'
+								WHEN '3'	THEN  'I think that most parents are likely to think this school is worse than other schools in the district'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCCMSCPR]	
+		END as [MATH_TCCMSCPR]	
+		  ,CASE [MATH_TCRSNTCH]	WHEN '1'	THEN  'It was the best paid job I could find'
+								WHEN '2'	THEN  'I enjoyed school and my teachers and wanted to be like them'
+								WHEN '3'	THEN  'Good work conditions (e.g. working hours, working months etc.)'
+								WHEN '4'	THEN  'I didn''t know what else to do'
+								WHEN '5'	THEN  'I love working with children and helping them learn and grow'
+								WHEN '6'	THEN  'I was encouraged by a family member or mentor to teach'
+								WHEN '7'	THEN  'I love the subjects that I teach (English, Maths, Science, etc.)'
+								WHEN '8'	THEN  'I believe in the importance of education and wanted to help my country'
+								WHEN '9'	THEN  'I believe in the importance of education and wanted to help my community'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCRSNTCH]	
+		END as [MATH_TCRSNTCH]	
+		  ,CASE [MATH_TCFRTCHC]	WHEN '1'	THEN  'Yes - teaching was my first choice of career'
+								WHEN '2'	THEN  'No - I would have preferred to train for a different career but was unable to'
+								WHEN '3'	THEN  'No - I originally pursued a different career and then later moved into teaching'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCFRTCHC]	
+		END as [MATH_TCFRTCHC]	
+		  ,[MATH_TCMOVTCH]	
+		  ,CASE [MATH_TCGLSEC]	WHEN '1'	THEN  'Students obtain good exam results'
+								WHEN '2'	THEN  'Students develop skills for employment'
+								WHEN '3'	THEN  'Students develop good discipline and moral values'
+								WHEN '4'	THEN  'Development of their community'
+								WHEN '5'	THEN  'Development of the nation'
+								WHEN '6'	THEN  'Development of students'' creative and critical thinking'
+								WHEN '7'	THEN  'Development of students'' reading, writing and arithmetic skills'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCGLSEC]	
+		END as [MATH_TCGLSEC]	
+		  ,CASE [MATH_TCCHSEC]	WHEN '1'	THEN  'There are not enough schools'
+								WHEN '2'	THEN  'Children are not able to travel safely to secondary school'
+								WHEN '3'	THEN  'Poor quality of secondary education'
+								WHEN '4'	THEN  'Secondary education is not relevant for many children'
+								WHEN '5'	THEN  'Not enough qualified secondary teachers'
+								WHEN '6'	THEN  'Some parents do not want to send their children to secondary school'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCCHSEC]	
+		END as [MATH_TCCHSEC]	
+
+		-- *********
+
+		  ,CASE [MATH_TCATD41A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41A]
+		END as [MATH_TCATD41A]	
+		  ,CASE [MATH_TCATD41B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41B]
+		END as [MATH_TCATD41B]	
+		  ,CASE [MATH_TCATD41C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41C]
+		END as [MATH_TCATD41C]	
+		  ,CASE [MATH_TCATD41D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41D]
+		END as [MATH_TCATD41D]	
+		  ,CASE [MATH_TCATD41E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41E]
+		END as [MATH_TCATD41E]	
+		  ,CASE [MATH_TCATD41F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41F]
+		END as [MATH_TCATD41F]	
+		  ,CASE [MATH_TCATD41G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41G]
+		END as [MATH_TCATD41G]	
+		  ,CASE [MATH_TCATD41H]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD41H]
+		END as [MATH_TCATD41H]	
+		  ,CASE [MATH_TCATD42A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD42A]
+		END as [MATH_TCATD42A]	
+		  ,CASE [MATH_TCATD42B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD42B]
+		END as [MATH_TCATD42B]	
+		  ,CASE [MATH_TCATD42C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD42C]
+		END as [MATH_TCATD42C]	
+		  ,CASE [MATH_TCATD42D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD42D]
+		END as [MATH_TCATD42D]	
+		  ,CASE [MATH_TCATD42E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD42E]
+		END as [MATH_TCATD42E]	
+		  ,CASE [MATH_TCATD42F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD42F]
+		END as [MATH_TCATD42F]	
+		  ,CASE [MATH_TCATD42G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD42G]
+		END as [MATH_TCATD42G]	
+		  ,CASE [MATH_TCATD43A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43A]
+		END as [MATH_TCATD43A]	
+		  ,CASE [MATH_TCATD43B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43B]
+		END as [MATH_TCATD43B]	
+		  ,CASE [MATH_TCATD43C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43C]
+		END as [MATH_TCATD43C]	
+		  ,CASE [MATH_TCATD43D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43D]
+		END as [MATH_TCATD43D]	
+		  ,CASE [MATH_TCATD43E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43E]
+		END as [MATH_TCATD43E]	
+		  ,CASE [MATH_TCATD43F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43F]
+		END as [MATH_TCATD43F]	
+		  ,CASE [MATH_TCATD43G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43G]
+		END as [MATH_TCATD43G]	
+		  ,CASE [MATH_TCATD43H]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43H]
+		END as [MATH_TCATD43H]	
+		  ,CASE [MATH_TCATD43I]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43I]
+		END as [MATH_TCATD43I]	
+		  ,CASE [MATH_TCATD43J]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43J]
+		END as [MATH_TCATD43J]	
+		  ,CASE [MATH_TCATD43K]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43K]
+		END as [MATH_TCATD43K]	
+		  ,CASE [MATH_TCATD43L]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43L]
+		END as [MATH_TCATD43L]	
+		  ,CASE [MATH_TCATD43M]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD43M]
+		END as [MATH_TCATD43M]	
+		  ,CASE [MATH_TCATD44A]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44A]
+		END as [MATH_TCATD44A]	
+		  ,CASE [MATH_TCATD44B]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44B]
+		END as [MATH_TCATD44B]	
+		  ,CASE [MATH_TCATD44C]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44C]
+		END as [MATH_TCATD44C]	
+		  ,CASE [MATH_TCATD44D]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44D]
+		END as [MATH_TCATD44D]	
+		  ,CASE [MATH_TCATD44E]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44E]
+		END as [MATH_TCATD44E]	
+		  ,CASE [MATH_TCATD44F]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44F]
+		END as [MATH_TCATD44F]	
+		  ,CASE [MATH_TCATD44G]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44G]
+		END as [MATH_TCATD44G]	
+		  ,CASE [MATH_TCATD44H]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44H]
+		END as [MATH_TCATD44H]	
+		  ,CASE [MATH_TCATD44I]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44I]
+		END as [MATH_TCATD44I]	
+		  ,CASE [MATH_TCATD44J]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44J]
+		END as [MATH_TCATD44J]	
+		  ,CASE [MATH_TCATD44K]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44K]
+		END as [MATH_TCATD44K]	
+		  ,CASE [MATH_TCATD44L]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44L]
+		END as [MATH_TCATD44L]	
+		  ,CASE [MATH_TCATD44M]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44M]
+		END as [MATH_TCATD44M]	
+		  ,CASE [MATH_TCATD44N]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44N]
+		END as [MATH_TCATD44N]	
+		  ,CASE [MATH_TCATD44O]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44O]
+		END as [MATH_TCATD44O]	
+		  ,CASE [MATH_TCATD44P]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44P]
+		END as [MATH_TCATD44P]	
+		  ,CASE [MATH_TCATD44Q]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44Q]
+		END as [MATH_TCATD44Q]	
+		  ,CASE [MATH_TCATD44R]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44R]
+		END as [MATH_TCATD44R]	
+		  ,CASE [MATH_TCATD44S]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44S]
+		END as [MATH_TCATD44S]	
+		  ,CASE [MATH_TCATD44T]	WHEN '1'	THEN  'Strongly disagree'
+								WHEN '2'	THEN  'Disagree'
+								WHEN '3'	THEN  'Agree'
+								WHEN '4'	THEN  'Strongly agree'
+								WHEN '79'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MATH_TCATD44T]
+		END as [MATH_TCATD44T]	
+
+FROM CP002.dbo.vietnam_wave_2
+;

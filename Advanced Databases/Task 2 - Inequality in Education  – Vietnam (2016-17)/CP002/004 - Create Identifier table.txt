@@ -1,0 +1,138 @@
+USE CP002;
+GO
+
+CREATE TABLE Identifier
+(
+		 UNIQUEID			VARCHAR(9)	PRIMARY KEY
+		,SCHOOLID			VARCHAR(4)	NOT NULL
+		,CLASSID			TINYINT		NOT NULL
+		,STUDENTID			TINYINT		NOT NULL
+		,YLCHILDID			VARCHAR(8)
+		,PROVINCE			VARCHAR(10)	NOT NULL
+		,DISTRICTCODE		VARCHAR(3)	NOT NULL
+		,LOCALITY			VARCHAR(5)	NOT NULL
+		,GENDER				VARCHAR(6)	
+		,AGE				TINYINT
+		,ETHNICITY			VARCHAR(10)
+		,ABSENT_DAYS		TINYINT
+		,MOM_READ			VARCHAR(20)
+		,MOM_EDUC			VARCHAR(60)
+		,DAD_READ			VARCHAR(20)
+		,DAD_EDUC			VARCHAR(60)
+		,STDYLCHD			VARCHAR(3)
+		,STDCMPLT			VARCHAR(30)	
+)
+
+INSERT INTO [CP002].[dbEdu].[Identifier]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+		
+		,RTRIM(LTRIM([SCHOOLID])) as SCHOOLID
+		,RTRIM(LTRIM([CLASSID])) as CLASSID
+		,RTRIM(LTRIM([STUDENTID])) as STUDENTID	
+		,RTRIM(LTRIM([YLCHILDID])) as YLCHILDID
+
+		,CASE [PROVINCE]	WHEN '1'	THEN  'Ben Tre'
+							WHEN '2'	THEN  'Da Nang'
+							WHEN '3'	THEN  'Hung Yen'
+							WHEN '4'	THEN  'Lao Cai'
+							WHEN '5'	THEN  'Phu Yen'
+										ELSE  [PROVINCE]
+		END as [PROVINCE]		
+		
+		,CASE [DISTRICTCODE]	WHEN '1'	THEN  'PY1'
+								WHEN '2'	THEN  'PY2'
+								WHEN '3'	THEN  'PY3'
+								WHEN '4'	THEN  'PY4'
+								WHEN '5'	THEN  'BT1'
+								WHEN '6'	THEN  'BT2'
+								WHEN '7'	THEN  'LC1'
+								WHEN '8'	THEN  'LC2'
+								WHEN '9'	THEN  'LC3'
+								WHEN '10'	THEN  'HY1'
+								WHEN '11'	THEN  'HY2'
+								WHEN '12'	THEN  'DN1'
+								WHEN '13'	THEN  'DN2'
+								WHEN '14'	THEN  'DN3'
+											ELSE  [DISTRICTCODE]
+		END as [DISTRICTCODE]	
+
+		,CASE [LOCALITY]	WHEN '1'	THEN  'Rural'
+							WHEN '2'	THEN  'Urban'
+										ELSE  [LOCALITY]
+		END as [LOCALITY]	
+		
+		,CASE [GENDER]		WHEN '1'	THEN  'Male'
+							WHEN '2'	THEN  'Female'
+										ELSE  [GENDER]
+		END as [GENDER]	
+
+		,[AGE]
+
+		,CASE [ETHNICITY]		WHEN '1'	THEN  'Kinh'
+								WHEN '2'	THEN  'H''Mong'
+								WHEN '3'	THEN  'Cham-HRoi'
+								WHEN '4'	THEN  'Ede'
+								WHEN '5'	THEN  'Ba Na'
+								WHEN '6'	THEN  'Nung'
+								WHEN '7'	THEN  'Tay'
+								WHEN '8'	THEN  'Dao'
+								WHEN '9'	THEN  'Giay'
+								WHEN '10'	THEN  'Other'
+								WHEN '99'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [ETHNICITY]
+		END as [ETHNICITY]	
+
+		,ABSENT_DAYS
+
+		,CASE [MOM_READ]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '2'	THEN  'Do not know'
+											ELSE  [MOM_READ]
+		END as [MOM_READ]
+
+		,CASE [MOM_EDUC]		WHEN '0'	THEN  'Never been to school'
+								WHEN '1'	THEN  'Primary school (Greades 1-5)'
+								WHEN '2'	THEN  'Lower secondary school (Grades 6-9)'
+								WHEN '3'	THEN  'Intermediate vocational training'
+								WHEN '4'	THEN  'Upper secondary school (Grades 10-12)'
+								WHEN '5'	THEN  'Higher education (e.g. university/college or higher'
+								WHEN '6'	THEN  'Don''t know'
+								WHEN '99'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [MOM_EDUC]
+		END as [MOM_EDUC]
+
+		,CASE [DAD_READ]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+								WHEN '2'	THEN  'Do not know'
+											ELSE  [DAD_READ]
+		END as [DAD_READ]
+
+		,CASE [DAD_EDUC]		WHEN '0'	THEN  'Never been to school'
+								WHEN '1'	THEN  'Primary school (Greades 1-5)'
+								WHEN '2'	THEN  'Lower secondary school (Grades 6-9)'
+								WHEN '3'	THEN  'Intermediate vocational training'
+								WHEN '4'	THEN  'Upper secondary school (Grades 10-12)'
+								WHEN '5'	THEN  'Higher education (e.g. university/college or higher'
+								WHEN '6'	THEN  'Don''t know'
+								WHEN '99'	THEN  'Missing'
+								WHEN '88'	THEN  'NA'
+											ELSE  [DAD_EDUC]
+		END as [DAD_EDUC]
+
+		,CASE [STDYLCHD]		WHEN '0'	THEN  'No'
+								WHEN '1'	THEN  'Yes'
+											ELSE  [STDYLCHD]
+		END as [STDYLCHD]
+
+		,CASE [STDCMPLT]		WHEN '88'	THEN  'NA'
+								WHEN '1'	THEN  'Absent'
+								WHEN '2'	THEN  'Refused to participate'
+								WHEN '99'	THEN  'Missing'
+											ELSE  [STDCMPLT]
+		END as [STDCMPLT]
+
+FROM CP002.dbo.vietnam_wave_1
+;

@@ -1,0 +1,412 @@
+USE CP002;
+GO
+
+CREATE TABLE HeadTeacher_Questionnaire_2017
+(		
+		 HTP_ID_2				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[HTNTCMP]		VARCHAR(30)
+		  ,[HTDINT]			VARCHAR(20)
+
+		  ,[HTSTFCMP]		VARCHAR(50)
+		  ,[HTDEVPLN]		BIT
+		  ,[HTPTA]			BIT
+		  ,[HTPTAMT]		VARCHAR(50)
+		  ,[HTEDOVS]		TINYINT
+		  ,[HTSTDDRP]		VARCHAR(20)
+		  ,[HTCHDLBR]		VARCHAR(20)
+		  ,[HTFLSINF]		VARCHAR(20)
+		  ,[HTTCHRET]		VARCHAR(20)
+		  ,[HTRCHATT]		VARCHAR(20)
+		  ,[HTENVEVT]		VARCHAR(20)
+		  ,[HTHIRPRN]		BIT
+		  ,[HTHIRTCH]		BIT
+		  ,[HTHIRBOET]		BIT
+		  ,[HTHIRDOET]		BIT
+		  ,[HTHIRMOET]		BIT
+		  ,[HTHIRMOTH]		BIT
+		  ,[HTFIRPRN]		BIT
+		  ,[HTFIRTCH]		BIT
+		  ,[HTFIRBOET]		BIT
+		  ,[HTFIRDOET]		BIT
+		  ,[HTFIRMOET]		BIT
+		  ,[HTFIRMOTH]		BIT
+		  ,[HTESTPRN]		BIT
+		  ,[HTESTTCH]		BIT
+		  ,[HTESTBOET]		BIT
+		  ,[HTESTDOET]		BIT
+		  ,[HTESTMOET]		BIT
+		  ,[HTESTMOTH]		BIT
+		  ,[HTDETPRN]		BIT
+		  ,[HTDETTCH]		BIT
+		  ,[HTDETBOET]		BIT
+		  ,[HTDETDOET]		BIT
+		  ,[HTDETMOET]		BIT
+		  ,[HTDETMOTH]		BIT
+		  ,[HTBUGPRN]		BIT
+		  ,[HTBUGTCH]		BIT
+		  ,[HTBUGBOET]		BIT
+		  ,[HTBUGDOET]		BIT
+		  ,[HTBUGMOET]		BIT
+		  ,[HTBUGMOTH]		BIT
+		  ,[HTBALPRN]		BIT
+		  ,[HTBALTCH]		BIT
+		  ,[HTBALBOET]		BIT
+		  ,[HTBALDOET]		BIT
+		  ,[HTBALMOET]		BIT
+		  ,[HTBALMOTH]		BIT
+		  ,[HTSASPRN]		BIT
+		  ,[HTSASTCH]		BIT
+		  ,[HTSASBOET]		BIT
+		  ,[HTSASDOET]		BIT
+		  ,[HTSASMOET]		BIT
+		  ,[HTTXTPRN]		BIT
+		  ,[HTTXTTCH]		BIT
+		  ,[HTTXTBOET]		BIT
+		  ,[HTTXTDOET]		BIT
+		  ,[HTTXTMOET]		BIT
+		  ,[HTCNTPRN]		BIT
+		  ,[HTCNTTCH]		BIT
+		  ,[HTCNTBOET]		BIT
+		  ,[HTCNTDOET]		BIT
+		  ,[HTCNTMOET]		BIT
+		  ,[HTOFRPRN]		BIT
+		  ,[HTOFRTCH]		BIT
+		  ,[HTOFRBOET]		BIT
+		  ,[HTOFRDOET]		BIT
+		  ,[HTOFRMOET]		BIT
+		  ,[HTSTPFGL]		VARCHAR(50)
+		  ,[HTTCPFGL]		VARCHAR(50)
+		  ,[HTTCWKGL]		VARCHAR(50)
+		  ,[HTDISCGL]		VARCHAR(50)
+		  ,[HTDYSTRN]		TINYINT
+		  ,[HTPMTCRS]		VARCHAR(50)
+		  ,[HTPRTCPT]		VARCHAR(50)
+		  ,[HTSTDVSK]		VARCHAR(50)
+		  ,[HTPRBDIS]		VARCHAR(50)
+		  ,[HTATTBEH]		VARCHAR(50)
+		  ,[HTSLVPRB]		VARCHAR(50)
+		  ,[HTPRTDEC]		VARCHAR(50)
+		  ,[HTREVMNG]		VARCHAR(50)
+		  ,[HTRSNABS]		VARCHAR(50)
+		  ,[HTSHRPER]		VARCHAR(50)
+		  ,[HTSTDENR]		SMALLINT
+		  ,[HTTOKEXM]		SMALLINT
+		  ,[HTLSPSEXM]		SMALLINT
+		  ,[HTPRCUNI]		SMALLINT
+		  ,[HTPRCVOC]		SMALLINT
+		  ,[HTCNTLRN]		BIT
+		  ,[SAMEHEAD]		VARCHAR(10)
+		  ,[DATECMPL]		VARCHAR(20)
+      
+		  ,CONSTRAINT FK_HTP_ID_2 FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+
+--TRUNCATE TABLE [CP002].[dbo].[HeadTeacher_Questionnaire_2017];
+
+INSERT INTO [CP002].[dbo].[HeadTeacher_Questionnaire_2017]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+
+		  ,CASE [HTNTCMP]	WHEN '1'	THEN  'Respondent absent'
+							WHEN '2'	THEN  'Respondent refused to participate'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTNTCMP]
+		END as [HTNTCMP]	
+		
+		  ,[HTDINT]			
+
+		  ,CASE [HTSTFCMP]	WHEN '1'	THEN  'Principal/Director'
+							WHEN '2'	THEN  'Vice principal/Vice director'	
+							WHEN '3'	THEN  'Other member of senior management staff'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTSTFCMP]
+		END as [HTSTFCMP]	
+		
+		  ,[HTDEVPLN]		
+		  ,[HTPTA]			
+
+		  ,CASE [HTPTAMT]	WHEN '0'	THEN  'There is no Parents'' Association'
+							WHEN '1'	THEN  'Once a week'
+							WHEN '2'	THEN  'Once a fortnight'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  'Once every 2-3 months'
+							WHEN '5'	THEN  'Once every 4-6 months'
+							WHEN '6'	THEN  'Once every 7-12 months'
+							WHEN '7'	THEN  'Less than once a year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTPTAMT]
+		END as [HTPTAMT]		
+
+		  ,[HTEDOVS]		
+
+		  ,CASE [HTSTDDRP]	WHEN '1'	THEN  'Never/Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Often'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTSTDDRP]
+		END as [HTSTDDRP]		
+		  ,CASE [HTCHDLBR]	WHEN '1'	THEN  'Never/Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Often'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTCHDLBR]
+		END as [HTCHDLBR]		
+		  ,CASE [HTFLSINF]	WHEN '1'	THEN  'Never/Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Often'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTFLSINF]
+		END as [HTFLSINF]		
+		  ,CASE [HTTCHRET]	WHEN '1'	THEN  'Never/Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Often'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTTCHRET]
+		END as [HTTCHRET]		
+		  ,CASE [HTRCHATT]	WHEN '1'	THEN  'Never/Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Often'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTRCHATT]
+		END as [HTRCHATT]		
+		  ,CASE [HTENVEVT]	WHEN '1'	THEN  'Never/Rarely'
+							WHEN '2'	THEN  'Occasionally'
+							WHEN '3'	THEN  'Often'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTENVEVT]
+		END as [HTENVEVT]	
+		
+		  ,[HTHIRPRN]		
+
+		  ,[HTHIRTCH]		
+		  ,[HTHIRBOET]		
+		  ,[HTHIRDOET]		
+		  ,[HTHIRMOET]		
+		  ,[HTHIRMOTH]		
+		  ,[HTFIRPRN]		
+		  ,[HTFIRTCH]		
+		  ,[HTFIRBOET]		
+		  ,[HTFIRDOET]		
+		  ,[HTFIRMOET]		
+		  ,[HTFIRMOTH]		
+		  ,[HTESTPRN]		
+		  ,[HTESTTCH]		
+		  ,[HTESTBOET]		
+		  ,[HTESTDOET]		
+		  ,[HTESTMOET]		
+		  ,[HTESTMOTH]		
+		  ,[HTDETPRN]		
+		  ,[HTDETTCH]		
+		  ,[HTDETBOET]		
+		  ,[HTDETDOET]		
+		  ,[HTDETMOET]		
+		  ,[HTDETMOTH]		
+		  ,[HTBUGPRN]		
+		  ,[HTBUGTCH]		
+		  ,[HTBUGBOET]		
+		  ,[HTBUGDOET]		
+		  ,[HTBUGMOET]		
+		  ,[HTBUGMOTH]		
+		  ,[HTBALPRN]		
+		  ,[HTBALTCH]		
+		  ,[HTBALBOET]		
+		  ,[HTBALDOET]		
+		  ,[HTBALMOET]		
+		  ,[HTBALMOTH]		
+		  ,[HTSASPRN]		
+		  ,[HTSASTCH]		
+		  ,[HTSASBOET]		
+		  ,[HTSASDOET]		
+		  ,[HTSASMOET]		
+		  ,[HTTXTPRN]		
+		  ,[HTTXTTCH]		
+		  ,[HTTXTBOET]		
+		  ,[HTTXTDOET]		
+		  ,[HTTXTMOET]		
+		  ,[HTCNTPRN]		
+		  ,[HTCNTTCH]		
+		  ,[HTCNTBOET]		
+		  ,[HTCNTDOET]		
+		  ,[HTCNTMOET]		
+		  ,[HTOFRPRN]		
+		  ,[HTOFRTCH]		
+		  ,[HTOFRBOET]		
+		  ,[HTOFRDOET]		
+		  ,[HTOFRMOET]		
+
+		  ,CASE [HTSTPFGL]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTSTPFGL]
+		END as [HTSTPFGL]		
+		  ,CASE [HTTCPFGL]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTTCPFGL]
+		END as [HTTCPFGL]		
+		  ,CASE [HTTCWKGL]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTTCWKGL]
+		END as [HTTCWKGL]		
+		  ,CASE [HTDISCGL]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTDISCGL]
+		END as [HTDISCGL]	
+		
+		  ,[HTDYSTRN]		
+
+		  ,CASE [HTPMTCRS]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTPMTCRS]
+		END as [HTPMTCRS]		
+		  ,CASE [HTPRTCPT]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTPRTCPT]
+		END as [HTPRTCPT]		
+		  ,CASE [HTSTDVSK]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTSTDVSK]
+		END as [HTSTDVSK]		
+		  ,CASE [HTPRBDIS]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTPRBDIS]
+		END as [HTPRBDIS]		
+		  ,CASE [HTATTBEH]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTATTBEH]
+		END as [HTATTBEH]		
+		  ,CASE [HTSLVPRB]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTSLVPRB]
+		END as [HTSLVPRB]		
+		  ,CASE [HTPRTDEC]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTPRTDEC]
+		END as [HTPRTDEC]		
+		  ,CASE [HTREVMNG]	WHEN '0'	THEN  'Did not occur'
+							WHEN '1'	THEN  'More than once a week'
+							WHEN '2'	THEN  'Once a week'
+							WHEN '3'	THEN  'Once a month'
+							WHEN '4'	THEN  '3-4 times during the year'
+							WHEN '5'	THEN  '1-2 times during the year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTREVMNG]
+		END as [HTREVMNG]		
+		  ,CASE [HTRSNABS]	WHEN '0'	THEN  'No teacher absence in the last academic year'
+							WHEN '1'	THEN  'Leave for personal reasons'
+							WHEN '2'	THEN  'Illness / medical leave'
+							WHEN '3'	THEN  'Attending training'
+							WHEN '4'	THEN  'Official duties'
+							WHEN '5'	THEN  'Teacher faced difficulties traveling to school'
+							WHEN '6'	THEN  'Unknown / reason not reported'
+							WHEN '7'	THEN  'Other'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTRSNABS]
+		END as [HTRSNABS]		
+		  ,CASE [HTSHRPER]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Once a year'
+							WHEN '2'	THEN  '2-3 times a year'
+							WHEN '3'	THEN  'More than 3 times a year'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [HTSHRPER]
+		END as [HTSHRPER]	
+		
+		  ,[HTSTDENR]		
+		  ,[HTTOKEXM]		
+		  ,[HTLSPSEXM]		
+		  ,[HTPRCUNI]		
+		  ,[HTPRCVOC]		
+		  ,[HTCNTLRN]		
+
+		  ,CASE [SAMEHEAD]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '79'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [SAMEHEAD]
+		END as [SAMEHEAD]	
+		
+		  ,[DATECMPL]		
+
+
+FROM CP002.dbo.vietnam_wave_2
+;
+ --DROP TABLE [CP002].[dbo].[HeadTeacher_Questionnaire_2017];

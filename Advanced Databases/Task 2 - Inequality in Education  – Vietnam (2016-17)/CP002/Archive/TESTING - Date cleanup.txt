@@ -1,0 +1,48 @@
+
+/***************************/
+-- Data cleaning & validation
+/***************************/
+
+-- Table 1 - Wave 1 file
+
+SELECT 
+
+      DISTINCT IIF([STDDINT] LIKE '%/0/%', REPLACE([STDDINT],'/0/','10'), 
+			   IIF([STDDINT] LIKE '%;%', REPLACE([STDDINT],';','/'),
+			   IIF([STDDINT] LIKE '%//%', REPLACE([STDDINT],'//','/'),
+			   IIF([STDDINT] LIKE '%`%', REPLACE([STDDINT],'`',''),
+			   IIF([STDDINT] LIKE '%+%', REPLACE([STDDINT],'+',''),
+			   IIF([STDDINT] LIKE '%20163', REPLACE([STDDINT],'20163','2016'),
+			   IIF([STDDINT] LIKE '%20016', REPLACE([STDDINT],'20016','2016'),
+			   IIF([STDDINT] LIKE '%2016/', REPLACE([STDDINT],'2016/','2016'),
+			   --IIF(ISNUMERIC([STDDINT]), CONVERT(DATE, [STDDINT], 101),
+			   IIF([STDDINT] LIKE '%/%/2016', CONVERT(VARCHAR,[STDDINT], 103),
+			   IIF([STDDINT] LIKE '%QUANG%' OR [STDDINT] = '', '12/31/2016',   [STDDINT] )))))))))) as STDDINT
+ 
+			  -- IIF([STDDINT] LIKE '%/%/%', 
+					--LEFT([STDDINT], CHARINDEX('/',[STDDINT])) + '/' +
+					--	MID( , [STDDINT]	)))) as [STDDINT]
+
+					--FORMAT([STDDINT], 'dd-mm-yyyy'
+					-- CONVERT(dasdadj , 103) --> British format
+
+	  --IIF(LEFT([STDDINT],1) > 0, 'Num', 'Not a num') as IsNum
+
+  FROM [CP002].[dbo].[vietnam_wave_1]
+
+
+  SELECT 
+	  DISTINCT IIF([STDDINT] LIKE '^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/](19|20)\d\d$',
+					[STDDINT], 
+					LEFT(REPLACE(REPLACE(LTRIM(RTRIM([STDDINT])),';','/'),'//','/'), 10)) as STDDINT
+  FROM [CP002].[dbo].[vietnam_wave_1]
+
+SELECT 
+
+	  DISTINCT STDDINT
+
+  FROM [CP002].[dbo].[vietnam_wave_1]
+
+
+  --WHERE STDDINT LIKE '^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$%';
+  --WHERE STDDINT LIKE '[0-9][0-9][\/][0-9][0-9][\/]\d{4}%';

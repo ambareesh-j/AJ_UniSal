@@ -1,0 +1,10 @@
+USE CP002; 
+GO
+
+/*Grant access for Teacher_Questionnaire_2017 table*/
+GRANT SELECT ON [dbEdu].[Teacher_Questionnaire_2017] TO ce_user1;
+GO
+
+/*Deny access for Identifier - Gender and Ethnicity fields*/
+DENY SELECT ON dbEdu.Identifier (gender, ethnicity) TO ce_user1;
+GO

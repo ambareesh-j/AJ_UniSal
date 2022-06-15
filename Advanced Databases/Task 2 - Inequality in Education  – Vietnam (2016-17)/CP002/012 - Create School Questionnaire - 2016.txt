@@ -1,0 +1,70 @@
+USE CP002;
+GO
+
+CREATE TABLE School_Questionnaire_2016
+(		
+		 SCH_ID				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[SCHFAC01A]		TINYINT	
+		  ,[SCHFAC01B]		TINYINT
+		  ,[SCHFAC02]		BIT
+		  ,[SCHFAC03]		BIT
+		  ,[SCHFAC04]		BIT
+		  ,[SCHFAC05]		BIT
+		  ,[SCHFAC06]		BIT
+		  ,[SCHFAC07]		BIT
+		  ,[SCHFAC08]		BIT
+		  ,[SCHFAC09]		BIT
+		  ,[SCHFAC10]		SMALLINT
+		  ,[SCHFAC11]		BIT
+		  ,[SCHFAC12]		VARCHAR(50)
+		  ,[SCHFAC13]		BIT
+		  ,[SCHFAC14]		BIT
+		  ,[WEIGHT]			FLOAT
+      
+		  ,CONSTRAINT FK_SCH_ID FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+
+--TRUNCATE TABLE [CP002].[dbo].[School_Questionnaire_2016];
+
+INSERT INTO [CP002].[dbo].[School_Questionnaire_2016]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID	
+		
+		,[SCHFAC01A]
+		,[SCHFAC01B]
+		,[SCHFAC02]	
+		,[SCHFAC03]	
+		,[SCHFAC04]	
+		,[SCHFAC05]	
+		,[SCHFAC06]	
+		,[SCHFAC07]	
+		,[SCHFAC08]	
+		,[SCHFAC09]	
+		,[SCHFAC10]	
+		,[SCHFAC11]	
+		,CASE [SCHFAC12]	WHEN '0'	THEN  'No drinking water'
+							WHEN '1'	THEN  'School''s own tap'
+							WHEN '2'	THEN  'Public tap'
+							WHEN '3'	THEN  'School''s own well'
+							WHEN '4'	THEN  'Public well'
+							WHEN '5'	THEN  'Rainwater'
+							WHEN '6'	THEN  'Spring'
+							WHEN '7'	THEN  'Tanker truck'
+							WHEN '8'	THEN  'Bottled water provided to school'
+							WHEN '9'	THEN  'Students bring drinking water from home'
+							WHEN '10'	THEN  'Other'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [SCHFAC12]
+		END as [SCHFAC12]	
+		,[SCHFAC13]	
+		,[SCHFAC14]	
+		,[WEIGHT]	
+
+FROM CP002.dbo.vietnam_wave_1
+;
+
+ --DROP TABLE [CP002].[dbo].[School_Questionnaire_2016];

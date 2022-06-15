@@ -1,0 +1,49 @@
+USE CP002;
+GO
+/**************************************************/
+/*Report 02 Creation - yREP02_ST_Accessories*/
+/**************************************************/
+
+CREATE VIEW yREP02_ST_Accessories
+
+AS 
+
+SELECT PROVINCE as Province, 
+	   LOCALITY as Locality, 
+	   Accessories, 
+	   SUM(IIF(CAST(Yes as tinyint) = 0, 1, 0)) as [No],
+	   SUM(CAST(Yes as tinyint)) as [Yes]
+
+FROM 
+(	SELECT PROVINCE, LOCALITY, UNIQUEID, Accessories, Yes 
+	FROM   
+	   (SELECT PROVINCE, LOCALITY, UNIQUEID, 
+			   STITMOW1 as [Compulsory Grade 10 Maths textbooks], 
+			   STITMOW2 as [Compulsory Grade 10 English textbooks], 
+			   STITMOW3 as [Non-compulsory Grade 10 Maths textbooks],  
+			   STITMOW4 as [Non-compulsory Grade 10 English textbooks], 
+			   STITMOW5 as [School bag], 
+			   STITMOW6 as [Ruler],
+			   STITMOW7 as [Mobile phone],
+			   STITMOW8 as [Pocket Calculator]
+	   FROM CP002.dbEdu.v01_ST_Questionnaire) p  
+	UNPIVOT  
+	   (Yes FOR Accessories IN   
+			([Compulsory Grade 10 Maths textbooks], 
+			[Compulsory Grade 10 English textbooks], 
+			[Non-compulsory Grade 10 Maths textbooks], 
+			[Non-compulsory Grade 10 English textbooks], 
+			[School bag], 
+			[Ruler],
+			[Mobile phone],
+			[Pocket Calculator]) 
+	)AS unpvt
+) as level2
+GROUP BY PROVINCE, LOCALITY, Accessories
+GO   
+;
+
+
+
+
+

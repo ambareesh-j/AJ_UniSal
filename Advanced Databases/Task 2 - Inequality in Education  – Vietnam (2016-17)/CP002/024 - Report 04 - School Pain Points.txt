@@ -1,0 +1,32 @@
+USE CP002;
+GO
+/**************************************************/
+/*Report 04 Creation - yREP04_SCH_Pain_Points*/
+/**************************************************/
+
+CREATE VIEW yREP04_SCH_Pain_Points
+
+AS 
+
+SELECT PROVINCE as Province, 
+	   LOCALITY as Locality, 
+	   SCHOOLID as School_ID, 
+	   COUNT(UNIQUEID) as [# Students],
+		
+	   SCHFAC01A	as [# Classrooms], 
+	   SCHFAC01B	as [# Laboratories], 
+	   SCHFAC10		AS [# Working toilets],
+	   SCHFAC12		as [Main Source of Drinking water],
+
+	   IIF(CAST(SCHFAC03 AS TINYINT) = 1, 'Yes', 'No') AS [Electricity Supply]
+
+FROM CP002.dbEdu.v04_SCH_Questionnaire
+GROUP BY PROVINCE, LOCALITY, SCHOOLID, SCHFAC01A, SCHFAC01B, SCHFAC10,  SCHFAC12, SCHFAC03
+
+GO   
+;
+
+
+
+
+

@@ -1,0 +1,83 @@
+USE CP002;
+GO
+/**************************************************/
+/*Report 05 Creation - yREP05_ST_Cogn_Eng_Tests*/
+/**************************************************/
+
+CREATE VIEW yREP05_ST_Cogn_Eng_Tests
+
+AS 
+
+SELECT  Province+'_'+Locality+'_'+SchoolID+'_'+Gender+'_'+Year as CK_Test,
+		Province, Locality, SchoolID, Gender, Year, Eng_Questions, Num_Crct
+FROM 
+	(
+	SELECT [PROVINCE] AS [Province],
+		   [LOCALITY] as Locality,
+		   [SCHOOLID],
+		   IIF(LEN(LTRIM(RTRIM([GENDER]))) > 0, [Gender], 'Neutral') AS [Gender],
+		   [Year]
+		  ,SUM(IIF(CAST([ENG_ITEM1]		AS TINYINT) = 1, 1, 0)) as  [Q01_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM2]		AS TINYINT) = 1, 1, 0)) as  [Q02_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM3]		AS TINYINT) = 1, 1, 0)) as 	[Q03_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM4]		AS TINYINT) = 1, 1, 0)) as 	[Q04_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM5]		AS TINYINT) = 1, 1, 0)) as 	[Q05_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM6]		AS TINYINT) = 1, 1, 0)) as 	[Q06_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM7]		AS TINYINT) = 1, 1, 0)) as 	[Q07_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM8]		AS TINYINT) = 1, 1, 0)) as 	[Q08_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM9]		AS TINYINT) = 1, 1, 0)) as 	[Q09_ENG] 
+		  ,SUM(IIF(CAST([ENG_ITEM10]	AS TINYINT) = 1, 1, 0)) as 	[Q10_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM11]	AS TINYINT) = 1, 1, 0)) as 	[Q11_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM12]	AS TINYINT) = 1, 1, 0)) as 	[Q12_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM13]	AS TINYINT) = 1, 1, 0)) as 	[Q13_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM14]	AS TINYINT) = 1, 1, 0)) as 	[Q14_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM15]	AS TINYINT) = 1, 1, 0)) as 	[Q15_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM16]	AS TINYINT) = 1, 1, 0)) as 	[Q16_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM17]	AS TINYINT) = 1, 1, 0)) as 	[Q17_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM18]	AS TINYINT) = 1, 1, 0)) as 	[Q18_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM19]	AS TINYINT) = 1, 1, 0)) as 	[Q19_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM20]	AS TINYINT) = 1, 1, 0)) as 	[Q20_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM21]	AS TINYINT) = 1, 1, 0)) as 	[Q21_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM22]	AS TINYINT) = 1, 1, 0)) as 	[Q22_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM23]	AS TINYINT) = 1, 1, 0)) as 	[Q23_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM24]	AS TINYINT) = 1, 1, 0)) as 	[Q24_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM25]	AS TINYINT) = 1, 1, 0)) as 	[Q25_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM26]	AS TINYINT) = 1, 1, 0)) as 	[Q26_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM27]	AS TINYINT) = 1, 1, 0)) as 	[Q27_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM28]	AS TINYINT) = 1, 1, 0)) as 	[Q28_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM29]	AS TINYINT) = 1, 1, 0)) as 	[Q29_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM30]	AS TINYINT) = 1, 1, 0)) as 	[Q30_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM31]	AS TINYINT) = 1, 1, 0)) as 	[Q31_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM32]	AS TINYINT) = 1, 1, 0)) as 	[Q32_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM33]	AS TINYINT) = 1, 1, 0)) as 	[Q33_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM34]	AS TINYINT) = 1, 1, 0)) as 	[Q34_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM35]    AS TINYINT) = 1, 1, 0)) as 	[Q35_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM36]    AS TINYINT) = 1, 1, 0)) as 	[Q36_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM37]    AS TINYINT) = 1, 1, 0)) as 	[Q37_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM38]    AS TINYINT) = 1, 1, 0)) as 	[Q38_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM39]    AS TINYINT) = 1, 1, 0)) as 	[Q39_ENG]
+		  ,SUM(IIF(CAST([ENG_ITEM40]    AS TINYINT) = 1, 1, 0)) as 	[Q40_ENG]
+
+		  --,ROUND(AVG(CAST([ENG_RAWSCORE] AS REAL)), 3) as [Average Score in English Test]
+	FROM [dbo].[v06_ST_Cogn_Tests] as A
+		INNER JOIN dbEdu.Identifier as J 
+			ON A.UNIQUEID = J.UNIQUEID
+	WHERE [ENG_TEST] = 'Yes'
+	GROUP BY [PROVINCE],[LOCALITY], [SCHOOLID], [GENDER], [Year] ) as lvl1
+	UNPIVOT  
+	   (Num_Crct FOR Eng_Questions IN   
+			( [Q01_ENG], [Q02_ENG], [Q03_ENG] ,[Q04_ENG], [Q05_ENG], [Q06_ENG], [Q07_ENG], [Q08_ENG], 
+			  [Q09_ENG], [Q10_ENG], [Q11_ENG], [Q12_ENG],[Q13_ENG], [Q14_ENG], [Q15_ENG],[Q16_ENG],
+			  [Q17_ENG],[Q18_ENG],[Q19_ENG],[Q20_ENG],[Q21_ENG],[Q22_ENG],[Q23_ENG],[Q24_ENG],
+			  [Q25_ENG],[Q26_ENG],[Q27_ENG],[Q28_ENG],[Q29_ENG], [Q30_ENG],[Q31_ENG],[Q32_ENG],
+			  [Q33_ENG],[Q34_ENG],[Q35_ENG],[Q36_ENG],[Q37_ENG],[Q38_ENG],[Q39_ENG],[Q40_ENG]
+			 )
+		)AS unpvt
+
+GO
+;
+
+
+
+
+

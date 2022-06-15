@@ -1,0 +1,50 @@
+USE CP002;
+GO
+/**************************************************/
+/*Report 07 Creation - yREP07_ST_Avg_Test_Scores*/
+/**************************************************/
+
+CREATE VIEW yREP07_ST_Avg_Test_Scores
+
+AS 
+
+SELECT t1.Province+'_'+t1.Locality+'_'+t1.SchoolID+'_'+t1.Gender+'_'+t1.Year as CK_Test,
+	   t1.Province, t1.Locality, t1.SchoolID, t1.Gender, t1.Year, 
+	   t1.[Average Score in English Test],
+	   t2.[Average Score in Maths Test]
+FROM 
+	(SELECT [PROVINCE] AS [Province],
+		   [LOCALITY] as Locality,
+		   [SCHOOLID],
+		   IIF(LEN(LTRIM(RTRIM([GENDER]))) > 0, [Gender], 'Neutral') AS [Gender],
+		   [Year]
+			
+		  ,ROUND(AVG(CAST([ENG_RAWSCORE] AS REAL)), 3) as [Average Score in English Test]
+
+	FROM [dbo].[v06_ST_Cogn_Tests] as A
+		INNER JOIN dbEdu.Identifier as J 
+			ON A.UNIQUEID = J.UNIQUEID
+	WHERE [ENG_TEST] = 'Yes'
+	GROUP BY [PROVINCE],[LOCALITY], [SCHOOLID], [GENDER], [Year]  ) as t1
+LEFT JOIN 
+	(SELECT [PROVINCE] AS [Province],
+			[LOCALITY] as Locality,
+		   [SCHOOLID],
+		   IIF(LEN(LTRIM(RTRIM([GENDER]))) > 0, [Gender], 'Neutral') AS [Gender],
+		   [Year]
+			
+		  ,ROUND(AVG(CAST([MATH_RAWSCORE] AS REAL)), 3) as [Average Score in Maths Test]
+
+	FROM [dbo].[v06_ST_Cogn_Tests] as A
+		INNER JOIN dbEdu.Identifier as J 
+			ON A.UNIQUEID = J.UNIQUEID
+	WHERE [ENG_TEST] = 'Yes'
+	GROUP BY [PROVINCE],[LOCALITY], [SCHOOLID], [GENDER], [Year]  ) as t2
+ON (t1.[Province]=t2.[Province] AND 
+	t1.Locality=t2.Locality AND 
+	t1.SchoolID=t2.SchoolID AND 
+	t1.Gender=t2.Gender AND 
+	t1.Year=t2.Year)
+
+GO
+;

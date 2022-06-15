@@ -1,0 +1,84 @@
+USE CP002;
+GO
+
+/******************************************/
+/*View 02 Creation - v02_HT_Questionnaire*/
+/******************************************/
+
+CREATE VIEW v02_HT_Questionnaire
+AS
+(
+SELECT dbEdu.Identifier.UNIQUEID, dbEdu.Identifier.SCHOOLID, dbEdu.HeadTeacher_Questionnaire_2016.NUMG10CLS, dbEdu.HeadTeacher_Questionnaire_2016.HTAGE, dbEdu.HeadTeacher_Questionnaire_2016.HTSEX, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTETHGRP, dbEdu.HeadTeacher_Questionnaire_2016.HTRELGN, dbEdu.HeadTeacher_Questionnaire_2016.HTMTHTNG, dbEdu.HeadTeacher_Questionnaire_2016.HTFRMPRV, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTCURRLE, dbEdu.HeadTeacher_Questionnaire_2016.HTYRSHT, dbEdu.HeadTeacher_Questionnaire_2016.HTLVLEDC, dbEdu.HeadTeacher_Questionnaire_2016.HTLVLTCH, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXCTCH, dbEdu.HeadTeacher_Questionnaire_2016.HTTYPSCH, dbEdu.HeadTeacher_Questionnaire_2016.HTLWSGRD, dbEdu.HeadTeacher_Questionnaire_2016.HTHGHGRD, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTNMSTEN, dbEdu.HeadTeacher_Questionnaire_2016.HTNMETST, dbEdu.HeadTeacher_Questionnaire_2016.HTYREST, dbEdu.HeadTeacher_Questionnaire_2016.HTP135CM, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTPRDIST, dbEdu.HeadTeacher_Questionnaire_2016.HTBOARD, dbEdu.HeadTeacher_Questionnaire_2016.HTSCHAVL, dbEdu.HeadTeacher_Questionnaire_2016.HTMRNSTR, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTMRNEND, dbEdu.HeadTeacher_Questionnaire_2016.HTAFTSTR, dbEdu.HeadTeacher_Questionnaire_2016.HTAFTEND, dbEdu.HeadTeacher_Questionnaire_2016.HTREGTCH, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTNONCMP, dbEdu.HeadTeacher_Questionnaire_2016.HTEXTCUR, dbEdu.HeadTeacher_Questionnaire_2016.HTNOACT, dbEdu.HeadTeacher_Questionnaire_2016.HTNOCMCH, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTNOCMCL, dbEdu.HeadTeacher_Questionnaire_2016.HTRQNMST, dbEdu.HeadTeacher_Questionnaire_2016.HTCENMST, dbEdu.HeadTeacher_Questionnaire_2016.HTPTNMST, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTRQMATH, dbEdu.HeadTeacher_Questionnaire_2016.HTRQENG, dbEdu.HeadTeacher_Questionnaire_2016.HTTCHAPP, dbEdu.HeadTeacher_Questionnaire_2016.HTREWTC1, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTREWTC2, dbEdu.HeadTeacher_Questionnaire_2016.HTREWTC4, dbEdu.HeadTeacher_Questionnaire_2016.HTREWTC5, dbEdu.HeadTeacher_Questionnaire_2016.HTREWTC6, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTREWTC7, dbEdu.HeadTeacher_Questionnaire_2016.HTREWTC8, dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC1, dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC2, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC3, dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC4, dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC6, dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC7, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC8, dbEdu.HeadTeacher_Questionnaire_2016.HTDISTC0, dbEdu.HeadTeacher_Questionnaire_2016.HTGNADMN, dbEdu.HeadTeacher_Questionnaire_2016.HTACRARE, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTACRAETH, dbEdu.HeadTeacher_Questionnaire_2016.HTACRAGND, dbEdu.HeadTeacher_Questionnaire_2016.HTACRAPAY, dbEdu.HeadTeacher_Questionnaire_2016.HTACRAEXM, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTACRAOTH, dbEdu.HeadTeacher_Questionnaire_2016.HTACRAALL, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID1, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM011, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM021, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM031, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM041, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM051, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM061, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM001, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID2, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM012, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM022, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM032, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM042, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM052, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM062, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM002, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID3, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM013, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM023, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM033, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM043, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM053, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM063, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM003, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID4, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM014, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM024, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM034, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM044, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM054, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM064, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM004, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID5, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM015, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM025, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM035, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM045, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM055, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM065, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM005, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID6, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM016, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM026, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM036, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM046, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM056, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM066, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM006, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID7, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM017, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM027, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM037, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM047, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM057, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM067, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM007, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID8, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM018, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM028, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM038, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM048, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM058, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM068, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM008, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID9, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM019, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM029, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM039, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM049, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM059, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM069, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM009, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID10, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0110, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0210, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0310, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0410, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0510, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0610, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0010, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID11, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0111, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0211, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0311, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0411, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0511, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0611, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0011, dbEdu.HeadTeacher_Questionnaire_2016.HTAMPAID12, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0112, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0212, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0312, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0412, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0512, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0612, dbEdu.HeadTeacher_Questionnaire_2016.HTEXM0012, dbEdu.HeadTeacher_Questionnaire_2016.HTENGR10, dbEdu.HeadTeacher_Questionnaire_2016.HTENBY10, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTTLGR10, dbEdu.HeadTeacher_Questionnaire_2016.HTTLBY10, dbEdu.HeadTeacher_Questionnaire_2016.HTENGR11, dbEdu.HeadTeacher_Questionnaire_2016.HTENBY11, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTTLGR11, dbEdu.HeadTeacher_Questionnaire_2016.HTTLBY11, dbEdu.HeadTeacher_Questionnaire_2016.HTENGR12, dbEdu.HeadTeacher_Questionnaire_2016.HTENBY12, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTTLGR12, dbEdu.HeadTeacher_Questionnaire_2016.HTTLBY12, dbEdu.HeadTeacher_Questionnaire_2016.HTNMCL10, dbEdu.HeadTeacher_Questionnaire_2016.HTNMCL11, 
+                  dbEdu.HeadTeacher_Questionnaire_2016.HTNMCL12, dbEdu.HeadTeacher_Questionnaire_2016.HTALLC10, dbEdu.HeadTeacher_Questionnaire_2016.HTPRTEXP, dbEdu.HeadTeacher_Questionnaire_2016.HTENTOT10, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTSTFCMP, dbEdu.HeadTeacher_Questionnaire_2017.HTDEVPLN, dbEdu.HeadTeacher_Questionnaire_2017.HTPTA, dbEdu.HeadTeacher_Questionnaire_2017.HTPTAMT, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTEDOVS, dbEdu.HeadTeacher_Questionnaire_2017.HTSTDDRP, dbEdu.HeadTeacher_Questionnaire_2017.HTCHDLBR, dbEdu.HeadTeacher_Questionnaire_2017.HTFLSINF, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTTCHRET, dbEdu.HeadTeacher_Questionnaire_2017.HTRCHATT, dbEdu.HeadTeacher_Questionnaire_2017.HTENVEVT, dbEdu.HeadTeacher_Questionnaire_2017.HTHIRPRN, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTHIRTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTHIRBOET, dbEdu.HeadTeacher_Questionnaire_2017.HTHIRDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTHIRMOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTHIRMOTH, dbEdu.HeadTeacher_Questionnaire_2017.HTFIRPRN, dbEdu.HeadTeacher_Questionnaire_2017.HTFIRTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTFIRBOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTFIRDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTFIRMOET, dbEdu.HeadTeacher_Questionnaire_2017.HTFIRMOTH, dbEdu.HeadTeacher_Questionnaire_2017.HTESTPRN, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTESTTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTESTBOET, dbEdu.HeadTeacher_Questionnaire_2017.HTESTDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTESTMOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTESTMOTH, dbEdu.HeadTeacher_Questionnaire_2017.HTDETPRN, dbEdu.HeadTeacher_Questionnaire_2017.HTDETTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTDETBOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTDETDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTDETMOET, dbEdu.HeadTeacher_Questionnaire_2017.HTDETMOTH, dbEdu.HeadTeacher_Questionnaire_2017.HTBUGPRN, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTBUGTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTBUGBOET, dbEdu.HeadTeacher_Questionnaire_2017.HTBUGDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTBUGMOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTBUGMOTH, dbEdu.HeadTeacher_Questionnaire_2017.HTBALPRN, dbEdu.HeadTeacher_Questionnaire_2017.HTBALTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTBALBOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTBALDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTBALMOET, dbEdu.HeadTeacher_Questionnaire_2017.HTBALMOTH, dbEdu.HeadTeacher_Questionnaire_2017.HTSASPRN, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTSASTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTSASBOET, dbEdu.HeadTeacher_Questionnaire_2017.HTSASDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTSASMOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTTXTPRN, dbEdu.HeadTeacher_Questionnaire_2017.HTTXTTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTTXTBOET, dbEdu.HeadTeacher_Questionnaire_2017.HTTXTDOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTTXTMOET, dbEdu.HeadTeacher_Questionnaire_2017.HTCNTPRN, dbEdu.HeadTeacher_Questionnaire_2017.HTCNTTCH, dbEdu.HeadTeacher_Questionnaire_2017.HTCNTBOET, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTCNTDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTCNTMOET, dbEdu.HeadTeacher_Questionnaire_2017.HTOFRPRN, dbEdu.HeadTeacher_Questionnaire_2017.HTOFRTCH, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTOFRBOET, dbEdu.HeadTeacher_Questionnaire_2017.HTOFRDOET, dbEdu.HeadTeacher_Questionnaire_2017.HTOFRMOET, dbEdu.HeadTeacher_Questionnaire_2017.HTSTPFGL, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTTCPFGL, dbEdu.HeadTeacher_Questionnaire_2017.HTTCWKGL, dbEdu.HeadTeacher_Questionnaire_2017.HTDISCGL, dbEdu.HeadTeacher_Questionnaire_2017.HTDYSTRN, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTPMTCRS, dbEdu.HeadTeacher_Questionnaire_2017.HTPRTCPT, dbEdu.HeadTeacher_Questionnaire_2017.HTSTDVSK, dbEdu.HeadTeacher_Questionnaire_2017.HTPRBDIS, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTATTBEH, dbEdu.HeadTeacher_Questionnaire_2017.HTSLVPRB, dbEdu.HeadTeacher_Questionnaire_2017.HTPRTDEC, dbEdu.HeadTeacher_Questionnaire_2017.HTREVMNG, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTRSNABS, dbEdu.HeadTeacher_Questionnaire_2017.HTSHRPER, dbEdu.HeadTeacher_Questionnaire_2017.HTSTDENR, dbEdu.HeadTeacher_Questionnaire_2017.HTTOKEXM, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.HTLSPSEXM, dbEdu.HeadTeacher_Questionnaire_2017.HTPRCUNI, dbEdu.HeadTeacher_Questionnaire_2017.HTPRCVOC, dbEdu.HeadTeacher_Questionnaire_2017.HTCNTLRN, 
+                  dbEdu.HeadTeacher_Questionnaire_2017.SAMEHEAD, dbEdu.HeadTeacher_Questionnaire_2017.DATECMPL
+FROM   dbEdu.Identifier 
+	INNER JOIN dbEdu.HeadTeacher_Questionnaire_2016 
+		ON dbEdu.Identifier.UNIQUEID = dbEdu.HeadTeacher_Questionnaire_2016.UNIQUEID 
+	INNER JOIN dbEdu.HeadTeacher_Questionnaire_2017 
+		ON dbEdu.HeadTeacher_Questionnaire_2016.UNIQUEID = dbEdu.HeadTeacher_Questionnaire_2017.UNIQUEID
+)	
+;

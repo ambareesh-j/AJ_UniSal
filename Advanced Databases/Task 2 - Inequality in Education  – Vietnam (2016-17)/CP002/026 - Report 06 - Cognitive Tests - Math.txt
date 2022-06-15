@@ -1,0 +1,78 @@
+USE CP002;
+GO
+/**************************************************/
+/*Report 06 Creation - yREP06_ST_Cogn_Math_Tests*/
+/**************************************************/
+
+CREATE VIEW yREP06_ST_Cogn_Math_Tests
+
+AS 
+
+SELECT  Province+'_'+Locality+'_'+SchoolID+'_'+Gender+'_'+Year as CK_Test,
+		Province, Locality, SchoolID, Gender, Year, Math_Questions, Num_Crct
+FROM 
+	(
+	SELECT [PROVINCE] AS [Province],
+		   [LOCALITY] as Locality,
+		   [SCHOOLID],
+		   IIF(LEN(LTRIM(RTRIM([GENDER]))) > 0, [Gender], 'Neutral') AS [Gender],
+		   [Year]
+		  ,SUM(IIF(CAST([MATH_ITEM1]    AS TINYINT) = 1, 1, 0)) as  [Q01_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM2]    AS TINYINT) = 1, 1, 0)) as 	[Q02_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM3]    AS TINYINT) = 1, 1, 0)) as 	[Q03_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM4]    AS TINYINT) = 1, 1, 0)) as 	[Q04_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM5]    AS TINYINT) = 1, 1, 0)) as 	[Q05_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM6]    AS TINYINT) = 1, 1, 0)) as 	[Q06_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM7]    AS TINYINT) = 1, 1, 0)) as 	[Q07_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM8]    AS TINYINT) = 1, 1, 0)) as 	[Q08_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM9]    AS TINYINT) = 1, 1, 0)) as 	[Q09_MAT] 
+		  ,SUM(IIF(CAST([MATH_ITEM10]   AS TINYINT) = 1, 1, 0)) as 	[Q10_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM11]   AS TINYINT) = 1, 1, 0)) as 	[Q11_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM12]   AS TINYINT) = 1, 1, 0)) as 	[Q12_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM13]   AS TINYINT) = 1, 1, 0)) as 	[Q13_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM14]   AS TINYINT) = 1, 1, 0)) as 	[Q14_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM15]   AS TINYINT) = 1, 1, 0)) as 	[Q15_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM16]   AS TINYINT) = 1, 1, 0)) as 	[Q16_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM17]   AS TINYINT) = 1, 1, 0)) as 	[Q17_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM18]   AS TINYINT) = 1, 1, 0)) as 	[Q18_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM19]   AS TINYINT) = 1, 1, 0)) as 	[Q19_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM20]   AS TINYINT) = 1, 1, 0)) as 	[Q20_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM21]   AS TINYINT) = 1, 1, 0)) as 	[Q21_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM22]   AS TINYINT) = 1, 1, 0)) as 	[Q22_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM23]   AS TINYINT) = 1, 1, 0)) as 	[Q23_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM24]   AS TINYINT) = 1, 1, 0)) as 	[Q24_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM25]   AS TINYINT) = 1, 1, 0)) as 	[Q25_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM26]   AS TINYINT) = 1, 1, 0)) as 	[Q26_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM27]   AS TINYINT) = 1, 1, 0)) as 	[Q27_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM28]   AS TINYINT) = 1, 1, 0)) as 	[Q28_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM29]   AS TINYINT) = 1, 1, 0)) as 	[Q29_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM30]   AS TINYINT) = 1, 1, 0)) as 	[Q30_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM31]   AS TINYINT) = 1, 1, 0)) as 	[Q31_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM32]   AS TINYINT) = 1, 1, 0)) as 	[Q32_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM33]   AS TINYINT) = 1, 1, 0)) as 	[Q33_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM34]   AS TINYINT) = 1, 1, 0)) as 	[Q34_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM35]   AS TINYINT) = 1, 1, 0)) as 	[Q35_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM36]   AS TINYINT) = 1, 1, 0)) as 	[Q36_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM37]   AS TINYINT) = 1, 1, 0)) as 	[Q37_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM38]   AS TINYINT) = 1, 1, 0)) as 	[Q38_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM39]   AS TINYINT) = 1, 1, 0)) as 	[Q39_MAT]
+		  ,SUM(IIF(CAST([MATH_ITEM40]   AS TINYINT) = 1, 1, 0)) as 	[Q40_MAT]
+
+		  ,ROUND(AVG(CAST([MATH_RAWSCORE] AS REAL)), 3) as [Average Score in Maths Test]
+	FROM [dbo].[v06_ST_Cogn_Tests] as A
+		INNER JOIN dbEdu.Identifier as J 
+			ON A.UNIQUEID = J.UNIQUEID
+	WHERE [ENG_TEST] = 'Yes'
+	GROUP BY [PROVINCE],[LOCALITY], [SCHOOLID], [GENDER], [Year]) as lvl1
+		UNPIVOT  
+		   (Num_Crct FOR Math_Questions IN   
+				( [Q01_MAT], [Q02_MAT], [Q03_MAT] ,[Q04_MAT], [Q05_MAT], [Q06_MAT], [Q07_MAT], [Q08_MAT], 
+				  [Q09_MAT], [Q10_MAT], [Q11_MAT], [Q12_MAT],[Q13_MAT], [Q14_MAT], [Q15_MAT],[Q16_MAT],
+				  [Q17_MAT],[Q18_MAT],[Q19_MAT],[Q20_MAT],[Q21_MAT],[Q22_MAT],[Q23_MAT],[Q24_MAT],
+				  [Q25_MAT],[Q26_MAT],[Q27_MAT],[Q28_MAT],[Q29_MAT], [Q30_MAT],[Q31_MAT],[Q32_MAT],
+				  [Q33_MAT],[Q34_MAT],[Q35_MAT],[Q36_MAT],[Q37_MAT],[Q38_MAT],[Q39_MAT],[Q40_MAT]
+				 )
+			)AS unpvt
+
+GO
+;

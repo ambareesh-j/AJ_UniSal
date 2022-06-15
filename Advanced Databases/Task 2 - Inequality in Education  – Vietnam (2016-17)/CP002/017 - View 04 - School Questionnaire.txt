@@ -1,0 +1,19 @@
+USE CP002;
+GO
+
+/******************************************/
+/*View 04 Creation - v04_SCH_Questionnaire*/
+/******************************************/
+
+CREATE VIEW v04_SCH_Questionnaire
+AS
+(
+SELECT dbEdu.Identifier.UNIQUEID, dbEdu.Identifier.SCHOOLID, dbEdu.Identifier.PROVINCE, dbEdu.Identifier.DISTRICTCODE, dbEdu.Identifier.LOCALITY, dbEdu.School_Questionnaire_2016.SCHFAC01A, 
+                  dbEdu.School_Questionnaire_2016.SCHFAC01B, dbEdu.School_Questionnaire_2016.SCHFAC02, dbEdu.School_Questionnaire_2016.SCHFAC03, dbEdu.School_Questionnaire_2016.SCHFAC04, 
+                  dbEdu.School_Questionnaire_2016.SCHFAC05, dbEdu.School_Questionnaire_2016.SCHFAC06, dbEdu.School_Questionnaire_2016.SCHFAC07, dbEdu.School_Questionnaire_2016.SCHFAC08, dbEdu.School_Questionnaire_2016.SCHFAC09, 
+                  dbEdu.School_Questionnaire_2016.SCHFAC10, dbEdu.School_Questionnaire_2016.SCHFAC11, dbEdu.School_Questionnaire_2016.SCHFAC12, dbEdu.School_Questionnaire_2016.SCHFAC13, dbEdu.School_Questionnaire_2016.SCHFAC14, 
+                  dbEdu.School_Questionnaire_2016.WEIGHT
+FROM     dbEdu.Identifier INNER JOIN
+                  dbEdu.School_Questionnaire_2016 ON dbEdu.Identifier.UNIQUEID = dbEdu.School_Questionnaire_2016.UNIQUEID
+)	
+;

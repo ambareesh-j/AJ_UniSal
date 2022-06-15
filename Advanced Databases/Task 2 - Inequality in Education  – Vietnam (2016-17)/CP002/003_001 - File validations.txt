@@ -1,0 +1,40 @@
+
+/*Validations*/
+
+SELECT	 UNIQUEID	
+		,SCHOOLID 	
+		,CLASSID			
+		,STUDENTID
+
+FROM dbo.vietnam_wave_1;
+
+-- Returns 8740 rows
+
+SELECT	 UNIQUEID	
+		,SCHOOLID 	
+		,CLASSID			
+		,STUDENTID
+
+FROM dbo.vietnam_wave_2;
+
+-- Also returns 8740 rows
+
+--> Now I want to check if both these 8740 rows are common between both tables 
+
+SELECT	 UNIQUEID	
+		,SCHOOLID 	
+		,CLASSID			
+		,STUDENTID
+FROM dbo.vietnam_wave_1
+UNION 
+SELECT UNIQUEID	
+		,SCHOOLID 	
+		,CLASSID			
+		,STUDENTID
+FROM dbo.vietnam_wave_2;
+
+-- This also returns 8740 rows only because UNION returns non-duplicate values in the end.
+
+
+
+

@@ -1,0 +1,538 @@
+USE CP002;
+GO
+
+CREATE TABLE Student_Questionnaire_2016
+(		
+		 ST_ID				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+
+		  ,[STDINT]			VARCHAR(20)	
+
+		  ,[STDLIV]			VARCHAR(50)
+		  ,[STDLNGHM]		VARCHAR(50)
+		  ,[STDMEAL]		VARCHAR(50)	
+		  ,[STDHLTH1]		BIT
+		  ,[STDHLTH2]		BIT
+		  ,[STDHLTH3]		BIT
+		  ,[STDHLTH4]		BIT
+		  ,[STDHLTH5]		BIT
+		  ,[STDHLTH6]		BIT
+		  ,[STDHLTH0]		BIT
+		  ,[STPPLHM]		TINYINT
+		  ,[STSIBOLD]		TINYINT
+		  ,[STSIBYNG]		TINYINT
+		  ,[STNMBOOK]		NVARCHAR(60)
+		  ,[STPLSTDY]		BIT
+		  ,[STHVMTEL]		BIT
+		  ,[STHVRADO]		BIT
+		  ,[STHVTELE]		BIT
+		  ,[STHVBIKE]		BIT
+		  ,[STHVMTBK]		BIT
+		  ,[STHVDESK]		BIT
+		  ,[STHVCHR]		BIT
+		  ,[STHVLAMP]		BIT
+		  ,[STHVEFAN]		BIT
+		  ,[STHVAIRC]		BIT
+		  ,[STHVCAR]		BIT
+		  ,[STHVCOMP]		BIT
+		  ,[STHVINTR]		BIT
+		  ,[STHVFRDG]		BIT
+		  ,[STHVMCRO]		BIT
+		  ,[STHVDVD]		BIT
+		  ,[STHVCBLE]		BIT
+		  ,[STTMSCH]		SMALLINT
+		  ,[STEATLNC]		BIT
+		  ,[STPAYLNC]		VARCHAR(50)
+		  ,[STRPTCL1]		VARCHAR(50)		
+		  ,[STRPTCL6]		VARCHAR(50)
+		  ,[STRPTCL10]		VARCHAR(50)
+		  ,[STTLTSCH]		VARCHAR(50)
+		  ,[STAGEENG]		VARCHAR(50)
+		  ,[STITMOW1]		BIT
+		  ,[STITMOW2]		BIT
+		  ,[STITMOW3]		BIT
+		  ,[STITMOW4]		BIT
+		  ,[STITMOW5]		BIT
+		  ,[STITMOW6]		BIT
+		  ,[STITMOW7]		BIT
+		  ,[STITMOW8]		BIT
+		  ,[STBRWBK]		VARCHAR(100)
+		  ,[STREADFN]		VARCHAR(50)
+		  ,[STREADCH]		VARCHAR(50)
+		  ,[STREADLR]		VARCHAR(50)
+		  ,[STPLHLRD]		VARCHAR(50)
+		  ,[STPLHL01]		VARCHAR(50)
+		  ,[STPLHL02]		VARCHAR(50)
+		  ,[STPLHL03]		VARCHAR(50)
+		  ,[STPLHL04]		VARCHAR(50)
+		  ,[STPLHL05]		VARCHAR(50)
+		  ,[STPLHL06]		VARCHAR(50)
+		  ,[STPLHL07]		VARCHAR(50)
+		  ,[STSPEN01]		VARCHAR(50)
+		  ,[STSPEN02]		VARCHAR(50)
+		  ,[STSPEN03]		VARCHAR(50)
+		  ,[STSPEN04]		VARCHAR(50)
+		  ,[STSPEN05]		VARCHAR(50)
+		  ,[STATEN01]		VARCHAR(50)
+		  ,[STATEN02]		VARCHAR(50)
+		  ,[STATEN03]		VARCHAR(50)
+		  ,[STATEN04]		VARCHAR(50)
+		  ,[STNONSCL]		VARCHAR(50)
+		  ,[STGR1001]		VARCHAR(50)
+		  ,[STGR1002]		VARCHAR(50)
+		  ,[STGR1003]		VARCHAR(50)
+		  ,[STGR1004]		VARCHAR(50)
+		  ,[STGR1005]		VARCHAR(50)
+		  ,[STGR1006]		VARCHAR(50)
+		  ,[STGR1007]		VARCHAR(50)
+		  ,[STGR1008]		VARCHAR(50)
+		  ,[STGR1009]		VARCHAR(50)
+		  ,[STGR1011]		VARCHAR(50)
+		  ,[STHGHGRD]		VARCHAR(50)
+
+		  ,CONSTRAINT FK_ST_ID FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+
+
+--TRUNCATE TABLE [CP002].[dbo].[Student_Questionnaire_2016];
+
+INSERT INTO [CP002].[dbo].[Student_Questionnaire_2016]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+
+		  ,REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(
+				REPLACE(STDDINT, ';', '/')
+						, '//', '/')
+						, '+', '')
+						, '`', '')
+						, '2016/', '2016')
+						, '20163', '2016')
+						, '/010/', '10')
+						, '/016', '/2016')
+						, '20016', '2016')
+						, '096', '09')
+						, '069', '06')
+						, '179', '17/9')
+						, '110', '10')	as STDINT			
+		  
+		,CASE [STDLIV]		WHEN '1'	THEN  'At home with my parents'
+							WHEN '2'	THEN  'With other family or friends'
+							WHEN '3'	THEN  'In a school hostel'
+							WHEN '4'	THEN  'In a private hostel'
+							WHEN '5'	THEN  'Other'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STDLIV]	
+		END as [STDLIV]	
+
+		,CASE [STDLNGHM]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Sometimes'
+							WHEN '2'	THEN  'Always'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STDLNGHM]	
+		END as [STDLNGHM]	
+
+		,CASE [STDMEAL]		WHEN '1'	THEN  '1 meal'
+							WHEN '2'	THEN  '2 meals'
+							WHEN '3'	THEN  '3 or more meals'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STDMEAL]	
+		END as [STDMEAL]
+
+		  ,[STDHLTH1]		
+		  ,[STDHLTH2]		
+		  ,[STDHLTH3]		
+		  ,[STDHLTH4]		
+		  ,[STDHLTH5]		
+		  ,[STDHLTH6]		
+		  ,[STDHLTH0]	
+		  
+		  ,[STPPLHM]		
+		  ,[STSIBOLD]		
+		  ,[STSIBYNG]
+		  
+		  ,CASE [STNMBOOK]	WHEN '0'	THEN  'None'
+							WHEN '1'	THEN  '1-10'
+							WHEN '2'	THEN  '11-25'
+							WHEN '3'	THEN  '26-100'
+							WHEN '4'	THEN  'More than 100'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STNMBOOK]	
+		END as [STNMBOOK]	
+		  
+		  ,[STPLSTDY]		
+		  ,[STHVMTEL]		
+		  ,[STHVRADO]		
+		  ,[STHVTELE]		
+		  ,[STHVBIKE]		
+		  ,[STHVMTBK]		
+		  ,[STHVDESK]		
+		  ,[STHVCHR]		
+		  ,[STHVLAMP]		
+		  ,[STHVEFAN]		
+		  ,[STHVAIRC]		
+		  ,[STHVCAR]		
+		  ,[STHVCOMP]		
+		  ,[STHVINTR]		
+		  ,[STHVFRDG]		
+		  ,[STHVMCRO]		
+		  ,[STHVDVD]		
+		  ,[STHVCBLE]		
+		  ,[STTMSCH]		
+		  ,[STEATLNC]	
+		  
+		  ,CASE [STPAYLNC]	WHEN '0'	THEN  'I do not eat lunch provided at school'
+							WHEN '1'	THEN  'Yes, school provides lunch and I pay for it'
+							WHEN '2'	THEN  'No, school provides lunch and I don''t pay for it'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPAYLNC]	
+		END as [STPAYLNC]	
+		  
+		  ,CASE [STRPTCL1]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, one'
+							WHEN '2'	THEN  'Yes, twice or more'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STRPTCL1]	
+		END as [STRPTCL1]	
+		
+		  ,CASE [STRPTCL6]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, one'
+							WHEN '2'	THEN  'Yes, twice or more'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STRPTCL6]	
+		END as [STRPTCL6]		
+
+		  ,CASE [STRPTCL10]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, one'
+							WHEN '2'	THEN  'Yes, twice or more'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STRPTCL10]	
+		END as [STRPTCL10]
+		
+		  ,CASE [STTLTSCH]	WHEN '0'	THEN  'No'
+							WHEN '1'	THEN  'Yes'
+							WHEN '2'	THEN  'There are no toilets at my school'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STTLTSCH]	
+		END as [STTLTSCH]	
+
+		  ,CASE [STAGEENG]	WHEN '0'	THEN  'I have never learned English in school'
+							WHEN '1'	THEN  'Kindergarten'
+							WHEN '2'	THEN  'Grade 1 - 5'
+							WHEN '3'	THEN  'Grade 6 - 9'
+							WHEN '4'	THEN  'Grade 10'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STAGEENG]	
+		END as [STAGEENG]	
+
+		  ,[STITMOW1]	
+		  ,[STITMOW2]	
+		  ,[STITMOW3]	
+		  ,[STITMOW4]	
+		  ,[STITMOW5]	
+		  ,[STITMOW6]	
+		  ,[STITMOW7]	
+		  ,[STITMOW8]	
+
+		  ,CASE [STBRWBK]	WHEN '0'	THEN  'No, I do not borrow books, but there is a library or bookstore at school'
+							WHEN '1'	THEN  'Yes, I borrow books'
+							WHEN '2'	THEN  'There is no library or bookstore at school'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STBRWBK]	
+		END as [STBRWBK]	
+
+		  ,CASE [STREADFN]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STREADFN]	
+		END as [STREADFN]	
+
+		  ,CASE [STREADCH]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STREADCH]	
+		END as [STREADCH]	
+
+		  ,CASE [STREADLR]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STREADLR]	
+		END as [STREADLR]	
+
+		  ,CASE [STPLHLRD]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Sometimes'
+							WHEN '2'	THEN  'Always'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHLRD]	
+		END as [STPLHLRD]	
+
+		  ,CASE [STPLHL01]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHL01]	
+		END as [STPLHL01]	
+		  ,CASE [STPLHL02]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHL02]	
+		END as [STPLHL02]	
+		  ,CASE [STPLHL03]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHL03]	
+		END as [STPLHL03]	
+		  ,CASE [STPLHL04]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHL04]	
+		END as [STPLHL04]	
+		  ,CASE [STPLHL05]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHL05]	
+		END as [STPLHL05]	
+		  ,CASE [STPLHL06]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHL06]	
+		END as [STPLHL06]	
+		  ,CASE [STPLHL07]	WHEN '1'	THEN  'Never or almost never'
+							WHEN '2'	THEN  'Once or twice a month'
+							WHEN '3'	THEN  'Once or twice a week'
+							WHEN '4'	THEN  'Everyday or almost everyday'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STPLHL07]	
+		END as [STPLHL07]	
+
+		  ,CASE [STSPEN01]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STSPEN01]	
+		END as [STSPEN01]	
+		  ,CASE [STSPEN02]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STSPEN02]	
+		END as [STSPEN02]	
+		  ,CASE [STSPEN03]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STSPEN03]	
+		END as [STSPEN03]	
+		  ,CASE [STSPEN04]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STSPEN04]	
+		END as [STSPEN04]	
+
+		  ,CASE [STSPEN05]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STSPEN05]	
+		END as [STSPEN05]	
+
+		  ,CASE [STATEN01]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STATEN01]	
+		END as [STATEN01]	
+		  ,CASE [STATEN02]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STATEN02]	
+		END as [STATEN02]	
+		  ,CASE [STATEN03]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STATEN03]	
+		END as [STATEN03]	
+
+		  ,CASE [STATEN04]	WHEN '0'	THEN  'Never'
+							WHEN '1'	THEN  'Yes, occasionally'
+							WHEN '2'	THEN  'Yes, often'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STATEN04]	
+		END as [STATEN04]	
+
+		  ,CASE [STNONSCL]	WHEN '0'	THEN  'None'
+							WHEN '1'	THEN  'Less than one hour'
+							WHEN '2'	THEN  '1-2 hours'
+							WHEN '3'	THEN  '2-3 hours'
+							WHEN '4'	THEN  'More than 4 hours'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STNONSCL]	
+		END as [STNONSCL]	
+
+		  ,CASE [STGR1001]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1001]	
+		END as [STGR1001]	
+
+		  ,CASE [STGR1002]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1002]	
+		END as [STGR1002]	
+
+		  ,CASE [STGR1003]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1003]	
+		END as [STGR1003]	
+		  ,CASE [STGR1004]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1004]	
+		END as [STGR1004]	
+		  ,CASE [STGR1005]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1005]	
+		END as [STGR1005]	
+		  ,CASE [STGR1006]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1006]	
+		END as [STGR1006]	
+		  ,CASE [STGR1007]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1007]	
+		END as [STGR1007]	
+		  ,CASE [STGR1008]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1008]	
+		END as [STGR1008]	
+
+		  ,CASE [STGR1009]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1009]	
+		END as [STGR1009]	
+
+		  ,CASE [STGR1011]	WHEN '1'	THEN  'Not important'
+							WHEN '2'	THEN  'Somewhat important'
+							WHEN '3'	THEN  'Important'
+							WHEN '4'	THEN  'Very important'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STGR1011]	
+		END as [STGR1011]	
+
+		  ,CASE [STHGHGRD]	WHEN '1'	THEN  'Upper secondary (general)'
+							WHEN '2'	THEN  'Upper secondary (vocational)'
+							WHEN '3'	THEN  'Professional school'
+							WHEN '4'	THEN  'College (non-vocational)'
+							WHEN '5'	THEN  'College (vocational)'
+							WHEN '6'	THEN  'Bachelor''s degree'
+							WHEN '7'	THEN  'Master''s degree'
+							WHEN '8'	THEN  'Doctorate/PhD'
+							WHEN '9'	THEN  'Don''t know'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [STHGHGRD]	
+		END as [STHGHGRD]	
+
+FROM CP002.dbo.vietnam_wave_1
+;
+
+
+ --DROP TABLE [CP002].[dbo].[Student_Questionnaire_2016];

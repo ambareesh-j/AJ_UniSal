@@ -1,0 +1,127 @@
+USE CP002;
+GO
+
+CREATE TABLE Student_ClassRoster_2016
+(		
+		 CL_ID				INT IDENTITY(1,1) PRIMARY KEY
+		,UNIQUEID			VARCHAR(9)
+		  
+		  ,[GRLENRL]		TINYINT	
+		  ,[BOYENRL]		TINYINT	
+		  ,[TTLENRL]		TINYINT	
+		  ,[TGRLENRL]		TINYINT	
+		  ,[TBOYENRL]		TINYINT	
+		  ,[TTTLENRL]		TINYINT	
+		  ,[ATDTMSY]		VARCHAR(30)
+		  ,[ATDDFSY]		VARCHAR(50)
+		  ,[TGMTHENG]		BIT
+		  ,[SCALLCT]		VARCHAR(50)
+		  ,[GRPABLTY]		VARCHAR(30)
+		  ,[CLSORD1]		TINYINT
+		  ,[CLSORD2]		TINYINT
+		  ,[SCAVLB1]		BIT
+		  ,[SCAVLB2]		BIT
+		  ,[SCAVLB3]		BIT
+		  ,[SCAVLB4]		BIT
+		  ,[SCAVLB5]		BIT
+		  ,[SCAVLB6]		BIT
+		  ,[SCAVLB7]		BIT
+		  ,[SCAVLB8]		BIT
+		  ,[SCAVLB9]		BIT
+		  ,[SCAVLB10]		BIT
+		  ,[SCPRDDAY]		TINYINT
+		  ,[SCLNONPR]		TINYINT		
+		  ,[SCMNMTIN]		TINYINT
+		  ,[SCMNENIN]		TINYINT
+		  ,[SCTXTMTH]		VARCHAR(30)
+		  ,[SCTXTENG]		VARCHAR(30)
+
+		  ,CONSTRAINT FK_CL_ID FOREIGN KEY (UNIQUEID)
+			REFERENCES [dbEdu].[Identifier](UNIQUEID)
+)
+
+--TRUNCATE TABLE [CP002].[dbo].[Student_ClassRoster_2016];
+
+INSERT INTO [CP002].[dbo].[Student_ClassRoster_2016]
+SELECT 
+		 RTRIM(LTRIM([UNIQUEID])) as UNIQUEID
+		
+		  ,[GRLENRL]	
+		  ,[BOYENRL]	
+		  ,[TTLENRL]	
+		  ,[TGRLENRL]	
+		  ,[TBOYENRL]	
+		  ,[TTTLENRL]	
+
+		  ,CASE [ATDTMSY]	WHEN '1'	THEN  'Normal'
+							WHEN '2'	THEN  'Higher than normal'
+							WHEN '3'	THEN  'Lower than normal'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [ATDTMSY]
+		END as [ATDTMSY]	
+		  ,CASE [ATDDFSY]	WHEN '1'	THEN  'Patterns of farm work'
+							WHEN '2'	THEN  'Seasonal migration'
+							WHEN '3'	THEN  'Recent or forthcoming holiday or celebration'
+							WHEN '4'	THEN  'Other'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [ATDDFSY]
+		END as [ATDDFSY]	
+
+		  ,[TGMTHENG]	
+
+		  ,CASE [SCALLCT]	WHEN '0'	THEN  'There is only one class in Grade 10'
+							WHEN '1'	THEN  'Randomly'
+							WHEN '2'	THEN  'Alphabetically'
+							WHEN '3'	THEN  'By ability (e.g high / middle / low)'
+							WHEN '4'	THEN  'According to the level of fees they pay'
+							WHEN '5'	THEN  'By choice of subject'
+							WHEN '6'	THEN  'Other method'
+							WHEN '7'	THEN  'A combination of two or more of the above methods'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [SCALLCT]
+		END as [SCALLCT]	
+		  ,CASE [GRPABLTY]	WHEN '1'	THEN  'Low ability'
+							WHEN '2'	THEN  'Medium ability'
+							WHEN '3'	THEN  'High ability'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [GRPABLTY]
+		END as [GRPABLTY]	
+
+		  ,[CLSORD1]	
+		  ,[CLSORD2]	
+		  ,[SCAVLB1]	
+		  ,[SCAVLB2]	
+		  ,[SCAVLB3]	
+		  ,[SCAVLB4]	
+		  ,[SCAVLB5]	
+		  ,[SCAVLB6]	
+		  ,[SCAVLB7]	
+		  ,[SCAVLB8]	
+		  ,[SCAVLB9]	
+		  ,[SCAVLB10]	
+		  ,[SCPRDDAY]	
+		  ,[SCLNONPR]	
+		  ,[SCMNMTIN]	
+		  ,[SCMNENIN]	
+
+		  ,CASE [SCTXTMTH]	WHEN '1'	THEN  'Compulsory textbooks'
+							WHEN '2'	THEN  'Non-compulsory textbooks'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [SCTXTMTH]
+		END as [SCTXTMTH]	
+		  ,CASE [SCTXTENG]	WHEN '1'	THEN  'Compulsory textbooks'
+							WHEN '2'	THEN  'Non-compulsory textbooks'
+							WHEN '99'	THEN  'Missing'
+							WHEN '88'	THEN  'NA'
+										ELSE  [SCTXTENG]
+		END as [SCTXTENG]			
+
+FROM CP002.dbo.vietnam_wave_1
+;
+
+ --DROP TABLE [CP002].[dbo].[Student_ClassRoster_2016];
